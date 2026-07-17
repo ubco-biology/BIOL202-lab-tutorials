@@ -7,7 +7,9 @@ book:
   subtitle: "The Lab Companion for BIOL 202 — UBC Okanagan"
   author: "Jason Pither"
   date: today
-  # TODO: confirm before first publish — the package repo is ubco-biology/biol202_ubco
+  # TODO(maintainer): PLACEHOLDER. No GitHub repo exists for these tutorials yet.
+  # When one is created, set repo-url here and update the URLs in
+  # 04-importing-data.qmd (which are currently eval: false for this reason).
   repo-url: https://github.com/ubco-biology/BIOL202-lab-tutorials
   repo-actions: [edit, issue]
   search: true

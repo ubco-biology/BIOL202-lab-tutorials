@@ -1,5 +1,3 @@
-# (PART\*) Reproducible Workflows {-}
-
 # Reproducible Research {#repro_research}
 
 ```{r echo = FALSE}

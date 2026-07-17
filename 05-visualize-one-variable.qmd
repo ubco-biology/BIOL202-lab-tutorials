@@ -1,5 +1,3 @@
-# (PART\*) Visualizing and Describing Data {-}
-
 # Visualizing a single variable {#vis_variable}
 
 ```{r echo = FALSE}

@@ -1,5 +1,3 @@
-# (PART\*) Inferential Statistics {-}
-
 # Sampling, Estimation, & Uncertainty {#estimation}
 
 ```{r echo = FALSE}

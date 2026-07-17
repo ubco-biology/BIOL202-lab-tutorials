@@ -1,5 +1,3 @@
-# (PART\*) Getting started with R, RStudio & R Markdown {-}
-
 # What are R and RStudio? {#what_is_R}
 
 It is assumed that you are using <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#R">R</a> via RStudio. First time users often confuse the two. At its simplest:

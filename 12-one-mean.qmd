@@ -250,8 +250,11 @@ The following graph illustrates this for the *t* distribution associated with *d
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "The *t* distribution for df = 24.", fig.width = 4, fig.height = 3.5}
 tval <- round(qt(alpha/2, df = d_f, lower.tail = FALSE), 2)
 linedata <- data.frame(x1 = tval, x2 = tval, y1 = 0, y2 = 0.3)
-tcrit_textpos <- bquote(italic(t)[crit])
-tcrit_textneg <- bquote(italic(-t)[crit])
+# Labels are plain strings here, rendered as maths by `parse = TRUE` in the
+# annotate() calls below. Passing expression() or bquote() objects directly to
+# annotate() no longer works in ggplot2 4.0.
+tcrit_textpos <- "italic(t)[crit]"
+tcrit_textneg <- "italic(-t)[crit]"
 ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   ylab("Probability density") + 
   xlab(expression(italic(t)-value[" df = 24"])) +
@@ -264,10 +267,10 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
                 geom = "area", fill = "red") +
   geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2), data = linedata, colour = "firebrick") +
   geom_segment(aes(x = -1*x1, y = y1, xend = -1*x2, yend = y2), data = linedata, colour = "firebrick") +
-  annotate("text", x = 3, y = 0.03, label = expression(alpha/2)) +
-  annotate("text", x = -3, y = 0.03, label = expression(alpha/2)) +
-  annotate("text", x = 2.2, y = 0.32, label = tcrit_textpos) +
-  annotate("text", x = -2.2, y = 0.32, label = tcrit_textneg) +
+  annotate("text", x = 3, y = 0.03, label = "alpha/2", parse = TRUE) +
+  annotate("text", x = -3, y = 0.03, label = "alpha/2", parse = TRUE) +
+  annotate("text", x = 2.2, y = 0.32, label = tcrit_textpos, parse = TRUE) +
+  annotate("text", x = -2.2, y = 0.32, label = tcrit_textneg, parse = TRUE) +
   theme_bw()
 ```
 

@@ -234,6 +234,15 @@ fix_images <- function(txt) {
   txt
 }
 
+strip_part_markers <- function(txt) {
+  # bookdown declares a book part with a heading like
+  #   # (PART\*) Getting started with R, RStudio & R Markdown {-}
+  # placed at the top of the chapter that opens the part. Quarto declares parts
+  # in _quarto.yml instead, so if these are left in they render as phantom
+  # chapters titled "(PART*) ..." and push the real chapter title down a level.
+  txt[!grepl("^#\\s*\\(PART", txt)]
+}
+
 strip_yaml <- function(txt) {
   # Source chapters have no YAML of their own (bookdown put it in index.Rmd),
   # but strip one if present so Quarto chapter headers stay clean.
@@ -266,6 +275,7 @@ for (src in names(file_map)) {
 
   txt <- readLines(path, warn = FALSE)
   txt <- strip_yaml(txt)
+  txt <- strip_part_markers(txt)
   txt <- convert_callouts(txt)
   txt <- fix_crossrefs(txt, dest)
   txt <- fix_data_loading(txt, dest)

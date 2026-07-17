@@ -74,7 +74,13 @@ Here we use a copy of the course data hosted online so you can practise the real
 
 If the file you wish to import is located on the web, then we need to provide the "URL" (the web address) to the `read_csv` function, in double quotation marks:
 
+<!-- TODO(maintainer): this chunk is eval: false ONLY because the GitHub repo
+     hosting csv_data/ does not exist yet. Once it is created and pushed,
+     update the URL below and delete the `eval: false` lines in this chunk and
+     the next one, so students see real output. See also _quarto.yml repo-url. -->
+
 ```{r import_students_url}
+#| eval: false
 students <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/students.csv")
 ```
 
@@ -93,8 +99,17 @@ The default behaviour of the `read_csv` function is to include a printout of the
 You can tell R to not provide this information by including the argument `show_col_types = FALSE` within the `read_csv` code.  Like so:
 
 ```{r readcsv_noshow}
+#| eval: false
 students <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/students.csv",
                      show_col_types = FALSE)
+```
+
+```{r readcsv_noshow_real}
+#| echo: false
+# Keeps the rest of the chapter working while the URL chunks above are
+# switched off. Delete once the repo exists and those chunks run.
+library(biol202)
+data(students)
 ```
 
 We have now imported the data and stored it in a local object called "students". The object is called a "tibble", which you can think of as a special kind of spreadsheet. More information on "tibbles" can be found [here](https://r4ds.had.co.nz/tibbles.html).
@@ -176,8 +191,11 @@ trout <- here("rawdata", "trout.csv") %>%
 ```
 
 ```{r, echo = FALSE, message = FALSE}
-trout <- here("data", "trout.csv") %>%
-  read_csv()
+# Students run the chunk above, which reads the trout.csv file they created
+# themselves in their own rawdata/ folder. That file does not exist when this
+# book is rendered, so we load the same data from the package instead. The
+# result is identical -- this only keeps the rendered output honest.
+data(trout)
 ```
 
 * First we have the name of the object (a "tibble") that we wish to create, "trout". 
