@@ -1,0 +1,506 @@
+# Comparing means among two groups {#compare_two_means}
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = "html")
+```
+
+**Tutorial learning objectives**
+
+* Learn about paired and two-sample study designs for comparing the mean of a numeric response variable among two categories of a categorical variable (i.e. two groups)
+* Learn about the paired _t_-test for testing a hypothesis about the difference between means in a paired design ($d$) 
+* Learn about the two-sample _t_-test for testing a hypothesis about the difference between two population means ($\mu_1 - \mu_2$)
+* Learn the assumptions of the paired and two-sample *t*-tests
+* Learn how to calculate an exact confidence interval for the difference between two means 
+* Learn the confidence interval approach for testing the plausibility of a hypothesized value for $\mu_1 - \mu_2$
+
+## Load packages and import data {#twomean_packages_data}
+
+Load the `tidyverse`, `knitr`, `naniar`, `car`, `skimr`, and `janitor` packages: 
+
+```{r singlenum_packages2, warning = FALSE, message = FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(knitr)
+library(janitor)
+library(skimr)
+library(car)
+```
+
+And we also need the `broom` package, which may be new to you.
+
+```{r singlenum_packages3, warning = FALSE}
+library(broom)
+```
+
+The following datasets are required: 
+
+* the "blackbird" dataset.  These are the data associated with Example 12.2 in the text (page 330)
+* the "students" dataset, describing characteristics of students from BIOL202 from several years back
+
+```{r}
+blackbird <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/blackbird.csv", show_col_types = FALSE)
+students <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/students.csv", show_col_types = FALSE)
+```
+
+## Paired *t*-test
+
+We'll use the `blackbird` dataset for this example.  
+
+For 13 red-winged blackbirds, measurements of antibodies were taken before and after implantation with testosterone.  Thus, the same bird was measured twice. Clearly, these measurements are not independent, hence the need for a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Paired-t-test">"paired" _t_-test</a>.  
+
+Let's first have a look at the `blackbird` dataset:
+
+```{r seeblackbird}
+blackbird 
+```
+
+The data frame has 26 rows, and includes 3 variables, the first of which "blackbird" simply keeps track of the individual ID of blackbirds.  
+
+The response variable of interest, "antibody" represents antibody production rate measured in units of natural logarithm (ln) 10^{-3} optical density per minute (ln[mOD/min]).  
+
+The factor variable `time` that has two levels: "After" and "Before".  
+
+These data are stored in **tidy format**, which, as you've [learned](https://ubco-biology.github.io/Procedures-and-Guidelines/tidy-data.html), is the ideal format for storing data. 
+
+Sometimes you may get data in <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Wide-format-data">**wide format**</a>, in which case, for instance, we would have a column for the "Before" antibody measurements and another column for the "After" measurements.  
+
+**It is always preferable** to work with <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Long-format-data">long-format</a> (tidy) data.  
+
+Consult the following [webpage](http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/) for instructions on using the `tidyr` package for converting between wide and long data formats.  
+
+With our data in the preferred long format, we can proceed with our hypothesis test, but because the hypothesis focuses on the _differences_ in the paired measurements, we need to calculate those first!   
+
+### Calculate differences {#calc_diffs}
+
+Let's remind ourselves how the data are stored: 
+
+```{r seeblack2}
+blackbird
+```
+
+We'll use, for the first time, the `pivot_wider` function from the `dplyr` package (which is loaded as part of the `tidyverse`).
+
+The `pivot_wider` function essentially takes data stored in long format and converts it to wide format.
+
+::: {.callout-note}
+The following code requires that there be at least one variable in the tibble that provides a unique identifier for each individual. In the "blackbird" tibble, this variable is "blackbird".  I have added an argument "id_cols = blackbird" to the code below to underscore the need for this type of identifier variable.  The code will not work if such a variable does not exist in the tibble.
+:::
+
+Here's the code, then we'll explain after:
+
+```{r}
+blackbird.diffs <- blackbird %>%
+  pivot_wider(id_cols = blackbird, names_from = time, values_from = antibody) %>%
+  mutate(diffs = After - Before)
+```
+
+In the preceding chunk, we: 
+
+* create a new object "blackbird.diffs" to hold our data
+* the `pivot_wider` function takes the following arguments: 
+  + "id_cols = blackbird", which tells the function which variable in the tibble is used to keep track of the unique individuals (here, the "blackbird" variable)
+  + A categorical (grouping) variable "names_from" and creates new columns, one for each unique category
+  + A "values_from" variable; thus, in our case, we get 2 new columns (because there are 2 categories to the "time" variable: Before and After), and the values placed in those columns are the corresponding values of "antibody".
+* we then create a new variable "diff" that equals the values in the newly created "After" variable minus the values in the "Before" variable.
+
+::: {.callout-note}
+**TIP:**
+In the blackbird example we have "Before" and "After" measurements of a variable, and we calculated the _difference_ as "$After - Before$", as this is a logical way to do it. It doesn't really matter which direction you calculate the difference, but just be aware that you need to make clear how it was calculated, so that your interpretation is correct.
+:::
+
+Let's have a look at the result:
+
+```{r see_new_blackbird}
+blackbird.diffs
+```
+
+We can see that some of the `diffs` values are negative, and some are positive.  These would of course be switched in sign if we had calculated the differences as "$Before - After$". 
+
+In any case, this is the new tibble and variable "diffs" that we'll use for our hypothesis test!
+
+### Hypothesis statement {#paired_Htest}
+
+The hypotheses for this paired _t_-test focus on the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a> of the *differences* between the paired measurements, denoted by $\mu_d$:  
+
+H~0~: The mean change in antibody production after testosterone implants was zero ($\mu_d = 0$).  
+H~A~: The mean change in antibody production after testosterone implants was not zero ($\mu_d \neq 0$).  
+
+Steps to a hypothesis test:  
+
+* We'll use an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)">$\alpha$ level</a> of 0.05.  
+* It is a two-tailed <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypothesis</a> 
+* We'll visualize the data, and interpret the output
+* We'll use a paired *t*-test test to test the null hypothesis, because we're dealing with "before and after" measurements taken on the same individuals, and drawing inferences about a population mean $\mu_d$ using sample data  
+* We'll check the assumptions of the test (see below)
+* We'll calculate our test statistic
+* We'll calculate the *P*-value associated with our test statistic
+* We'll calculate a 95% <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Confidence-interval">confidence interval</a> for the mean difference
+* We'll provide a good concluding statement that includes a 95% confidence interval for the mean difference
+
+### A graph to accompany a paired *t*-test {#graph_paried}     
+
+The best way to visualize the data for a paired *t*-test is to create a **histogram** of the calculated *differences* between the paired observations.
+
+```{r fig.cap = "Histogram of the differences in antibody production rate before and after the testosterone treatment", fig.width = 4, fig.height = 3}
+
+blackbird.diffs %>% 
+  ggplot(aes(x = diffs)) +
+  geom_histogram(binwidth = 0.1, boundary = -0.3, 
+                 color = "black", fill = "lightgrey",) +
+  xlab("Difference in antibody production rate (after - before) (ln[mOD/min]) 10^-3") +
+  ylab("Frequency") +
+  theme_bw()
+```
+
+With such a small sample size (13), the histogram is not particularly informative. But we do see most observations are just above zero.  
+
+**OPTIONAL**
+
+Another optional but nice way to visualize paired data is using a paired plot. 
+
+```{r fig.width = 4, fig.height = 3, fig.cap = "Paired plot of antibody production rate before and after the testosterone treatment"}
+
+blackbird %>%
+  ggplot(aes(x = time, y = antibody)) +
+  geom_point(shape = 1, size = 1.5) +
+  geom_line(aes(group = blackbird), color = "grey") +
+  theme_bw()
+```
+
+**OPTIONAL**
+
+Notice that the "After" group is plotted on the left, which is a bit counter-intuitive.  We could optionally change that by changing how R recognizes the "order" of the "time" variable:
+
+```{r eval = F}
+blackbird$time <- ordered(blackbird$time, levels = c("Before", "After"))
+```
+
+Then repeat the code above to create the paired plot. 
+
+### Assumptions of the paired *t*-test {#assump_paried}
+
+(Updated October 31, 2024)
+
+The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the paired *t*-test are the same as the assumptions for the one-sample *t*-test, except they pertain to the *difference*:  
+
+* the sampling units are randomly sampled from the population
+* the _mean difference_ has a normal distribution in the population (each group of measurements need not be normally distributed) 
+
+As instructed in the [checking assumptions](14-assumptions-transformations.qmd#checknorm_assum) tutorial, we should use a normal quantile plot to visually check the normal distribution assumption, using the calculated differences.
+
+```{r fig.width = 4, fig.height = 3, fig.cap = "Normal quantile plot of the differences in antibody production rate before and after the testosterone treatment (ln[mOD/min]) 10^-3."}
+
+blackbird.diffs %>%
+  ggplot(aes(sample = diffs)) +
+  stat_qq(shape = 1, size = 2) +
+  stat_qq_line() +
+  xlab("Normal quantile") +
+  ylab("antibody production (ln[mOD/min]) 10^-3") +
+  theme_bw()
+```
+
+We see that most of the lines are close to the line, with one point near the top right that is a bit off...
+
+A reasonable statement would be: 
+
+> "The normal quantile plot shows that the data generally fall close to the line (except perhaps the highest value), indicating that the normality assumption is reasonably met." 
+
+But if you're feeling uncertain, we can follow this with a **Shapiro-Wilk Normality Test**, which tests the null hypothesis that the data are sampled from a normal distribution.
+
+```{r normtest_paired}
+shapiro.result <- shapiro.test(blackbird.diffs$diffs)
+shapiro.result.tidy <- tidy(shapiro.result)
+shapiro.result.tidy
+```
+
+Given that the *P*-value is large (and much greater than 0.05), there is no reason to reject the null hypothesis. Thus, our normality assumption is met.  
+
+When testing the normality assumption using the Shapiro-Wilk test, there is no need to conduct all the steps associated with a hypothesis test. Simply report the results of the test (the test statistic value and the associated *P*-value).  
+
+For instance: 
+
+>"A Shapiro-Wilk test revealed no evidence against the assumption that the data are drawn from a normal distribution (*W* = `r round(shapiro.result.tidy$statistic,2)`, *P*-value = `r round(shapiro.result.tidy$p.value,3)`)."  
+
+### Conduct the test {#conduct_paired}
+
+We can conduct a **paired t-test** in two different ways:  
+
+* conduct a one-sample *t*-test on the _differences_ using the `t.test` function and methods you learned in a [previous tutorial](12-one-mean.qmd#onesamp_t_test).
+
+* conduct a paired *t*-test using the `t.test` function and the argument `paired = TRUE`.
+
+**(1) One-sample *t*-test on the differences**
+
+Let's proceed with the test as we've [previously learned](12-one-mean.qmd#onesamp_t_test).
+
+Here we make sure to set the null hypothesized value of "mu" to zero in the argument for the `t.test` function:
+
+```{r first_ttest2}
+blackbird.ttest <- blackbird.diffs %>%
+  select(diffs) %>%
+  t.test(mu = 0, alternative = "two.sided", conf.level = 0.95) 
+```
+
+Now have a look at the result:
+
+```{r first_ttest3}
+blackbird.ttest
+```
+
+The observed *P*-value for our test is larger than our $\alpha$ level of 0.05.  We therefore fail to reject the null hypothesis. 
+
+::: {.callout-note}
+The values of *t* and of the lower and upper confidence limits may be reversed in sign, if you conducted your calculation of differences in the alternative way.  Specifically, you may get *t* = `r -1*(blackbird.ttest$statistic)`, and confidence limits of `r -1*(blackbird.ttest$conf.int[2])` and `r -1*(blackbird.ttest$conf.int[1])`.  This is totally fine!
+:::
+
+**(2) Paired *t*-test**
+
+(Updated October 31, 2024)
+
+Here again we'll use the wide-format tibble `blackbird.diffs`, using this approach:
+
+```{r paired_t_tidy}
+blackbird.paired.ttest <- t.test(x = blackbird.diffs$Before, y = blackbird.diffs$After,
+       paired = TRUE, alternative = 'two.sided', conf.level = 0.95)
+```
+
+Here's an explanation: 
+
+* we create a new object "blackbird.paried.ttest" to store our results in
+* we run the `t.test` function with the arguments as follows: 
+  + we specify x equal to the "Before" variable, and y equal to the "After" variable
+  + we have the "paired = TRUE" argument, telling the function that this is a paired design
+  + we specify that this is a two-sided test with "alternative = 'two.sided'
+  + finally we use "conf.level = 0.95" which corresponds to an $\alpha = 0.05$
+  
+Let's look at the result:
+
+```{r pairedresults}
+blackbird.paired.ttest
+```
+
+The output is identical to what we got when we applied a 1-sample *t*-test on the differences!
+
+::: {.callout-note}
+The values of *t* and of the lower and upper confidence limits may be reversed in sign, if you conducted your calculation of differences in the alternative way.  Specifically, you may get *t* = `r -1*(blackbird.ttest$statistic)`, and confidence limits of `r -1*(blackbird.ttest$conf.int[2])` and `r -1*(blackbird.ttest$conf.int[1])`.  This is totally fine!
+:::
+
+### Concluding statement {#concl_paired}
+
+Here's an example of a reasonable concluding statement, and this can apply for either of the two methods used above (note that in either case we call the test a "paired *t*-test, even if we used the one-sample *t*-test on the differences):
+
+> We have no reason to reject the null hypothesis that the mean change in antibody production after testosterone implants was zero (paired _t_-test; _t_ = `r round(blackbird.paired.ttest$statistic,2)`; df = `r blackbird.paired.ttest$parameter`; _P_ = `r round(blackbird.paired.ttest$p.value,3)`; 95% confidence interval for the difference: `r round(blackbird.paired.ttest$conf.int[1], 3)` $< \mu_d <$ `r round(blackbird.paired.ttest$conf.int[2], 3)`). 
+
+## Two sample *t*-test {#twosamp_ttest}
+
+Have a look at the `students` dataset:  
+
+```{r}
+students %>%
+  skim_without_charts()
+```
+
+These data include measurements taken on 154 students in BIOL202 a few years ago.  
+
+We'll use the "height" and "dominant_eye" variables for this section. 
+
+**OPTIONAL** 
+
+Note that the categories in the `dominant_eye` variable are "l" and "r", denoting "left" and "right".
+
+We can use the `unique` function to tell us all unique values of a categorical variable:
+
+```{r}
+students %>% 
+  select(dominant_eye) %>%
+  unique()
+```
+Let's change these to be more informative, "Left" and "Right". 
+
+We can do this with the `recode_factor` function from the `dplyr` package (part of the `tidyverse`), in conjunction with the familiar `mutate` function used to create a new variable (though here we're just over-writing an existing variable):
+
+```{r}
+students <- students %>%
+  mutate(dominant_eye = recode_factor(dominant_eye, r = "Right", l = "Left"))
+```
+
+### Hypothesis statement {#twosamp_hyp}
+
+H~0~: Mean height is the same among students with left dominant eyes and right dominant eyes ($\mu_L = \mu_R$).  
+H~A~: Mean height is not the same among students with left dominant eyes and right dominant eyes ($\mu_L \ne \mu_R$). 
+
+Steps to a hypothesis test:  
+
+* We'll use an $\alpha$ level of 0.05.  
+* It is a two-tailed <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypothesis</a>
+* We'll provide a table of <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a> for each group
+* We'll visualize the data, and interpret the output
+* We'll use a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Two-sample-t-test">2-sample *t*-test</a> to test the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Null-hypothesis">null hypothesis</a>, because we're dealing with numerical measurements taken on independent within two independent groups, and drawing inferences about population means $\mu$ using sample data  
+* We'll check the assumptions of the test (see below)
+* We'll calculate our test statistic
+* We'll calculate the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#P-value">*P*-value</a> associated with our test statistic
+* We'll calculate a 95% confidence interval for the difference ($\mu_L - \mu_R$)
+* We'll provide a good concluding statement that includes a 95% confidence interval for the mean difference ($\mu_L - \mu_R$)  
+
+### A table of descriptive statistics {#stats_2samp} 
+
+When we are analyzing a numeric response variable in relation to a categorical variable with two or more categories, it's good practice to provide a table of summary (or "descriptive") statistics (including confidence intervals for the mean) for the numeric variable grouped by the categories.
+
+In a previous [tutorial](06-describe-one-variable.qmd#desc_numeric_var_cat) we learned how to calculate descriptive statistics for a numeric variable grouped by a categorical variable.  In another [tutorial](12-one-mean.qmd#conf_precision) we also learned how to calculate confidence intervals for a numeric variable.
+
+We've also learned that the `t.test` function returns a confidence interval for us.
+
+Let's use all these skills to generate a table of summary statistics for the "height_cm" variable, grouped by "dominant_eye":
+
+```{r conf_table_2samp}
+height.stats <- students %>%
+  group_by(dominant_eye) %>%
+  summarise(
+    Count = n() - naniar::sum(is.na(height_cm),
+    Count_NA = naniar::sum(is.na(height_cm), 
+    Mean = mean(height_cm, na.rm = TRUE),
+    SD = sd(height_cm, na.rm = TRUE),
+    SEM = SD/sqrt(Count),
+    Low_95_CL = t.test(height_cm, conf.level = 0.95)$conf.int[1],
+    Up_95_CL = t.test(height_cm, conf.level = 0.95)$conf.int[2]
+  )
+```
+
+The only unfamiliar code in the preceding chunk is the last two lines:
+
+* we use the `t.test` function to calculate the lower and upper confidence limits. Specifically:
+  + after the closing parenthesis to the `t.test` function, we include "$conf.int[1]", and this simply extracts the first value (lower limit) of the calculated confidence limits from the `t.test` output
+  + we do the same for the upper confidence limit, but this time we include "$conf.int[2]"
+
+Now let's have a look at the table, using the `kable` function to produce a nice table.
+
+**NOTE** here I am rotating the table so that it fits on the page. To do this, use the `t` function as follows:
+
+```{r descstats_height}
+kable(t(height.stats), digits = 4)
+```
+
+It is best to **NOT rotate the table**, but it is fine to do so if your table goes off the page!  
+
+We'll learn a better way to get around this later.
+
+### A graph to accompany a 2-sample *t*-test {#graph_2samp} 
+
+We learned in an earlier [tutorial](07-visualize-two-variables.qmd#numeric_vs_cat) that we can use a stripchart, violin plot, or boxplot to visualize the association between a numerical response variable and a categorical explanatory variable. Better yet, we can do the [combined violin & boxplot](07-visualize-two-variables.qmd#bestplot). 
+
+Here we want to visualize height in relation to dominant eye (Left or Right). We can use the information provided in our descriptive stats table to get the sample sizes for the groups (which we need to report in the figure heading). 
+
+```{r fig.width = 3, fig.height = 4, fig.cap = "Violin and boxplot of the heights of students with right (n = 106) and left (n = 48) dominant eyes.  Boxes delimit the first to third quartiles, bold lines represent the group medians, and whiskers extend to 1.5 times the IQR. Points beyond whiskers are extreme observations."}
+
+students %>% 
+  ggplot(aes(x = dominant_eye, y = height_cm)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1) + 
+  geom_jitter(colour = "grey", size = 1, shape = 1, width = 0.15) +
+  xlab("Dominant eye") +
+  ylab("Height (cm)") +
+  theme_bw()
+```
+
+**Interpretation**
+
+> We can see in the preceding figure that heights are generally similar between students with left dominant eyes and those with right dominant eyes.  However, it appears that the spread of the heights is greater among students with right dominant eyes.  We will need to be careful about the equal-variance assumption for the 2-sample *t*-test. 
+
+### Assumptions of the 2-sample *t*-test {#twosamp_assump}
+
+The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the 2-sample *t*-test are as follows:  
+
+* each of the two samples is a random sample from its population
+* the numerical variable is normally distributed in each population
+* the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Variance">variance</a> (and thus <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Standard-deviation">standard deviation</a>) of the numerical variable is the same in both populations  
+
+**Test for normality**  
+
+Now let's check the normality assumption by plotting a normal quantile plot for each group. 
+
+We'll introduce the `facet_grid` function that enables plotting of side-by-side panels according to a grouping variable.  
+
+```{r fig.width = 5, fig.height = 3, fig.cap = "Normal quantile plots of height for students with right (n = 106) or left (n = 48) dominant eyes."}
+
+students %>%
+  ggplot(aes(sample = height_cm)) +
+  stat_qq(shape = 1, size = 2) +
+  stat_qq_line() +
+  facet_grid(~ dominant_eye) +
+  xlab("Normal quantile") +
+  ylab("Height (cm)") +
+  theme_bw()
+```
+
+A reasonable statement would be: 
+
+> "The normal quantile plots show that student height is generally normally distributed for students with left or right dominant eyes. There is one observation among the right-dominant eye students that is a bit off the line." 
+
+**Test for equal variances**  
+
+Now we need to test the assumption of equal variance among the groups, using Levene's Test as we learned in the [checking assumptions](14-assumptions-transformations.qmd#levenetest) tutorial.   
+
+```{r}
+height.vartest <- leveneTest(height_cm ~ dominant_eye, data = students)
+height.vartest
+```
+
+It uses a test statistic "F", and we see here that the *P*-value associated with the test statistic is larger than 0.05, so we don't reject the implied null hypothesis that the variances are equal. 
+
+We state "A Levene's test showed no evidence against the assumption of equal variance (*F* = `r round(unlist(height.vartest)[3], 2)`; *P*-value = `r round(unlist(height.vartest)[5], 3)`)."
+
+Thus, we'll proceed with conducting the 2-sample *t*-test.  
+
+### Conduct the 2-sample *t*-test {#conduct_2samptest}
+
+We use the `t.test` function again for this test. 
+
+```{r go_2samp}
+height.ttest <- students %>%
+  t.test(height_cm ~ dominant_eye, 
+         data = ., var.equal = TRUE, conf.level = 0.95)
+```
+
+The only difference from the implementation used in the paired *t*-test is:
+
+* we include the "var.equal = TRUE" argument
+
+We again include the argument "data = .", which tells the `t.test` function that whatever data was passed to it from the preceding line is what will be used
+
+We'll learn a bit later what to due when the equal variance assumption is not met.
+
+Let's look at the result:
+
+```{r see_2samp}
+height.ttest
+```
+
+We see that the test produced a *P*-value greater than $\alpha$, so we fail to reject the null hypothesis.  
+
+Note also that the output includes a **confidence interval** for the _difference_ in group means. We need to include this in our concluding statement.  
+
+### Concluding statement {#concl_2samp}
+
+Here's an example of a concluding statement: 
+
+> On average, students with left dominant eyes are similar in height to students with right dominant eyes (Figure 19.4) (2-sample *t*-test; *t* = `r abs(round(height.ttest$statistic,2))`; df = `r height.ttest$parameter`; *P*-value = `r round(height.ttest$p.value,3)`; 95% confidence interval for the difference in height `r round(height.ttest$conf.int[1], 3)` $< \mu_d <$ `r round(height.ttest$conf.int[2], 3)`).
+
+## When assumptions aren't met {#assumpbad_2samp}
+
+If the **normal distribution assumption** is violated, and you are unable to find a transformation that works (see the [Checking assumptions and data transformations](14-assumptions-transformations.qmd#assumptions_packages_data) tutorial), then you can try a non-parametric test.
+
+A tutorial on non-parametric tests is forthcoming, but not available yet. Consult chapter 13 in the Whitlock & Schluter text, and this [website](https://whitlockschluter3e.zoology.ubc.ca/RExamples/Rcode_Chapter_13.html#new_methods_on_this_page) for some R examples. 
+
+If the **equal-variance assumption** is violated for the 2-sample *t*-test, then you can set the "var.equal" argument to "FALSE" in the `t.test` function, in which case the function implements a "Welch's *t*-test".
+
+For instance, let's pretend that the height data did not exhibit equal variance among left- and right- dominant eye students, here's the appropriate code:
+
+```{r go_2samp2}
+height.ttest.unequal.var <- students %>%
+  t.test(height_cm ~ dominant_eye, 
+         data = ., var.equal = FALSE, conf.level = 0.95)
+height.ttest.unequal.var
+```
+

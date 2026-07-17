@@ -1,0 +1,7 @@
+_book/
+.quarto/
+*_files/
+*_cache/
+.Rproj.user
+.Rhistory
+.RData

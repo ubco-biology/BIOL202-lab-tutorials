@@ -1,0 +1,332 @@
+# Analyzing associations between two numerical variables {#two_num}
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = "html")
+```
+
+**Tutorial learning objectives**
+
+* Learn about using correlation analyses to test hypotheses about associations between two numerical variables  
+* Learn that the **Pearson correlation coefficient** measures the strength and direction of the association between two numerical variables
+* Learn about the assumptions of correlation analysis  
+* Learn parametric and non-parametric methods for testing association between two numerical variables
+
+## Load packages and import data {#twonum_packages_data}
+
+Load the `tidyverse`, `skimr`, `broom`, `knitr`, and `janitor` packages: 
+
+```{r corr_packages, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(skimr)
+library(broom)
+library(knitr)
+library(janitor)
+```
+
+We'll use the "wolf.csv" and "trick.csv" datasets (discussed in examples 16.2 and 16.5 in the text, respectively).  
+
+```{r}
+data(wolf)
+data(trick)
+```
+
+The `wolf` dataset includes inbreeding coefficients for wolf pairs, along with the number of the pairs' pups surviving the first winter.  
+
+Explore the data:
+
+```{r corr_seedata1}
+wolf %>% skim_without_charts()
+```
+
+We see that there are 24 observations for each of the two variables, and no missing values. If there WERE missing values, be sure to report the correct sample size in your results!
+
+Now let's explore the `trick` dataset:
+
+```{r corr_seedata2}
+trick %>% skim_without_charts()
+```
+  
+It includes 21 observations, no missing values, and two integer variables: "years", and "impressiveness_score". Reading example 16.5 from the text, we see that the latter variable is a form of ranking variable.  
+
+## Pearson correlation analysis {#pearson}
+
+It is commonplace in biology to wish to quantify the strength and direction of a linear association between two numerical variables. 
+
+For example, in an [earlier tutorial](07-visualize-two-variables.qmd#two_numeric) we visualized the association between bill depth and bill length among Adelie penguins, using the "penguins" dataset. Here we learn how to quantify the strength and direction of this type of association by calculating the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Pearson-correlation">**Pearson correlation coefficient**</a>.  
+
+When drawing inferences about associations between numerical variables in a population, the true correlation coefficient is referred to as "rho" or $\rho$.
+
+The sample-based correlation coefficient, which we use to estimate $\rho$, is referred to as $r$:
+
+
+$$r = \frac{\sum{(X_{i}-\bar{X})(Y_{i}-\bar{Y})}}{\sqrt{\sum{(X_{i}-\bar{X})^2}} {\sqrt{\sum(Y_{i}-\bar{Y})^2}}}$$
+
+::: {.callout-note}
+In the calculation of $r$ it does not matter which variable is treated as the $X$ and which as the $Y$. However, in many instances there may good reason to choose which serves as the $X$ (explanatory) and which as the $Y$ (response).  
+:::
+
+### Hypothesis statements {#pearson_hyp}
+
+As a refresher, first consult the [steps to hypothesis testing](09-hypothesis-testing.qmd#hyp_steps).
+
+Researchers were interested in whether inbreeding coefficients of the wolf litters were associated with the number of pups surviving their first winter.  
+
+Both variables are numerical, and so the first choice is to conduct a **Pearson correlation analysis**.  This analysis yields a sample-based measure called Pearson's correlation coefficient, or *r*.  This provides an estimate of $\rho$ - the true correlation between the two variables in the population.  The absolute magnitude of *r* (and $\rho$) reflects the strength of the linear association between two numeric variables in the *population*, and the sign of the coefficient indicates the direction of the association.  
+
+The hypothesis statements should be framed in the context of the question, and should include the hypothesized value of the population parameter.
+
+**H~0~**: Inbreeding coefficients are not associated with the number of pups surviving the first winter ($\rho = 0$). 
+**H~A~**: Inbreeding coefficients are associated with the number of pups surviving the first winter ($\rho \ne 0$).  
+
+We'll set <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)">$\alpha$ = 0.05</a>.  
+
+### Visualize the data {#see_corr}
+
+We learned in an [earlier tutorial](07-visualize-two-variables.qmd#two_numeric) that the best way to visualize an association between two numeric variables is with a scatterplot, and that we can create a scatterplot using the `geom_point` function from the `ggplot2` package:  
+
+```{r fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24).", fig.width = 4.2, fig.height = 4}
+
+wolf %>% 
+ggplot(aes(x = n_pups, y = inbreed_coef)) +
+  geom_point(shape = 1) +
+  xlab("Number of pups") +
+  ylab("Inbreeding coefficient") +
+  theme_bw()
+```
+
+We notice that there doesn't appear to be the correct number of points (24) in the scatterplot, so there must be some overlapping.  
+
+To remedy this, we use the `geom_jitter` function instead of the `geom_point` function.  
+
+```{r pupscatter, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+
+wolf %>% 
+ggplot(aes(x = n_pups, y = inbreed_coef)) +
+  geom_jitter(shape = 1) +
+  xlab("Number of pups") +
+  ylab("Inbreeding coefficient") +
+  theme_bw()
+```
+
+That's better!  
+
+**Interpreting a scatterplot**
+
+In an earlier [tutorial](07-visualize-two-variables.qmd#interpret_scatter), we learned how to properly interpret a scatterplot, and **what information should to include in your interpretation**. Be sure to consult that tutorial.   
+
+> We see in Figure \@ref(fig:pupscatter) that the association between the inbreeding coefficient and number of surviving pups is negative, linear, and moderately strong.  There are no apparent outliers to the association.  
+
+### Assumptions of correlation analysis {#corr_assumptions}
+
+Correlation analysis assumes that:  
+
+* the sample of individuals is a random sample from the population   
+* the measurements have a **bivariate normal distribution**, which includes the following properties:  
+    + the relationship between the two variables ($X$ and $Y$) is linear  
+    + the cloud of points in a scatterplot of $X$ and $Y$ has a circular or elliptical shape  
+    + the frequency distributions of $X$ and $Y$ separately are normal  
+
+* * *
+
+**Checking the assumptions of correlation analysis**
+
+The assumptions are most easily checked using the scatterplot of X and Y.   
+
+What to look for as potential problems in the scatterplot:  
+
+* a "funnel" shape  
+* outliers to the general trend  
+* non-linear association  
+
+If any of these patterns are evident, then one should opt for a non-parametric analysis (see below).  
+
+(See Figure 16.3-2 in the text for examples of non-conforming scatterplots) 
+
+>Based on Figure \@ref(fig:pupscatter), there doesn't seem to be any indications that the assumptions are not met, so we'll proceed with testing the null hypothesis.  
+
+::: {.callout-warning}
+Be careful with "count" type variables such as "number of pups", as these may not adhere to the "bivariate normality" assumption. If the variable is restricted to a limited range of possible counts, say zero to 5 or 6, then the association should probably be analyzed using a non-parametric test (see below). The variable "number of pups" in this example is borderline OK...
+:::
+
+* * *
+
+### Conduct the correlation analysis {#do_corr}
+
+Conducting a correlation analysis is done using the `cor.test` function that comes with R.  
+
+This function does not produce "tidy" output, so we'll make use of the `tidy` function from the `broom` package to tidy up the correlation output (like [we did in for ANOVA output](15-anova.qmd#createanovatable)).
+
+Notice that the function expects the "x" and "y" variables as separate arguments.  
+
+And here's how to implement it.  First run the `cor.test` function, and notice we provide the "x" and "y" variables 
+
+```{r docorr1}
+wolf.cor <- cor.test(x = wolf$inbreed_coef, y = wolf$n_pups, 
+                     method = "pearson", conf.level = 0.95,
+                     alternative = "two.sided")
+```
+
+Let's have a look at the untidy output:
+
+```{r coruntidy}
+wolf.cor
+```
+
+Now let's tidy it up and have a look at the resulting tidy output:
+
+```{r createtidycor}
+wolf.cor.tidy <- wolf.cor %>%
+  broom::tidy()
+```
+
+Show the output:
+```{r}
+wolf.cor.tidy
+```
+
+* The "estimate" value represents the value of Pearson's correlation coefficient $r$
+* The "statistic" value is actually the value for $t$, which is used to test the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Statistical-significance">significance</a> of *r*
+* The "p.value" associated with the observed value of *t*
+* The "parameter" value is, strangely, referring to the degrees of freedom for the test, $df = n - 2$
+* The output also includes the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Confidence-interval">confidence interval</a> for *r* ("conf.low" and "conf.high")
+* The "method" refers to the type of test conducted
+* The "alternative" indicates whether the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypothesis</a> was one- or two-sided (the latter is the default)
+
+Despite the reporting of the *t* test statistic, **we do not report _t_ in our concluding statement** (see below). 
+
+### Concluding statement {#concl_corr}
+
+It is advisable to always refer to a scatterplot when authoring a concluding statement for correlation analysis.
+
+Let's re-do the scatterplot here.
+
+```{r pupscatter2, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+
+wolf %>% 
+ggplot(aes(x = n_pups, y = inbreed_coef)) +
+  geom_jitter(shape = 1) +
+  xlab("Number of pups") +
+  ylab("Inbreeding coefficient") +
+  theme_bw()
+```
+
+Here is an example of a good concluding statement:
+
+* * *
+
+Litter size is significantly negatively correlated with the inbreeding coefficient of the parents (Figure \@ref(fig:pupscatter2); Pearson _r_ = `r round(wolf.cor.tidy$estimate, 2)`; 95% confidence limits: `r c(round(wolf.cor.tidy$conf.low, 3), round(wolf.cor.tidy$conf.high, 3))`; $df$ = `r wolf.cor.tidy$parameter`; _P_ = `r round(wolf.cor.tidy$p.value, 3)`).  
+
+* * *
+
+::: {.callout-note}
+**Tip**
+Remember to double-check if you had any missing values in your dataset, do that you don't report the wrong sample size in your figure caption and / or concluding statement.
+:::
+
+1. Using the `penguins` dataset that loads with the `palmerpenguins` package, test the null hypothesis that there is no linear association between bill length and bill depth among Gentoo penguins. **HINT**: Before using the `cor.test` function, you'll first need to create a new tibble that includes only the "Gentoo" species data.
+
+## Rank correlation (Spearman's correlation) {#rankcorr}
+
+If the assumption of bivariate normality is not met for Pearson correlation analysis, then we use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Spearman-rank-correlation">Spearman rank correlation</a>.  
+
+For example, if one or both of your numerical variables (X and / or Y) is actually a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Discrete-quantitative-data">discrete</a>, ordinal numerical variable to begin with (e.g. an attractiveness score that ranges from 1 to 5), then this automatically necessitates the use of Spearman rank correlation, because it does not meet the assumptions of bivariate normality. (This is why one needs to be careful with count data).    
+
+We'll use the `trick` dataset for this example, and the data are described in example 16.5 in the text.  
+
+### Hypothesis statements
+
+The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Null-hypothesis">null</a> and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypotheses</a> are:  
+
+**H~0~**: There is no linear correlation between the ranks of the impressiveness scores and time elapsed until the writing of the description ($\rho_{S} = 0$).  
+**H~A~**: There is a linear correlation between the ranks of the impressiveness scores and time elapsed until the writing of the description ($\rho_{S} \ne 0$).    
+
+Let's use $\alpha$ = 0.05.  
+
+As shown in the hypothesis statements above, we are interested in $\rho_{S}$, which is the true correlation between the *ranks* of the variables in the population. We estimate this using $r_{S}$, Spearman's correlation coefficient.  
+
+Unlike in the Pearson correlation case (above), which uses *t* as a test statistic, the rank correlation analysis simply uses the actual Spearman correlation coefficient as the test statistic.  
+
+### Visualize the data {#spearman_hyp}
+
+Let's visualize the association, again using the `geom_jitter` function to help see overlapping values:  
+
+```{r trickplot, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+
+trick %>%
+  ggplot(aes(x = years, y = impressiveness_score)) +
+  geom_jitter(shape = 1) +
+  xlab("Years elapsed") +
+  ylab("Impressiveness score") +
+  theme_bw()
+```
+
+> In Figure \@ref(fig:trickplot) we see a positive and moderately strong association between the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account.  
+
+### Assumptions of Spearman rank correlation {#assum_spear} 
+
+Spearman rank correlation <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumes</a> that:  
+
+* the observations are a random sample from the population  
+* the relationship between the two variables is monotonic; in other words it assumes that the relationship between the **ranks** of the two numerical variables is linear.  
+
+**Checking assumptions**
+
+As in the Pearson correlation analysis, we use the scatterplot to check the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a>.  
+
+> As shown in Figure \@ref(fig:trickplot), there is a monotonic relationship between the two variables.  
+
+### Conduct the test {#conduct_spearman}
+
+We use the same `cor.test` function to conduct the test, but change the "method" argument accordingly:  
+
+```{r dospear1}
+trick.cor <- cor.test(x = trick$years, y = trick$impressiveness_score, 
+                     method = "spearman", conf.level = 0.95,
+                     alternative = "two.sided")
+```
+
+::: {.callout-note}
+You may get a warning message, simply saying that it can't compute exact _P_-values when there are ties in the ranked data. Don't worry about this.
+:::
+
+```{r createtidyspear}
+trick.cor.tidy <- trick.cor %>%
+  broom::tidy()
+trick.cor.tidy
+```
+
+* The "estimate" value represents the value of Spearman's correlation coefficient $r_S$; this is the value you report.
+* The "statistic" value is **NOT NEEDED** so ignore
+* The "p.value" associated with the observed Spearman's correlation coefficient
+* The "method" refers to the type of test conducted
+* The "alternative" indicates whether the alternative hypothesis was one- or two-sided (the latter is the default)
+
+::: {.callout-note}
+There is no confidence interval reported with Spearman correlation analysis, so there is no need to report one in the concluding statement for a rank correlation. Nor is the degrees of freedom reported, so be sure to have figured out the appropriate degrees of freedom (or sample size "n") to report in your concluding statement.
+:::
+
+### Concluding statement {#spear_conclude}
+
+As in the preceding Pearson correlation example, we can refer to the Figure in the parentheses of our concluding statement. Note also that we report _n_ rather than degrees of freedom.  
+
+```{r trickplot2, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+
+trick %>%
+  ggplot(aes(x = years, y = impressiveness_score)) +
+  geom_jitter(shape = 1) +
+  xlab("Years elapsed") +
+  ylab("Impressiveness score") +
+  theme_bw()
+```
+
+Concluding statement:
+
+* * *
+
+The rank of impressiveness scores of written accounts of the Indian rope trick by firsthand observers is significantly positively correlated with the rank of number of years elapsed between witnessing the event and writing the account (Figure \@ref(fig:trickplot2); Spearman $r_S$ = `r round(trick.cor.tidy$estimate, 2)`; $n$ = 21; _P_ < 0.001).  
+
+* * *
+

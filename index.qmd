@@ -1,0 +1,124 @@
+# Welcome {.unnumbered}
+
+This is the lab companion for **BIOL 202: Introduction to Biostatistics** at the University of British Columbia, Okanagan campus. It provides the R tutorials for the lab portion of the course.
+
+It also works as a general resource for anyone learning to manage and analyze data using R and R Markdown in the RStudio IDE.
+
+These tutorials pair with the course's open resource, *Biostatistics for Biologists*, which covers the concepts. The rule is **concept first, computation second**: each week the lecture introduces an idea, and the lab tutorial that week implements it in R. If a tutorial asks you to run a test, the lecture has already explained what it is for.
+
+This book is **a living document that is updated intermittently.** If you find errors or wish to provide feedback, please [contact me](https://jasonpither.weebly.com/people.html).
+
+## Setting up: do this once {#setup .unnumbered}
+
+You need three things: R, RStudio, and the `biol202` package. [Tutorial 1](01-getting-started.qmd) walks you through installing R and RStudio if you have not already.
+
+Everything else — every dataset and every package used anywhere in these tutorials — comes from a single package called `biol202`. Install it once, at the start of term, and you are done.
+
+First, install the `remotes` package, which knows how to install packages from GitHub. Run this in the **Console** (the bottom-left pane in RStudio):
+
+```{r}
+#| eval: false
+install.packages("remotes")
+```
+
+Then install the course package:
+
+```{r}
+#| eval: false
+remotes::install_github("ubco-biology/biol202_ubco")
+```
+
+This may take a few minutes the first time, because it also installs every other package the course uses. Let it finish.
+
+::: {.callout-important}
+## The install name and the package name are different, on purpose
+
+You install from `biol202_ubco` but you load `biol202`:
+
+```r
+remotes::install_github("ubco-biology/biol202_ubco")   # the repository
+library(biol202)                                        # the package
+```
+
+This is not a typo. `biol202_ubco` is the name of the *repository* on GitHub; `biol202` is the name of the *package* inside it. R does not allow underscores in package names, so the two cannot match.
+:::
+
+::: {.callout-note}
+## Only install once
+
+`install.packages()` and `install_github()` install a package onto your computer permanently. You do **not** re-run them every session, and you should never put them inside an R Markdown document — if you do, your document will try to re-install packages every time you knit it.
+
+Loading a package with `library()` is the thing you do every session. See [Tutorial 1](01-getting-started.qmd).
+:::
+
+### Check that it worked {.unnumbered}
+
+Run this in the Console:
+
+```{r}
+#| eval: false
+library(biol202)
+data(birds)
+birds
+```
+
+If you see a small table of bird types, you are ready.
+
+## How the data work {.unnumbered}
+
+Every dataset used in these tutorials comes with the `biol202` package. To use one, load the package and then call `data()` with the dataset's name:
+
+```{r}
+#| eval: false
+library(biol202)
+data(circadian)
+```
+
+That is it — no downloading, no file paths, no internet connection required.
+
+Each dataset also has a help page describing every variable, its units, and where the data came from. To read it, put a question mark in front of the name:
+
+```{r}
+#| eval: false
+?circadian
+```
+
+**Read the help page before you analyze a dataset.** It tells you what the variables mean, which is not something you can guess from the numbers. To see all the datasets available:
+
+```{r}
+#| eval: false
+data(package = "biol202")
+```
+
+::: {.callout-note}
+## Why the data come in a package
+
+In previous years, students downloaded each dataset from a web address, which meant a typo or a dropped wifi connection could stop a lab before it started. Bundling the data into a package removes that failure entirely, and it means the data have already been cleaned and checked.
+
+You will still learn to import your own data from a CSV file — that is a core skill, and it is covered in [Tutorial 4](04-importing-data.qmd). The package is for the *course's* data, not a substitute for knowing how to read a file.
+:::
+
+## Loading packages in this course {.unnumbered}
+
+Throughout these tutorials, we load the individual packages we need, like this:
+
+```{r}
+#| eval: false
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
+
+You may see other tutorials online use `library(tidyverse)`, which loads a large collection of packages in one line. We do not do that here. Loading packages individually means you can always tell which package a function came from — so when something goes wrong, you know where to look.
+
+This is consistent across every tutorial. Whatever a tutorial uses, it loads at the top.
+
+::: {.callout-note}
+Note that `library(biol202)` does **not** load `dplyr` or `ggplot2` for you. Installing `biol202` *installs* them; you still *load* the ones you need, yourself, at the top of each document.
+:::
+
+## Licence {.unnumbered}
+
+These tutorials are licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Many of the datasets accompany Whitlock, M. C. & Schluter, D., *The Analysis of Biological Data*, and are redistributed under the same licence their authors published them under ([Whitlock & Schluter 2018](https://qubeshub.org/publications/351/1)). Each dataset's help page records its source. Note that most of those values were digitized from figures and tables in the original publications, so they are teaching reconstructions rather than the original measurements — fine for learning, not for research.

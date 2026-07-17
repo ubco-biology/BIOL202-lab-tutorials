@@ -1,0 +1,81 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "R Tutorials for Biostatistics"
+  subtitle: "The Lab Companion for BIOL 202 — UBC Okanagan"
+  author: "Jason Pither"
+  date: today
+  # TODO: confirm before first publish — the package repo is ubco-biology/biol202_ubco
+  repo-url: https://github.com/ubco-biology/BIOL202-lab-tutorials
+  repo-actions: [edit, issue]
+  search: true
+  page-footer:
+    center: "R Tutorials for Biostatistics — CC BY-NC-SA 4.0"
+  # Parts mirror the lecture sequence (redesign plan §9), so that a tutorial is
+  # never reached before the lecture has motivated the concept it computes.
+  chapters:
+    - index.qmd
+    - part: "Part I — Workflow & Reproducibility"
+      chapters:
+        - 01-getting-started.qmd
+        - 02-reproducible-r.qmd
+        - 03-formatting-assignments.qmd
+        - 04-importing-data.qmd
+    - part: "Part II — Describing & Visualizing Data"
+      chapters:
+        - 05-visualize-one-variable.qmd
+        - 06-describe-one-variable.qmd
+        - 07-visualize-two-variables.qmd
+    - part: "Part III — Uncertainty & the Logic of Inference"
+      chapters:
+        - 08-sampling-estimation.qmd
+        - 09-hypothesis-testing.qmd
+    - part: "Part IV — The Core Methods Toolbox"
+      chapters:
+        - 10-one-categorical.qmd
+        - 11-two-categorical.qmd
+        - 12-one-mean.qmd
+        - 13-two-means.qmd
+        - 14-assumptions-transformations.qmd
+        - 15-anova.qmd
+    - part: "Part V — The Linear-Model Family"
+      chapters:
+        - 16-correlation.qmd
+        - 17-regression.qmd
+    - part: "Reference"
+      chapters:
+        - 90-tables.qmd
+        - 91-gtsummary.qmd
+        - 92-visual-editor.qmd
+        - 99-common-issues.qmd
+
+bibliography: [biol202.bib, packages.bib]
+biblio-style: apalike
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true
+
+# Every tutorial must run top to bottom from the package data, with no hidden
+# state. freeze: false means chapters are re-executed on every render, so a
+# tutorial that has quietly broken fails the build instead of shipping stale
+# output to students.
+execute:
+  freeze: false
+  echo: true
+  warning: false
+  message: false
+
+knitr:
+  opts_chunk:
+    comment: "#>"
+    collapse: true
+    fig.align: "center"

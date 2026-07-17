@@ -1,0 +1,54 @@
+# Data summaries with "gtsummary" package {-}
+
+This tutorial introduces an alternative to the `skimr` package for getting overviews of datasets.  
+
+The `skimr` package and its `skim_without_charts` function can cause issues when knitting to PDF.
+
+The `gtsummary` package appears to have fewer such issues. 
+
+If you haven't already, install the `gtsummary` package by typing this in your console (do this only once):  
+
+```
+install.packages("gtsummary")
+```
+
+Let's load packages ...
+
+```{r gtsum_package, message = FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(palmerpenguins)
+library(gtsummary)
+library(knitr)
+```
+
+The key function in the `gtsummary` package is the `tbl_summary` function:
+
+```
+?tbl_summary
+```
+
+Take note of the default settings for the "statistic" argument... by default, the function will return the median and IQR for numeric variables, and the sample size and relative frequency (expressed as percentage) for categorical variables.  
+
+For details on this function, along with a tutorial, see this [webpage](https://cran.r-project.org/web/packages/gtsummary/vignettes/tbl_summary.html).  
+
+
+We'll get an overview of the data using the `tbl_summary` function.
+
+```{r gtsum1_sum}
+penguins %>%
+  tbl_summary()
+```
+
+We could select just some numeric variables, and ask for the mean and standard deviation.  Note the syntax for the "statistic" argument... we have to provide a "list", as follows:
+
+```{r gtsum1_sum2}
+penguins %>%
+  select(bill_length_mm, bill_depth_mm) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})"))
+```
+
+So, if you find youself running into issues with the `skimr` package, feel free to use the `gtsummary` package instead!
+
+

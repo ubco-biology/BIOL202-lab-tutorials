@@ -1,0 +1,507 @@
+# Analyzing associations between two categorical variables {#two_cat}
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = "html")
+```
+
+**Tutorial learning objectives**
+
+* Learn about the odds Ratio for a **2 x 2** contingency table     
+    + Estimate the odds of an outcome  
+    + Estimate the odds ratio  
+
+* Learn about the Fisher's Exact Test for a **2 x 2** contingency table     
+    + Hypothesis statement  
+    + Display a Contingency table (review this [tutorial](07-visualize-two-variables.qmd#vis2_cont_table))
+    + Display a stacked relative frequency bar graph (review this [tutorial](07-visualize-two-variables.qmd#stacked_bar_plot))
+    + Conduct the Fisher's Exact test  
+    + Concluding statement 
+    
+* Learn about the $\chi$^2^ Contingency Test on a **m x n** contingency table     
+    + Hypothesis statement  
+    + Display a Contingency table (review this [tutorial](07-visualize-two-variables.qmd#vis2_cont_table))
+    + Display a stacked relative frequency bar graph (review this [tutorial](07-visualize-two-variables.qmd#stacked_bar_plot))
+    + Check assumptions  
+    + Get results of the test  
+    + Concluding statement 
+
+## Load packages and import data {#twocat_packages_data}
+
+Load the packages we need for this tutorial: 
+
+```{r twocat_packages, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(skimr)
+library(knitr)
+library(janitor)
+```
+
+We'll also need a new package called `epitools`, so install that now if you haven't done so.
+
+```{r loadepi, warning = FALSE}
+library(epitools)
+```
+
+We'll use two datasets described in the Whitlock & Schluter text: 
+
+* the "cancer.csv" dataset (described in Example 9.2 in the text, page 238)
+* the "worm.csv" dataset (described in Example 9.4 in the text, page 246)
+
+```{r contget_data}
+data(cancer)
+data(worm)
+```
+
+Take a look at the cancer dataset:
+
+```{r cont_datalook_cancer}
+cancer %>%
+ skim_without_charts()
+```
+
+And the worm dataset: 
+
+```{r cont_datalook_worm}
+worm %>%
+ skim_without_charts()
+```
+
+Both datasets are formatted "tidy" format. For a refresher on this, review the [Biology Procedures and Guidelines document](https://ubco-biology.github.io/Procedures-and-Guidelines/tidy-data.html) chapter on **Tidy data**. 
+
+## Fisher's Exact Test {#fishertest}
+
+When testing for an association between two categorical variables, the most common test that is used is the $\chi$^2^ contingency test, which is described in the next section.  
+
+When the two categorical variables _have exactly 2 categories each_, and thus yield a 2 x 2 contingency table, the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Fisher's-exact-test">**Fisher's Exact test**</a> (a type of contingency test) provides an EXACT <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#P-value">_P_-value</a>, and is therefore preferred over the $\chi$^2^ contingency test (below) when you have a computer to do the calculations.  
+
+Often, and especially when the 2 x 2 contingency table deals with a health-related study, one refers to the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Odds-ratio">**Odds Ratio**</a>, which we'll learn about below.  
+
+In any case, the most powerful statistical test for a 2 x 2 contingency analysis is a **Fisher's Exact test**. 
+
+### Hypothesis statement {#fisher_hyp}
+
+We'll use the cancer study data again for this example, as described in example 9.2 (Page 235) in the text.  
+
+The hypotheses for this test:  
+
+**H~0~**: There is no association between the use of aspirin and the probability of developing cancer.  
+**H~A~**: There is an association between the use of aspirin and the probability of developing cancer.  
+
+* We'll use an $\alpha$ level of 0.05.  
+* It is a two-tailed <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypothesis</a>
+* We'll use a Fisher's Exact test to test the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Null-hypothesis">null hypothesis</a>, because this is the **most powerful test** when analyzing a 2 x 2 contingency table.  
+* There is no test statistic for the Fisher's Exact test, and nor does it use "degrees of freedom" (the latter you'll learn about soon, and is only required when we use a theoretical distribution for a test statistic)  
+
+> **HOWEVER**: it is recommended that you report the "odds ratio" (which you'll learn about below) in your concluding statement, along with its appropriate <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Confidence-interval">confidence interval</a>; this is a useful stand-in test statistic for the Fisher's Exact Test  
+
+* We also don't need to worry about <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> for this test, because it is not relying on a theoretical <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Probability">probability</a> distribution  
+* It is always a good idea to present a figure to accompany your analysis; in the case of a Fisher's Exact test, the figure heading will include information about the sample size / total number of observations, whereas the concluding statement typically does not  
+
+### Display a contingency table {#show_cont_table}
+
+We'll use the approach we learned in an earlier [tutorial](07-visualize-two-variables.qmd#vis2_cont_table) to construct a contingency table.
+
+We'll store the table in an object called "cancer.aspirin.table", and we'll make sure to include margin (row and column) totals: 
+
+```{r contingency_cancer}
+cancer.aspirin.table <- cancer %>%
+  tabyl(response, aspirin_treatment) %>%
+  adorn_totals(where = c("row", "col"))
+```
+
+Let's have a look at the result:
+
+```{r}
+cancer.aspirin.table
+```
+
+::: {.callout-note}
+When dealing with data from studies on human health (e.g. evaluating healthy versus sick subjects), it is convention to organize the contingency table as shown above, with (i) the outcome of interest (here, cancer) in the top row and the alternative outcome on the bottom row, and (ii) the treatment in the first column and placebo (control group) in the second column. When the data are not related to health outcomes, you do not need to worry about the ordering of the rows of data.  
+:::
+
+Let's use the `kable` function to display a nice looking contingency table:
+
+```{r cont_cancer_aspirin_table}
+cancer.aspirin.table %>%
+  kable(caption = "Contingency table showing the incidence of cancer in relation to experimental treatments", booktabs = TRUE)
+```
+
+### Display a stacked relative frequency bar graph {#show_stacked_bar}
+
+Let's visualize the data using a stacked relative frequency bar graph, taking note of the frequency of observations falling in each category (from the contingency table produced previously).  
+
+Here we'll add a bit of new code to format the graph more ideally. We'll add tick-marks and numbers to the y-axis using `scale_y_continuous`, which allows us to specify what breaks (ticks) we want on the y-axis.
+
+Here we're showing "relative frequency" on the y-axis, so this should range from 0 to 1. And we'll add breaks at intervals of 0.2.  Specifically, we use the base `seq` function to generate a sequence of numbers from 0 to 1, in intervals of 0.2:
+
+```{r fig.cap = "Relative frequency of cancer among women randomly assigned to control (n = 19942) and aspirin (n = 19934) treatment groups.", fig.width = 4, fig.height = 3}
+
+cancer %>%
+    ggplot(aes(x = aspirin_treatment, fill = response)) +
+    geom_bar(position = "fill") +
+    scale_y_continuous(breaks = seq(0, 1, by = 0.2)) +
+    xlab("Treatment group") +
+    ylab("Relative frequency") +
+    theme_bw()
+```
+
+The graph shows that the incidence (or relative frequency) of cancer is almost identical in the treatment and control groups.
+
+::: {.callout-note}
+**IMPORTANT**
+It is best practice to display the response variable as the "fill" variable, and the explanatory variable on the x-axis.
+:::
+
+### Conduct the Fisher's Exact Test {#do_fisher}
+
+To do the Fisher's exact test on the cancer data, it is straightforward, using the `fisher.test` function from the `janitor` package.
+
+::: {.callout-warning}
+There is also `fisher.test` function in the base R `stats` package, but it does not conform to `tidyverse` expectations. Hence our use of the `fisher.test` function from the `janitor` package.  When there are multiple packages that use the same name for a function, we can specify the version we want by prefacing the function with the package name and two colons, like this: "janitor::fisher.test()"
+:::
+
+See the help file for the `janitor` version of the `fisher.test` function:
+
+```
+?janitor::fisher.test
+```
+
+This function requires a two-way "tabyl" as the input, and we already know how to construct such a table.
+
+We'll put the results in an object called "cancer.fishertest":
+
+```{r cancertest}
+cancer.fishertest <- cancer %>%
+    tabyl(aspirin_treatment, response) %>%
+    janitor::fisher.test()
+```
+
+Let's look at the results:
+
+```{r fisherout}
+cancer.fishertest
+```
+
+The _P_-value associated with the test is `r round(cancer.fishertest$p.value,3)`, which is clearly greater than our $\alpha$ of 0.05.  We therefore FAIL to reject the null hypothesis.  
+
+You'll notice that the output includes the **odds ratio** and its 95% confidence interval. The interval it provides is slightly different from the one we'll learn about below, but **when reporting the results of a Fisher's Exact test it is OK to report the confidence interval provided by the `fisher.test` function**.  It is also OK to provide the slightly different one that we learn about below.  
+
+**Concluding statement**
+
+> There is no evidence that the probability of developing cancer differs between the control group and the aspirin treatment group (Fisher's Exact Test; _P_-value = `r round(cancer.fishertest$p.value,3)`; odds ratio = `r round(cancer.fishertest$estimate,2)`; 95% CI: `r round(cancer.fishertest$conf.int[1],3)` - `r round(cancer.fishertest$conf.int[2],3)`). 
+
+::: {.callout-note}
+**TIP**
+Report odds ratios to 2 decimal places, and associated measures of uncertainty to 3 decimal places
+:::
+
+## Estimate the Odds of getting sick {#odds}
+
+The **odds** of success (_O_) are the probability of success (_p_) divided by the probability of failure (1-_p_):
+
+$O = \frac{p}{1-p}$
+
+Curiously, in health-related studies, a "success" is equated with getting ill!!
+
+We'll use the data stored in the contingency table we produced before, called "cancer.aspirin.table":
+
+```{r contingency_cancer2}
+cancer.aspirin.table <- cancer %>%
+  tabyl(aspirin_treatment, response) %>%
+  adorn_totals(where = c("row", "col"))
+cancer.aspirin.table 
+```
+
+And recall that <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Proportion">proportions</a> are calculated using frequencies - which is exactly what we have in the table!
+
+Thus, to estimate the "odds" of getting cancer while taking aspirin, we need to:
+
+* first calculate the proportion (= probability) of women who got cancer while taking aspirin (= ${p}$) 
+* then calculate the proportion (= probability) of women who remained healthy while taking aspirin ($= 1-{p}$)
+* then calculate the odds as $O = \frac{p}{1-p}$
+
+We'll do all of this in one go using a series of steps strung together with pipes ("%>%").
+
+Here's the code, and we'll explain each step after:
+
+```{r echo = FALSE}
+cancer.aspirin.table.results <- cancer.aspirin.table %>%
+    filter(aspirin_treatment == "Aspirin") %>%
+    select(Cancer, Total) %>%
+    mutate(
+       propCancer_aspirin = Cancer / Total,
+       propHealthy_aspirin = 1 - propCancer_aspirin,
+       oddsCancer_aspirin = propCancer_aspirin/propHealthy_aspirin
+    ) 
+```
+
+
+```{r}
+cancer.aspirin.table %>%
+    filter(aspirin_treatment == "Aspirin") %>%
+    select(Cancer, Total) %>%
+    mutate(
+       propCancer_aspirin = Cancer / Total,
+       propHealthy_aspirin = 1 - propCancer_aspirin,
+       oddsCancer_aspirin = propCancer_aspirin/propHealthy_aspirin
+    ) 
+```
+
+* we first `filter` the table to return only the rows pertaining to the "Aspirin" treatment group; the frequencies that we need for the calculations are in this row
+* then we `select` the columns from that row with names "Cancer" and "Total", which include the frequency of women who got cancer while on Aspirin (under the "Cancer" column), and the total frequency of women in the Aspiring treatment group (in the "Total")
+* we then use the `mutate` function to create three new variables: 
+    + "propCancer_aspirin" is calculated at the Cancer frequency divided by the Total frequency (within the Aspirin group)
+    + "propHealth_aspirin" is calculated simply as 1 minus propCancer_aspirin
+    + "oddsCancer_aspirin" is calculated last as "propCancer_aspirin/propHealthy_aspirin"
+
+Thus, the odds of getting cancer while on aspirin are about `r round(cancer.aspirin.table.results$oddsCancer_aspirin,2)`:1, or equivalently, approximately 1:13 (which you get from dividing 0.0777 into 1).  
+
+Alternatively, "the odds are 13 to 1 that a women who took aspirin would **not** get cancer in the next 10 years".
+
+* * *
+
+1. Estimate odds
+
+* Estimate the odds that a woman in the placebo group would get cancer
+
+* * *
+
+## Estimate the odds ratio {#oddsratio}
+
+We'll use the `oddsratio` function from the `epitools` package to calculate the odds ratio ($\hat{OR}$) and its 95% confidence interval.  
+
+Check out the help file for the function:
+
+```
+?oddsratio
+```
+
+The `oddsratio` function expects the contingency table to be arranged exactly like this:  
+
+```
+#            treatment control
+#  sick          a        b
+#  healthy       c        d
+```
+
+If you were calculating the odds ratio by hand, using the letters shown in the table above, the shortcut formula is:  
+
+$$\hat{OR} = \frac{{a/c}}{{b/d}}$$
+
+Here's the code for producing the appropriately formatted 2 x 2 table as so:
+
+```{r twobytwo}
+cancer %>%
+  tabyl(aspirin_treatment, response) %>%
+    select(Cancer, "No cancer")
+```
+
+So thats what the `oddsratio` function is expecting as input.
+
+However, it's also expecting it in the form of a "matrix" object.
+
+Here's all the code at once, and we'll store the output (which comes in the form of a "list") in an object called "cancer.odds": 
+
+```{r}
+cancer.odds <- cancer %>%
+  tabyl(aspirin_treatment, response) %>%
+    select(Cancer, "No cancer") %>%
+    as.matrix() %>%
+    oddsratio(method = "wald")
+```
+
+We've seen the first two lines before.  Then: 
+
+* we `select` the two columns associated with the "Cancer" and "No cancer" data. **NOTE** that because there's a space in the variable name "No cancer", we need to use quotation marks around it
+* Then we use the base `as.matrix` function to coerce the resulting 2 x 2 table that we've created into a matrix type object, which is what the `oddsratio` function is expecting.
+* lastly we run the `oddsratio` function, with the argument "method = 'wald'" (don't worry about why)
+
+Let's have a look at the rather verbose output:
+
+```{r oddsresults}
+cancer.odds
+```
+
+This is more information than we need. 
+
+What we're interested in is the information under the "$measure" part, and specifically the "odds ratio with 95% C.I.".
+
+To limit the output to the relevant information, use this code:  
+
+```{r}
+cancer.odds$measure[2,]
+```
+
+This isolates the actual estimate of the odds ratio ($\hat{OR}$) with its 95% confidence interval.
+
+The estimate of the odds ratio is around `r round(cancer.odds$measure[2,1],3)`, and notice the 95% confidence interval encompasses one. 
+
+Given that the calculated 95% confidence interval encompasses 1 (representing equal odds among treatment and control groups), there is presently no evidence that the odds of developing cancer differ among control and aspirin treatment groups.  
+
+::: {.callout-note}
+**IMPORTANT **
+The odds ratio and its 95% confidence interval are useful to report in any analysis of a 2 x 2 contingency table that deals with health outcomes data like those used here.
+:::
+
+## $\chi$^2^ Contingency Test {#chisquare}
+
+When the contingency table is of dimensions greater than 2 x 2, the most commonly applied test is the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Chi-square-($\chi$^2^)-contingency-test">$\chi$^2^ Contingency Test</a>.  
+
+For this activity we're using the "worm" data associated with **Example 9.4 on page 244** of the test.  Please read the example!  
+
+* * *
+
+### Hypothesis statement {#chihyp}
+
+As shown in the text example, we have a 2 x 3 contingency table, and we're testing for an association between two categorical variables.  
+
+Here are the null and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative</a> hypotheses (compare these to what's written in the text):  
+
+**H~0~**: There is no association between the level of trematode parasitism and the frequency (or probability) of being eaten.  
+**H~A~**: There is an association between the level of trematode parasitism and the frequency (or probability) of being eaten.  
+
+* We use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)">$\alpha$</a> = 0.05.  
+* It is a two-tailed alternative hypothesis  
+* We'll use a contingency test to test the null hypothesis, because this is appropriate for analyzing for association between two categorical variables, and when the resulting contingency table has dimension greater than 2 x 2.  
+* We will use the $\chi$^2^ test statistic, with degrees of freedom equal to (r-1)(c-1), where "r" is the number of rows, and "c" is the number of colums, so (2-1)(3-1) = 2.    
+* We must check <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the $\chi$^2^ contingency test
+* It is always a good idea to present a figure to accompany your analysis; in the case of a contingency test, the figure heading will include information about the sample size / total number of observations  
+
+* * *
+
+### Display the contingency table {#showwormcont}
+
+Let's generate a contingency table: 
+
+```{r contingency_worm}
+worm %>%
+  tabyl(fate, infection) %>%
+  adorn_totals(where = c("row", "col"))
+```
+
+Hmm, the ordering of the categories of the categorical (factor) variable "infection" is the opposite to what is displayed in the text.  
+
+::: {.callout-note}
+**TIP **
+The ordering of the categories is not actually crucial to this type of analysis, but it's certainly better practice to show them in appropriate order!
+:::
+
+In order to change the order of categories in a character variable, here's what you do (consult this [resource](http://www.cookbook-r.com/Manipulating_data/Changing_the_order_of_levels_of_a_factor/) for additional info). 
+
+First, convert the character variable to a "factor" variable as follows:
+
+```{r fac1}
+worm$infection <- as.factor(worm$infection)
+```
+
+Now check the default ordering of the levels using the `levels` function (it should be alphabetical):
+
+```{r fact2}
+levels(worm$infection)
+```
+
+Now change the ordering as follows:  
+
+```{r fac3}
+worm$infection <- factor(worm$infection, levels = c("uninfected", "lightly", "highly"))
+levels(worm$infection)
+```
+
+Now re-display the contingency table, first storing it in an object "worm.table":  
+
+```{r contingency_worm4}
+worm.table <- worm %>%
+  tabyl(fate, infection) %>%
+  adorn_totals(where = c("row", "col"))
+worm.table
+```
+
+That's better!
+
+Visualize it nicely with `kable`: 
+
+```{r wormkable}
+kable(worm.table)
+```
+
+
+### Visualize the association {#stackedbarworm}
+
+Here's a stacked relative frequency bar graph with an ideal figure caption included:
+
+```{r fig.cap = "Bird predation on killifish having different levels of trematode parasitism. A total of 50, 45, and 46 fish were in the uninfected, lightly infected, and highly infected groups.", fig.width = 4, fig.height = 3}
+
+worm %>%
+    ggplot(aes(x = infection, fill = fate)) +
+    geom_bar(position = "fill") +
+    scale_fill_manual(values = c("darkred", "gold")) +
+    scale_y_continuous(breaks = seq(0, 1, by = 0.2)) +
+    xlab("Level of infection") +
+    ylab("Relative frequency") +
+    theme_bw()
+```
+
+In the code above we manually specified the two fill colours using the `scale_fill_manual` function.
+
+### Check the assumptions {#checkchiassum}
+
+The $\chi$^2^ contingency test (also known as association test) has <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> that **must be checked** prior to proceeding:
+
+* none of the categories should have an expected frequency of less than one
+* no more than 20% of the categories should have expected frequencies less than five 
+
+To test these assumptions, we need to actually conduct the test, because in doing so R calculates the **expected frequencies** for us.  
+
+Conduct the test using the `chisq.test` function from `janitor` package. **NOTE** this again overlaps with a function name from the base R package, so we'll need to specify that we want the "janitor" version of the function. 
+
+We need our contingency table as input to the function, but this time without margin totals. 
+
+We'll assign the results to an object "worm.chisq.results":
+
+```{r contingency_worm3}
+worm.chisq.results <- worm %>%
+    tabyl(fate, infection) %>%
+    janitor::chisq.test()
+```
+
+Have a look at the output: 
+
+```{r lookchi}
+worm.chisq.results
+```
+
+Although only a few bits of information are provided here, the object actually contains a lot more information.  
+
+Don't try getting an overview of the object using our usual `skim_without_charts` approach.. that won't work.
+
+Instead, simply use this code:
+
+```{r nameschi}
+names(worm.chisq.results)
+```
+
+As you can see, one of the names is `expected`. This is what holds our expected frequencies (and note that these values do not need to be whole numbers, unlike the observed frequencies):  
+
+```{r expectedchi}
+kable(worm.chisq.results$expected)
+```
+
+We see that all our assumptions are met: none of the cells (cross-classified categories) in the table have an expected frequency of less than one, and no more than 20% of the cells have expected frequencies less than five.  
+
+### Get the results of the test {#chiresults}
+
+We can see the results of the $\chi$^2^ test by simply typing the name of the results object:
+
+```{r}
+worm.chisq.results
+```
+
+This shows a very large value of $\chi$^2^ (`r round(worm.chisq.results$statistic, 2)`) and a very small _P_-value -  much smaller than our stated $\alpha$. So we reject the null hypothesis.  
+
+**Concluding statement**
+
+> The probability of being eaten is significantly associated with the level of trematode parasitism ($\chi$^2^ contingency test; _df_ = 2; $\chi$^2^ = `r round(worm.chisq.results$statistic, 2)`; _P_ < 0.001).  Based on our stacked bar graph (Fig. X), the probability of being eaten increases substantially with increasing intensity of parasitism.  
+

@@ -1,0 +1,270 @@
+# Hypothesis testing {#hypothesis}
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = "html")
+```
+
+**Tutorial learning objectives**
+
+* Learn the steps to conducting a hypothesis test
+* Learn how to simulate a null distribution (using a binomial distribution example)
+* Learn how to calculate the _P_-value 
+* Learn how write concluding statements for hypothesis tests
+
+## Load packages and import data {#hyp_packages_data}
+
+Load the `tidyverse`, `skimr`, `naniar`, and `infer` packages: 
+
+```{r hyp_packages, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(skimr)
+library(infer)
+```
+
+Import the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV file</a> called "damselfly":
+
+```{r get_damsel}
+data(damselfly)
+```
+
+Get an overview of the dataset: 
+
+```{r hyp_overview}
+damselfly %>%
+  skim_without_charts()
+```
+
+And view the first handful of rows:
+
+```{r hyp_head}
+damselfly
+```
+
+## Steps to hypothesis testing {#hyp_steps}
+
+Below is a list of all the steps required when conducting a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Hypothesis-testing">hypothesis test</a>. 
+
+::: {.callout-note}
+Several of the steps we will learn about in later tutorials.
+:::
+
+* Identify the appropriate statistical test and thus __null distribution__ for the test statistic
+* State the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Null-hypothesis">null (**H~0~**)</a> and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative (**H~A~**)</a> hypotheses  
+* Set an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)">$\alpha$ level</a> (usually 0.05)  
+* Determine whether a one-tailed or two-tailed test is appropriate (almost always the latter)
+* Check <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the statistical test
+    + state the assumptions of the test  
+    + use appropriate figures and / or tests to check whether the assumptions of the statistical test are met
+    + <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Data-transformation">transform data</a> to meet assumptions if required 
+    + if assumptions can't be met (e.g. after transformation), use non-parametric test and repeat the first four steps above 
+* Provide an appropriate figure, including figure caption, to visualize the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Raw-data">raw</a> or transformed data  
+* Provide a line or two interpreting your figure, and this may inform your concluding statement  
+* Calculate the test statistic value using the observed data  
+* Use the __null distribution__ to determine the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#P-value">**_P_-value**</a> associated with the observed test statistic  
+* Draw the appropriate conclusion and communicate it clearly  
+* Calculate and include a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Confidence-interval">confidence interval</a> (e.g. for *t*-tests) or *R*^2^ value (e.g. for <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Analysis-of-variance">ANOVA</a>) when appropriate  
+
+## An hypothesis test example {#hyp_example}
+
+When defending territories along streams, males of the damselfly species _Calopteryx maculata_ (pictured [here](https://en.wikipedia.org/wiki/Ebony_jewelwing#/media/File:Ebony_Jewelwing,_male,_Gatineau_Park.jpg)) often battle intruders in the air, flying around and around in circles with their foe for minutes at a time.  No one knows whether these battles are flown in a consistent direction, i.e. predominantly clockwise or counter-clockwise, as would be expected if the damselflies exhibited a form of "handedness", like many animals do.  
+
+A researcher was curious about this because he had worked with these damselflies for years and witnessed many territorial bouts (see exmaple research [here](http://www.nrcresearchpress.com/doi/abs/10.1139/z00-130#.WdFv0GKPKJU)).
+
+The researcher conducted a study (fictional) in which he video-recorded 20 male damselflies defending territories (all randomly sampled from a population), and determined the predominant direction of flight during circular flight battles.  One battle per damselfly was recorded, and each battle was known to involve a unique combattant.
+
+He found that in 17 out of 20 bouts the damselflies flew in the counter-clockwise direction.
+
+Should this result be considered evidence of handedness in this population?
+
+* * *
+
+For this example, we'll use the imported `damselfly` dataset, which includes the single categorical variable of interest "direction", and there are two categories: "clockwise" and "counter_clockwise".
+
+```{r viewdamsel}
+damselfly
+```
+
+* * *
+
+### Following the steps to hypothesis testing {#follow_hyp_steps}
+
+For the damselfly example, we have _n_ = 20 __random trials__, each of which has two possible outcomes: clockwise battle or counter-clockwise battle. This conforms to the expectations of a **binomial test**, for which the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Binomial-distribution">_binomial distribution_</a> is used to generate the appropriate **null distribution**. We'll learn about the binomial test in a later tutorial. 
+
+For the present tutorial, we're going to generate a null distribution via simulation.
+
+To do this, we need to consider what our "null expectation" is, i.e. if there was truly no handedness among the damselflies.
+
+Our null expectation is that clockwise and counter-clockwise battles would occur with equal frequency. In other words, if we focus on counter-clockwise battles as the category of interest, then on average - across many, many battles - we'd expect those to make up $p_0 = 0.5$ of the battles.  This is just like flipping a fair coin: over the long run (i.e. over many, many coin flips), we'd expect heads to make up half the outcomes, i.e. $p_0 = 0.5$.
+
+We can now specify our $H_0$ and $H_A$:
+
+**H~0~**: The proportion of damselfly battles in the population flown in the counter-clockwise direction is 0.5 ($p_0 = 0.5$)  
+
+**H~A~**: The proportion of damselfly battles in the population flown in the counter-clockwise direction is not 0.5 ($p_0 \ne 0.5$)
+
+We'll set $\alpha = 0.05$.
+
+Although our $H_0$ makes a specific statement about a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Proportion">proportion</a> ($p_0$), our _test statistic_ will actually be the **number of battles that occurred in a counter-clockwise direction**.  Of course, we can re-express this number as a proportion, but convention is that we use the number (frequency) instead.  
+
+As indicated by the **H~A~** statement, we'll use a 2-tailed <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Alternative-hypothesis">alternative hypothesis</a> because we have no reason to exclude the possibility that clockwise battles are in fact more predominant.  
+
+::: {.callout-note}
+**TIP**: 
+The symbol for "not equal" can be done using this syntax: `$\ne$`.  Simply type that as part of your regular markdown text. A subscript can be added by prefacing the character with a "_". Thus, in the alternative hypothesis statement above, we used `$p_0 \ne 0.5$` to create the $p_0 \ne 0.5$.  
+:::
+
+### Simulating a "null distribution" {#sim_null}
+
+For our damselfly example, we can easily simulate the random trials (20 territorial flight battles, each yielding one of 2 outcomes) by using what we learned in the previous [tutorial](08-sampling-estimation.qmd#estimation) about simulations in R.
+
+First, we'll create a tibble object called "null_options" that holds a categorical variable "direction" with two categories, "clockwise" and "counter_clockwise":
+
+```{r createnull}
+null_options <- tibble(direction = c("clockwise", "counter_clockwise"))
+```
+
+Have a look at the resulting object:
+
+```{r viewnull}
+null_options
+```
+
+Now we can use the `rep_slice_sample` function from the `infer` package (which we learned about in the last [tutorial](08-sampling-estimation.qmd#estimation)) to simulate a large number of repetitions of our _n_ = 20 random trials.  The number of repetitions is governed by the _reps_ argument.
+
+We'll set the seed first, to ensure everyone gets the same result for this initial demonstration repetition.
+
+Let's start with a single repetition of _n_ = 20 random trials.  We'll explain the code after:
+
+```{r}
+set.seed(199)
+num.reps <- 1
+null_options %>%
+  rep_slice_sample(n = 20, replace = TRUE, weight_by = c(0.5, 0.5), reps = num.reps) %>%
+  count(direction)
+```
+
+* We first set the seed (using integer 199 here; arbitrarily chosen)
+* Next we create an object "num.reps" that is simply one number: the number of replications we wish to run (here, 1)
+* We tell R we're using the "null_options" object (created previously) for input into the subsequent lines, using the pipe (%>%) to continue the code
+* We use the `rep_slice_sample` function, setting the number of trials _n_ to 20, and ensuring that we use sampling with replacement here ("replace = T") because our "null_options" object has only two observations to sample from, and we need 20 total; 
+* You can think of the "weight_by" argument as a way to control the relative <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Probability">probability</a> of sampling each of the rows in the input tibble (here, the "null_options" tibble). Here we provide two values (0.5, 0.5), specifying that we want each of the two rows in the tibble to have equal likelihood of being sampled at random.  This corresponds to what we want for our null expectation, and for the generation of the null distribution
+* The last argument to the `rep_slice_sample` function is "reps = num.reps", using our created object to tell R that we want only one repetition of the 20 trials
+* In the last line of code we use the `count` function to tally the number of observations belonging to each of the two categories in the "direction" variable
+
+So you see that the output above is a tibble with 3 variables: "replicate", "direction", and "n". 
+
+We're specifically interested in the number of times (the frequency) out of the 20 trials that the damselfly battle was predominantly "counter_clockwise" (what we consider a "success").  So in our first repetition here, 11 of the trials were predominantly in the counter-clockwise direction.
+
+```{r echo = FALSE}
+num.reps <- 100000
+```
+
+Now what we need to do is run many thousands of repetitions (we'll do `r num.reps`), and each time tally the number of battles (out of the 20 trials) in which the direction was counter-clockwise.
+
+This will generate a reasonable approximation of a __null distribution__ for our study.
+
+After the setting the seed, we create an object that simply holds the number of replications we wish to run.
+
+```{r nullcreate}
+set.seed(199)
+num.reps <- 100000
+null_distribution <- null_options %>%
+  rep_slice_sample(n = 20, replace = TRUE, weight_by = c(0.5, 0.5), reps = num.reps) %>%
+  count(direction) %>%
+  filter(direction == "counter_clockwise")
+```
+
+In the above code chunk, we:  
+
+* assign our output to a new object called "dull_distribution"
+* We changed the "reps" argument for the `rep_slice_sample` function to `r num.reps` (all other arguments stay the same).
+* We use the `count` function to tally the number of observations belonging to each of the two categories in the "direction" variable
+* We then `filter` the output from our sampling to the rows with the "direction" variable equal to "counter_clockwise"
+
+Let's look at the resulting object:
+
+```{r nulllook}
+null_distribution
+```
+
+We have a tibble with the number of rows equal to the number of replications we performed (100000), three variables ("replicate", "direction", and "n"), and the key information are the numbers in the "n" variable. These represent the number of battles (out of 20) that were predominantly in the counter-clockwise direction. 
+
+We can now create a histogram of these data, thus producing an approximation of a "null distribution".
+
+The only difference here, compared to previous times we've created histograms, is that we add the `after_stat(density)` argument to the `aes` part of the `ggplot` function. This tells R to display the relative frequency (= probability density) rather than the raw counts on the y-axis.  Notice we also use "binwidth = 1", because we want to see a bar for each potential outcome (0 through 20).
+
+```{r fig.cap = "Approximate null distribution for the damselfly study, with n = 20 trials, and probability of success = 0.5 in each trial. Data are from 100000 repetitions.", warning = FALSE, fig.height = 4.5, fig.width = 5}
+
+null_distribution %>%
+  ggplot(aes(x = n, after_stat(density))) +
+  geom_histogram(binwidth = 1, fill = "lightgrey", colour = "black") +
+  xlim(0, 20) +
+  xlab("Number of counter-clockwise battles") +
+  ylab("Relative frequency") +
+  theme_bw()
+```
+
+The null distribution above shows us that if the null hypothesis was true, the most probable outcome would be 10 counter-clockwise battles out of 20. But other outcomes are of course possible, with decreasing probability towards zero and twenty.
+
+### Calculating the _P_-value {#calc_p}
+
+The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#P-value">**_P_-value**</a> is defined as the probability of observing an outcome as extreme or more extreme as the observed value of the test statistic, if the null hypothesis were true.  
+
+In our damselfly study, we observed 17 out of 20 battles to be in the counter-clockwise direction.  
+
+We can calculate a **_P_-value** as follows:  
+
+* first calculate the fraction of the `r num.reps` values in our null distribution that are equal to or greater than our observed test statistic value (here, 17)
+* if we have a 2-tailed alternative hypothesis, then we also need to calculate the fraction of the `r num.reps` values in our null distribution that are less than or equal to 3, which is the mirror number to 17 in the opposite side of the distribution.
+
+::: {.callout-note}
+Although our approximate null distribution that we created looks quite symmetrical, it's best not to assume it is (because recall that we generated this via simulation). Therefore we don't simply multiply the first value we calculate above by two.  In future tutorials you'll learn how to calculate **_P_-values** using built-in R functions and theoretical probability distributions.
+:::
+
+In the [Introductory R Tutorials](01-getting-started.qmd#coding_basics) you learned how to use __logical comparison operators__ such as `>` and `<=`. We'll use these here.  
+
+Let's find out how many values within the variable `n` in our `null_distribution` tibble are less than or equal to 3, or greater than or equal to 17:
+
+```{r get_vals}
+null_distribution %>%
+  filter(n <= 3 | n >= 17) %>%
+  nrow() 
+```
+
+This code uses the `filter` function to return only the rows that meet the condition specified: the "n" variable value less than or equal to 3, OR (using the "|" symbol) greater than or equal to 17. 
+
+The `nrow` function then simply counts the number of rows in the resulting (filtered) tibble.
+
+We see that among the `r num.reps` replications we ran, 254 yielded outcomes in which 3 or fewer, or 17 or more out of 20 battles were in the counter-clockwise direction. 
+
+To calculate the _P_-value, we need to divide the 254 by the total number of reps that we conducted, here `r num.reps`.
+
+```{r getpval}
+null_distribution %>%
+  filter(n <= 3 | n >= 17) %>%
+  nrow() / num.reps
+```
+
+```{r echo = FALSE}
+pval <- null_distribution %>%
+  filter(n <= 3 | n >= 17) %>%
+  nrow() / num.reps
+```
+
+So the **_P_-value** associated with our observed test statistic is `r pval`.  
+
+### Writing a concluding statement {#concluding_statement}
+
+It is important to write a concluding statement that talks about the actual findings of the study. For example:  
+
+In their territorial bouts, the damselflies flew in a counter-clockwise direction significantly more than expected (17 counter-clockwise flights out of *n* = 20 trials; *P*-value = `r round(pval, 3)`). This is consistent with the idea that there is "handedness" in this population of *C. maculata*.
+
+It is also crucial that you report the sample size (here, number of random trials), the value of the observed test statistic (here 17), and the associated **_P_-value**. Note we rounded the **_P_-value** to three decimal places. 
+
+When we learn new types of statistical test, we'll adjust our concluding statements accordingly.
+
+1. Using this tutorial as a guide, try to repeat all the steps of a hypothesis test for Example 6.2 in the text book (concerning handedness in toads).
+
