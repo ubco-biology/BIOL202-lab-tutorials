@@ -36,6 +36,7 @@ library(readr)
 library(palmerpenguins)
 library(knitr)
 library(skimr)
+library(biol202)
 ```
 
 We also need the `janitor` and `ggExtra` packages, and these are likely to be new to you. Both were installed for you when you installed the `biol202` package, so you only need to load them.
@@ -341,6 +342,33 @@ In the scatterplot above, bill length and depth are positively associated, and t
 
 1. Using the `penguins` dataset, create a scatterplot of flipper length in relation to body mass, and provide an appropriate figure caption. 
 
+### Bonus: adding density plots to the margins {#marginal_plots}
+
+A scatterplot shows you how two numeric variables relate to each other, but it does not directly show you how each variable is distributed on its own. We can add that information in the margins, using the `ggMarginal` function from the `ggExtra` package.
+
+Don't worry about replicating this type of graph, but if you can, fantastic!
+
+First we build and store the scatterplot as an object, exactly as we did above, but this time giving it a name so we can add to it afterwards:
+
+```{r marginal_base, warning = FALSE}
+bill.scatter <- penguins %>% 
+  filter(species == "Adelie") %>%
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(shape = 1) +
+  xlab("Bill length (mm)") +
+  ylab("Bill depth (mm)") +
+  theme_bw()
+```
+
+Now we add the density plots in the margins:
+
+```{r fig.cap = "Scatterplot of the association between bill length and depth among 151 Adelie penguins, with density plots of each variable shown in the margins.", fig.width = 5, fig.height = 5, warning = FALSE}
+
+ggMarginal(bill.scatter, type = "density")
+```
+
+The plot in the top margin shows the distribution of bill *length*, and the one on the right shows the distribution of bill *depth*. Consider each as a smoothed-out version of a histogram. Here they tell us that both variables have a single central mode and are reasonably symmetric — useful to know, and not something the scatterplot alone would tell you.
+
 ## Visualizing association between a numeric and a categorical variable {#numeric_vs_cat}
 
 To visualize association between a numerical response variable and a categorical explanatory variable, we have a variety of options, and the choice depends in part on the sample sizes within the categories being visualized.
@@ -407,8 +435,8 @@ penguins %>%
   filter(sex == "male") %>%
   group_by(species) %>%
   summarise(
-    Count = n() - naniar::sum(is.na(body_mass_g),
-    Count_NA = naniar::sum(is.na(body_mass_g))
+    Count = sum(!is.na(body_mass_g)),
+    Count_NA = sum(is.na(body_mass_g)))
 ```
 
 This is the same code we used [previously](06-describe-one-variable.qmd#desc_numeric_var_cat) for calculating descriptive statistics using a grouping variable (though we've eliminated some of the descriptive statistics here), but we inserted the `filter` function in the second line to make sure we're only using the male penguin records.
@@ -479,34 +507,7 @@ penguins %>%
 ```
 
 
-To help understand what the violin plot is showing, we'll provide a new **bonus** graph that adds something called "density plots" to the margin of the violin plot. 
-
-Don't worry about replicating this type of graph, but if you can, fantastic!
-
-First we create the main `ggplot` violin plot object:
-
-```{r extraplot, warning = FALSE}
-bodymass.violin2 <- penguins %>% 
-  filter(sex == "male") %>%
-  ggplot() +
-  geom_violin(aes(x = species, y = body_mass_g, colour = species)) +
-  geom_jitter(aes(x = species, y = body_mass_g, colour = species), size = 2, shape = 1, width = 0.1) +
-  xlab("Species") +
-  ylab("Body mass (g)") +
-  ylim(3000, 6300) +
-  theme_bw() +
-  theme(legend.position = "bottom") +
-  guides(colour = guide_legend(title="Species"))
-```
-
-Now we add density plots in the margins using the `ggMarginal` function from the `ggExtra` package:
-
-```{r fig.cap = "Violin plot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins. Density plots are provided in the margin.", fig.width = 5, fig.height = 6, warning = FALSE}
-
-ggMarginal(bodymass.violin2, type = "density", alpha = 0.3, groupFill = TRUE)
-```
-
-The violin plot is designed to give an idea of the frequency distribution of response variable values within each group. Specifically, the width of the violin reflects the frequency of observations in that range of values. This is evident in the above figure within the "density plots" that are provided in the right-hand margin. Consider these density plots as a smoothed out version of a histogram.
+The violin plot is designed to give an idea of the frequency distribution of response variable values within each group. Specifically, the width of the violin reflects the frequency of observations in that range of values. Think of each violin as a smoothed-out histogram, turned on its side and mirrored.
 
 We can see, for example, that for all three species of penguin there is a bulge in the middle indicating that there is a central <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mode">mode</a> to the body mass values in each group, with fewer values towards lower and higher extremes.  The frequency distribution for the Gentoo species approximates a "bell shape" distribution, for example (the blue data). 
 

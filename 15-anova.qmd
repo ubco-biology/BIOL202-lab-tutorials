@@ -23,8 +23,7 @@ It might seem strange that a test designed to compare means among groups is call
 
 ## Load packages and import data {#anova_packages_data}
 
-Load the `tidyverse`, `knitr`, `naniar`, `car`, `skimr`, and `broom` packages: 
-
+Load the packages we need for this tutorial:
 ```{r anova_packages, warning = FALSE, message = FALSE}
 library(dplyr)
 library(ggplot2)
@@ -33,6 +32,7 @@ library(knitr)
 library(skimr)
 library(broom)
 library(car)
+library(biol202)
 ```
 
 For this tutorial we'll use the "circadian.csv" dataset.  These data are associated with Example 15.1 in the text. 
@@ -151,8 +151,8 @@ Let's use all these skills to generate a table of summary statistics for the "sh
 circadian.stats <- circadian %>%
   group_by(treatment) %>%
   summarise(
-    Count = n() - naniar::sum(is.na(shift),
-    Count_NA = naniar::sum(is.na(shift), 
+    Count = sum(!is.na(shift)),
+    Count_NA = sum(is.na(shift)), 
     Mean = mean(shift, na.rm = TRUE),
     SD = sd(shift, na.rm = TRUE),
     SEM = SD/sqrt(Count),

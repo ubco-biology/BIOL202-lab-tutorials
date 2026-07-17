@@ -188,9 +188,28 @@ fix_packages <- function(txt, this_file) {
   txt <- gsub("^library\\(tidyverse\\)\\s*$",
               "library(dplyr)\nlibrary(ggplot2)\nlibrary(readr)", txt)
   # naniar is gone; its two used functions are base R one-liners.
-  txt <- gsub("\\bn_miss\\(", "sum(is.na(", txt)
-  txt <- gsub("\\bn_complete\\(", "sum(!is.na(", txt)
+  #
+  # CAREFUL: this cannot be a naive swap of the function name. n_miss(x) has one
+  # closing paren but sum(is.na(x)) needs two, so replacing only the opening
+  # produces unbalanced, unparseable code. Each call site is rewritten whole.
+  #
+  # The idiom `n() - n_miss(x)` means "how many values are not missing", which
+  # is more directly written sum(!is.na(x)) -- shorter, and it says what it
+  # means, which matters more for novices than saving a character.
+  txt <- gsub("n\\(\\)\\s*-\\s*(naniar::)?n_miss\\(([^()]*)\\)",
+              "sum(!is.na(\\2))", txt)
+  txt <- gsub("(naniar::)?n_miss\\(([^()]*)\\)", "sum(is.na(\\2))", txt)
+  txt <- gsub("(naniar::)?n_complete\\(([^()]*)\\)", "sum(!is.na(\\2))", txt)
   txt <- txt[!grepl("^library\\(naniar\\)\\s*$", txt)]
+
+  # A call with empty parens was the last step of a pipe, e.g.
+  #   birds %>% select(type) %>% n_complete()
+  # There is no safe textual rewrite for that -- it has to be restructured into
+  # sum(!is.na(birds$type)) by hand -- so flag it rather than emit sum(!is.na()).
+  if (any(grepl("sum\\(!?is\\.na\\(\\)", txt))) {
+    note_issue(this_file,
+               "naniar call at the end of a pipe - restructure BY HAND")
+  }
   # ggmosaic was archived from CRAN; flag its uses for hand conversion.
   if (any(grepl("geom_mosaic|library\\(ggmosaic\\)", txt))) {
     note_issue(this_file, "uses ggmosaic - convert to geom_bar(position = 'fill') BY HAND")

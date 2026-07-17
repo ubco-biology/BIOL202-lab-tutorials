@@ -25,7 +25,7 @@ quarto render
 | `index.qmd` | Welcome + one-time setup (installing `biol202`) |
 | `01-`…`17-*.qmd` | The 17 tutorials |
 | `90-`…`99-*.qmd` | Reference chapters |
-| `data/` | CSV copies of the cleaned datasets, for the URL-import lesson in Tutorial 4 only |
+| `csv_data/` | CSV copies of the cleaned datasets, for the URL-import lesson in Tutorial 4 only |
 | `images/` | Figures |
 | `convert/convert_tutorials.R` | Reproducible migration from the old bookdown repo |
 

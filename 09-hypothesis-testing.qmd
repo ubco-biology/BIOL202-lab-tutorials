@@ -14,14 +14,14 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#hyp_packages_data}
 
-Load the `tidyverse`, `skimr`, `naniar`, and `infer` packages: 
-
+Load the packages we need for this tutorial:
 ```{r hyp_packages, warning = FALSE}
 library(dplyr)
 library(ggplot2)
 library(readr)
 library(skimr)
 library(infer)
+library(biol202)
 ```
 
 Import the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV file</a> called "damselfly":

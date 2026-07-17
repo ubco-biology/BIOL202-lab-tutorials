@@ -16,14 +16,14 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#singlenum_packages_data}
 
-Load the `tidyverse`, `knitr`, `naniar`, and `janitor` packages: 
-
+Load the packages we need for this tutorial:
 ```{r singlenum_packages, warning = FALSE}
 library(dplyr)
 library(ggplot2)
 library(readr)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
 We'll use the following datasets:
@@ -315,7 +315,7 @@ Here we'll assign the output to a tibble called "bodytemp.stats":
 ```{r conf_table}
 bodytemp.stats <- bodytemp %>%
   summarise(
-    Count = n() - naniar::sum(is.na(temperature),
+    Count = sum(!is.na(temperature)),
     Mean_temp = mean(temperature, na.rm = TRUE),
     SD_temp = sd(temperature, na.rm = TRUE),
     SEM = SD_temp/sqrt(Count),

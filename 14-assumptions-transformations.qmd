@@ -37,6 +37,7 @@ library(ggplot2)
 library(readr)
 library(skimr)
 library(broom)
+library(biol202)
 ```
 
 And we need these two packages also: `car`, `boot`.  Install these if you don't have them (as per instructions in a previous [tutorial](01-getting-started.qmd#package_install)), then load them:

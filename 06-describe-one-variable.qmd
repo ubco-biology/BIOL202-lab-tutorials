@@ -24,16 +24,9 @@ library(palmerpenguins)
 library(skimr)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
-And we're introducing a new package called `naniar`, which helps us deal more easily with missing values in datasets.
-
-You may need to install that package (**recall** you only do this once!). Consult a [previous tutorial](01-getting-started.qmd#package_install) if you forget how.
-
-Once you've installed it, load it:
-
-```{r load_naniar, message = FALSE}
-```
 
 We will use the following datasets in this tutorial:
 
@@ -199,8 +192,8 @@ penguins.descriptors <- penguins %>%
   SD = sd(body_mass_g, na.rm = T),
   Median = median(body_mass_g, na.rm = T),
   InterQR = IQR(body_mass_g, na.rm = T),
-  Count = n() - naniar::sum(is.na(body_mass_g),
-  Count_NA = naniar::sum(is.na(body_mass_g))
+  Count = sum(!is.na(body_mass_g)),
+  Count_NA = sum(is.na(body_mass_g)))
 ```
 
 The first 4 descriptive statistics are self-explanatory based on their variable names.  
@@ -209,11 +202,22 @@ The last two: "Count" and "Count_NA" are providing the total number of complete 
 
 The last two lines of code above require further explanation:
 
-This code: `Count = n() - naniar::sum(is.na(body_mass_g))` tells R to first tally the total sample size using the `n()` function, then to subtract from that the total number of missing values, which is calculated using the `n_miss` function from the `naniar` package.  
+This code: `Count = sum(!is.na(body_mass_g))` counts the observations that are **not** missing. Reading it from the inside out:
 
-The double colons in `naniar::sum(is.na(body_mass_g)` indicates that the function `n_miss` comes from the `naniar` package.  This syntax, which we have not used previously, provides a failsafe way to run a function even if the package is not presently loaded.
+* `is.na()` asks of each value, "is this one missing?", and returns `TRUE` or `FALSE` for each
+* the `!` means **not**, so it flips those answers around: `TRUE` now marks every value that is *present*
+* `sum()` adds them up. R counts each `TRUE` as 1 and each `FALSE` as 0, so summing them counts the non-missing observations.
 
-The same coding approach is used in the last line: `Count_NA = naniar::sum(is.na(body_mass_g)`.
+The same coding approach is used in the last line: `Count_NA = sum(is.na(body_mass_g))`. It is the same idea without the `!`, so it counts the values that *are* missing.
+
+::: {.callout-note}
+This pair is worth committing to memory:
+
+* `sum(!is.na(x))` — how many values of `x` are present
+* `sum(is.na(x))` — how many are missing
+
+You will use both all term. They use only base R, so they work anywhere, without loading any package.
+:::
 
 * * *
 
@@ -258,8 +262,8 @@ summarise(
   SD = sd(body_mass_g, na.rm = T),
   Median = median(body_mass_g, na.rm = T),
   InterQR = IQR(body_mass_g, na.rm = T),
-  Count = n() - naniar::sum(is.na(body_mass_g),
-  Count_NA = naniar::sum(is.na(body_mass_g))
+  Count = sum(!is.na(body_mass_g)),
+  Count_NA = sum(is.na(body_mass_g)))
 ```
 
 It's that simple!

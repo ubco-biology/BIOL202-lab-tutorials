@@ -17,8 +17,7 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#singcat_packages_data}
 
-Load the `tidyverse`, `skimr`, `naniar`, `knitr`, and `janitor` packages: 
-
+Load the packages we need for this tutorial:
 ```{r sing_packages, warning = FALSE}
 library(dplyr)
 library(ggplot2)
@@ -26,6 +25,7 @@ library(readr)
 library(skimr)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
 We will also need a new package called `binom`, so install that package using the procedure you [previously learned](01-getting-started.qmd#package_install), then load it:
@@ -112,30 +112,29 @@ That table does show us our estimate of the proportion of birds that are predato
 
 But we also need to get the total sample size, i.e. the total number of birds sampled. 
 
-To do this, we need to make sure not to count any missing values, and we can use the `n_complete` function from the `naniar` package:
+To do this, we need to make sure not to count any missing values. We use two base R functions together:
 
 ```{r getn2}
-birds.sampsize <- birds %>%
-  select(type) %>%
-  sum(!is.na()
+birds.sampsize <- sum(!is.na(birds$type))
 ```
 
-In the preceding code:
+In the preceding code, reading from the inside out:
 
-* We first ensure the output will be put in a new object called "birds.sampsize"
-* We provide the tibble `birds`, which is what is fed to the subsequent code
-* We then use `select` to select the variable of interest "type"
-* We then use the `n_complete` function to get the total number of non-missing observations in the variable.
+* `birds$type` selects the variable of interest, `type`, from the `birds` tibble. The dollar sign is R's way of picking one variable out of a dataset.
+* `is.na()` asks, for every observation, "is this value missing?", and returns `TRUE` or `FALSE` for each one
+* the `!` means **not**, so `!is.na()` flips those answers around: it now returns `TRUE` for every value that is *present*
+* `sum()` adds those up. R counts each `TRUE` as 1 and each `FALSE` as 0, so summing them counts the non-missing observations.
+* the result is stored in a new object called "birds.sampsize"
+
+::: {.callout-note}
+`sum(!is.na(x))` is worth committing to memory: it counts how many values of `x` are actually there. Its partner, `sum(is.na(x))` (without the `!`), counts how many are missing. You will use both all term.
+:::
 
 Now let's see what the outcome was:
 
 ```{r shown}
 birds.sampsize
 ```
-
-::: {.callout-note}
-In previous tutorials we used a bit more cumbersome way to calculate the total number of complete observations in a variable. The `n_complete` function will simplify things. 
-:::
 
 Now that we have _n_ (above), stored in the object "birds.sampsize", we need to extract the "p_hat" value associated with the "Predatory" category, and we'll store this in an object called "pred.phat":
 
@@ -218,9 +217,7 @@ We'll again use the "birds" data, and the estimated proportion of birds that are
 Let's again calculate the sample size of birds:
 
 ```{r getn3}
-birds.sampsize <- birds %>%
-  select(type) %>%
-  sum(!is.na()
+birds.sampsize <- sum(!is.na(birds$type))
 ```
 
 And here's the frequency table we constructed: 

@@ -37,6 +37,7 @@ library(readr)
 library(skimr)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
 We'll also need a new package called `epitools`, so install that now if you haven't done so.

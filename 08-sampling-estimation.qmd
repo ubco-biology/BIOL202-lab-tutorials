@@ -27,6 +27,7 @@ library(ggplot2)
 library(readr)
 library(knitr)
 library(skimr)
+library(biol202)
 ```
 
 We will also need a new package called `infer`, so install that package using the procedure you [previously learned](01-getting-started.qmd#package_install), then load it:
@@ -52,11 +53,11 @@ data(humangenelength)
 We'll use `skim_without_charts` to get an overview: 
 
 ```{r est_overview}
-genelengths %>%
+humangenelength %>%
   skim_without_charts()
 ```
 
-The "size" variable is the key one: it includes the gene lengths (number of nucleotides) for each of the `r nrow(genelengths)` genes in the dataset.  
+The "size" variable is the key one: it includes the gene lengths (number of nucleotides) for each of the `r nrow(humangenelength)` genes in the dataset.  
 
 ## Functions for sampling {#sampling_functions}
 
@@ -148,11 +149,11 @@ When you are authoring your own script or markdown document (e.g. for a research
 
 Here we'll get a feel for **sampling error** using the human gene data. 
 
-Let's use the `slice_sample` function to randomly sample _n_ = 20 rows from the `genelengths` tibble, and store them in a tibble object called "randsamp1": 
+Let's use the `slice_sample` function to randomly sample _n_ = 20 rows from the `humangenelength` tibble, and store them in a tibble object called "randsamp1": 
 
 ```{r samp_genes1, message = FALSE, warning = FALSE}
 set.seed(12)
-randsamp1 <- genelengths %>%
+randsamp1 <- humangenelength %>%
   slice_sample(n = 20, replace = FALSE) %>%
   select(size)
 ```
@@ -161,7 +162,7 @@ In the preceding chunk, we:
 
 * set the seed (here using integer 12), so that everyone gets the same output for this code chunk
 * tell R that we want the output from our code to be stored in an object named "randsamp1"
-* use the `slice_sample` function to randomly sample 20 rows from the `genelengths` tibble, and to do so without replacement
+* use the `slice_sample` function to randomly sample 20 rows from the `humangenelength` tibble, and to do so without replacement
 * use the `select` function to tell R to return only the "size" variable from the newly generated (sampled) tibble 
 
 Now let's use the `mean` and `sd` base functions to calculate the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a> and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Standard-deviation">standard deviation</a> using our sample.
@@ -191,7 +192,7 @@ Do your numbers match those above?
 Let's now draw another random sample of the same size (20), making sure to give the resulting tibble object a different name ("randsamp2"). Here, we won't set the seed again, because all that is required is for everyone to get a different sample from the first one above; we don't need to have everyone get the _same_ sample, but it's ok if we do.
 
 ```{r samp_genes2}
-randsamp2 <- genelengths %>%
+randsamp2 <- humangenelength %>%
   slice_sample(n = 20, replace = FALSE) %>%
   select(size)
 ```
@@ -228,7 +229,7 @@ For this, we'll use the newly installed `infer` package, and its handy function 
 Let's look at the code then explain after: 
 
 ```{r sample_means}
-gene.means.n20 <- genelengths %>%
+gene.means.n20 <- humangenelength %>%
   rep_slice_sample(n = 20, replace = FALSE, reps = 10000) %>%
   summarise(
     mean_length = mean(size, na.rm = T),
@@ -239,7 +240,7 @@ gene.means.n20 <- genelengths %>%
 In the above chunk, we:
 
 * Tell R to put the output from our functions into a new tibble object called "gene.means.n20", with the "n20" on the end denoting the fact that we used a sample size of 20 for these samples
-* use the `rep_slice_sample` function to sample n = 20 rows at random from the `genelengths` tibble, and repeat this "reps = 10000" times
+* use the `rep_slice_sample` function to sample n = 20 rows at random from the `humangenelength` tibble, and repeat this "reps = 10000" times
 * next we use the familiar `summarise` function to then create a new variable "mean_length", which in the next line we define as the mean of the values in the "size" variable (and recall, at this point we have a sample of 20 of these)
 * we also create a new categorical (factor) variable "sampsize" that indicates what sample size we used for this exercise, and we store it as a factor rather than a number (we're doing this because it will come in handy later)
 
@@ -272,7 +273,7 @@ OK, so we see that the minimum and maximum values are `r min(gene.means.n20$mean
 Let's first remind ourselves what the true mean gene length is in the entire population of genes. We'll assign the output to an object "true.mean.length" and a variable called "Pop_mean", then show using the `kable` approach.
 
 ```{r get_true_mean_gene}
-true.mean.length <- genelengths %>%
+true.mean.length <- humangenelength %>%
   summarise(
     Pop_mean = mean(size, na.rm = TRUE)
   )
@@ -315,7 +316,7 @@ Show using `kable`:
 kable(sample.mean.n20, digits = 4)
 ```
 
-Note that the mean of the sample means is around `r round(mean(sample.mean.n20$Sample_mean, na.rm = TRUE), 0)`, which is pretty darn close to the true population mean of `r round(mean(genelengths$size, na.rm = TRUE), 0)`. 
+Note that the mean of the sample means is around `r round(mean(sample.mean.n20$Sample_mean, na.rm = TRUE), 0)`, which is pretty darn close to the true population mean of `r round(mean(humangenelength$size, na.rm = TRUE), 0)`. 
 
 This reflects the fact that, provided a good random sample, the sample mean is an **unbiased estimate** of the true population mean.
 
@@ -329,7 +330,7 @@ The latter characteristic reflects the fact that the population of genes include
 Let's repeat this sampling exercize using a larger sample size, say 50.
 
 ```{r sample_means_50}
-gene.means.n50 <- genelengths %>%
+gene.means.n50 <- humangenelength %>%
   rep_slice_sample(n = 50, replace = FALSE, reps = 10000) %>%
   summarise(
     mean_length = mean(size, na.rm = T),
@@ -410,7 +411,7 @@ Let's take a random sample of 20 genes, making sure to set the seed this time so
 
 ```{r samp1_descr}
 set.seed(29)
-newsamp.n20 <- genelengths %>%
+newsamp.n20 <- humangenelength %>%
   slice_sample(n = 20, replace = FALSE) %>%
   select(size)
 ```
@@ -420,14 +421,14 @@ Now let's show the code for calculating the SEM for the mean calculated using va
 ```{r samp1_descr_sem}
 newsamp.n20.stats <- newsamp.n20 %>%
   summarise(
-    Count = n() - naniar::sum(is.na(size),
+    Count = sum(!is.na(size)),
     Mean_genelength = mean(size, na.rm = TRUE),
     SD_genelength = sd(size, na.rm = TRUE),
     SEM = SD_genelength/sqrt(Count)
   )
 ```
 
-You've seen all but the last lines of code before! Importantly, as we've seen [before](06-describe-one-variable.qmd#mean_sd), the "Count" variable, calculatedusing the `n` function in combinatin with the `n_miss` function from the `naniar` package, tallies the number of non-missing observations in the variable of interest (here, "size"). This is the sample size that we'll need for the calculation of the SEM. 
+You've seen all but the last lines of code before! Importantly, as we've seen [before](06-describe-one-variable.qmd#mean_sd), the "Count" variable, calculated using `sum(!is.na(size))`, tallies the number of non-missing observations in the variable of interest (here, "size"). This is the sample size that we'll need for the calculation of the SEM. 
 
 The last line creates a new variable "SEM" that is calculated using the formula shown above, and inputs from the previous lines' calculations. 
 
@@ -445,7 +446,7 @@ If you wish to calculate and report only the mean and SEM for a variable (here, 
 newsamp.n20.stats.short <- newsamp.n20 %>%
   summarise(
     Mean_genelength = mean(size, na.rm = TRUE),
-    SEM = sd(size, na.rm = TRUE)/sqrt(n() - naniar::sum(is.na(size))
+    SEM = sd(size, na.rm = TRUE)/sqrt(sum(!is.na(size)))
   )
 ```
 
@@ -471,7 +472,7 @@ We can re-use code from the previous section for the calculations, and we'll ass
 ```{r more_SEM}
 newsamp.n20.allstats <- newsamp.n20 %>%
   summarise(
-    Count = n() - naniar::sum(is.na(size),
+    Count = sum(!is.na(size)),
     Mean_genelength = mean(size, na.rm = TRUE),
     SD_genelength = sd(size, na.rm = TRUE),
     SEM = SD_genelength/sqrt(Count),

@@ -28,6 +28,7 @@ library(knitr)
 library(skimr)
 library(palmerpenguins)
 library(kableExtra)
+library(biol202)
 ```
 
 We'll use the "circadian.csv" dataset, which is also used in the ["comparing more than 2 means tutorial"](15-anova.qmd#compare_three_more_means).  These data are associated with Example 15.1 in the text. 
@@ -168,8 +169,8 @@ penguins.stats <- penguins %>%
   filter(sex == "male") %>%
   group_by(species) %>%
   summarise(
-    Count = n() - naniar::sum(is.na(bill_length_mm),
-    Count_NA = naniar::sum(is.na(bill_length_mm), 
+    Count = sum(!is.na(bill_length_mm)),
+    Count_NA = sum(is.na(bill_length_mm)), 
     Mean = mean(bill_length_mm, na.rm = TRUE),
     SD = sd(bill_length_mm, na.rm = TRUE),
     SEM = SD/sqrt(Count),

@@ -41,6 +41,7 @@ library(palmerpenguins)
 library(skimr)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
 And we will use the following datasets in this tutorial:

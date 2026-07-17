@@ -14,8 +14,7 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#twonum_packages_data}
 
-Load the `tidyverse`, `skimr`, `broom`, `knitr`, and `janitor` packages: 
-
+Load the packages we need for this tutorial:
 ```{r corr_packages, warning = FALSE}
 library(dplyr)
 library(ggplot2)
@@ -24,6 +23,7 @@ library(skimr)
 library(broom)
 library(knitr)
 library(janitor)
+library(biol202)
 ```
 
 We'll use the "wolf.csv" and "trick.csv" datasets (discussed in examples 16.2 and 16.5 in the text, respectively).  

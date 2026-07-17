@@ -16,14 +16,16 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#twomean_packages_data}
 
-Load the `tidyverse`, `knitr`, `naniar`, `car`, `skimr`, and `janitor` packages: 
+Load the packages we need for this tutorial: 
 
 ```{r singlenum_packages2, warning = FALSE, message = FALSE}
 library(dplyr)
 library(ggplot2)
 library(readr)
+library(tidyr)
 library(knitr)
 library(janitor)
+library(biol202)
 library(skimr)
 library(car)
 ```
@@ -40,8 +42,8 @@ The following datasets are required:
 * the "students" dataset, describing characteristics of students from BIOL202 from several years back
 
 ```{r}
-blackbird <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/blackbird.csv", show_col_types = FALSE)
-students <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/students.csv", show_col_types = FALSE)
+data(blackbird)
+data(students)
 ```
 
 ## Paired *t*-test
@@ -80,7 +82,7 @@ Let's remind ourselves how the data are stored:
 blackbird
 ```
 
-We'll use, for the first time, the `pivot_wider` function from the `dplyr` package (which is loaded as part of the `tidyverse`).
+We'll use, for the first time, the `pivot_wider` function from the `tidyr` package.
 
 The `pivot_wider` function essentially takes data stored in long format and converts it to wide format.
 
@@ -358,8 +360,8 @@ Let's use all these skills to generate a table of summary statistics for the "he
 height.stats <- students %>%
   group_by(dominant_eye) %>%
   summarise(
-    Count = n() - naniar::sum(is.na(height_cm),
-    Count_NA = naniar::sum(is.na(height_cm), 
+    Count = sum(!is.na(height_cm)),
+    Count_NA = sum(is.na(height_cm)), 
     Mean = mean(height_cm, na.rm = TRUE),
     SD = sd(height_cm, na.rm = TRUE),
     SEM = SD/sqrt(Count),

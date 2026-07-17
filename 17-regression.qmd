@@ -17,8 +17,7 @@ options(knitr.table.format = "html")
 
 ## Load packages and import data {#LSR_packages_data}
 
-Load the `tidyverse`, `skimr`, `broom`, and `knitr`.
-
+Load the packages we need for this tutorial:
 ```{r lsr_packages, warning = FALSE, message = FALSE}
 library(dplyr)
 library(ggplot2)
@@ -26,6 +25,7 @@ library(readr)
 library(skimr)
 library(broom)
 library(knitr)
+library(biol202)
 ```
 
 We'll use the "plantbiomass" dataset:  
