@@ -42,6 +42,21 @@ library(janitor)
 library(biol202)
 ```
 
+::: {.callout-warning}
+## Always load `palmerpenguins` before using `penguins`
+
+R version 4.5 added its **own** dataset called `penguins`, which is built into R. It holds
+similar data but uses **shorter variable names** — `bill_len` instead of `bill_length_mm`,
+`bill_dep` instead of `bill_depth_mm`, and so on.
+
+This matters because if you forget `library(palmerpenguins)`, R will quietly hand you its
+own version instead of telling you anything is wrong. Your code will then fail with a
+confusing message like `object 'bill_length_mm' not found`, even though the `penguins`
+data appear to be right there.
+
+The fix is simply to always run `library(palmerpenguins)` first, as in the chunk above.
+:::
+
 And we will use the following datasets in this tutorial:
 
 * the `penguins` dataset that is available as part of the `palmerpenguins` package
@@ -49,7 +64,9 @@ And we will use the following datasets in this tutorial:
 * the `birds.csv` file contains counts of different categories of bird observed at a marsh habitat
 
 ::: {.callout-note}
-Unless otherwise indicated, all <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV data files</a> that we use in this course are stored at the same URL location, specifically: "https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/". Thus, to import any CSV file you just need to copy that path, then append the appropriate file name to the end of the path. For example, the full path to access the `birds.csv` file would be "https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/birds.csv". And a [previous tutorial](04-importing-data.qmd#import_csv_url) showed you how to import using the `read_csv` function.
+From here on, course datasets come from the `biol202` package: load one with `data()` followed by its name, for example `data(birds)`. Use `?birds` to read its documentation.
+
+If you ever want to practise importing instead, CSV copies of the same datasets live at "https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/" — append the file name to that path, for example ".../csv_data/birds.csv", and import it with `read_csv` as shown in a [previous tutorial](04-importing-data.qmd#import_csv_url).
 :::
 
 ## Get an overview of the data {#vis_data_overview}

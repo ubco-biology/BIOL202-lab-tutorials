@@ -1,0 +1,45 @@
+---
+title: "Tutorial work"
+author: "Test Student"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+
+This R Markdown document includes all my notes and coding associated with working through BIOL202 tutorials.
+
+If I want to try out any code during my work, I insert an R "chunk" using the Code > Insert Chunk menu item, or associated shortcut.
+
+Here's an example chunk that tells R to add 2 plus 2. The header of the chunk includes a name "firstchunk"
+
+```{r firstchunk}
+2 + 2
+```
+
+I will be sure to write issues / tips to myself throughout this document. 
+
+For example: 
+
+**REMEMBER** You only need to install a package once!  You do need to "load" a package each time you start R/RStudio.
+
+I can consult the R Markdown [reference guide ](https://utstat.utoronto.ca/reid/sta2201s/rmarkdown-reference.pdf) for info about how to format my R Markdown document.
+
+And if I ever wish to see what all this work looks like in HTML (webpage) format, I could simply select the "knit" button at the top and knit to HTML (or PDF if I wish).  But knitting is more important for my markdown document that i'll have for assignments!
+
+I will provide a link to the relevant tutorial for each section.  Sections are denoted with headers using two hashtags.
+
+Here we go!
+
+## Getting started with R and RStudio
+
+The tutorials in this section are linked [here](https://ubco-biology.github.io/BIOL202-lab-tutorials/01-getting-started.html).
+
+Boy, this was challenging to get started! I got hung up on ....
+
+
+

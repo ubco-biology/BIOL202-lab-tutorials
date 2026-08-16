@@ -419,6 +419,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Always load <code>palmerpenguins</code> before using <code>penguins</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>R version 4.5 added its <strong>own</strong> dataset called <code>penguins</code>, which is built into R. It holds similar data but uses <strong>shorter variable names</strong> — <code>bill_len</code> instead of <code>bill_length_mm</code>, <code>bill_dep</code> instead of <code>bill_depth_mm</code>, and so on.</p>
+<p>This matters because if you forget <code>library(palmerpenguins)</code>, R will quietly hand you its own version instead of telling you anything is wrong. Your code will then fail with a confusing message like <code>object 'bill_length_mm' not found</code>, even though the <code>penguins</code> data appear to be right there.</p>
+<p>The fix is simply to always run <code>library(palmerpenguins)</code> first, as in the chunk above.</p>
+</div>
+</div>
 <p>And we will use the following datasets in this tutorial:</p>
 <ul>
 <li>the <code>penguins</code> dataset that is available as part of the <code>palmerpenguins</code> package</li>
@@ -435,7 +450,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Unless otherwise indicated, all <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV data files</a> that we use in this course are stored at the same URL location, specifically: “https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/”. Thus, to import any CSV file you just need to copy that path, then append the appropriate file name to the end of the path. For example, the full path to access the <code>birds.csv</code> file would be “https://raw.githubusercontent.com/ubco-biology/BIOL202/main/data/birds.csv”. And a <a href="./04-importing-data.html#import_csv_url">previous tutorial</a> showed you how to import using the <code>read_csv</code> function.</p>
+<p>From here on, course datasets come from the <code>biol202</code> package: load one with <code>data()</code> followed by its name, for example <code>data(birds)</code>. Use <code>?birds</code> to read its documentation.</p>
+<p>If you ever want to practise importing instead, CSV copies of the same datasets live at “https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/” — append the file name to that path, for example “…/csv_data/birds.csv”, and import it with <code>read_csv</code> as shown in a <a href="./04-importing-data.html#import_csv_url">previous tutorial</a>.</p>
 </div>
 </div>
 </section>
@@ -891,7 +907,7 @@ Note
 <li>the <code>adorn_totals</code> in the last line is a function from the <code>janitor</code> package that enables adding row and / or column totals to tables (see the help for this function for more details)</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -900,7 +916,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Try figuring out how you would change the last line of code in the chunk above so that the table showed the <em>percent</em> rather than the <em>relative frequency</em> of observations in each category</p>
 </div>

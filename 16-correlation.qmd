@@ -23,6 +23,7 @@ library(skimr)
 library(broom)
 library(knitr)
 library(janitor)
+library(palmerpenguins)
 library(biol202)
 ```
 
