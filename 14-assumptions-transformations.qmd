@@ -81,7 +81,7 @@ Importantly, tests such as the one-sample *t* test are somewhat **robust** to mi
 
 The most straightforward way to check the normality assumption is to visualize the data using a **normal quantile plot**.  
 
-The `ggplot2` package (loaded with the `tidyverse` package) has plotting functions for this, called `stat_qq` and `stat_qq_line`:
+The `ggplot2` package has plotting functions for this, called `stat_qq` and `stat_qq_line`:
 
 ```
 ?stat_qq

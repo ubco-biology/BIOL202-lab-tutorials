@@ -4,6 +4,12 @@ project:
   # the docs/ folder of the main branch. The rendered site is committed, so
   # publishing is "render, then push" — no build server needed.
   output-dir: docs
+  # Copied into docs/ on every render. The empty .nojekyll file tells GitHub
+  # Pages to serve the rendered files as-is rather than running them through
+  # Jekyll, which would drop any directory whose name begins with an underscore.
+  # Listing it here means a clean render cannot silently lose it.
+  resources:
+    - .nojekyll
 
 book:
   title: "R Tutorials for Biostatistics"

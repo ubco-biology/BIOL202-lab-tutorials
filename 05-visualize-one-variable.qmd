@@ -29,7 +29,7 @@ In this tutorial you'll learn to construct and interpret each of these types of 
 
 ## Load packages and import data {#vis_packages_data}
 
-In this tutorial we will make use of `tidyverse` and its suite of packages, as well as the `skimr` package. You'll also use the `palmerpenguins` package that provides some penguin-related data to work with (see this [website](https://allisonhorst.github.io/palmerpenguins/) for more info). Lastly, you'll use the `knitr` package for helping create nice tables. The latter package should have come installed with RStudio, so check the "packages" tab in the bottom-right pane of RStudio to see if it's already installed.  If it's not, then install it following the instructions you [saw earlier](01-getting-started.qmd#package_install).
+In this tutorial we will make use of the `dplyr`, `ggplot2` and `readr` packages, as well as the `skimr` package. You'll also use the `palmerpenguins` package that provides some penguin-related data to work with (see this [website](https://allisonhorst.github.io/palmerpenguins/) for more info). Lastly, you'll use the `knitr` package for helping create nice tables. The latter package should have come installed with RStudio, so check the "packages" tab in the bottom-right pane of RStudio to see if it's already installed.  If it's not, then install it following the instructions you [saw earlier](01-getting-started.qmd#package_install).
 
 ```{r vis1_package, message = FALSE}
 library(dplyr)
@@ -84,7 +84,7 @@ Once you have gotten an overview your dataset's structure and contents, the next
 
 Sometimes when the aim is to visualize a single categorical variable, it's useful to present a *frequency table*. If your variable has more than, say, 10 unique categories, then this approach can be messy, and instead one should solely create a **bar graph**, as described in the next section.
 
-Many straightforward operations like tabulation and calculating descriptive statistics can be done using the functionality of the `dplyr` package (see the cheatsheet [here](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)), which gets loaded as part of the `tidyverse` suite of packages.
+Many straightforward operations like tabulation and calculating descriptive statistics can be done using the functionality of the `dplyr` package (see the cheatsheet [here](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)).
 
 Here, we'll use this functionality to create a *frequency table* for a categorical variable.  
 
@@ -159,7 +159,7 @@ Your table caption won't include a number (e.g. Table 1) until you actually knit
 
 We use a *bar graph* to visualize the frequency distribution for a single categorical variable.
 
-We'll use the `ggplot` approach with its `geom_bar` function to create a bar graph. The `ggplot` function comes with the `ggplot2` package, which itself is loaded as part of the `tidyverse`.
+We'll use the `ggplot` approach with its `geom_bar` function to create a bar graph. The `ggplot` function comes with the `ggplot2` package.
 
 To produce the bar graph, we use a frequency table as the input. Thus, let's repeat the creation of the "tiger.table" from the preceding section, **but this time we exclude the `adorn_totals` line of code**, because we don't want the "total" row to be plotted in the bar graph. 
 

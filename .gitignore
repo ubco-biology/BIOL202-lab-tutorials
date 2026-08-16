@@ -1,11 +1,21 @@
-_book/
+# Quarto working files
 .quarto/
-*_files/
-*_cache/
+/.quarto/
+**/*.quarto_ipynb
+_book/
+
+# Knitr/rmarkdown intermediates left beside the .qmd source
+/*_files/
+/*_cache/
+
+# R session leftovers
 .Rproj.user
 .Rhistory
 .RData
-
-/.quarto/
-**/*.quarto_ipynb
 .DS_Store
+
+# NOTE: docs/ is the rendered website and IS committed — GitHub Pages serves it
+# from this branch. The ignore rules above are anchored with a leading "/" so
+# they match only the project root; without that anchoring they would also match
+# docs/*_files/, which holds every figure on the published site.
+!docs/

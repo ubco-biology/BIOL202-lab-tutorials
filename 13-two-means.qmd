@@ -321,7 +321,7 @@ students %>%
 ```
 Let's change these to be more informative, "Left" and "Right". 
 
-We can do this with the `recode_factor` function from the `dplyr` package (part of the `tidyverse`), in conjunction with the familiar `mutate` function used to create a new variable (though here we're just over-writing an existing variable):
+We can do this with the `recode_factor` function from the `dplyr` package, in conjunction with the familiar `mutate` function used to create a new variable (though here we're just over-writing an existing variable):
 
 ```{r}
 students <- students %>%

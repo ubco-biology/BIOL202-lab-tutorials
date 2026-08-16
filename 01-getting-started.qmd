@@ -70,9 +70,11 @@ You may get overwhelmed by all the terminology on that page... don't worry!  You
 
 An R package is a collection of functions, data, and documentation that extends the capabilities of R. They are written by a world-wide community of R users. For example, among the most popular packages are:
 
-* `ggplot2` package for data visualization 
-* `dplyr` package for data wrangling 
-* `tidyverse`, which is a package that includes a collection of multiple packages (including the preceding two) that are all installed at once. We'll be using this package in the course. 
+* `ggplot2` package for data visualization
+* `dplyr` package for data wrangling
+* `readr` package for reading data files into R
+
+In this course we load packages **one at a time**, by name, as in the examples above. You may see other resources load a bundle called `tidyverse`, which loads `ggplot2`, `dplyr`, `readr` and several others in one line. We deliberately do not do that here: loading packages individually means you can always tell which package a function came from, and when something goes wrong the error message points somewhere you can actually look.
 
 There are two key things to remember about R packages:
 
@@ -82,15 +84,19 @@ There are two key things to remember about R packages:
 
 ## Package installation {#package_install}
 
-Let's install the `tidyverse` package.
+Let's install the `dplyr` package, as an example of how installing works.
+
+::: {.callout-note}
+In practice you will have installed almost everything already, in one step, by installing the course's `biol202` package — see the [setup instructions](index.qmd). Installing `biol202` also installs `dplyr`, `ggplot2`, `readr` and every other package the course uses. This section is here so you know *how* installation works, and can install something new when you need it.
+:::
 
 There are two ways to install an R package:
 
 - In the Files pane:
     + Click on "Packages"
     + Click on "Install"
-    + Type the name of the package under "Packages (separate multiple with space or comma):" In this case, type `tidyverse`
-    + Click "Install"  
+    + Type the name of the package under "Packages (separate multiple with space or comma):" In this case, type `dplyr`
+    + Click "Install"
     
 - Alternatively, in the Console pane type the following 
 
@@ -99,7 +105,7 @@ Later, when you start using R Markdown, never include the following "install.pac
 :::
 
 ```{r, eval=FALSE}
-install.packages("tidyverse")
+install.packages("dplyr")
 ```
 
 If you are attempting to install a package (using `install.packages`) and you get this message:
@@ -123,9 +129,9 @@ When working on your own computer, you only need to install a package once, unle
 
 ## Package loading {#package_load}
 
-Let's load the `tidyverse` package.
+Let's load the packages we will use most often.
 
-After you've installed a package, you can now load it using the `library()` command. For example, to load the `tidyverse` package, run the following code in the Console pane:
+After you've installed a package, you can load it using the `library()` command. Run the following code in the Console pane — one `library()` line per package, which is the convention we follow all term:
 
 ```{r, eval=FALSE}
 library(dplyr)

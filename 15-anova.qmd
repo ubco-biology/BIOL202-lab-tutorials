@@ -80,7 +80,7 @@ circadian %>%
 * The categorical variable "treatment" is recognized as a "character" variable ("chr") instead of a "factor" variable, 
 * The category names are not capitalized
 
-Let's recode this using the method we previously learned in the [2-sample _t_-test tutorial](13-two-means.qmd#twosamp_ttest), using the `recode_factor` function from the `dplyr` package (loaded as part of the `tidyverse`).
+Let's recode this using the method we previously learned in the [2-sample _t_-test tutorial](13-two-means.qmd#twosamp_ttest), using the `recode_factor` function from the `dplyr` package.
 
 Be sure to provide the variables in the order that you want them to appear in any tables, figures, and analyses.
 
@@ -318,7 +318,7 @@ You will need to run this chunk to create the function each time you start a new
 create.anova.table <- function(intable){
   # first check that input table is of class "anova"
   if(class(intable)[1] != "anova") stop("Input object not of class 'anova'")
-  require(tidyverse) # ensure tidyverse is loaded
+  require(dplyr) # ensures dplyr is loaded (for select, rename, bind_rows)
   require(broom) # ensures broom is loaded
   tidy.intable <- tidy(intable)
 # "intable" is a the object from the `anova` output

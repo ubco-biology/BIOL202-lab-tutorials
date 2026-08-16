@@ -102,7 +102,7 @@ It is often the case, however, that all four measures are presented together.
 Introducing the `summarise` function.
 :::
 
-The `dplyr` package, which is loaded with the `tidyverse`, has a handy `summarise` (equivalently `summarize`) function for calculating descriptive statistics.  
+The `dplyr` package has a handy `summarise` (equivalently `summarize`) function for calculating descriptive statistics.  
 
 Check out its help file by copying the following code into your command console:
 

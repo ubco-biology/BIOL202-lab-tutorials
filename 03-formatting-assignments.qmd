@@ -49,7 +49,7 @@ In RStudio, under the "Help" menu, you'll find "Cheat Sheets" > R Markdown Cheat
 The general approach is to enter your text answers and associated R chunks with code underneath each question. 
 
 ::: {.callout-note}
-**TIP**: It is almost always the case that you'll need to load the `tidyverse` package, so it's advisable to include an R chunk right at the beginning of your document that does this. 
+**TIP**: You will almost always need `dplyr`, `ggplot2` and `readr`, plus the `biol202` package that holds the course datasets. It's advisable to include one R chunk right at the beginning of your document that loads them.
 :::
 
 ::: {.callout-note}
@@ -58,7 +58,7 @@ The general approach is to enter your text answers and associated R chunks with 
 
 ### Code chunk headers {#chunk_headers}
 
-Here's an example code chunk in which the `tidyverse` package is being loaded. You'll notice some extra text in the header of the chunk. 
+Here's an example code chunk in which packages are being loaded. You'll notice some extra text in the header of the chunk.
 
 ```{r, fig.cap = "Code chunk header with message suppression", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/install_package_header2.png")
@@ -80,13 +80,14 @@ There will be routine steps to take for each question.
 
 Each assignment question will indicate which dataset(s) you'll need to answer the question, and where to locate / download these. In many instances multiple questions will use the same dataset, in which case you don't need to load data for each question; just load it once. 
 
-Here's an example of code for importing data. It uses the `read_csv` function from the `readr` package, which is bundled with the `tidyverse` package:
+Most course datasets come from the `biol202` package, so loading one takes a single line — `data()` followed by the dataset's name:
 
 ```
+library(biol202)
 data(example_data)
 ```
 
-The `read_csv` function will take as an argument a URL address for a data file. Here we've provided a URL for the location of a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV file (comma-separated values file)</a>, which is typically what we'll use.  
+Some questions will instead ask you to import a <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV file (comma-separated values file)</a> from a web address or from your own `rawdata` folder. That uses the `read_csv` function from the `readr` package, which you will meet in the [importing data tutorial](04-importing-data.qmd).
 
 ### Load packages {#first_load_package}
 
@@ -94,7 +95,7 @@ Once you've loaded the data, you'll now need to figure out how to answer the que
 
 If you've forgotten what "packages" are, refresh your memory at this [tutorial](01-getting-started.qmd#packages).  
 
-For example, it's likely you've already loaded the `tidyverse` package (as advised above), but if a tutorial indicates you need another package, say the `janitor` package, then insert a code chunk with the following:
+For example, it's likely you've already loaded `dplyr`, `ggplot2` and `readr` (as advised above), but if a tutorial indicates you need another package, say the `janitor` package, then insert a code chunk with the following:
 
 ```
 library(janitor)
@@ -225,7 +226,7 @@ summary.height
 As shown in the output above, the minimum height was 150.0 cm and the maximum student height was 210.8 cm.
 
 ::: {.callout-note}
-**TIP**: You'll note that functions and package names above are highlighted in grey. When writing in markdown, it's good practice to encompass function names and package names in single backticks, i.e.`` `tidyverse` ``. Backticks are typically located with the tilden ("~") key on your keyboard. 
+**TIP**: You'll note that functions and package names above are highlighted in grey. When writing in markdown, it's good practice to encompass function names and package names in single backticks, i.e.`` `dplyr` ``. Backticks are typically located with the tilden ("~") key on your keyboard. 
 :::
 
 ## Knitting your assignment to PDF {#knit_assign}

@@ -161,7 +161,7 @@ It is best practice to display the response variable as the "fill" variable, and
 To do the Fisher's exact test on the cancer data, it is straightforward, using the `fisher.test` function from the `janitor` package.
 
 ::: {.callout-warning}
-There is also `fisher.test` function in the base R `stats` package, but it does not conform to `tidyverse` expectations. Hence our use of the `fisher.test` function from the `janitor` package.  When there are multiple packages that use the same name for a function, we can specify the version we want by prefacing the function with the package name and two colons, like this: "janitor::fisher.test()"
+There is also `fisher.test` function in the base R `stats` package, but it does not conform to the tidy-data conventions used throughout these tutorials. Hence our use of the `fisher.test` function from the `janitor` package.  When there are multiple packages that use the same name for a function, we can specify the version we want by prefacing the function with the package name and two colons, like this: "janitor::fisher.test()"
 :::
 
 See the help file for the `janitor` version of the `fisher.test` function:
