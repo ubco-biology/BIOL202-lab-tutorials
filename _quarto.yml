@@ -1,15 +1,15 @@
 project:
   type: book
-  output-dir: _book
+  # Rendered into docs/ (not _book/) because GitHub Pages serves this book from
+  # the docs/ folder of the main branch. The rendered site is committed, so
+  # publishing is "render, then push" — no build server needed.
+  output-dir: docs
 
 book:
   title: "R Tutorials for Biostatistics"
   subtitle: "The Lab Companion for BIOL 202 — UBC Okanagan"
   author: "Jason Pither"
   date: today
-  # TODO(maintainer): PLACEHOLDER. No GitHub repo exists for these tutorials yet.
-  # When one is created, set repo-url here and update the URLs in
-  # 04-importing-data.qmd (which are currently eval: false for this reason).
   repo-url: https://github.com/ubco-biology/BIOL202-lab-tutorials
   repo-actions: [edit, issue]
   search: true
