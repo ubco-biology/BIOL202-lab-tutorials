@@ -1,7 +1,7 @@
 # R Tutorials for Biostatistics — BIOL 202 Lab Companion
 
 The lab companion for BIOL 202 (Introduction to Biostatistics), UBC Okanagan.
-A Quarto book, built to mirror the course's OER (*Biostatistics for Biologists*).
+A Quarto book covering the R computation for the course's lab portion.
 
 ## Building
 

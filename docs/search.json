@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "R Tutorials for Biostatistics",
     "section": "",
-    "text": "Welcome\nThis is the lab companion for BIOL 202: Introduction to Biostatistics at the University of British Columbia, Okanagan campus. It provides the R tutorials for the lab portion of the course.\nIt also works as a general resource for anyone learning to manage and analyze data using R and R Markdown in the RStudio IDE.\nThese tutorials pair with the course’s open resource, Biostatistics for Biologists, which covers the concepts. The rule is concept first, computation second: each week the lecture introduces an idea, and the lab tutorial that week implements it in R. If a tutorial asks you to run a test, the lecture has already explained what it is for.\nThis book is a living document that is updated intermittently. If you find errors or wish to provide feedback, please contact me.",
+    "text": "Welcome\nThis is the lab companion for BIOL 202: Introduction to Biostatistics at the University of British Columbia, Okanagan campus. It provides the R tutorials for the lab portion of the course.\nIt also works as a general resource for anyone learning to manage and analyze data using R and R Markdown in the RStudio IDE.\nThese tutorials cover the computation; the lectures and assigned course readings cover the concepts. The rule is concept first, computation second: an idea is introduced in the lecture or the assigned reading, and the lab tutorial then implements it in R. If a tutorial asks you to run a test, you will already have met what it is for.\nThis book is a living document that is updated intermittently. If you find errors or wish to provide feedback, please contact me.",
     "crumbs": [
       "Welcome"
     ]
