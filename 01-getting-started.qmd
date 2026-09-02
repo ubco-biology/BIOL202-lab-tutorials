@@ -5,11 +5,11 @@ It is assumed that you are using <a href="https://ubco-biology.github.io/Procedu
 * R is like a car's engine
 * RStudio is like a car's dashboard. 
 
-```{r, fig.cap = "R: Engine", echo = FALSE, out.width = "30%"}
+```{r fig-01-r-engine, fig.cap = "R: Engine", echo = FALSE, out.width = "30%"}
 knitr::include_graphics("images/engine.png")
 ```
 
-```{r, fig.cap = "RStudio: Dashboard", echo = FALSE, out.width = "20%"}
+```{r fig-01-rstudio-dashboard, fig.cap = "RStudio: Dashboard", echo = FALSE, out.width = "20%"}
 knitr::include_graphics("images/dashboard.png")
 ```
 
@@ -38,21 +38,21 @@ R needs to be installed successfully >prior< to installing RStudio (because the 
 
 * Now to install RStudio: once you have installed "R", go to this [website](https://posit.co/download/rstudio-desktop/) and click on the  "download RStudio desktop" button under the "Install RStudio" heading.  The website should detect what operating system you're using and offer you the appropriate version.  
 
-# Start using R & RStudio {#start_r}
+## Start using R & RStudio {#start_r}
 
 Recall our car analogy from a [previous tutorial](#what_is_R). Much as we don't drive a car by interacting directly with the engine but rather by using elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new programs AKA applications you can open. We will always work in RStudio and not R. In other words:  
 
-```{r, fig.cap = "R: DO NOT OPEN THIS", echo = FALSE, out.width = "30%"}
+```{r fig-01-r-do-not-open, fig.cap = "R: DO NOT OPEN THIS", echo = FALSE, out.width = "30%"}
 knitr::include_graphics("images/Rlogo.png")
 ```
 
-```{r, fig.cap = "RStudio: OPEN THIS", echo = FALSE, out.width = "30%"}
+```{r fig-01-rstudio-open-this, fig.cap = "RStudio: OPEN THIS", echo = FALSE, out.width = "30%"}
 knitr::include_graphics("images/RStudio-Ball.png")
 ```
 
 Launch RStudio on your computer to make sure it's working (it loads R for you in the background).  
 
-## The RStudio Interface {#Rstudio_interface}
+### The RStudio Interface {#Rstudio_interface}
 
 When you open RStudio, you should see something similar to the following:
 
@@ -60,13 +60,13 @@ When you open RStudio, you should see something similar to the following:
   
 Note the four panes which are four panels dividing the screen: the source pane (top left), console pane (bottom left), the files pane (bottom right), and the environment pane (top right). Over the course of this chapter, you’ll come to learn what purpose each of these panes serves.
 
-## Coding basics {#coding_basics}
+### Coding basics {#coding_basics}
 
 Please go through section [1.2 of the ModernDive online text](https://moderndive.com/1-getting-started.html#code) called "How do I code in R?". This should take about **15 minutes**.  
 
 You may get overwhelmed by all the terminology on that page... don't worry!  You can simply bookmark that page for future reference. But it does cover the coding basics very well!
 
-## R packages {#packages}
+### R packages {#packages}
 
 An R package is a collection of functions, data, and documentation that extends the capabilities of R. They are written by a world-wide community of R users. For example, among the most popular packages are:
 
@@ -82,7 +82,7 @@ There are two key things to remember about R packages:
 
 * *Loading*: Packages are not loaded automatically when you open RStudio. You need to load them everytime you open RStudio.
 
-## Package installation {#package_install}
+### Package installation {#package_install}
 
 Let's install the `dplyr` package, as an example of how installing works.
 
@@ -127,7 +127,7 @@ When working on your own computer, you only need to install a package once, unle
 
 
 
-## Package loading {#package_load}
+### Package loading {#package_load}
 
 Let's load the packages we will use most often.
 
@@ -149,7 +149,7 @@ Error: could not find function
 remember that this likely comes from you trying to use a function in a package that has not been loaded.  Remember to run the `library()` function with the appropriate package to fix this error.
 :::
 
-## Intro to R Markdown {#intro_markdown}
+### Intro to R Markdown {#intro_markdown}
 
 As you may have learned already from relevant section in the [Biology Procedures and Guidelines resource ](https://ubco-biology.github.io/Procedures-and-Guidelines/markdown-1.html), R <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Markdown">Markdown</a> is a markup language that provides an easy way to produce a rich, fully-documented reproducible analysis.  It allows its user to share a single file that contains all of the commentary, R code, and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Metadata">metadata</a> needed to reproduce the analysis from beginning to end.  R Markdown allows for "chunks" of R code to be included along with Markdown text to produce a nicely formatted HTML, PDF, or Word file without having to know any complicated programming languages or having to fuss with getting the formatting just right in a Microsoft Word DOCX file.  
 
@@ -161,7 +161,7 @@ We will be using R Markdown to create reproducible lab reports.
 R Markdown is just one flavour of a markup language. RStudio can be used to edit R Markdown. There are many other markdown editors out there, but using RStudio is good for our purposes.  
 :::
 
-## Literate programming with R Markdown {#lit_programming}
+### Literate programming with R Markdown {#lit_programming}
 
 ::: {.callout-caution title="Activity"}
 View the following short video:
@@ -183,7 +183,7 @@ View the following [youtube video](https://www.youtube.com/watch?v=asHhuHRxhvo) 
 If you'd like additional introductory tutorials on R Markdown,  see this [resource](https://rbasics.netlify.app/4-rmarkdown.html). 
 :::
 
-## Making sure R Markdown knits to PDF {#veryify_knit}
+### Making sure R Markdown knits to PDF {#veryify_knit}
 
 Now we're going to ensure R Markdown works the way we want.  A key functionality we need is being able to "knit" our report to PDF format. 
 
@@ -225,7 +225,7 @@ Now go back to the steps 1 through 4 above to try knitting your markdown documen
 
 In a future [tutorial](02-reproducible-r.qmd#repro_research) we'll discuss how to use R Markdown as part of a reproducible workflow.
  
-## Extra resources {#r_resources}
+### Extra resources {#r_resources}
 
 ::: {.callout-note}
 This page is still under development (Aug 2022)
@@ -241,7 +241,7 @@ You can get nice PDF versions of the files by going to **Help -> Cheatsheets** i
 
 The book titled "Getting used to R, RStudio, and R Markdown" by Chester Ismay, which can be freely accessed [here](https://ismayc.github.io/rbasics-book/), is also a wonderful resource for for new users of R, RStudio, and R Markdown. It includes examples showing working with R Markdown files in RStudio recorded as GIFs.
 
-## R Resources Online {#online_resources}
+### R Resources Online {#online_resources}
 
 | URL                                                      | Purpose                                           |
 |:-----------------------------------------------|:-----------------------|

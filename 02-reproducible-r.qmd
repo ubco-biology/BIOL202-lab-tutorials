@@ -89,7 +89,7 @@ You can create and edit your "_README.txt" file in RStudio! Just click on the "+
 
 An example setup is illustrated below.
 
-```{r, fig.cap = "Example directory structure", echo = FALSE, fig.width = 3}
+```{r fig-02-example-directory-structure, fig.cap = "Example directory structure", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/BIOL202_directory_structure.png")
 ```
 

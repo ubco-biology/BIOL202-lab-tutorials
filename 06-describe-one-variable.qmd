@@ -67,7 +67,7 @@ If there are missing values ("NA") in the categorical variable, the preceding co
 
 Now display the table:
 
-```{r birdfreqtable}
+```{r tbl-06-frequency-table-showing-frequencies,}
 
 birds.table %>%
   kable(caption = "Frequency table showing the frequencies of each of four types of bird observed at a marsh habitat (N = 86)", digits = 3)
@@ -114,7 +114,7 @@ Let's use the `penguins` dataset for our demonstrations.
 
 The first step is to visualize the frequency distribution. Given that this is a numeric variable, we do this using a histogram, as we learned in a previous [tutorial](05-visualize-one-variable.qmd#vis_histogram).
 
-```{r fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
+```{r fig-06-histogram-body-mass-g, fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
 
 ggplot(data = penguins, aes(x = body_mass_g)) +
   geom_histogram(binwidth = 500, colour = "black", fill = "lightgrey") +
@@ -141,7 +141,7 @@ penguins %>%
 
 Uh oh! If you tried to run this code, it would have given you an error: 
 
-```{r fig.cap = "Error when functions encounter 'NA' values", echo = FALSE, fig.width = 5}
+```{r fig-06-error-when-functions-encounter, fig.cap = "Error when functions encounter 'NA' values", echo = FALSE, fig.width = 5}
 
 knitr::include_graphics("images/na_error.png")
 ```
@@ -228,7 +228,7 @@ It is important to calculate the total number of complete observations in the va
 
 Now let's show the table of descriptive statistics, using the `kable` function we learned about in a previous tutorial.  
 
-```{r penguindescribe}
+```{r tbl-06-descriptive-statistics-measurements-body,}
 
 penguins.descriptors %>%
   kable(caption = "Descriptive statistics of measurements of body mass (g) for 342 penguins", digits = 3)

@@ -31,7 +31,7 @@ Review the [Biology Procedures and Guidelines document](https://ubco-biology.git
 
 There you'll learn how to arrange and format your data within a spreadsheet. The "Tidy" example provided would look like this in Excel: 
 
-```{r exceltidy, fig.cap = "Tidy data in Excel", echo = FALSE, fig.width = 3}
+```{r fig-04-tidy-data-excel, fig.cap = "Tidy data in Excel", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/excel_tidy.png")
 ```
 
@@ -69,7 +69,7 @@ You'll see that the function has many optional "arguments", but in general we ca
 
 For the course's own datasets you can just use `data(students)`, and most tutorials do exactly that. But the data *you* collect will not arrive in an R package — it will be a CSV file you made. Importing a CSV is therefore a core skill, and this tutorial is where you learn it.
 
-Here we use a copy of the course data hosted online so you can practise the real thing.
+Here we use a copy of the course data hosted online so you can practice the real thing.
 :::
 
 If the file you wish to import is located on the web, then we need to provide the "URL" (the web address) to the `read_csv` function, in double quotation marks:
@@ -104,7 +104,7 @@ We have now imported the data and stored it in a local object called "students".
 ::: {.callout-note}
 The CSV copies of the course datasets are all stored at the same URL location, specifically: "https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/". (**note** that clicking on this URL will not load a website). To import any of them, copy that path and append the file name. For example, the full path to the `birds.csv` file would be "https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/birds.csv".
 
-These CSVs exist so you can practise importing. In the tutorials that follow, we use `data(birds)` instead, which is simpler and does not need an internet connection.
+These CSVs exist so you can practice importing. In the tutorials that follow, we use `data(birds)` instead, which is simpler and does not need an internet connection.
 :::
 
 ::: {.callout-important}
@@ -129,7 +129,7 @@ dir.create("rawdata")
 
 Once you run this code, you'll see the new directory appear in the Files pane in the bottom-right of RStudio. It might look something like this:
 
-```{r, fig.cap = "View of files with rawdata folder", echo = FALSE, fig.width = 3}
+```{r fig-04-view-files-rawdata-folder, fig.cap = "View of files with rawdata folder", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/files_pane_rawdata.png")
 ```
 

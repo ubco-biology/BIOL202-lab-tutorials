@@ -38,7 +38,7 @@ The `plantbiomass` dataset (Example 17.3 in the text book) includes data describ
 
 Below is a visualization of the data.
 
-```{r lsrfigzero, echo = FALSE, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots.", fig.width = 4.2, fig.height = 4} 
+```{r fig-17-stability-biomass-production-over, echo = FALSE, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots.", fig.width = 4.2, fig.height = 4}
 
 plantbiomass %>%
 ggplot(aes(x = n_species, y = biomass_stability)) +
@@ -165,7 +165,7 @@ Using the plant biomass data, let's evaluate whether ecosystem stability can be 
 
 We learned in an earlier [tutorial](07-visualize-two-variables.qmd#two_numeric) that the best way to visualize an association between two numeric variables is with a scatterplot, and that we can create a scatterplot using the `ggplot` and `geom_point` functions:  
 
-```{r lsrfigone, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots.", fig.width = 4.2, fig.height = 4} 
+```{r fig-17-stability-biomass-production-over-2, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots.", fig.width = 4.2, fig.height = 4}
 
 plantbiomass %>%
 ggplot(aes(x = n_species, y = biomass_stability)) +
@@ -252,7 +252,7 @@ With respect to the last assumption regarding random sampling, we can assume tha
 
 For the first three assumptions, we start by looking at the original scatterplot \@ref(fig:lsrfigone), but this time we add what's called a "locally weighted smoother" line, using the `ggplot2` function `geom_smooth`:
 
-```{r lsrfigtwo, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is a locally weighted smoothing line.", fig.width = 4.2, fig.height = 4} 
+```{r fig-17-stability-biomass-production-over-3, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is a locally weighted smoothing line.", fig.width = 4.2, fig.height = 4}
 
 plantbiomass %>%
 ggplot(aes(x = n_species, y = biomass_stability)) +
@@ -283,7 +283,7 @@ We can check the normality of residuals assumption with a normal quantile plot, 
 
 For this, we use the "augmented" output we created above.
 
-```{r lsrfigthree, fig.cap = "Normal quantile plot of the residuals from a regression of biomass stability on Species richness for 161 plots", fig.width = 4.2, fig.height=4}
+```{r fig-17-normal-quantile-plot-residuals, fig.cap = "Normal quantile plot of the residuals from a regression of biomass stability on Species richness for 161 plots", fig.width = 4.2, fig.height=4}
 biomass.lm.augment %>%
   ggplot(aes(sample = .resid)) +
   stat_qq(shape = 1, size = 2) +
@@ -297,7 +297,7 @@ biomass.lm.augment %>%
 
 Before trying a transformation, let's also check the assumptions that (i) the variance of $Y$ is the same at all values of $X$, and (ii) the assumption that the association is linear.  To do this, we plot the residuals against the original "$X$" variable, which here is the number of species initially used in the treatment. Note that we'll add a horizontal line ("segement") at zero for reference:  
 
-```{r lsrfigfour, fig.cap = "Residual plot from a regression of biomass stability on Species richness for 161 plots.", fig.width = 4.2, fig.height = 4}
+```{r fig-17-residual-plot-from-regression, fig.cap = "Residual plot from a regression of biomass stability on Species richness for 161 plots.", fig.width = 4.2, fig.height = 4}
 
 biomass.lm.augment %>%
   ggplot(aes(x = n_species, y = .resid)) +
@@ -358,7 +358,7 @@ log.biomass.lm.augment <- log.biomass.lm %>%
 
 And re-plot the residual diagnostic plots:  
 
-```{r lsrfigfive, fig.cap = "Normal quantile plot of the residuals from a regression of biomass stability (log transformed) on Species richness for 161 plots", fig.width = 4.2, fig.height=4}
+```{r fig-17-normal-quantile-plot-residuals-2, fig.cap = "Normal quantile plot of the residuals from a regression of biomass stability (log transformed) on Species richness for 161 plots", fig.width = 4.2, fig.height=4}
 
 log.biomass.lm.augment %>%
   ggplot(aes(sample = .resid)) +
@@ -367,7 +367,7 @@ log.biomass.lm.augment %>%
   theme_bw()
 ```
 
-```{r lsrfigsix, fig.cap = "Residual plot from a regression of biomass stability (log transformed) on Species richness for 161 plots.", fig.width = 4.2, fig.height = 4}
+```{r fig-17-residual-plot-from-regression-2, fig.cap = "Residual plot from a regression of biomass stability (log transformed) on Species richness for 161 plots.", fig.width = 4.2, fig.height = 4}
 
 log.biomass.lm.augment %>%
   ggplot(aes(x = n_species, y = .resid)) +
@@ -455,7 +455,7 @@ Let's give it a try, making sure to spruce it up a bit with some additional opti
 fig.cap = "Stability of biomass production (log transformed) over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is the significant least-square regression line (black solid line; see text for details) and the 95% confidence bands (grey shading)."
 ```
 
-```{r lsrfigseven, fig.cap = "Stability of biomass production (log transformed) over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is the significant least-square regression line (black solid line; see text for details) and the 95% confidence bands (grey shading).", fig.width = 4.2, fig.height = 4} 
+```{r fig-17-stability-biomass-production-log, fig.cap = "Stability of biomass production (log transformed) over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is the significant least-square regression line (black solid line; see text for details) and the 95% confidence bands (grey shading).", fig.width = 4.2, fig.height = 4}
 
 plantbiomass %>%
 ggplot(aes(x = n_species, y = log.biomass)) +
@@ -527,7 +527,7 @@ Let's superimpose these predicted values over the original scatterplot, using th
 
 We re-use the code from our original `geom_smooth` plot above, and simply add the `annotate` line of code:
 
-```{r lsrfigeight, fig.cap = "Stability of biomass production (log transformed) over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown are predicted values of stability across values of species richness.", fig.width = 4.2, fig.height = 4} 
+```{r fig-17-stability-biomass-production-log-2, fig.cap = "Stability of biomass production (log transformed) over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown are predicted values of stability across values of species richness.", fig.width = 4.2, fig.height = 4}
 plantbiomass %>%
 ggplot(aes(x = n_species, y = log.biomass)) +
   geom_point(shape = 1) +

@@ -845,10 +845,14 @@ Note
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Pr[X]"</span>) <span class="sc">+</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="10-one-categorical_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>Probability of obtaining X successes out of 6 random trials, with probability of success = 1/6.</figcaption>
+<div id="fig-10-probability-obtaining-x-successes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-probability-obtaining-x-successes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-one-categorical_files/figure-html/fig-10-probability-obtaining-x-successes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-probability-obtaining-x-successes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: Probability of obtaining X successes out of 6 random trials, with probability of success = 1/6.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -902,10 +906,14 @@ Note
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Pr[X]"</span>) <span class="sc">+</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="10-one-categorical_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>Probability of obtaining X successes out of 15 random trials, with probability of success = 1/6.</figcaption>
+<div id="fig-10-probability-obtaining-x-successes-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-probability-obtaining-x-successes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-one-categorical_files/figure-html/fig-10-probability-obtaining-x-successes-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-probability-obtaining-x-successes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.2: Probability of obtaining X successes out of 15 random trials, with probability of success = 1/6.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1157,10 +1165,14 @@ Warning
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="10-one-categorical_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).</figcaption>
+<div id="fig-10-observed-frequency-each-hair" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-10-observed-frequency-each-hair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-one-categorical_files/figure-html/fig-10-observed-frequency-each-hair-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10-observed-frequency-each-hair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.3: Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1255,7 +1267,7 @@ Note
 <p>The output above shows a large <span class="math inline">\(\chi\)</span><sup>2</sup> value (30.64) on 3 degrees of freedom, and a very small <em>P</em>-value — much smaller than our stated <span class="math inline">\(\alpha\)</span> of 0.05. So we reject the null hypothesis.</p>
 <p>This is an example of an appropriate concluding statement for a <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test:</p>
 <blockquote class="blockquote">
-<p>The four hair colours did not occur in equal proportion among the sampled students (<span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test; <em>df</em> = 3; <span class="math inline">\(\chi\)</span><sup>2</sup> = 30.64; <em>P</em> &lt; 0.001). Based on our bar graph (Fig. X), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.</p>
+<p>The four hair colours did not occur in equal proportion among the sampled students (<span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test; <em>df</em> = 3; <span class="math inline">\(\chi\)</span><sup>2</sup> = 30.64; <em>P</em> &lt; 0.001). Based on our bar graph (<a href="#fig-10-observed-frequency-each-hair" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.</p>
 </blockquote>
 <div class="callout callout-style-default callout-caution callout-titled" title="Activity">
 <div class="callout-header d-flex align-content-center">

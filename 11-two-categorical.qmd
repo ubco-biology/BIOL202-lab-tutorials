@@ -125,7 +125,7 @@ When dealing with data from studies on human health (e.g. evaluating healthy ver
 
 Let's use the `kable` function to display a nice looking contingency table:
 
-```{r cont_cancer_aspirin_table}
+```{r tbl-11-contingency-table-showing-incidence,}
 cancer.aspirin.table %>%
   kable(caption = "Contingency table showing the incidence of cancer in relation to experimental treatments", booktabs = TRUE)
 ```
@@ -138,7 +138,7 @@ Here we'll add a bit of new code to format the graph more ideally. We'll add tic
 
 Here we're showing "relative frequency" on the y-axis, so this should range from 0 to 1. And we'll add breaks at intervals of 0.2.  Specifically, we use the base `seq` function to generate a sequence of numbers from 0 to 1, in intervals of 0.2:
 
-```{r fig.cap = "Relative frequency of cancer among women randomly assigned to control (n = 19942) and aspirin (n = 19934) treatment groups.", fig.width = 4, fig.height = 3}
+```{r fig-11-relative-frequency-cancer-among, fig.cap = "Relative frequency of cancer among women randomly assigned to control (n = 19942) and aspirin (n = 19934) treatment groups.", fig.width = 4, fig.height = 3}
 
 cancer %>%
     ggplot(aes(x = aspirin_treatment, fill = response)) +
@@ -431,7 +431,7 @@ kable(worm.table)
 
 Here's a stacked relative frequency bar graph with an ideal figure caption included:
 
-```{r fig.cap = "Bird predation on killifish having different levels of trematode parasitism. A total of 50, 45, and 46 fish were in the uninfected, lightly infected, and highly infected groups.", fig.width = 4, fig.height = 3}
+```{r fig-11-bird-predation-killifish-having, fig.cap = "Bird predation on killifish having different levels of trematode parasitism. A total of 50, 45, and 46 fish were in the uninfected, lightly infected, and highly infected groups.", fig.width = 4, fig.height = 3}
 
 worm %>%
     ggplot(aes(x = infection, fill = fate)) +
@@ -502,5 +502,5 @@ This shows a very large value of $\chi$^2^ (`r round(worm.chisq.results$statisti
 
 **Concluding statement**
 
-> The probability of being eaten is significantly associated with the level of trematode parasitism ($\chi$^2^ contingency test; _df_ = 2; $\chi$^2^ = `r round(worm.chisq.results$statistic, 2)`; _P_ < 0.001).  Based on our stacked bar graph (Fig. X), the probability of being eaten increases substantially with increasing intensity of parasitism.  
+> The probability of being eaten is significantly associated with the level of trematode parasitism ($\chi$^2^ contingency test; _df_ = 2; $\chi$^2^ = `r round(worm.chisq.results$statistic, 2)`; _P_ < 0.001).  Based on our stacked bar graph (@fig-11-bird-predation-killifish-having), the probability of being eaten increases substantially with increasing intensity of parasitism.
 

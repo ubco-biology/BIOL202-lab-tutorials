@@ -22,7 +22,7 @@ This Markdown document includes the assignment questions, and serves as a starte
 
 Once you have opened the document, you'll see the following text at the top: 
 
-```{r, fig.cap = "Assignment markdown file header", echo = FALSE, fig.width = 2.5, fig.height = 2.5}
+```{r fig-03-assignment-markdown-file-header, fig.cap = "Assignment markdown file header", echo = FALSE, fig.width = 2.5, fig.height = 2.5}
 knitr::include_graphics("images/assign_header.png")
 ```
 
@@ -60,7 +60,7 @@ The general approach is to enter your text answers and associated R chunks with 
 
 Here's an example code chunk in which packages are being loaded. You'll notice some extra text in the header of the chunk.
 
-```{r, fig.cap = "Code chunk header with message suppression", echo = FALSE, fig.width = 3}
+```{r fig-03-code-chunk-header-message, fig.cap = "Code chunk header with message suppression", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/install_package_header2.png")
 ```
 
@@ -162,7 +162,7 @@ When you knit the document to PDF, you'll see the "Figure X:" (with a number in 
 
 This feature - automatic figure numbering - was set within the header of the assignment markdown document:
 
-```{r, fig.cap = "Assignment markdown file header with figure caption option", echo = FALSE, fig.width = 3}
+```{r fig-03-assignment-markdown-file-header-2, fig.cap = "Assignment markdown file header with figure caption option", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/assign_header.png")
 ```
 

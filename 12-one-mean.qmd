@@ -111,12 +111,12 @@ For the `temperature` variable, our minimum and maximum values were `r min(bodyt
 
 We'll use this information to ensure that the histogram spans the appropriate range along the x-axis, and to decide on the appropriate "bin widths":
 
-```{r fig.cap = 'Frequency distribution of body temperature (degrees Farenheit) for 25 randomly chosen healthy people.', fig.width = 4, fig.height = 3}
+```{r fig-12-frequency-body-temperature, fig.cap = 'Frequency distribution of body temperature (degrees Farenheit) for 25 randomly chosen healthy people.', fig.width = 4, fig.height = 3}
 
 bodytemp %>% 
   ggplot(aes(x = temperature)) +
   geom_histogram(binwidth = 0.5, boundary = 97, 
-                 color = "black", fill = "lightgrey",) +
+                 colour = "black", fill = "lightgrey",) +
   xlab("Body temperature (degrees F)") +
   ylab("Frequency") +
   theme_bw()
@@ -247,7 +247,7 @@ The `qt` function only deals with one tail of the distribution. Thus, if we have
 
 The following graph illustrates this for the *t* distribution associated with *df* = 24 and $\alpha(2)$ = 0.05.  Specifically, the $t_{crit}$ values are shown by the vertical lines, and delimit the points beyond which the area under the curve towards the tail is equal to $\alpha / 2$ (and thus the total area of both red zones= $\alpha$).
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "The *t* distribution for df = 24.", fig.width = 4, fig.height = 3.5}
+```{r fig-12-t-distribution-df-24, echo = FALSE, warning = FALSE, message = FALSE, fig.cap = "The *t* distribution for df = 24.", fig.width = 4, fig.height = 3.5}
 tval <- round(qt(alpha/2, df = d_f, lower.tail = FALSE), 2)
 linedata <- data.frame(x1 = tval, x2 = tval, y1 = 0, y2 = 0.3)
 # Labels are plain strings here, rendered as maths by `parse = TRUE` in the
@@ -339,7 +339,7 @@ kable(bodytemp.stats, digits = 3)
 
 If we wanted to report the confidence interval on its own, we can get the necessary information from our newly created tibble "bodytemp.stats", and type the following inline code in our markdown text (NOT in a code chunk):
 
-```{r, fig.cap = "Example of inline markdown and R code for a confidence interval", echo = FALSE, fig.width = 5}
+```{r fig-12-example-inline-markdown-r, fig.cap = "Example of inline markdown and R code for a confidence interval", echo = FALSE, fig.width = 5}
 knitr::include_graphics("images/confint_inline_code.png")
 ```
 

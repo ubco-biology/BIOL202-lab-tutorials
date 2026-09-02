@@ -495,9 +495,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>birds.table <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Frequency table showing the frequencies of each of four types of bird observed at a marsh habitat (N = 86)"</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-06-frequency-table-showing-frequencies" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-06-frequency-table-showing-frequencies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Frequency table showing the frequencies of each of four types of bird observed at a marsh habitat (N = 86)
+</figcaption>
+<div aria-describedby="tbl-06-frequency-table-showing-frequencies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Frequency table showing the frequencies of each of four types of bird observed at a marsh habitat (N = 86)</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">type</th>
@@ -533,6 +538,9 @@ Note
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <p>We can see, for example, that the proportion (relative frequency) of birds belonging to the “Predatory” category was 0.3372093.</p>
@@ -587,10 +595,14 @@ Note
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="06-describe-one-variable_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption>Histogram of body mass (g) for 342 penguins</figcaption>
+<div id="fig-06-histogram-body-mass-g" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-06-histogram-body-mass-g-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-describe-one-variable_files/figure-html/fig-06-histogram-body-mass-g-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-06-histogram-body-mass-g-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Histogram of body mass (g) for 342 penguins
+</figcaption>
 </figure>
 </div>
 </div>
@@ -608,10 +620,14 @@ Note
 <p>Uh oh! If you tried to run this code, it would have given you an error:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/na_error.png" class="img-fluid figure-img" width="648"></p>
-<figcaption>Error when functions encounter ‘NA’ values</figcaption>
+<div id="fig-06-error-when-functions-encounter" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-06-error-when-functions-encounter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/na_error.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="648">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-06-error-when-functions-encounter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Error when functions encounter ‘NA’ values
+</figcaption>
 </figure>
 </div>
 </div>
@@ -718,9 +734,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>penguins.descriptors <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Descriptive statistics of measurements of body mass (g) for 342 penguins"</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-06-descriptive-statistics-measurements-body" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-06-descriptive-statistics-measurements-body-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Descriptive statistics of measurements of body mass (g) for 342 penguins
+</figcaption>
+<div aria-describedby="tbl-06-descriptive-statistics-measurements-body-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Descriptive statistics of measurements of body mass (g) for 342 penguins</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Mean</th>
@@ -742,6 +763,9 @@ Note
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

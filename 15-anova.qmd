@@ -188,7 +188,7 @@ The `stat_summary` function from the `ggplot2` package is what provides the erro
 
 Here's the code:
 
-```{r stripanova, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-phase-shifts-circadian, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
 
 circadian %>%
   ggplot(aes(x = treatment, y = shift)) +
@@ -346,7 +346,7 @@ nice.anova.table <- create.anova.table(circadian.lm.anova)
 ```
 
 And present it:
-```{r niceanovapdf}
+```{r tbl-15-anova-table-circadian-rythm,}
 kable(nice.anova.table, digits = 4, 
       caption = "ANOVA table for the circadian rythm experiment.", 
       lable = "niceanovapdf")
@@ -441,7 +441,7 @@ One typically shows these results visually on the same figure used to display th
 
 Here is our original figure, to which we'll add the results of the post-hoc test:
 
-```{r stripanova2, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-phase-shifts-circadian-2, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
 
 circadian %>%
   ggplot(aes(x = treatment, y = shift)) +
@@ -465,7 +465,7 @@ Based on our stripchart above, it looks like we need to use Y-value coordinates 
 
 Here's the code, with the `annotate` function added:
 
-```{r stripanovatukey, fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-showing-phase-shift, fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
 
 ggplot(circadian, aes(x = treatment, y = shift)) +
   geom_jitter(colour = "darkgrey", size = 3, shape = 1, width = 0.1) +

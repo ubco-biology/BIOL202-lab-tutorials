@@ -101,7 +101,7 @@ set.seed(1523)
 temp.norm <- data.frame(tempdata = rnorm(32))
 ```
 
-```{r echo = F, fig.width = 5, fig.height = 4, fig.cap = "Example of a normal quantile plot for a variable that is normally distributed."}
+```{r fig-14-example-normal-quantile-plot, echo = F, fig.width = 5, fig.height = 4, fig.cap = "Example of a normal quantile plot for a variable that is normally distributed."}
 
   ggplot(data = temp.norm, aes(sample = tempdata)) +
   stat_qq(shape = 1, size = 2) +
@@ -114,11 +114,11 @@ Now we'll use the `marine` dataset and its variable called `biomass_ratio` to il
 
 We'll first construct a histogram as you've [learned previously](05-visualize-one-variable.qmd#vis_histogram), just to see how the shape of the frequency distribution relates to the pattern seen in the normal quantile plot.
 
-```{r echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
+```{r fig-14-frequency-distribution-biomass-ratio, echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
 
 marine %>%
   ggplot(aes(x = biomass_ratio)) +
-  geom_histogram(binwidth = 0.5, color = "black", fill = "lightgrey", 
+  geom_histogram(binwidth = 0.5, colour = "black", fill = "lightgrey",
                  boundary = 0, closed = "left") +
   xlab("Biomass ratio") +
   ylab("Frequency") +
@@ -129,7 +129,7 @@ Notice that the distribution is quite right-skewed (or "postively skewed").
 
 Now the quantile plot:
 
-```{r fig.cap = "Normal quantile plot of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
+```{r fig-14-normal-quantile-plot-biomass, fig.cap = "Normal quantile plot of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
 marine %>% 
  ggplot(aes(sample = biomass_ratio)) +
   stat_qq(shape = 1, size = 2) +
@@ -290,11 +290,11 @@ Contrary to what is suggested in the text, it is better to use the "logit" trans
 
 When one observes a right-skewed frequency distribution, as seen here in the marine biomass ratio data, a log-transformation often helps.  
 
-```{r echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
+```{r fig-14-frequency-distribution-biomass-ratio-2, echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves.", fig.width = 4, fig.height = 3}
 
 marine %>%
   ggplot(aes(x = biomass_ratio)) +
-  geom_histogram(binwidth = 0.5, color = "black", fill = "lightgrey", 
+  geom_histogram(binwidth = 0.5, colour = "black", fill = "lightgrey",
                  boundary = 0, closed = "left") +
   xlab("Biomass ratio") +
   ylab("Frequency") +
@@ -328,11 +328,11 @@ marine
 
 Now let's look at the histogram of the log-transformed data:
 
-```{r echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves (log-transformed).", fig.width = 5, fig.height = 4}
+```{r fig-14-frequency-distribution-biomass-ratio-3, echo = TRUE, fig.cap = "The frequency distribution of the 'biomass ratio' of 32 marine reserves (log-transformed).", fig.width = 5, fig.height = 4}
 
 marine %>%
   ggplot(aes(x = logbiomass)) +
-  geom_histogram(binwidth = 0.25, color = "black", fill = "lightgrey", 
+  geom_histogram(binwidth = 0.25, colour = "black", fill = "lightgrey",
                  boundary = -0.25) +
   xlab("Biomass ratio (log-transformed)") +
   ylab("Frequency") +
@@ -341,7 +341,7 @@ marine %>%
 
 Now the quantile plot:
 
-```{r fig.cap = "Figure: Normal quantile plot of the 'biomass ratio' of 32 marine reserves (log-transformed).", fig.width = 4, fig.height = 3}
+```{r fig-14-normal-quantile-plot-biomass-2, fig.cap = "Normal quantile plot of the 'biomass ratio' of 32 marine reserves (log-transformed).", fig.width = 4, fig.height = 3}
 
 marine %>%
   ggplot(aes(sample = logbiomass)) +
@@ -400,7 +400,7 @@ apples
 
 Here's a quantile plot of the biomass variable:
 
-```{r echo = F, fig.width = 5, fig.height = 4, fig.cap = "Normal quantile plot of made-up biomass data."}
+```{r fig-14-normal-quantile-plot-made, echo = F, fig.width = 5, fig.height = 4, fig.cap = "Normal quantile plot of made-up biomass data."}
 
 apples %>% 
   ggplot(aes(sample = biomass)) +
@@ -445,7 +445,7 @@ apples
 
 Notice that we still have a zero in the newly created variable, **AFTER** having transformed, because for that value we calculated the log of "1" (which equals zero).  That's OK!
 
-```{r echo = F, fig.width = 5, fig.height = 4, fig.cap = "Normal quantile plot of made-up biomass data, log-transformed."}
+```{r fig-14-normal-quantile-plot-made-2, echo = F, fig.width = 5, fig.height = 4, fig.cap = "Normal quantile plot of made-up biomass data, log-transformed."}
 
 apples %>% 
   ggplot(aes(sample = logbiomass_plus1)) +
@@ -540,7 +540,7 @@ Let's see how it works with the `flowers` dataset, which includes a variable `pr
 
 Let's visualize the data with a normal quantile plot:
 
-```{r fig.cap = "Normal quantile plot of the proportion of seeds fertilized on 30 plants (left) and the corresponding normal quantile plot (right)", fig.width = 4, fig.height = 3}
+```{r fig-14-normal-quantile-plot-proportion, fig.cap = "Normal quantile plot of the proportion of seeds fertilized on 30 plants (left) and the corresponding normal quantile plot (right)", fig.width = 4, fig.height = 3}
 
 flowers %>%
   ggplot(aes(sample = prop_fertile)) +
@@ -570,7 +570,7 @@ flowers$logitfertile <- car::logit(flowers$prop_fertile)
 
 Now let's visualize the transformed data: 
 
-```{r fig.cap = "Normal quantile plot of the proportion of seeds fertilized (logit transformed) on 30 plants", fig.width = 5, fig.height = 4}
+```{r fig-14-normal-quantile-plot-proportion-2, fig.cap = "Normal quantile plot of the proportion of seeds fertilized (logit transformed) on 30 plants", fig.width = 5, fig.height = 4}
 
 flowers %>%
   ggplot(aes(sample = logitfertile)) +

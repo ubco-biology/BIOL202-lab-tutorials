@@ -358,18 +358,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#install_R_Rstudio" id="toc-install_R_Rstudio" class="nav-link active" data-scroll-target="#install_R_Rstudio"><span class="header-section-number">1.1</span> Installing R and RStudio</a></li>
-  <li><a href="#start_r" id="toc-start_r" class="nav-link" data-scroll-target="#start_r"><span class="header-section-number">2</span> Start using R &amp; RStudio</a>
+  <li><a href="#start_r" id="toc-start_r" class="nav-link" data-scroll-target="#start_r"><span class="header-section-number">1.2</span> Start using R &amp; RStudio</a>
   <ul class="collapse">
-  <li><a href="#Rstudio_interface" id="toc-Rstudio_interface" class="nav-link" data-scroll-target="#Rstudio_interface"><span class="header-section-number">2.1</span> The RStudio Interface</a></li>
-  <li><a href="#coding_basics" id="toc-coding_basics" class="nav-link" data-scroll-target="#coding_basics"><span class="header-section-number">2.2</span> Coding basics</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">2.3</span> R packages</a></li>
-  <li><a href="#package_install" id="toc-package_install" class="nav-link" data-scroll-target="#package_install"><span class="header-section-number">2.4</span> Package installation</a></li>
-  <li><a href="#package_load" id="toc-package_load" class="nav-link" data-scroll-target="#package_load"><span class="header-section-number">2.5</span> Package loading</a></li>
-  <li><a href="#intro_markdown" id="toc-intro_markdown" class="nav-link" data-scroll-target="#intro_markdown"><span class="header-section-number">2.6</span> Intro to R Markdown</a></li>
-  <li><a href="#lit_programming" id="toc-lit_programming" class="nav-link" data-scroll-target="#lit_programming"><span class="header-section-number">2.7</span> Literate programming with R Markdown</a></li>
-  <li><a href="#veryify_knit" id="toc-veryify_knit" class="nav-link" data-scroll-target="#veryify_knit"><span class="header-section-number">2.8</span> Making sure R Markdown knits to PDF</a></li>
-  <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">2.9</span> Extra resources</a></li>
-  <li><a href="#online_resources" id="toc-online_resources" class="nav-link" data-scroll-target="#online_resources"><span class="header-section-number">2.10</span> R Resources Online</a></li>
+  <li><a href="#Rstudio_interface" id="toc-Rstudio_interface" class="nav-link" data-scroll-target="#Rstudio_interface"><span class="header-section-number">1.2.1</span> The RStudio Interface</a></li>
+  <li><a href="#coding_basics" id="toc-coding_basics" class="nav-link" data-scroll-target="#coding_basics"><span class="header-section-number">1.2.2</span> Coding basics</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">1.2.3</span> R packages</a></li>
+  <li><a href="#package_install" id="toc-package_install" class="nav-link" data-scroll-target="#package_install"><span class="header-section-number">1.2.4</span> Package installation</a></li>
+  <li><a href="#package_load" id="toc-package_load" class="nav-link" data-scroll-target="#package_load"><span class="header-section-number">1.2.5</span> Package loading</a></li>
+  <li><a href="#intro_markdown" id="toc-intro_markdown" class="nav-link" data-scroll-target="#intro_markdown"><span class="header-section-number">1.2.6</span> Intro to R Markdown</a></li>
+  <li><a href="#lit_programming" id="toc-lit_programming" class="nav-link" data-scroll-target="#lit_programming"><span class="header-section-number">1.2.7</span> Literate programming with R Markdown</a></li>
+  <li><a href="#veryify_knit" id="toc-veryify_knit" class="nav-link" data-scroll-target="#veryify_knit"><span class="header-section-number">1.2.8</span> Making sure R Markdown knits to PDF</a></li>
+  <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">1.2.9</span> Extra resources</a></li>
+  <li><a href="#online_resources" id="toc-online_resources" class="nav-link" data-scroll-target="#online_resources"><span class="header-section-number">1.2.10</span> R Resources Online</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/01-getting-started.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -403,20 +403,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/engine.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>R: Engine</figcaption>
+<div id="fig-01-r-engine" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-01-r-engine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/engine.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-01-r-engine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: R: Engine
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/dashboard.png" class="img-fluid figure-img" style="width:20.0%"></p>
-<figcaption>RStudio: Dashboard</figcaption>
+<div id="fig-01-rstudio-dashboard" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-01-rstudio-dashboard-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dashboard.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-01-rstudio-dashboard-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.2: RStudio: Dashboard
+</figcaption>
 </figure>
 </div>
 </div>
@@ -465,43 +473,51 @@ Note
 <li>Now to install RStudio: once you have installed “R”, go to this <a href="https://posit.co/download/rstudio-desktop/">website</a> and click on the “download RStudio desktop” button under the “Install RStudio” heading. The website should detect what operating system you’re using and offer you the appropriate version.</li>
 </ul>
 </section>
-<section id="start_r" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Start using R &amp; RStudio</h1>
+<section id="start_r" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="start_r"><span class="header-section-number">1.2</span> Start using R &amp; RStudio</h2>
 <p>Recall our car analogy from a <a href="#what_is_R">previous tutorial</a>. Much as we don’t drive a car by interacting directly with the engine but rather by using elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface. After you install R and RStudio on your computer, you’ll have two new programs AKA applications you can open. We will always work in RStudio and not R. In other words:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Rlogo.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>R: DO NOT OPEN THIS</figcaption>
+<div id="fig-01-r-do-not-open" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-01-r-do-not-open-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Rlogo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-01-r-do-not-open-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.3: R: DO NOT OPEN THIS
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RStudio-Ball.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>RStudio: OPEN THIS</figcaption>
+<div id="fig-01-rstudio-open-this" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-01-rstudio-open-this-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/RStudio-Ball.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-01-rstudio-open-this-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.4: RStudio: OPEN THIS
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Launch RStudio on your computer to make sure it’s working (it loads R for you in the background).</p>
-<section id="Rstudio_interface" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="Rstudio_interface"><span class="header-section-number">2.1</span> The RStudio Interface</h2>
+<section id="Rstudio_interface" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="Rstudio_interface"><span class="header-section-number">1.2.1</span> The RStudio Interface</h3>
 <p>When you open RStudio, you should see something similar to the following:</p>
 <p><img src="images/RStudio_Window.png" class="img-fluid"></p>
 <p>Note the four panes which are four panels dividing the screen: the source pane (top left), console pane (bottom left), the files pane (bottom right), and the environment pane (top right). Over the course of this chapter, you’ll come to learn what purpose each of these panes serves.</p>
 </section>
-<section id="coding_basics" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="coding_basics"><span class="header-section-number">2.2</span> Coding basics</h2>
+<section id="coding_basics" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="coding_basics"><span class="header-section-number">1.2.2</span> Coding basics</h3>
 <p>Please go through section <a href="https://moderndive.com/1-getting-started.html#code">1.2 of the ModernDive online text</a> called “How do I code in R?”. This should take about <strong>15 minutes</strong>.</p>
 <p>You may get overwhelmed by all the terminology on that page… don’t worry! You can simply bookmark that page for future reference. But it does cover the coding basics very well!</p>
 </section>
-<section id="packages" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.3</span> R packages</h2>
+<section id="packages" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="packages"><span class="header-section-number">1.2.3</span> R packages</h3>
 <p>An R package is a collection of functions, data, and documentation that extends the capabilities of R. They are written by a world-wide community of R users. For example, among the most popular packages are:</p>
 <ul>
 <li><code>ggplot2</code> package for data visualization</li>
@@ -515,8 +531,8 @@ Note
 <li><p><em>Loading</em>: Packages are not loaded automatically when you open RStudio. You need to load them everytime you open RStudio.</p></li>
 </ul>
 </section>
-<section id="package_install" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="package_install"><span class="header-section-number">2.4</span> Package installation</h2>
+<section id="package_install" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="package_install"><span class="header-section-number">1.2.4</span> Package installation</h3>
 <p>Let’s install the <code>dplyr</code> package, as an example of how installing works.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -579,8 +595,8 @@ Note
 </div>
 </div>
 </section>
-<section id="package_load" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="package_load"><span class="header-section-number">2.5</span> Package loading</h2>
+<section id="package_load" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="package_load"><span class="header-section-number">1.2.5</span> Package loading</h3>
 <p>Let’s load the packages we will use most often.</p>
 <p>After you’ve installed a package, you can load it using the <code>library()</code> command. Run the following code in the Console pane — one <code>library()</code> line per package, which is the convention we follow all term:</p>
 <div class="cell" data-layout-align="center">
@@ -604,8 +620,8 @@ Note
 </div>
 </div>
 </section>
-<section id="intro_markdown" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="intro_markdown"><span class="header-section-number">2.6</span> Intro to R Markdown</h2>
+<section id="intro_markdown" class="level3" data-number="1.2.6">
+<h3 data-number="1.2.6" class="anchored" data-anchor-id="intro_markdown"><span class="header-section-number">1.2.6</span> Intro to R Markdown</h3>
 <p>As you may have learned already from relevant section in the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/markdown-1.html">Biology Procedures and Guidelines resource</a>, R <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Markdown">Markdown</a> is a markup language that provides an easy way to produce a rich, fully-documented reproducible analysis. It allows its user to share a single file that contains all of the commentary, R code, and <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Metadata">metadata</a> needed to reproduce the analysis from beginning to end. R Markdown allows for “chunks” of R code to be included along with Markdown text to produce a nicely formatted HTML, PDF, or Word file without having to know any complicated programming languages or having to fuss with getting the formatting just right in a Microsoft Word DOCX file.</p>
 <p>One R Markdown file can generate a variety of different formats and all of this is done in a single text file with a few bits of formatting. You’ll be pleasantly surprised at how easy it is to write an R Markdown document after your first few attempts.</p>
 <p>We will be using R Markdown to create reproducible lab reports.</p>
@@ -623,8 +639,8 @@ Note
 </div>
 </div>
 </section>
-<section id="lit_programming" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="lit_programming"><span class="header-section-number">2.7</span> Literate programming with R Markdown</h2>
+<section id="lit_programming" class="level3" data-number="1.2.7">
+<h3 data-number="1.2.7" class="anchored" data-anchor-id="lit_programming"><span class="header-section-number">1.2.7</span> Literate programming with R Markdown</h3>
 <div class="callout callout-style-default callout-caution callout-titled" title="Activity">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -671,8 +687,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="veryify_knit" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="veryify_knit"><span class="header-section-number">2.8</span> Making sure R Markdown knits to PDF</h2>
+<section id="veryify_knit" class="level3" data-number="1.2.8">
+<h3 data-number="1.2.8" class="anchored" data-anchor-id="veryify_knit"><span class="header-section-number">1.2.8</span> Making sure R Markdown knits to PDF</h3>
 <p>Now we’re going to ensure R Markdown works the way we want. A key functionality we need is being able to “knit” our report to PDF format.</p>
 <p>With the newest versions of RStudio, you may be able to knit to PDF without doing anything special first.</p>
 <p>Let’s give this a try:</p>
@@ -703,8 +719,8 @@ Note
 <p>Now go back to the steps 1 through 4 above to try knitting your markdown document to PDF.</p>
 <p>In a future <a href="./02-reproducible-r.html#repro_research">tutorial</a> we’ll discuss how to use R Markdown as part of a reproducible workflow.</p>
 </section>
-<section id="r_resources" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="r_resources"><span class="header-section-number">2.9</span> Extra resources</h2>
+<section id="r_resources" class="level3" data-number="1.2.9">
+<h3 data-number="1.2.9" class="anchored" data-anchor-id="r_resources"><span class="header-section-number">1.2.9</span> Extra resources</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -724,8 +740,8 @@ Note
 <p><img src="images/cheatsheets.png" class="img-fluid"></p>
 <p>The book titled “Getting used to R, RStudio, and R Markdown” by Chester Ismay, which can be freely accessed <a href="https://ismayc.github.io/rbasics-book/">here</a>, is also a wonderful resource for for new users of R, RStudio, and R Markdown. It includes examples showing working with R Markdown files in RStudio recorded as GIFs.</p>
 </section>
-<section id="online_resources" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="online_resources"><span class="header-section-number">2.10</span> R Resources Online</h2>
+<section id="online_resources" class="level3" data-number="1.2.10">
+<h3 data-number="1.2.10" class="anchored" data-anchor-id="online_resources"><span class="header-section-number">1.2.10</span> R Resources Online</h3>
 <table class="caption-top table">
 <caption>Learning R - Tutorials and workshop materials</caption>
 <thead>

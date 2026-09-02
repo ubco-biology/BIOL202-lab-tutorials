@@ -196,7 +196,7 @@ We can now create a histogram of these data, thus producing an approximation of 
 
 The only difference here, compared to previous times we've created histograms, is that we add the `after_stat(density)` argument to the `aes` part of the `ggplot` function. This tells R to display the relative frequency (= probability density) rather than the raw counts on the y-axis.  Notice we also use "binwidth = 1", because we want to see a bar for each potential outcome (0 through 20).
 
-```{r fig.cap = "Approximate null distribution for the damselfly study, with n = 20 trials, and probability of success = 0.5 in each trial. Data are from 100000 repetitions.", warning = FALSE, fig.height = 4.5, fig.width = 5}
+```{r fig-09-approximate-null-distribution-damselfly, fig.cap = "Approximate null distribution for the damselfly study, with n = 20 trials, and probability of success = 0.5 in each trial. Data are from 100000 repetitions.", warning = FALSE, fig.height = 4.5, fig.width = 5}
 
 null_distribution %>%
   ggplot(aes(x = n, after_stat(density))) +

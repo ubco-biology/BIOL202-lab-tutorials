@@ -88,7 +88,7 @@ We'll set <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glos
 
 We learned in an [earlier tutorial](07-visualize-two-variables.qmd#two_numeric) that the best way to visualize an association between two numeric variables is with a scatterplot, and that we can create a scatterplot using the `geom_point` function from the `ggplot2` package:  
 
-```{r fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24).", fig.width = 4.2, fig.height = 4}
+```{r fig-16-association-between-inbreeding-coefficient, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24).", fig.width = 4.2, fig.height = 4}
 
 wolf %>% 
 ggplot(aes(x = n_pups, y = inbreed_coef)) +
@@ -102,7 +102,7 @@ We notice that there doesn't appear to be the correct number of points (24) in t
 
 To remedy this, we use the `geom_jitter` function instead of the `geom_point` function.  
 
-```{r pupscatter, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+```{r fig-16-association-between-inbreeding-coefficient-2, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
 
 wolf %>% 
 ggplot(aes(x = n_pups, y = inbreed_coef)) +
@@ -204,7 +204,7 @@ It is advisable to always refer to a scatterplot when authoring a concluding sta
 
 Let's re-do the scatterplot here.
 
-```{r pupscatter2, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+```{r fig-16-association-between-inbreeding-coefficient-3, fig.cap = "The association between inbreeding coefficient and number of surviving wolf pups (n = 24). Values have been jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
 
 wolf %>% 
 ggplot(aes(x = n_pups, y = inbreed_coef)) +
@@ -256,7 +256,7 @@ Unlike in the Pearson correlation case (above), which uses *t* as a test statist
 
 Let's visualize the association, again using the `geom_jitter` function to help see overlapping values:  
 
-```{r trickplot, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+```{r fig-16-scatterplot-impressiveness-written-accounts, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
 
 trick %>%
   ggplot(aes(x = years, y = impressiveness_score)) +
@@ -315,7 +315,7 @@ There is no confidence interval reported with Spearman correlation analysis, so 
 
 As in the preceding Pearson correlation example, we can refer to the Figure in the parentheses of our concluding statement. Note also that we report _n_ rather than degrees of freedom.  
 
-```{r trickplot2, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
+```{r fig-16-scatterplot-impressiveness-written-accounts-2, fig.cap = "Scatterplot of the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account (_n_ = 21). Values have jittered slightly to improve legibility.", fig.width = 4.2, fig.height = 4}
 
 trick %>%
   ggplot(aes(x = years, y = impressiveness_score)) +

@@ -540,9 +540,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bird_malaria.freq.totals <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Contingency table showing the incidence of malaria in female great tits in relation to experimental treatment"</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-07-contingency-table-showing-incidence" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-07-contingency-table-showing-incidence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: Contingency table showing the incidence of malaria in female great tits in relation to experimental treatment
+</figcaption>
+<div aria-describedby="tbl-07-contingency-table-showing-incidence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Contingency table showing the incidence of malaria in female great tits in relation to experimental treatment</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
@@ -574,6 +579,9 @@ Note
 </table>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <p><strong>Relative frequencies</strong></p>
 <p>Often it is useful to also present a contingency table that shows the <em>relative frequencies</em>. However, it’s important to know how to calculate those relative frequencies.</p>
 <p>For instance, recall that in this malaria example, we are interested in comparing the incidence of malaria among the Control and Egg removal treatment groups. Thus, we should calculate the relative frequencies using the <strong>row totals</strong>. This will become clear when we show the table.</p>
@@ -589,9 +597,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bird_malaria.prop <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Contingency table showing the relative frequency of malaria in female great tits in relation to experimental treatment"</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-07-contingency-table-showing-relative" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-07-contingency-table-showing-relative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.2: Contingency table showing the relative frequency of malaria in female great tits in relation to experimental treatment
+</figcaption>
+<div aria-describedby="tbl-07-contingency-table-showing-relative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Contingency table showing the relative frequency of malaria in female great tits in relation to experimental treatment</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
@@ -612,6 +625,9 @@ Note
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -706,10 +722,14 @@ Note
 <p>If we wished to provide an appropriate figure heading, this would be the code:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grouped_bar_graph.png" class="img-fluid figure-img" width="1053"></p>
-<figcaption>Example code chunk for producing a good grouped bar graph</figcaption>
+<div id="fig-07-example-code-chunk-producing" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-example-code-chunk-producing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/grouped_bar_graph.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1053">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-example-code-chunk-producing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Example code chunk for producing a good grouped bar graph
+</figcaption>
 </figure>
 </div>
 </div>
@@ -723,10 +743,14 @@ Note
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Treatment group"</span>) <span class="sc">+</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Grouped bar graph showing the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.</figcaption>
+<div id="fig-07-grouped-bar-graph-showing" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-grouped-bar-graph-showing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-grouped-bar-graph-showing-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-grouped-bar-graph-showing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: Grouped bar graph showing the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -798,10 +822,14 @@ Note
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Relative frequency"</span>) <span class="sc">+</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Relative frequency of the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.</figcaption>
+<div id="fig-07-relative-frequency-incidence-malaria" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-relative-frequency-incidence-malaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-relative-frequency-incidence-malaria-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-relative-frequency-incidence-malaria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Relative frequency of the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -839,10 +867,14 @@ Note
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Bill depth (mm)"</span>) <span class="sc">+</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>Scatterplot of the association between bill length and depth among 151 Adelie penguins</figcaption>
+<div id="fig-07-scatterplot-association-between-bill" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-scatterplot-association-between-bill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-scatterplot-association-between-bill-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-scatterplot-association-between-bill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: Scatterplot of the association between bill length and depth among 151 Adelie penguins
+</figcaption>
 </figure>
 </div>
 </div>
@@ -912,10 +944,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(bill.scatter, <span class="at">type =</span> <span class="st">"density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>Scatterplot of the association between bill length and depth among 151 Adelie penguins, with density plots of each variable shown in the margins.</figcaption>
+<div id="fig-07-scatterplot-association-between-bill-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-scatterplot-association-between-bill-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-scatterplot-association-between-bill-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-scatterplot-association-between-bill-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: Scatterplot of the association between bill length and depth among 151 Adelie penguins, with density plots of each variable shown in the margins.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -979,10 +1015,14 @@ Warning
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="sc">+</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Serotonin levels in the central nervous system of desert locusts that were experimentally crowded for 0 (control), 1, and 2 hours. N = 10 per treatment group.</figcaption>
+<div id="fig-07-serotonin-levels-central-nervous" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-serotonin-levels-central-nervous-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-serotonin-levels-central-nervous-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-serotonin-levels-central-nervous-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: Serotonin levels in the central nervous system of desert locusts that were experimentally crowded for 0 (control), 1, and 2 hours. N = 10 per treatment group.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1070,10 +1110,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>bodymass.violin.points</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Violin plot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins.</figcaption>
+<div id="fig-07-violin-plot-showing-body" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-violin-plot-showing-body-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-violin-plot-showing-body-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-violin-plot-showing-body-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.7: Violin plot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1105,10 +1149,14 @@ Note
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Body mass (g)"</span>) <span class="sc">+</span></span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Boxplot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins. Density plots are provided in the margin. Boxes delimit the first and third quartiles, and the middle line depicts the median. Whiskers extend to values beyond the 1st (lower) and 3rd (upper) quartiles, up to a maximum of 1.5 x IQR, and individual black points are outlying values.</figcaption>
+<div id="fig-07-boxplot-showing-body-mass" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-boxplot-showing-body-mass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-boxplot-showing-body-mass-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-boxplot-showing-body-mass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: Boxplot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins. Density plots are provided in the margin. Boxes delimit the first and third quartiles, and the middle line depicts the median. Whiskers extend to values beyond the 1st (lower) and 3rd (upper) quartiles, up to a maximum of 1.5 x IQR, and individual black points are outlying values.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1140,10 +1188,14 @@ Note
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">colour =</span> <span class="st">"grey"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">width =</span> <span class="fl">0.15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07-visualize-two-variables_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption>Violin plot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins. Boxplots are superimposed, with boxes delimiting the first and third quartiles, and middle line depicting the median. Whiskers extend to values beyond the 1st (lower) and 3rd (upper) quartiles, up to a maximum of 1.5 x IQR, and individual black points are outlying values.</figcaption>
+<div id="fig-07-violin-plot-showing-body-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-07-violin-plot-showing-body-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-visualize-two-variables_files/figure-html/fig-07-violin-plot-showing-body-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-07-violin-plot-showing-body-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: Violin plot showing the body mass (g) of male Adelie (N = 73), Chinstrap (N = 34), and Gentoo (N = 61) penguins. Boxplots are superimposed, with boxes delimiting the first and third quartiles, and middle line depicting the median. Whiskers extend to values beyond the 1st (lower) and 3rd (upper) quartiles, up to a maximum of 1.5 x IQR, and individual black points are outlying values.
+</figcaption>
 </figure>
 </div>
 </div>

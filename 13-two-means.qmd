@@ -145,12 +145,12 @@ Steps to a hypothesis test:
 
 The best way to visualize the data for a paired *t*-test is to create a **histogram** of the calculated *differences* between the paired observations.
 
-```{r fig.cap = "Histogram of the differences in antibody production rate before and after the testosterone treatment", fig.width = 4, fig.height = 3}
+```{r fig-13-histogram-differences-antibody-production, fig.cap = "Histogram of the differences in antibody production rate before and after the testosterone treatment", fig.width = 4, fig.height = 3}
 
 blackbird.diffs %>% 
   ggplot(aes(x = diffs)) +
   geom_histogram(binwidth = 0.1, boundary = -0.3, 
-                 color = "black", fill = "lightgrey",) +
+                 colour = "black", fill = "lightgrey",) +
   xlab("Difference in antibody production rate (after - before) (ln[mOD/min]) 10^-3") +
   ylab("Frequency") +
   theme_bw()
@@ -162,12 +162,12 @@ With such a small sample size (13), the histogram is not particularly informativ
 
 Another optional but nice way to visualize paired data is using a paired plot. 
 
-```{r fig.width = 4, fig.height = 3, fig.cap = "Paired plot of antibody production rate before and after the testosterone treatment"}
+```{r fig-13-paired-plot-antibody-production, fig.width = 4, fig.height = 3, fig.cap = "Paired plot of antibody production rate before and after the testosterone treatment"}
 
 blackbird %>%
   ggplot(aes(x = time, y = antibody)) +
   geom_point(shape = 1, size = 1.5) +
-  geom_line(aes(group = blackbird), color = "grey") +
+  geom_line(aes(group = blackbird), colour = "grey") +
   theme_bw()
 ```
 
@@ -192,7 +192,7 @@ The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#A
 
 As instructed in the [checking assumptions](14-assumptions-transformations.qmd#checknorm_assum) tutorial, we should use a normal quantile plot to visually check the normal distribution assumption, using the calculated differences.
 
-```{r fig.width = 4, fig.height = 3, fig.cap = "Normal quantile plot of the differences in antibody production rate before and after the testosterone treatment (ln[mOD/min]) 10^-3."}
+```{r fig-13-normal-quantile-plot-differences, fig.width = 4, fig.height = 3, fig.cap = "Normal quantile plot of the differences in antibody production rate before and after the testosterone treatment (ln[mOD/min]) 10^-3."}
 
 blackbird.diffs %>%
   ggplot(aes(sample = diffs)) +
@@ -394,7 +394,7 @@ We learned in an earlier [tutorial](07-visualize-two-variables.qmd#numeric_vs_ca
 
 Here we want to visualize height in relation to dominant eye (Left or Right). We can use the information provided in our descriptive stats table to get the sample sizes for the groups (which we need to report in the figure heading). 
 
-```{r fig.width = 3, fig.height = 4, fig.cap = "Violin and boxplot of the heights of students with right (n = 106) and left (n = 48) dominant eyes.  Boxes delimit the first to third quartiles, bold lines represent the group medians, and whiskers extend to 1.5 times the IQR. Points beyond whiskers are extreme observations."}
+```{r fig-13-violin-boxplot-heights-students, fig.width = 3, fig.height = 4, fig.cap = "Violin and boxplot of the heights of students with right (n = 106) and left (n = 48) dominant eyes.  Boxes delimit the first to third quartiles, bold lines represent the group medians, and whiskers extend to 1.5 times the IQR. Points beyond whiskers are extreme observations."}
 
 students %>% 
   ggplot(aes(x = dominant_eye, y = height_cm)) +
@@ -424,7 +424,7 @@ Now let's check the normality assumption by plotting a normal quantile plot for 
 
 We'll introduce the `facet_grid` function that enables plotting of side-by-side panels according to a grouping variable.  
 
-```{r fig.width = 5, fig.height = 3, fig.cap = "Normal quantile plots of height for students with right (n = 106) or left (n = 48) dominant eyes."}
+```{r fig-13-normal-quantile-plots-height, fig.width = 5, fig.height = 3, fig.cap = "Normal quantile plots of height for students with right (n = 106) or left (n = 48) dominant eyes."}
 
 students %>%
   ggplot(aes(sample = height_cm)) +

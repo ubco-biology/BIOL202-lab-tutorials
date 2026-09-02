@@ -339,7 +339,7 @@ See that the `dbinom` function will accept a vector of values of `x`, for which 
 
 Now let's use these exact probabilities to create a barplot showing an exact, discrete probability distribution, corresponding to the binomial distribution with a sample size (number of trials) of *n* = `r num.trials` and a probability of success *p* = 1/6:
 
-```{r fig.cap = "Probability of obtaining X successes out of 6 random trials, with probability of success = 1/6.", fig.height = 4, fig.width = 5}
+```{r fig-10-probability-obtaining-x-successes, fig.cap = "Probability of obtaining X successes out of 6 random trials, with probability of success = 1/6.", fig.height = 4, fig.width = 5}
 
 ggplot(exact.probs.6, aes(y = probs, x = X)) +
   geom_bar(stat = "identity", fill = "lightgrey", colour = "black") +
@@ -380,7 +380,7 @@ exact.probs.15
 
 Now plot the binomial probability distribution: 
 
-```{r fig.cap = "Probability of obtaining X successes out of 15 random trials, with probability of success = 1/6.", fig.height = 4, fig.width = 5}
+```{r fig-10-probability-obtaining-x-successes-2, fig.cap = "Probability of obtaining X successes out of 15 random trials, with probability of success = 1/6.", fig.height = 4, fig.width = 5}
 
 ggplot(exact.probs.15, aes(y = probs, x = X)) +
   geom_bar(stat = "identity", fill = "lightgrey", colour = "black") +
@@ -555,7 +555,7 @@ Our proportional model here is the simplest possible one: that all four hair col
 
 Let's produce a bar graph of the observed frequencies:
 
-```{r fig.cap = "Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).", fig.height = 4, fig.width = 5}
+```{r fig-10-observed-frequency-each-hair, fig.cap = "Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).", fig.height = 4, fig.width = 5}
 
 ggplot(hair.freq.table, aes(x = colour, y = n)) +
   geom_bar(stat = "identity", fill = "lightgrey", colour = "black") +
@@ -618,7 +618,7 @@ The output above shows a large $\chi$^2^ value (`r round(hair.chisq.results$stat
 
 This is an example of an appropriate concluding statement for a $\chi$^2^ goodness-of-fit test:
 
-> The four hair colours did not occur in equal proportion among the sampled students ($\chi$^2^ goodness-of-fit test; *df* = `r hair.chisq.results$parameter`; $\chi$^2^ = `r round(hair.chisq.results$statistic, 2)`; *P* < 0.001). Based on our bar graph (Fig. X), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.
+> The four hair colours did not occur in equal proportion among the sampled students ($\chi$^2^ goodness-of-fit test; *df* = `r hair.chisq.results$parameter`; $\chi$^2^ = `r round(hair.chisq.results$statistic, 2)`; *P* < 0.001). Based on our bar graph (@fig-10-observed-frequency-each-hair), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.
 
 ::: {.callout-caution title="Activity"}
 **Goodness-of-fit test practice**: Using the present tutorial as a guide, use a $\chi$^2^ goodness-of-fit test to determine whether the four bird types in the "birds" dataset (loaded at the start of this tutorial) occur in equal proportion at the marsh habitat where they were sampled. Be sure to include all the steps of a hypothesis test, and a properly captioned figure.

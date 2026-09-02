@@ -66,7 +66,7 @@ And we will use the following datasets in this tutorial:
 ::: {.callout-note}
 From here on, course datasets come from the `biol202` package: load one with `data()` followed by its name, for example `data(birds)`. Use `?birds` to read its documentation.
 
-If you ever want to practise importing instead, CSV copies of the same datasets live at "https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/" — append the file name to that path, for example ".../csv_data/birds.csv", and import it with `read_csv` as shown in a [previous tutorial](04-importing-data.qmd#import_csv_url).
+If you ever want to practice importing instead, CSV copies of the same datasets live at "https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/" — append the file name to that path, for example ".../csv_data/birds.csv", and import it with `read_csv` as shown in a [previous tutorial](04-importing-data.qmd#import_csv_url).
 :::
 
 ## Get an overview of the data {#vis_data_overview}
@@ -155,7 +155,7 @@ tiger.table %>%
   kable(caption = "Frequency table showing the activities of 88 people at the time they were attacked and killed by tigers near Chitwan national Park, Nepal, from 1979 to 2006", digits = 3)
 ```
 
-```{r tigerfreqtable, echo = FALSE}
+```{r tbl-05-frequency-table-showing-activities, echo = FALSE}
 
 tiger.table %>%
   kable(caption = "Frequency table showing the activities of 88 people at the time they were attacked and killed by tigers near Chitwan national Park, Nepal, from 1979 to 2006", digits = 3, booktabs = TRUE)
@@ -202,7 +202,7 @@ And although in the code chunk below you'll see that we provide an "x" and a "y"
 
 Let's provide the code first, and explain after.
 
-```{r fig.cap = "Bar graph showing the activities of 88 people at the time they were attached and killed by tigers near Chitwan national Park, Nepal, from 1979 to 2006", fig.width = 6, fig.height = 6}
+```{r fig-05-bar-graph-showing-activities, fig.cap = "Bar graph showing the activities of 88 people at the time they were attached and killed by tigers near Chitwan national Park, Nepal, from 1979 to 2006", fig.width = 6, fig.height = 6}
 
 ggplot(data = tiger.table, aes(x = reorder(activity, n), y = n)) + 
   geom_bar(stat = "identity") + 
@@ -228,7 +228,7 @@ There you have it: a nicely formatted bar graph!
 
 **REMINDER** Don't forget to include a good figure caption! Here's a snapshot of the full code chunk that produced the bar graph above:
 
-```{r fig.cap = "Example code chunk for producing a good bar graph", echo = FALSE, fig.width = 5}
+```{r fig-05-example-code-chunk-producing, fig.cap = "Example code chunk for producing a good bar graph", echo = FALSE, fig.width = 5}
 
 knitr::include_graphics("images/bar_graph_chunk.png")
 ```
@@ -245,7 +245,7 @@ We'll use `ggplot` to create a histogram, and we'll again use the `penguins` dat
 
 We'll give the code first, then explain below: 
 
-```{r fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
+```{r fig-05-histogram-body-mass-g, fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
 
 ggplot(data = penguins, aes(x = body_mass_g)) +
   geom_histogram(colour = "black", fill = "lightgrey") +
@@ -258,7 +258,7 @@ The syntax follows what was seen above when creating a bar graph, but:
 
 * Here we have only a single variable "x" variable, `body_mass_g` to provide the `aes` function.
 * We use the `geom_histogram` function, which has its own optional arguments:
-    - the "color" we want the outlines of each bar in the histogram to be
+    - the "colour" we want the outlines of each bar in the histogram to be
     - the "fill" colour we want the bars to be
     
 You can also specify the "bin width" that `geom_histogram` uses when generating the histogram. Notice above that we got a message stating:
@@ -306,7 +306,7 @@ And R returns `r penguins.hist.info$breaks[2] - penguins.hist.info$breaks[1]`.  
 
 So let's edit the original histogram code to include the "binwidth" argument in the `geom_histogram` function, as follows:
 
-```{r fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
+```{r fig-05-histogram-body-mass-g-2, fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
 
 ggplot(data = penguins, aes(x = body_mass_g)) +
   geom_histogram(binwidth = 500, colour = "black", fill = "lightgrey") +
@@ -328,7 +328,7 @@ Things to note in your description of a histogram:
 
 So, let's look again at the penguin body mass histogram, and provide a description thereafter:
 
-```{r fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
+```{r fig-05-histogram-body-mass-g-3, fig.cap = "Histogram of body mass (g) for 342 penguins", fig.width = 6, warning = FALSE}
 
 ggplot(data = penguins, aes(x = body_mass_g)) +
   geom_histogram(binwidth = 500, colour = "black", fill = "lightgrey") +

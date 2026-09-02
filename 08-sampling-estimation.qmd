@@ -289,11 +289,11 @@ kable(true.mean.length, digits = 4)
 
 Now let's plot the histogram of 10000 sample means: 
 
-```{r fig.cap = "Approximate sampling distribution of mean gene lengths from the human genome (10000 replicate samples of size 20).", fig.width = 4, fig.height = 4, warning = FALSE}
+```{r fig-08-approximate-sampling-distribution-mean, fig.cap = "Approximate sampling distribution of mean gene lengths from the human genome (10000 replicate samples of size 20).", fig.width = 4, fig.height = 4, warning = FALSE}
 
 gene.means.n20 %>%
 ggplot(aes(x = mean_length)) +
-  geom_histogram(binwidth = 250, color = "black", fill = "lightgrey") +
+  geom_histogram(binwidth = 250, colour = "black", fill = "lightgrey") +
   ylim(0, 1700) +
   xlim(1500, 10000) +
   xlab("Gene length (nucleotides)") +
@@ -342,11 +342,11 @@ gene.means.n50 <- humangenelength %>%
 
 Now plot a histogram, making sure to keep the x- and y-axis limits the same as we used above, so that we can compare the outputs
 
-```{r warning = FALSE, message = FALSE, fig.cap = "Approximate sampling distribution of mean gene lengths from the human genome (10000 replicate samples of size 50).", fig.width = 4, fig.height = 4}
+```{r fig-08-approximate-sampling-distribution-mean-2, warning = FALSE, message = FALSE, fig.cap = "Approximate sampling distribution of mean gene lengths from the human genome (10000 replicate samples of size 50).", fig.width = 4, fig.height = 4}
 
 gene.means.n50 %>%
 ggplot(aes(x = mean_length)) +
-  geom_histogram(binwidth = 250, color = "black", fill = "lightgrey") +
+  geom_histogram(binwidth = 250, colour = "black", fill = "lightgrey") +
   xlim(1500, 10000) +
   xlab("Gene length (nucleotides)") +
   ylab("Number of genes") +
@@ -376,7 +376,7 @@ Now we have what we need to produce a graph that enables direct comparison of th
 This type of graph is not something you'll need to be able to do for assignments!
 :::
 
-```{r newsampfig, fig.cap="Approximate sampling distributions of mean gene lengths from the human genome, fig.height=, message=FALSE, warning=FALSE, using sample sizes of 20 and 50 (10000 replicate samples in each distribution).", fig.width=4}
+```{r fig-08-approximate-sampling-distributions-mean, fig.cap="Approximate sampling distributions of mean gene lengths from the human genome, using sample sizes of 20 and 50 (10000 replicate samples in each distribution).", fig.width=4}
 
 gene.means.combined %>%
  ggplot(aes(x = mean_length, fill = as.factor(sampsize))) +
