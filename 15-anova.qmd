@@ -498,11 +498,11 @@ Figure \@ref(fig:stripanovatukey) is the kind of figure that should be reference
 
 We are now able to write our truly final concluding statement, below.  
 
-* * *
-
-1. Annotating stripcharts  
+::: {.callout-caution title="Activity"}
+**Annotating stripcharts**
 
 Pretend that our post-hoc test showed that the "Knee" group was not different from either the control or the Eyes group.  Re-do the figure above, but this time place an "ab" above the Knee group on the figure. This is how you would indicate that the control and eyes grouped differed significantly from one-another, but neither differed significantly from the Knee group.
+:::
 
 ### Concluding statement {#anova_conclusion}
 

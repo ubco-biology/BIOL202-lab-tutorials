@@ -33,7 +33,9 @@ A *workflow* refers to the the steps you take when conducting your day-to-day wo
 
 Following best practices for naming and organizing your files and directories on your computer will help ensure that you can spend more time doing the important work, and less time fiddling and trying to remember what you did and where you saved your work. It will also help your future self, when labs and assignments in upper year courses request that you use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#R">R</a> and R Markdown for analyses and reports.
 
-1. Review the Biology department's [Procedures and Guidelines webpage](https://ubco-biology.github.io/Procedures-and-Guidelines/) description of how to [manage files and directories](https://ubco-biology.github.io/Procedures-and-Guidelines/file-and-data-management.html). This should take about **20 minutes**
+::: {.callout-caution title="Activity"}
+Review the Biology department's [Procedures and Guidelines webpage](https://ubco-biology.github.io/Procedures-and-Guidelines/) description of how to [manage files and directories](https://ubco-biology.github.io/Procedures-and-Guidelines/file-and-data-management.html). This should take about **20 minutes**.
+:::
 
 ## An example BIOL202 workflow {#biol202_workflow}
 
@@ -177,9 +179,9 @@ For the basics on formatting in R Markdown, consult the R Markdown [reference gu
 
 At this point, you should familiarize yourself with the components of a markdown file.  
 
-* * *
-
-1. **R Markdown basics**: Read through section 4.2 of this online [tutorial](https://rbasics.netlify.app/4-rmarkdown.html#the-components-of-an-r-markdown-file) and watch the videos there too
+::: {.callout-caution title="Activity"}
+**R Markdown basics**: Read through section 4.2 of this online [tutorial](https://rbasics.netlify.app/4-rmarkdown.html#the-components-of-an-r-markdown-file) and watch the videos there too.
+:::
 
 * * *
 

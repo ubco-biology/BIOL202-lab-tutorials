@@ -238,7 +238,9 @@ penguins.descriptors %>%
 In another tutorial we'll learn how to present the table following all the guidelines in the [Biology Guidelines and Procedures document](https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html), including, for example, significant digits. For now, the preceding table is good!
 :::
 
-1. **Descriptive statistics**: Create a histogram and table of descriptive statistics for the "flipper_length_mm" variable in the `penguins` dataset.
+::: {.callout-caution title="Activity"}
+**Descriptive statistics**: Create a histogram and table of descriptive statistics for the "flipper_length_mm" variable in the `penguins` dataset.
+:::
 
 ## Describing a numerical variable grouped by a categorical variable {#desc_numeric_var_cat}
 
@@ -274,4 +276,6 @@ Let's have a look at the output:
 penguins.descriptors.byspecies
 ```
 
-1. Use the `kable` function to output this new tibble in a nice format
+::: {.callout-caution title="Activity"}
+Use the `kable` function to output this new tibble in a nice format.
+:::

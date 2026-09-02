@@ -266,5 +266,7 @@ It is also crucial that you report the sample size (here, number of random trial
 
 When we learn new types of statistical test, we'll adjust our concluding statements accordingly.
 
-1. Using this tutorial as a guide, try to repeat all the steps of a hypothesis test for Example 6.2 in the text book (concerning handedness in toads).
+::: {.callout-caution title="Activity"}
+Using this tutorial as a guide, try to repeat all the steps of a hypothesis test for Example 6.2 in the text book (concerning handedness in toads).
+:::
 

@@ -372,11 +372,9 @@ For example, for the body temperature example, we calculated a 95% confidence in
 
 The hypothesized value of $\mu_0$ was 98.6$^\circ$F, which is encompassed by our confidence interval.  Thus, it is a plausible value, and there is no reason to reject the null hypothesis.  
 
-* * *
+::: {.callout-caution title="Activity"}
+**Practice confidence intervals**
 
-1. Practice confidence intervals
-
-* First, using the `bodytemp` dataset, calculate the 99% confidence interval for the mean body temperature in the population.  
+* First, using the `bodytemp` dataset, calculate the 99% confidence interval for the mean body temperature in the population.
 * Then, using the "stalkies" dataset, use the confidence interval approach (95% confidence) to test the hypothesis that the average eye span in the population is $\mu_0$ = 8.1mm
-
-* * *
+:::

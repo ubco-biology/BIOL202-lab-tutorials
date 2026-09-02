@@ -88,7 +88,9 @@ This happens if you forgot to load the `readr` package!
 
 The default behaviour of the `read_csv` function is to include a printout of the type of variable housed in each column of the dataset. For example, when importing the `students` dataset, the function gives a printout showing that there are three "character" variables (denoted `chr`) — R reads categorical variables in from a CSV as character variables — and three `dbl`, or double precision, floating point format numeric variables.
 
-1. Take a minute to check out this [good overview](https://www.burns-stat.com/documents/tutorials/impatient-r/more-r-key-objects/more-r-numbers/) of how R handles numeric variables.
+::: {.callout-caution title="Activity"}
+Take a minute to check out this [good overview](https://www.burns-stat.com/documents/tutorials/impatient-r/more-r-key-objects/more-r-numbers/) of how R handles numeric variables.
+:::
 
 You can tell R to not provide this information by including the argument `show_col_types = FALSE` within the `read_csv` code.  Like so:
 

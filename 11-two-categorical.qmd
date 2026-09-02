@@ -262,13 +262,11 @@ Thus, the odds of getting cancer while on aspirin are about `r round(cancer.aspi
 
 Alternatively, "the odds are 13 to 1 that a women who took aspirin would **not** get cancer in the next 10 years".
 
-* * *
-
-1. Estimate odds
+::: {.callout-caution title="Activity"}
+**Estimate odds**
 
 * Estimate the odds that a woman in the placebo group would get cancer
-
-* * *
+:::
 
 ## Estimate the odds ratio {#oddsratio}
 
@@ -449,10 +447,10 @@ In the code above we manually specified the two fill colours using the `scale_fi
 
 ### Check the assumptions {#checkchiassum}
 
-The $\chi$^2^ contingency test (also known as association test) has <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> that **must be checked** prior to proceeding:
+The $\chi$^2^ contingency test (also known as association test) has <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> that **must be checked** prior to proceeding — these are the same assumptions you checked for the $\chi$^2^ goodness-of-fit test in the [previous tutorial](10-one-categorical.qmd#GOF_run):
 
 * none of the categories should have an expected frequency of less than one
-* no more than 20% of the categories should have expected frequencies less than five 
+* no more than 20% of the categories should have expected frequencies less than five
 
 To test these assumptions, we need to actually conduct the test, because in doing so R calculates the **expected frequencies** for us.  
 

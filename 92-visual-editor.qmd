@@ -1,6 +1,6 @@
 # Visual Markdown Editor {-}
 
-This is an optional tutorial describing a new feature included in the latest version (1.4) of RStudio: a ["Visual Markdown Editor"](https://rstudio.github.io/visual-markdown-editing/?_ga=2.43936998.2146903537.1631712539-1654786890.1631712539). 
+This is an optional tutorial describing a feature of RStudio called the ["Visual Markdown Editor"](https://rstudio.github.io/visual-markdown-editing/).
 
 ## A more familiar editing environment {-}
 

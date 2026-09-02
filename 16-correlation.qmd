@@ -227,7 +227,9 @@ Litter size is significantly negatively correlated with the inbreeding coefficie
 Remember to double-check if you had any missing values in your dataset, do that you don't report the wrong sample size in your figure caption and / or concluding statement.
 :::
 
-1. Using the `penguins` dataset that loads with the `palmerpenguins` package, test the null hypothesis that there is no linear association between bill length and bill depth among Gentoo penguins. **HINT**: Before using the `cor.test` function, you'll first need to create a new tibble that includes only the "Gentoo" species data.
+::: {.callout-caution title="Activity"}
+Using the `penguins` dataset that loads with the `palmerpenguins` package, test the null hypothesis that there is no linear association between bill length and bill depth among Gentoo penguins. **HINT**: Before using the `cor.test` function, you'll first need to create a new tibble that includes only the "Gentoo" species data.
+:::
 
 ## Rank correlation (Spearman's correlation) {#rankcorr}
 

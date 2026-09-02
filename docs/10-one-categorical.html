@@ -395,7 +395,14 @@ window.Quarto = {
   <li><a href="#binomdist" id="toc-binomdist" class="nav-link" data-scroll-target="#binomdist"><span class="header-section-number">10.3</span> Binomial distribution</a></li>
   <li><a href="#binom_test" id="toc-binom_test" class="nav-link" data-scroll-target="#binom_test"><span class="header-section-number">10.4</span> Binomial test</a></li>
   <li><a href="#prophypconf" id="toc-prophypconf" class="nav-link" data-scroll-target="#prophypconf"><span class="header-section-number">10.5</span> Confidence interval approach to hypothesis testing</a></li>
-  <li><a href="#GOF_test" id="toc-GOF_test" class="nav-link" data-scroll-target="#GOF_test"><span class="header-section-number">10.6</span> Goodness-of-fit tests</a></li>
+  <li><a href="#GOF_test" id="toc-GOF_test" class="nav-link" data-scroll-target="#GOF_test"><span class="header-section-number">10.6</span> Goodness-of-fit tests</a>
+  <ul class="collapse">
+  <li><a href="#GOF_data" id="toc-GOF_data" class="nav-link" data-scroll-target="#GOF_data"><span class="header-section-number">10.6.1</span> Load and inspect the hair-colour data</a></li>
+  <li><a href="#GOF_hyp" id="toc-GOF_hyp" class="nav-link" data-scroll-target="#GOF_hyp"><span class="header-section-number">10.6.2</span> Hypothesis statement</a></li>
+  <li><a href="#GOF_figure" id="toc-GOF_figure" class="nav-link" data-scroll-target="#GOF_figure"><span class="header-section-number">10.6.3</span> Visualize the data</a></li>
+  <li><a href="#GOF_run" id="toc-GOF_run" class="nav-link" data-scroll-target="#GOF_run"><span class="header-section-number">10.6.4</span> Check the assumptions and conduct the test</a></li>
+  <li><a href="#GOF_conclusion" id="toc-GOF_conclusion" class="nav-link" data-scroll-target="#GOF_conclusion"><span class="header-section-number">10.6.5</span> Draw a conclusion</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/10-one-categorical.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -766,9 +773,19 @@ Note
 <p><strong>Reporting the confidence interval for a proportion</strong></p>
 <p>The appropriate way to report the confidence interval is as follows:</p>
 <p>The 95% Agresti-Coull confidence interval is: 0.246 <span class="math inline">\(&lt; {p} &lt;\)</span> 0.442.</p>
-<ol type="1">
-<li>What is the best estimate of the proportion of the marsh birds that belong to the “Shorebird” category? What is the standard error of the proportion, and the 95% Agresti-Coull confidence interval?</li>
-</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the best estimate of the proportion of the marsh birds that belong to the “Shorebird” category? What is the standard error of the proportion, and the 95% Agresti-Coull confidence interval?</p>
+</div>
+</div>
 </section>
 </section>
 <section id="binomdist" class="level2" data-number="10.3">
@@ -893,13 +910,23 @@ Note
 </div>
 </div>
 </div>
-<ol type="1">
-<li>Challenge: Binomial probabilities</li>
-</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Challenge: Binomial probabilities</strong></p>
 <ul>
 <li>Use the <code>dbinom</code> function to calculate the probability of rolling three “2”s when rolling a fair six-sided die 20 times.</li>
 <li>Produce a graph of a discrete probability distribution for this scenario: <em>p</em> = 1/4, and <em>n</em> = 12.</li>
 </ul>
+</div>
+</div>
 </section>
 <section id="binom_test" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="binom_test"><span class="header-section-number">10.4</span> Binomial test</h2>
@@ -1014,19 +1041,238 @@ Warning
 <blockquote class="blockquote">
 <p>Counter-clockwise battles occurred in a significantly higher proportion than 0.5 (observed proportion of counter-clockwise battles = 0.85; Agresti-Coull 95% confidence interval: 0.631 &lt; <span class="math inline">\({p}\)</span> &lt; 0.956.</p>
 </blockquote>
-<hr>
-<ol type="1">
-<li><strong>Binomial hypothesis test practice</strong>: Using the present tutorial as a guide, use a <strong>binomial test</strong> to address the question posed in Example 6.2 in the text book (concerning handedness in toads). Be sure to include all the steps of a hypothesis test.</li>
-</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Binomial hypothesis test practice</strong>: Using the present tutorial as a guide, use a <strong>binomial test</strong> to address the question posed in Example 6.2 in the text book (concerning handedness in toads). Be sure to include all the steps of a hypothesis test.</p>
+</div>
+</div>
 </section>
 <section id="GOF_test" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="GOF_test"><span class="header-section-number">10.6</span> Goodness-of-fit tests</h2>
-<p><strong>This tutorial is under construction, and will not be covered in 2022</strong></p>
-<p>In this tutorial, we continue to learn how to test hypotheses about a categorical variable.</p>
 <p>We previously learned how to test a hypothesis about frequencies or proportions when the variable has only two categories of interest, i.e.&nbsp;success and failure (a binary variable). We used a binomial test for this purpose. It is important to note, however, that even in cases where the variable has more than two categories (e.g.&nbsp;hair colour: brown, black, blonde, red), one can define a particular category (e.g.&nbsp;red hair) as a “success”, and the remaining categories as failures, in which case we have simplified our variable to a binary categorical variable.</p>
-<p>For testing hypotheses about frequencies or proportions when there are more than two categories, we use goodness of fit (GOF) tests. In general, these types of test evaluate how well an observed discrete frequency (or probability) distribution fits some hypothesized frequency distribution. We’ll demonstrate this next.</p>
+<p>For testing hypotheses about frequencies or proportions when there are more than two categories, we use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Chi-square-($\chi$^2^)-goodness-of-fit-test">goodness of fit (GOF) tests</a>. In general, these types of test evaluate how well an observed discrete frequency (or probability) distribution fits some hypothesized frequency distribution. Here we’ll learn the simplest version: testing observed frequencies against a <strong>proportional model</strong>, meaning our null hypothesis is stated as a set of hypothesized <em>proportions</em> for each category (rather than, say, a Mendelian genetic ratio derived from theory).</p>
+<hr>
+<section id="GOF_data" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="GOF_data"><span class="header-section-number">10.6.1</span> Load and inspect the hair-colour data</h3>
+<p>For this activity we’ll use the <code>haircolour</code> dataset, which records the hair colour of 100 students.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(haircolour)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Have a look at it:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>haircolour</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 100 × 1</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    colour</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt; </span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Red   </span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Blonde</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Black </span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Black </span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Black </span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Black </span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Red   </span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Black </span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Blonde</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Brown </span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 90 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The data have a single categorical variable, “colour”, with four categories: <code>Black</code>, <code>Blonde</code>, <code>Brown</code>, and <code>Red</code>.</p>
+<p>As we did earlier with the “birds” dataset, let’s produce a frequency table:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>hair.freq.table <span class="ot">&lt;-</span> haircolour <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(colour, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Show the table:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(hair.freq.table, <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">colour</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Brown</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Blonde</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Red</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.09</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Just by eyeballing the table, the four hair colours clearly don’t occur with equal frequency in this sample — but “clearly” isn’t a statistical conclusion. We need a formal hypothesis test to decide whether the population these students were sampled from truly has unequal proportions of each hair colour, or whether what we’re seeing here could plausibly be due to <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Sampling-error">sampling error</a> alone.</p>
+</section>
+<section id="GOF_hyp" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="GOF_hyp"><span class="header-section-number">10.6.2</span> Hypothesis statement</h3>
+<p>Our proportional model here is the simplest possible one: that all four hair colours are equally common in the population, each with a proportion of 0.25.</p>
+<p><strong>H<sub>0</sub></strong>: In the population, the four hair colours occur in equal proportion (p<sub>Black</sub> = p<sub>Blonde</sub> = p<sub>Brown</sub> = p<sub>Red</sub> = 0.25).</p>
+<p><strong>H<sub>A</sub></strong>: In the population, the four hair colours do not all occur in equal proportion.</p>
+<ul>
+<li>We use an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)"><span class="math inline">\(\alpha\)</span> level</a> of 0.05.</li>
+<li>It is a two-tailed alternative hypothesis; we have no reason to expect the deviation from equal proportions (if any) to favour a particular category.</li>
+<li>We’ll use a <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test, because we’re comparing observed frequencies across more than two categories to the frequencies expected under a null hypothesis.</li>
+<li>We will use the <span class="math inline">\(\chi\)</span><sup>2</sup> test statistic, with degrees of freedom equal to <em>k</em> − 1, where <em>k</em> is the number of categories, so 4 − 1 = 3.</li>
+<li>We must check the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test.</li>
+<li>It is always a good idea to present a figure to accompany your analysis.</li>
+</ul>
+<hr>
+</section>
+<section id="GOF_figure" class="level3" data-number="10.6.3">
+<h3 data-number="10.6.3" class="anchored" data-anchor-id="GOF_figure"><span class="header-section-number">10.6.3</span> Visualize the data</h3>
+<p>Let’s produce a bar graph of the observed frequencies:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hair.freq.table, <span class="fu">aes</span>(<span class="at">x =</span> colour, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"lightgrey"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">25</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Hair colour"</span>) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="10-one-categorical_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
+<figcaption>Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The dashed line marks the frequency we’d expect in each category (25 students) if the null hypothesis were true. Brown and Black appear to be over-represented, and Blonde and Red under-represented, relative to that expectation — but again, we need the formal test to know whether these deviations are more than what we’d expect from sampling error alone.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Horizontal bar graph</strong>: Using the approach you learned in <a href="./05-visualize-one-variable.html#vis_cat_barchart">Section 5.4</a>, recreate the bar graph above as a horizontal bar graph, with the hair colours sorted by frequency (rather than alphabetically) using the <code>reorder</code> and <code>coord_flip</code> functions.</p>
+</div>
+</div>
+</section>
+<section id="GOF_run" class="level3" data-number="10.6.4">
+<h3 data-number="10.6.4" class="anchored" data-anchor-id="GOF_run"><span class="header-section-number">10.6.4</span> Check the assumptions and conduct the test</h3>
+<p>The <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test has <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> that must be checked prior to proceeding:</p>
+<ul>
+<li>none of the categories should have an expected frequency of less than one</li>
+<li>no more than 20% of the categories should have expected frequencies less than five</li>
+</ul>
+<p>As before, we need to actually conduct the test to have R calculate the expected frequencies for us.</p>
+<p>We’ll use the <code>chisq.test</code> function from the <code>janitor</code> package — the same function (and same package) you’ll use again for the <span class="math inline">\(\chi\)</span><sup>2</sup> contingency test in the <a href="./11-two-categorical.html#checkchiassum">next tutorial</a>. <strong>NOTE</strong>: because R’s base package also has a function called <code>chisq.test</code>, we specify <code>janitor::chisq.test</code> so there’s no ambiguity about which version we’re using.</p>
+<p>The function needs two things: <code>x</code>, a vector of our observed counts, and <code>p</code>, a vector of the proportions hypothesized under the null hypothesis (one for each category, and they must sum to 1).</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>hair.chisq.results <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">chisq.test</span>(<span class="at">x =</span> hair.freq.table<span class="sc">$</span>n, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because our null hypothesis is that <em>every</em> category has the same proportion (0.25), it doesn’t matter here that <code>hair.freq.table</code> is sorted by frequency rather than alphabetically — every entry in <code>p</code> is the same. If your proportional model instead specified a <em>different</em> hypothesized proportion for each category, you would need to make sure the order of <code>x</code> and the order of <code>p</code> line up correctly.</p>
+</div>
+</div>
+<p>Have a look at the output:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>hair.chisq.results</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Chi-squared test for given probabilities</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  hair.freq.table$n</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; X-squared = 30.64, df = 3, p-value = 1.012e-06</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>As with the contingency test, this object holds more than what’s printed. Use <code>names()</code> to see what’s available:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hair.chisq.results)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "statistic" "parameter" "p.value"   "method"    "data.name" "observed" </span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] "expected"  "residuals" "stdres"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The expected frequencies are stored in <code>expected</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(hair.chisq.results<span class="sc">$</span>expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Every expected frequency is 25 (as we’d anticipate, since we hypothesized equal proportions across 100 students in four categories). None are below 1, and none are below 5, so our assumptions are met.</p>
+</section>
+<section id="GOF_conclusion" class="level3" data-number="10.6.5">
+<h3 data-number="10.6.5" class="anchored" data-anchor-id="GOF_conclusion"><span class="header-section-number">10.6.5</span> Draw a conclusion</h3>
+<p>The output above shows a large <span class="math inline">\(\chi\)</span><sup>2</sup> value (30.64) on 3 degrees of freedom, and a very small <em>P</em>-value — much smaller than our stated <span class="math inline">\(\alpha\)</span> of 0.05. So we reject the null hypothesis.</p>
+<p>This is an example of an appropriate concluding statement for a <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test:</p>
+<blockquote class="blockquote">
+<p>The four hair colours did not occur in equal proportion among the sampled students (<span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test; <em>df</em> = 3; <span class="math inline">\(\chi\)</span><sup>2</sup> = 30.64; <em>P</em> &lt; 0.001). Based on our bar graph (Fig. X), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.</p>
+</blockquote>
+<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Goodness-of-fit test practice</strong>: Using the present tutorial as a guide, use a <span class="math inline">\(\chi\)</span><sup>2</sup> goodness-of-fit test to determine whether the four bird types in the “birds” dataset (loaded at the start of this tutorial) occur in equal proportion at the marsh habitat where they were sampled. Be sure to include all the steps of a hypothesis test, and a properly captioned figure.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

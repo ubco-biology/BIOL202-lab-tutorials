@@ -95,7 +95,9 @@ It's important to check whether there are any missing values for any of the vari
 
 Once you have gotten an overview your dataset's structure and contents, the next order of business is always to _visualize_ your data using graphs and sometimes tables. 
 
-1.  **Import and data overview:** Following the instructions provided in previous tutorials, import the `tigerdeaths.csv` and `birds.csv` datasets, and get an overview of each of those datasets.
+::: {.callout-caution title="Activity"}
+**Import and data overview:** Following the instructions provided in previous tutorials, import the `tigerdeaths.csv` and `birds.csv` datasets, and get an overview of each of those datasets.
+:::
 
 ## Create a frequency table {#vis_cat_freq_table}
 
@@ -170,7 +172,9 @@ You now know how to create a frequency table for a categorical variable!
 Your table caption won't include a number (e.g. Table 1) until you actually knit to PDF. Be sure to check your PDF to ensure that the table captions show up, and are numbered!
 :::
 
-2. **Frequency table**: Try creating a frequency table using the `birds` dataset, which includes data about four types of birds observed at a wetland.
+::: {.callout-caution title="Activity"}
+**Frequency table**: Try creating a frequency table using the `birds` dataset, which includes data about four types of birds observed at a wetland.
+:::
 
 ## Create a bar graph {#vis_cat_barchart}
 
@@ -229,7 +233,9 @@ There you have it: a nicely formatted bar graph!
 knitr::include_graphics("images/bar_graph_chunk.png")
 ```
 
-3. **Bar graph**: Try creating a bar graph using the `birds` dataset, which includes data about four types of birds observed at a wetland.
+::: {.callout-caution title="Activity"}
+**Bar graph**: Try creating a bar graph using the `birds` dataset, which includes data about four types of birds observed at a wetland.
+:::
 
 ## Create a histogram {#vis_histogram}
 
@@ -333,5 +339,7 @@ ggplot(data = penguins, aes(x = body_mass_g)) +
 
 The histogram is moderately positively skewed and thus asymmetric, with a single mode near 3500g. There are no obvious outliers in the distribution. 
 
-1. **Histogram**: Create a histogram of the bill lengths of penguins in the `penguins` dataset, and include an appropriate figure caption. Then provide a description of what you see.
+::: {.callout-caution title="Activity"}
+**Histogram**: Create a histogram of the bill lengths of penguins in the `penguins` dataset, and include an appropriate figure caption. Then provide a description of what you see.
+:::
 

@@ -31,10 +31,10 @@ Follow the instructions below, and you are encouraged to view this YouTube video
 R needs to be installed successfully >prior< to installing RStudio (because the latter depends on the former)  
 :::
 
-* Figure out what operating system (and version) you have on your computer (e.g. Windows 10; Mac OS X 12.51 "Monterey")  
-* Go to this [website](https://cran.r-project.org/) and click on the appropriate download link at the top of the page (depending on your operating system, Windows / MacOS / Linux)  
-    - For *Windows* users, download the "base" version; this file will be called something like R-4.1.1-win.exe. Executing this file launches a familiar Windows Setup Wizard that will install R on your computer.  
-    - For *Mac* users, download the "pkg" file that is appropriate for your version of MacOS; the file will be called something like R-4.1.1.pkg. Download and run this installation package—just accept the default options and you will be ready to go.  
+* Figure out what operating system (and version) you have on your computer. Windows versions are identified by a single number (e.g. "Windows 11"); macOS versions have both a number and a name (e.g. "macOS 14, Sonoma"). If you're not sure, check Settings > System > About on Windows, or the Apple menu > About This Mac on a Mac.
+* Go to this [website](https://cran.r-project.org/) and click on the appropriate download link at the top of the page (depending on your operating system, Windows / MacOS / Linux)
+    - For *Windows* users, download the "base" version; the file will be named `R-x.y.z-win.exe`, where `x.y.z` is whatever the current version number is (e.g. `R-4.5.1-win.exe`). Executing this file launches a familiar Windows Setup Wizard that will install R on your computer.
+    - For *Mac* users, download the "pkg" file that is appropriate for your version of MacOS; the file will be named `R-x.y.z.pkg` (e.g. `R-4.5.1.pkg`). Download and run this installation package—just accept the default options and you will be ready to go.
 
 * Now to install RStudio: once you have installed "R", go to this [website](https://posit.co/download/rstudio-desktop/) and click on the  "download RStudio desktop" button under the "Install RStudio" heading.  The website should detect what operating system you're using and offer you the appropriate version.  
 
@@ -163,16 +163,20 @@ R Markdown is just one flavour of a markup language. RStudio can be used to edit
 
 ## Literate programming with R Markdown {#lit_programming}
 
-1. View the following short video:
+::: {.callout-caution title="Activity"}
+View the following short video:
 
 [**Why use R Markdown for Lab Reports?**](https://youtu.be/lNWVQ2oxNho)
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lNWVQ2oxNho" frameborder="0" allowfullscreen></iframe>
+:::
 
-The preceding video described what can be referred to as <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Literate-programming">**literate programming**</a>: authoring a single document that integrates data analysis (executable code) with textual documentation, linking data, code, and text. In R Markdown, the executable R code is placed in "chunks", and these are embedded throughout sections of regular text.   
+The preceding video described what can be referred to as <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Literate-programming">**literate programming**</a>: authoring a single document that integrates data analysis (executable code) with textual documentation, linking data, code, and text. In R Markdown, the executable R code is placed in "chunks", and these are embedded throughout sections of regular text.
 
 For an example of a PDF document that illustrates literate programming, see [here](https://osf.io/59j4b).  It accompanied a lab-based experiment examining the potential for freshwater diatoms to be successfully dispersed over long distances adhered to duck feathers.
 
-2. View the following [youtube video](https://www.youtube.com/watch?v=asHhuHRxhvo) on creating an R Markdown document.
+::: {.callout-caution title="Activity"}
+View the following [youtube video](https://www.youtube.com/watch?v=asHhuHRxhvo) on creating an R Markdown document.
+:::
 
 
 ::: {.callout-tip collapse="true"}

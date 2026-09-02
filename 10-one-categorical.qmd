@@ -282,7 +282,9 @@ The appropriate way to report the confidence interval is as follows:
 
 The 95% Agresti-Coull confidence interval is: `r round(confint.results$lower, 3)` $< {p} <$ `r round(confint.results$upper, 3)`. 
 
-1. What is the best estimate of the proportion of the marsh birds that belong to the "Shorebird" category? What is the standard error of the proportion, and the 95% Agresti-Coull confidence interval?
+::: {.callout-caution title="Activity"}
+What is the best estimate of the proportion of the marsh birds that belong to the "Shorebird" category? What is the standard error of the proportion, and the 95% Agresti-Coull confidence interval?
+:::
 
 ## Binomial distribution {#binomdist}
 
@@ -387,10 +389,12 @@ ggplot(exact.probs.15, aes(y = probs, x = X)) +
   theme_bw()
 ```
 
-1. Challenge: Binomial probabilities
+::: {.callout-caution title="Activity"}
+**Challenge: Binomial probabilities**
 
 * Use the `dbinom` function to calculate the probability of rolling three "2"s when rolling a fair six-sided die 20 times.
 * Produce a graph of a discrete probability distribution for this scenario: *p* = 1/4, and *n* = 12.
+:::
 
 ## Binomial test {#binom_test}
 
@@ -486,19 +490,137 @@ In this case, the appropriate concluding statement would be:
 
 > Counter-clockwise battles occurred in a significantly higher proportion than 0.5 (observed proportion of counter-clockwise battles = `r round(binom.test.results$estimate, 3)`; Agresti-Coull 95% confidence interval: `r round(damsel.confint.results$lower,3)` < ${p}$ < `r round(damsel.confint.results$upper,3)`.  
 
-* * *
-
-1. **Binomial hypothesis test practice**: Using the present tutorial as a guide, use a **binomial test** to address the question posed in Example 6.2 in the text book (concerning handedness in toads). Be sure to include all the steps of a hypothesis test.
+::: {.callout-caution title="Activity"}
+**Binomial hypothesis test practice**: Using the present tutorial as a guide, use a **binomial test** to address the question posed in Example 6.2 in the text book (concerning handedness in toads). Be sure to include all the steps of a hypothesis test.
+:::
 
 ## Goodness-of-fit tests {#GOF_test}
 
-**This tutorial is under construction, and will not be covered in 2022**
+We previously learned how to test a hypothesis about frequencies or proportions when the variable has only two categories of interest, i.e. success and failure (a binary variable). We used a binomial test for this purpose. It is important to note, however, that even in cases where the variable has more than two categories (e.g. hair colour: brown, black, blonde, red), one can define a particular category (e.g. red hair) as a "success", and the remaining categories as failures, in which case we have simplified our variable to a binary categorical variable.
 
-In this tutorial, we continue to learn how to test hypotheses about a categorical variable.
+For testing hypotheses about frequencies or proportions when there are more than two categories, we use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Chi-square-($\chi$^2^)-goodness-of-fit-test">goodness of fit (GOF) tests</a>. In general, these types of test evaluate how well an observed discrete frequency (or probability) distribution fits some hypothesized frequency distribution. Here we'll learn the simplest version: testing observed frequencies against a **proportional model**, meaning our null hypothesis is stated as a set of hypothesized *proportions* for each category (rather than, say, a Mendelian genetic ratio derived from theory).
 
-We previously learned how to test a hypothesis about frequencies or proportions when the variable has only two categories of interest, i.e. success and failure (a binary variable). We used a binomial test for this purpose. It is important to note, however, that even in cases where the variable has more than two categories (e.g. hair colour: brown, black, blonde, red), one can define a particular category (e.g. red hair) as a “success”, and the remaining categories as failures, in which case we have simplified our variable to a binary categorical variable.
+* * *
 
-For testing hypotheses about frequencies or proportions when there are more than two categories, we use goodness of fit (GOF) tests. In general, these types of test evaluate how well an observed discrete frequency (or probability) distribution fits some hypothesized frequency distribution.  We'll demonstrate this next.
+### Load and inspect the hair-colour data {#GOF_data}
 
+For this activity we'll use the `haircolour` dataset, which records the hair colour of 100 students.
 
+```{r get_hair}
+data(haircolour)
+```
+
+Have a look at it:
+
+```{r view_hair}
+haircolour
+```
+
+The data have a single categorical variable, "colour", with four categories: `Black`, `Blonde`, `Brown`, and `Red`.
+
+As we did earlier with the "birds" dataset, let's produce a frequency table:
+
+```{r hair_freq_table}
+hair.freq.table <- haircolour %>%
+  count(colour, sort = TRUE) %>%
+  mutate(p_hat = n / sum(n))
+```
+
+Show the table:
+
+```{r show_hair_freq}
+kable(hair.freq.table, digits = 4)
+```
+
+Just by eyeballing the table, the four hair colours clearly don't occur with equal frequency in this sample — but "clearly" isn't a statistical conclusion. We need a formal hypothesis test to decide whether the population these students were sampled from truly has unequal proportions of each hair colour, or whether what we're seeing here could plausibly be due to <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Sampling-error">sampling error</a> alone.
+
+### Hypothesis statement {#GOF_hyp}
+
+Our proportional model here is the simplest possible one: that all four hair colours are equally common in the population, each with a proportion of 0.25.
+
+**H~0~**: In the population, the four hair colours occur in equal proportion (p~Black~ = p~Blonde~ = p~Brown~ = p~Red~ = 0.25).
+
+**H~A~**: In the population, the four hair colours do not all occur in equal proportion.
+
+* We use an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Significance-level-($\alpha$)">$\alpha$ level</a> of 0.05.
+* It is a two-tailed alternative hypothesis; we have no reason to expect the deviation from equal proportions (if any) to favour a particular category.
+* We'll use a $\chi$^2^ goodness-of-fit test, because we're comparing observed frequencies across more than two categories to the frequencies expected under a null hypothesis.
+* We will use the $\chi$^2^ test statistic, with degrees of freedom equal to *k* − 1, where *k* is the number of categories, so 4 − 1 = 3.
+* We must check the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> of the $\chi$^2^ goodness-of-fit test.
+* It is always a good idea to present a figure to accompany your analysis.
+
+* * *
+
+### Visualize the data {#GOF_figure}
+
+Let's produce a bar graph of the observed frequencies:
+
+```{r fig.cap = "Observed frequency of each hair colour among a sample of 100 students. The dashed line shows the frequency expected under the null hypothesis of equal proportions (25 students per category).", fig.height = 4, fig.width = 5}
+
+ggplot(hair.freq.table, aes(x = colour, y = n)) +
+  geom_bar(stat = "identity", fill = "lightgrey", colour = "black") +
+  geom_hline(yintercept = 25, linetype = "dashed") +
+  xlab("Hair colour") +
+  ylab("Frequency") +
+  theme_bw()
+```
+
+The dashed line marks the frequency we'd expect in each category (25 students) if the null hypothesis were true. Brown and Black appear to be over-represented, and Blonde and Red under-represented, relative to that expectation — but again, we need the formal test to know whether these deviations are more than what we'd expect from sampling error alone.
+
+::: {.callout-caution title="Activity"}
+**Horizontal bar graph**: Using the approach you learned in [Section 5.4](05-visualize-one-variable.qmd#vis_cat_barchart), recreate the bar graph above as a horizontal bar graph, with the hair colours sorted by frequency (rather than alphabetically) using the `reorder` and `coord_flip` functions.
+:::
+
+### Check the assumptions and conduct the test {#GOF_run}
+
+The $\chi$^2^ goodness-of-fit test has <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a> that must be checked prior to proceeding:
+
+* none of the categories should have an expected frequency of less than one
+* no more than 20% of the categories should have expected frequencies less than five
+
+As before, we need to actually conduct the test to have R calculate the expected frequencies for us.
+
+We'll use the `chisq.test` function from the `janitor` package — the same function (and same package) you'll use again for the $\chi$^2^ contingency test in the [next tutorial](11-two-categorical.qmd#checkchiassum). **NOTE**: because R's base package also has a function called `chisq.test`, we specify `janitor::chisq.test` so there's no ambiguity about which version we're using.
+
+The function needs two things: `x`, a vector of our observed counts, and `p`, a vector of the proportions hypothesized under the null hypothesis (one for each category, and they must sum to 1).
+
+```{r hair_chisq}
+hair.chisq.results <- janitor::chisq.test(x = hair.freq.table$n, p = c(0.25, 0.25, 0.25, 0.25))
+```
+
+::: {.callout-note}
+Because our null hypothesis is that *every* category has the same proportion (0.25), it doesn't matter here that `hair.freq.table` is sorted by frequency rather than alphabetically — every entry in `p` is the same. If your proportional model instead specified a *different* hypothesized proportion for each category, you would need to make sure the order of `x` and the order of `p` line up correctly.
+:::
+
+Have a look at the output:
+
+```{r hair_chisq_out}
+hair.chisq.results
+```
+
+As with the contingency test, this object holds more than what's printed. Use `names()` to see what's available:
+
+```{r hair_chisq_names}
+names(hair.chisq.results)
+```
+
+The expected frequencies are stored in `expected`:
+
+```{r hair_chisq_expected}
+kable(hair.chisq.results$expected)
+```
+
+Every expected frequency is 25 (as we'd anticipate, since we hypothesized equal proportions across 100 students in four categories). None are below 1, and none are below 5, so our assumptions are met.
+
+### Draw a conclusion {#GOF_conclusion}
+
+The output above shows a large $\chi$^2^ value (`r round(hair.chisq.results$statistic, 2)`) on `r hair.chisq.results$parameter` degrees of freedom, and a very small *P*-value — much smaller than our stated $\alpha$ of 0.05. So we reject the null hypothesis.
+
+This is an example of an appropriate concluding statement for a $\chi$^2^ goodness-of-fit test:
+
+> The four hair colours did not occur in equal proportion among the sampled students ($\chi$^2^ goodness-of-fit test; *df* = `r hair.chisq.results$parameter`; $\chi$^2^ = `r round(hair.chisq.results$statistic, 2)`; *P* < 0.001). Based on our bar graph (Fig. X), Black and Brown hair occurred more frequently than expected under equal proportions, while Blonde and Red hair occurred less frequently than expected.
+
+::: {.callout-caution title="Activity"}
+**Goodness-of-fit test practice**: Using the present tutorial as a guide, use a $\chi$^2^ goodness-of-fit test to determine whether the four bird types in the "birds" dataset (loaded at the start of this tutorial) occur in equal proportion at the marsh habitat where they were sampled. Be sure to include all the steps of a hypothesis test, and a properly captioned figure.
+:::
 

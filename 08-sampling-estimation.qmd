@@ -139,7 +139,9 @@ So long as you used the same seed number, you should have gotten the same three 
 When you are authoring your own script or markdown document (e.g. for a research project), it is advisable to only set the seed once, at the beginning of your script or markdown document. When you run or knit your completed script/markdown, the seed will be set at the beginning, the code chunks will run in sequence, and each chunk that uses a random number generator will do so in a predictable way (based on the seed number). The script will be computationally reproducible. In contrast, when we're trying out code (e.g. when working on tutorial material), we aren't running a set sequence or number of code chunks, so we can't rely on everyone getting the same output for a particular code chunk.  For this reason you'll see in the tutorial material that many of the code chunks that require use of a random number generator will include a `set.seed` statement, to ensure that everyone gets the same output from that specific code chunk (this isn't always required, but often it is). 
 :::
 
-1. Generate 10 random numbers using the `runif` function, and first set the seed number to 200. 
+::: {.callout-caution title="Activity"}
+Generate 10 random numbers using the `runif` function, and first set the seed number to 200.
+:::
 
 ## Sampling error {#sampling_error}
 
@@ -212,7 +214,9 @@ kable(randsamp2.mean.sd, digits = 4)
 
 Are they the same as we saw using the first random sample?  NO! This reflects __sampling error__.
 
-1. Repeat the process above to get a third sample of size 20 genes, and calculate the mean and standard deviation of gene length for that sample.
+::: {.callout-caution title="Activity"}
+Repeat the process above to get a third sample of size 20 genes, and calculate the mean and standard deviation of gene length for that sample.
+:::
 
 ## Sampling distribution of the mean {#sampdistmean}
 
@@ -389,7 +393,9 @@ We can see that the smaller sample size (20) yields a broader sampling distribut
 
 With larger sample sizes, we'll get more precise estimates of the true population mean!
 
-1. Follow this [online tutorial](http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm) that helps visualize the construction of a sampling distribution of the mean 
+::: {.callout-caution title="Activity"}
+Follow this [online tutorial](http://www.zoology.ubc.ca/~whitlock/Kingfisher/SamplingNormal.htm) that helps visualize the construction of a sampling distribution of the mean.
+:::
 
 ## Standard error of the mean {#sem_page}
 

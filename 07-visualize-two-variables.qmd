@@ -64,7 +64,9 @@ Import the `bird_malaria.csv` data, which are described in the Whitlock & Schlut
 data(bird_malaria)
 ```
 
-1. Get an overview of the `locust` and `bird_malaria` tibbles.
+::: {.callout-caution title="Activity"}
+Get an overview of the `locust` and `bird_malaria` tibbles.
+:::
 
 ## Visualizing association between two categorical variables {#vis2_2cat}
 
@@ -271,7 +273,9 @@ Compare this to the grouped bar graph above. The grouped graph answers "how many
 The trade-off is that this graph no longer shows you how many birds were in each group — so, as always, report the sample sizes in your figure caption.
 :::
 
-1. Using the `penguins` dataset, try creating a stacked relative frequency bar graph comparing the relative frequency of penguins belonging to the three different "species" across the three different islands (variable "island").
+::: {.callout-caution title="Activity"}
+Using the `penguins` dataset, try creating a stacked relative frequency bar graph comparing the relative frequency of penguins belonging to the three different "species" across the three different islands (variable "island").
+:::
 
 ### Interpreting a stacked relative frequency bar graph {#interpret_stacked_bar}
 
@@ -340,7 +344,9 @@ Things to report when describing a scatterplot:
 
 In the scatterplot above, bill length and depth are positively associated, and the association is moderately strong. There are no observations that are strongly inconsistent with the general trend, though one individual with bill length of around 35mm and depth of around 21mm may be somewhat unusual. 
 
-1. Using the `penguins` dataset, create a scatterplot of flipper length in relation to body mass, and provide an appropriate figure caption. 
+::: {.callout-caution title="Activity"}
+Using the `penguins` dataset, create a scatterplot of flipper length in relation to body mass, and provide an appropriate figure caption.
+:::
 
 ### Bonus: adding density plots to the margins {#marginal_plots}
 
@@ -394,7 +400,9 @@ Before creating a stripchart, it's a good idea to prepare a table of descriptive
 
 * * *
 
-1. Using what you learned in a [previous tutorial](06-describe-one-variable.qmd#desc_numeric_var_cat), create a table of descriptive statistics of serotonin levels grouped by the treatment group variable.
+::: {.callout-caution title="Activity"}
+Using what you learned in a [previous tutorial](06-describe-one-variable.qmd#desc_numeric_var_cat), create a table of descriptive statistics of serotonin levels grouped by the treatment group variable.
+:::
 
 * * *
 
@@ -579,7 +587,9 @@ It often takes some playing around with argument values before one gets the idea
 :::
 
 
-1. Using the `penguins` dataset, and only the records pertaining to female penguins, create a combined violin / boxplot graph showing bill length in relation to species. Include an appropriate figure caption. 
+::: {.callout-caution title="Activity"}
+Using the `penguins` dataset, and only the records pertaining to female penguins, create a combined violin / boxplot graph showing bill length in relation to species. Include an appropriate figure caption.
+:::
 
 ### Interpreting stripcharts, violin plots and boxplots {#interp_violin}
 
