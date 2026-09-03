@@ -21,7 +21,6 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(palmerpenguins)
-library(skimr)
 library(knitr)
 library(janitor)
 library(biol202)
@@ -30,7 +29,7 @@ library(biol202)
 
 We will use the following datasets in this tutorial:
 
-* the `birds.csv` file contains counts of different categories of bird observed at a marsh habitat
+* the `birds` dataset contains counts of different categories of bird observed at a marsh habitat
 * the `penguins` dataset that is available as part of the `palmerpenguins` package
 
 ```{r desc_import_birds}
@@ -41,7 +40,7 @@ data(birds)
 
 The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Proportion">*proportion*</a> is the most important <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistic</a> for a categorical variable.  It measures the fraction of observations in a given category within a categorical variable. 
 
-For example, the `birds.csv` file has a single variable called `type` that includes tallies (frequencies) of each of four categories of bird observed at a marsh habitat.
+For example, the `birds` dataset has a single variable called `type` that includes tallies (frequencies) of each of four categories of bird observed at a marsh habitat.
 
 ```{r desc_birds}
 birds
@@ -235,7 +234,7 @@ penguins.descriptors %>%
 ```
 
 ::: {.callout-note}
-In another tutorial we'll learn how to present the table following all the guidelines in the [Biology Guidelines and Procedures document](https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html), including, for example, significant digits. For now, the preceding table is good!
+In another [tutorial](90-tables.qmd#stats_nicetable) we'll learn how to present the table following all the guidelines in the [Biology Guidelines and Procedures document](https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html), including, for example, significant digits. For now, the preceding table is good!
 :::
 
 ::: {.callout-caution title="Activity"}

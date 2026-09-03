@@ -341,6 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -429,8 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We also need the <code>janitor</code> and <code>ggExtra</code> packages, and these are likely to be new to you. Both were installed for you when you installed the <code>biol202</code> package, so you only need to load them.</p>
 <p>Load the packages:</p>
@@ -440,11 +445,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Import Data</strong></p>
 <p>We’ll again make use of the <code>penguins</code> dataset, which gets loaded as a “tibble” object with the <code>palmerpenguins</code> package.</p>
-<p>Import the <code>locusts.csv</code> data, which are described in the Whitlock &amp; Schluter text, Figure 2.1-2. We’ll create a tibble called <code>locust</code>.</p>
+<p>Load the <code>locust</code> dataset, which is described in the Whitlock &amp; Schluter text, Figure 2.1-2.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(locust)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Import the <code>bird_malaria.csv</code> data, which are described in the Whitlock &amp; Schluter text, Example 2.3A (p.&nbsp;40). We’ll create a tibble called <code>bird_malaria</code>.</p>
+<p>Load the <code>bird_malaria</code> dataset, which is described in the Whitlock &amp; Schluter text, Example 2.3A (p.&nbsp;40).</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bird_malaria)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -898,7 +903,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recall that you can use the <code>skim</code> or <code>skim_without_charts</code> functions to get an overview of a dataset or of a single variable in a dataset, and to figure out how many missing values there are for each variable. You can also use the <code>summarise</code> function, as described <a href="./06-describe-one-variable.html#mean_sd">previously</a>.</p>
+<p>Recall that you can use the <code>glimpse</code> function to get a quick overview of a dataset, and the <code>summary</code> function to figure out how many missing values there are for each variable. You can also use the <code>summarise</code> function, as described <a href="./06-describe-one-variable.html#mean_sd">previously</a>.</p>
 </div>
 </div>
 <section id="interpret_scatter" class="level3" data-number="7.3.1">
@@ -967,24 +972,25 @@ Figure&nbsp;7.5: Scatterplot of the association between bill length and depth am
 <li>When sample sizes are larger (&gt;20), use a <strong>violin plot</strong>, or less ideal, a <strong>boxplot</strong>.</li>
 </ul>
 <p>We’ll use locust serotonin data set from the text book. Consult figure 2.1-2 in the text for a description.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Always remember to get an overview of the dataset before attempting to create graphs, and not only for establishing sample sizes. If you had gotten an overview of the <code>locust</code> dataset, you would see we have a numeric response variable “serotonin_level”, but the categorical (explanatory) variable “treatment_time” is actually coded as a numerical variable, with values of 0, 1, or 2 hours. Although this variable is coded as numeric, we can treat it as though it is an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Ordinal-categorical-data">ordinal categorical variable</a>.</p>
+<p>Always remember to get an overview of the dataset before attempting to create graphs, and not only for establishing sample sizes. If you get an overview of the <code>locust</code> dataset, you’ll see we have a numeric response variable “serotonin_level”, and a categorical (explanatory) variable “treatment_time” with three levels — 0, 1, and 2 (hours). Even though the category labels look like numbers, <code>treatment_time</code> is already stored as a “factor” — R’s type for a categorical variable with a fixed set of categories — so we can treat it as an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Ordinal-categorical-data">ordinal categorical variable</a> without any extra work.</p>
 </div>
 </div>
-<p>We should re-code the “treatment_time” variable in the <code>locust</code> dataset as a “factor” variable with three “levels”: 0, 1, 2. This is not necessary for our graphs to work, but it is good practice to do this when you encounter this situation where a variable that should be treated as an ordinal categorical variable is coded as numerical.</p>
-<p>We do this using the <code>as.factor</code> function, as follows:</p>
+<p>You can always confirm a variable’s type using the <code>class</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>locust<span class="sc">$</span>treatment_time <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(locust<span class="sc">$</span>treatment_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(locust<span class="sc">$</span>treatment_time)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "factor"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>If a variable like this one ever arrived coded as numeric in your own data, you would convert it using the <code>as.factor</code> function, e.g.&nbsp;<code>locust$treatment_time &lt;- as.factor(locust$treatment_time)</code>. That’s not needed here, since it’s already a factor.</p>
 <p>Before creating a stripchart, it’s a good idea to prepare a table of descriptive stats for your numerical response variable grouped by the categorical variable.</p>
 <hr>
 <div class="callout callout-style-default callout-caution callout-titled" title="Activity">

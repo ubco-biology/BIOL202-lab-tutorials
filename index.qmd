@@ -30,6 +30,26 @@ remotes::install_github("ubco-biology/biol202_ubco")
 
 This may take a few minutes the first time, because it also installs every other package the course uses. Let it finish.
 
+::: {.callout-warning}
+## Two prompts you may see during this install
+
+While `remotes::install_github()` is running, you may see a message asking:
+
+```
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All
+2: CRAN packages only
+3: None
+```
+
+Type **3** (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.
+
+If you are on a **Windows** computer, you may also see a message about installing "Rtools" in order to build packages from source. You do **not** need Rtools for this install — `biol202` does not require it. It is safe to ignore that message and let the install continue.
+:::
+
 ::: {.callout-important}
 ## The install name and the package name are different, on purpose
 

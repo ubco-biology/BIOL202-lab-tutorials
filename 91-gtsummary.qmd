@@ -1,10 +1,8 @@
 # Data summaries with "gtsummary" package {-}
 
-This tutorial introduces an alternative to the `skimr` package for getting overviews of datasets.  
+This tutorial introduces the `gtsummary` package, a tool for producing a polished, presentation-quality summary table.
 
-The `skimr` package and its `skim_without_charts` function can cause issues when knitting to PDF.
-
-The `gtsummary` package appears to have fewer such issues. 
+The `glimpse` and `summary` functions you've used elsewhere in these tutorials are great for quickly checking a dataset's structure and contents while you're working, but their plain, console-style output isn't designed to be dropped directly into a written report or assignment answer. The `gtsummary` package fills that gap: it produces a clean, nicely formatted summary table suitable for presenting your results.
 
 If you haven't already, install the `gtsummary` package by typing this in your console (do this only once):  
 
@@ -49,6 +47,6 @@ penguins %>%
   tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})"))
 ```
 
-So, if you find youself running into issues with the `skimr` package, feel free to use the `gtsummary` package instead!
+So, whenever you want to present a dataset overview as a polished table in a report — rather than just checking it out for yourself while working — reach for the `gtsummary` package!
 
 

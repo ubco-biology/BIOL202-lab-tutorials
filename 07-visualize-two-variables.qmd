@@ -35,7 +35,6 @@ library(ggplot2)
 library(readr)
 library(palmerpenguins)
 library(knitr)
-library(skimr)
 library(biol202)
 ```
 
@@ -52,13 +51,13 @@ library(ggExtra)
 
 We'll again make use of the `penguins` dataset, which gets loaded as a "tibble" object with the `palmerpenguins` package.
 
-Import the `locusts.csv` data, which are described in the Whitlock & Schluter text, Figure 2.1-2.  We'll create a tibble called `locust`. 
+Load the `locust` dataset, which is described in the Whitlock & Schluter text, Figure 2.1-2.
 
 ```{r vis2_read_data}
 data(locust)
 ```
 
-Import the `bird_malaria.csv` data, which are described in the Whitlock & Schluter text, Example 2.3A (p. 40). We'll create a tibble called `bird_malaria`.
+Load the `bird_malaria` dataset, which is described in the Whitlock & Schluter text, Example 2.3A (p. 40).
 
 ```{r vis2_read_data2}
 data(bird_malaria)
@@ -330,7 +329,7 @@ In the code chunk above, we have:
 Notice that the figure caption indicates the number of observations (sample size) used in the plot. In a [previous tutorial](06-describe-one-variable.qmd#vis_describe) it was emphasized that one needs to be careful in tallying the actual number of observations being used in a graph or when calculating <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a>. For example, there is one missing value ("NA") in the bill measurements for the Adelie penguins, hence the sample size of 151 instead of 152.  
 
 ::: {.callout-note}
-Recall that you can use the `skim` or `skim_without_charts` functions to get an overview of a dataset or of a single variable in a dataset, and to figure out how many missing values there are for each variable. You can also use the `summarise` function, as described [previously](06-describe-one-variable.qmd#mean_sd). 
+Recall that you can use the `glimpse` function to get a quick overview of a dataset, and the `summary` function to figure out how many missing values there are for each variable. You can also use the `summarise` function, as described [previously](06-describe-one-variable.qmd#mean_sd).
 :::
 
 ### Interpreting and describing a scatterplot {#interpret_scatter}
@@ -384,17 +383,17 @@ To visualize association between a numerical response variable and a categorical
 
 We'll use locust serotonin data set from the text book. Consult figure 2.1-2 in the text for a description. 
 
-::: {.callout-warning}
-Always remember to get an overview of the dataset before attempting to create graphs, and not only for establishing sample sizes. If you had gotten an overview of the `locust` dataset, you would see we have a numeric response variable "serotonin_level", but the categorical (explanatory) variable "treatment_time" is actually coded as a numerical variable, with values of 0, 1, or 2 hours. Although this variable is coded as numeric, we can treat it as though it is an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Ordinal-categorical-data">ordinal categorical variable</a>.  
+::: {.callout-note}
+Always remember to get an overview of the dataset before attempting to create graphs, and not only for establishing sample sizes. If you get an overview of the `locust` dataset, you'll see we have a numeric response variable "serotonin_level", and a categorical (explanatory) variable "treatment_time" with three levels — 0, 1, and 2 (hours). Even though the category labels look like numbers, `treatment_time` is already stored as a "factor" — R's type for a categorical variable with a fixed set of categories — so we can treat it as an <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Ordinal-categorical-data">ordinal categorical variable</a> without any extra work.
 :::
 
-We should re-code the "treatment_time" variable in the `locust` dataset as a "factor" variable with three "levels": 0, 1, 2.  This is not necessary for our graphs to work, but it is good practice to do this when you encounter this situation where a variable that should be treated as an ordinal categorical variable is coded as numerical.
+You can always confirm a variable's type using the `class` function:
 
-We do this using the `as.factor` function, as follows: 
-
-```{r recode_factor}
-locust$treatment_time <- as.factor(locust$treatment_time)
+```{r check_treatment_time_class}
+class(locust$treatment_time)
 ```
+
+If a variable like this one ever arrived coded as numeric in your own data, you would convert it using the `as.factor` function, e.g. `locust$treatment_time <- as.factor(locust$treatment_time)`. That's not needed here, since it's already a factor.
 
 Before creating a stripchart, it's a good idea to prepare a table of descriptive stats for your numerical response variable grouped by the categorical variable.
 

@@ -57,6 +57,7 @@ book:
         - 90-tables.qmd
         - 91-gtsummary.qmd
         - 92-visual-editor.qmd
+        - 93-assignment-cheatsheet.qmd
         - 99-common-issues.qmd
 
 bibliography: [biol202.bib, packages.bib]

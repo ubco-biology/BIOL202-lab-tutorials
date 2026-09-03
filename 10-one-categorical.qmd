@@ -22,7 +22,6 @@ Load the packages we need for this tutorial:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(knitr)
 library(janitor)
 library(biol202)
@@ -34,7 +33,7 @@ We will also need a new package called `binom`, so install that package using th
 library(binom)
 ```
 
-Import the `damselfly.csv` data set we used in the preceding [tutorial](09-hypothesis-testing.qmd#hypothesis), and also the `birds.csv` dataset we used in an earlier [tutorial](06-describe-one-variable.qmd#vis_describe).
+Load the `damselfly` dataset we used in the preceding [tutorial](09-hypothesis-testing.qmd#hypothesis), and also the `birds` dataset we used in an earlier [tutorial](06-describe-one-variable.qmd#vis_describe).
 
 ```{r get_dfly}
 data(damselfly)

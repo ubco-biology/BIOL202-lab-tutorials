@@ -34,7 +34,6 @@ Load the packages we need for this tutorial:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(knitr)
 library(janitor)
 library(biol202)
@@ -48,8 +47,8 @@ library(epitools)
 
 We'll use two datasets described in the Whitlock & Schluter text: 
 
-* the "cancer.csv" dataset (described in Example 9.2 in the text, page 238)
-* the "worm.csv" dataset (described in Example 9.4 in the text, page 246)
+* the `cancer` dataset (described in Example 9.2 in the text, page 238)
+* the `worm` dataset (described in Example 9.4 in the text, page 246)
 
 ```{r contget_data}
 data(cancer)
@@ -60,14 +59,14 @@ Take a look at the cancer dataset:
 
 ```{r cont_datalook_cancer}
 cancer %>%
- skim_without_charts()
+ glimpse()
 ```
 
-And the worm dataset: 
+And the worm dataset:
 
 ```{r cont_datalook_worm}
 worm %>%
- skim_without_charts()
+ glimpse()
 ```
 
 Both datasets are formatted "tidy" format. For a refresher on this, review the [Biology Procedures and Guidelines document](https://ubco-biology.github.io/Procedures-and-Guidelines/tidy-data.html) chapter on **Tidy data**. 
@@ -388,15 +387,9 @@ Hmm, the ordering of the categories of the categorical (factor) variable "infect
 The ordering of the categories is not actually crucial to this type of analysis, but it's certainly better practice to show them in appropriate order!
 :::
 
-In order to change the order of categories in a character variable, here's what you do (consult this [resource](http://www.cookbook-r.com/Manipulating_data/Changing_the_order_of_levels_of_a_factor/) for additional info). 
+`infection` is already stored as a "factor" variable in the `worm` dataset, so all we need to do is change the order of its existing categories (consult this [resource](http://www.cookbook-r.com/Manipulating_data/Changing_the_order_of_levels_of_a_factor/) for more on factor levels generally).
 
-First, convert the character variable to a "factor" variable as follows:
-
-```{r fac1}
-worm$infection <- as.factor(worm$infection)
-```
-
-Now check the default ordering of the levels using the `levels` function (it should be alphabetical):
+Check the current ordering of the levels using the `levels` function:
 
 ```{r fact2}
 levels(worm$infection)
@@ -474,7 +467,7 @@ worm.chisq.results
 
 Although only a few bits of information are provided here, the object actually contains a lot more information.  
 
-Don't try getting an overview of the object using our usual `skim_without_charts` approach.. that won't work.
+Don't try getting an overview of the object using our usual `glimpse` or `summary` approach — `worm.chisq.results` is a list of test results, not a dataset, so those functions would just dump a confusing listing of its internal components rather than anything useful.
 
 Instead, simply use this code:
 

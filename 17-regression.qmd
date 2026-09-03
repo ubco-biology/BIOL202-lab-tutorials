@@ -22,7 +22,6 @@ Load the packages we need for this tutorial:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(broom)
 library(knitr)
 library(biol202)
@@ -56,7 +55,7 @@ Let's have a look at the data:
 
 ```{r view_data_lsr}
 
-plantbiomass %>% skim_without_charts()
+plantbiomass %>% glimpse()
 ```
 
 We see that both variables are numeric, and that there are 161 observations overall.  
@@ -473,6 +472,10 @@ There are a few key arguments for the `geom_smooth` function:
 - the "se = TRUE" argument tells ggplot to add confidence bands
 - the "level = 0.95" tells it to use 95% confidence level
 - the "colour" argument tells it what colour to make the best-fit regression line
+
+::: {.callout-note}
+You'll likely see a message stating `` `geom_smooth()` using formula = 'y ~ x' ``. This is just `ggplot2` confirming what kind of line it fit — a straight line, Y as a function of X — since we didn't specify a formula ourselves. It is not an error, and you can ignore it.
+:::
 
 Here we can interpret the figure as follows:  
 

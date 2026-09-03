@@ -150,7 +150,17 @@ Then we load the package:
 library(here)
 ```
 
-When you load the package, the `here` function takes stock of where your RStudio project file is located, and establishes that directory as the "working directory". It should return a file path for you. In future tutorials we'll make use of the `here` package when saving files.  
+When you load the package, the `here` function takes stock of where your RStudio project file is located, and establishes that directory as the "working directory". It should return a file path for you. In future tutorials we'll make use of the `here` package when saving files.
+
+::: {.callout-note}
+Every time you run `library(here)`, you'll see a message like this:
+
+```
+here() starts at /Users/yourname/OneDrive/BIOL202/BIOL202_tutorials
+```
+
+This is not an error — it's `here` confirming which folder it has identified as your project's home base (the "working directory"), which is what lets it find your files. You'll see this message every time you load the package, in every session.
+:::
 
 ## Edit an R markdown file {#edit_markdown}
 

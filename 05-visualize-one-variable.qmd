@@ -29,14 +29,13 @@ In this tutorial you'll learn to construct and interpret each of these types of 
 
 ## Load packages and import data {#vis_packages_data}
 
-In this tutorial we will make use of the `dplyr`, `ggplot2` and `readr` packages, as well as the `skimr` package. You'll also use the `palmerpenguins` package that provides some penguin-related data to work with (see this [website](https://allisonhorst.github.io/palmerpenguins/) for more info). Lastly, you'll use the `knitr` package for helping create nice tables. The latter package should have come installed with RStudio, so check the "packages" tab in the bottom-right pane of RStudio to see if it's already installed.  If it's not, then install it following the instructions you [saw earlier](01-getting-started.qmd#package_install).
+In this tutorial we will make use of the `dplyr`, `ggplot2` and `readr` packages. You'll also use the `palmerpenguins` package that provides some penguin-related data to work with (see this [website](https://allisonhorst.github.io/palmerpenguins/) for more info). Lastly, you'll use the `knitr` package for helping create nice tables. The latter package should have come installed with RStudio, so check the "packages" tab in the bottom-right pane of RStudio to see if it's already installed.  If it's not, then install it following the instructions you [saw earlier](01-getting-started.qmd#package_install).
 
 ```{r vis1_package, message = FALSE}
 library(dplyr)
 library(ggplot2)
 library(readr)
 library(palmerpenguins)
-library(skimr)
 library(knitr)
 library(janitor)
 library(biol202)
@@ -60,8 +59,8 @@ The fix is simply to always run `library(palmerpenguins)` first, as in the chunk
 And we will use the following datasets in this tutorial:
 
 * the `penguins` dataset that is available as part of the `palmerpenguins` package
-* the `tigerdeaths.csv` file contains data associated with example 2.2A in the Whitlock and Schluter text
-* the `birds.csv` file contains counts of different categories of bird observed at a marsh habitat
+* the `tigerdeaths` dataset contains data associated with example 2.2A in the Whitlock and Schluter text
+* the `birds` dataset contains counts of different categories of bird observed at a marsh habitat
 
 ::: {.callout-note}
 From here on, course datasets come from the `biol202` package: load one with `data()` followed by its name, for example `data(birds)`. Use `?birds` to read its documentation.
@@ -73,30 +72,37 @@ If you ever want to practice importing instead, CSV copies of the same datasets 
 
 The `penguins` object is a *tibble*, with each row representing a *case* and each column representing a *variable*.  Tibbles can store a mixture of data types: numeric variables, categorical variables, logical variables etc... all in the same object (as separate columns). This isn't the case with other object types (e.g. matrices).
 
-We'll get an overview of the data using the `skim_without_charts` function, as we learned in the [Preparing and Importing Tidy Data](04-importing-data.qmd#data_overview) tutorial:
+We'll get an overview of the data using the `glimpse` function, as we learned in the [Preparing and Importing Tidy Data](04-importing-data.qmd#data_overview) tutorial:
 
-```{r vis1_skim}
+```{r vis1_overview}
 penguins %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 Optionally, we can also get a view of the first handful of rows of a tibble by simply typing the name of the object on its own, and hitting return:
 
 ```{r vis1_head}
-penguins 
+penguins
 ```
 
-In a [previous tutorial](04-importing-data.qmd#data_overview) you learned the important information to look for when getting an overview of a dataset using the `skim_without_charts` function.
+In a [previous tutorial](04-importing-data.qmd#data_overview) you learned the important information to look for when getting an overview of a dataset using the `glimpse` and `summary` functions.
 
 ::: {.callout-note}
 **TIP**
-It's important to check whether there are any missing values for any of the variables in your dataset. In the `penguins` dataset, you'll see from the `skim_without_charts` output that there are 344 cases (rows), but (as an example) there are 2 missing values for each of the 4 morphometric variables, including body mass. **You need to take note of this so that you report the correct sample sizes in any table or figure captions!**
+It's important to check whether there are any missing values for any of the variables in your dataset. `glimpse` doesn't report missing-value counts, so use `summary` for that:
+
+```{r vis1_summary}
+penguins %>%
+  summary()
+```
+
+There are 344 cases (rows) in `penguins`, but you'll see an "NA's :2" line beneath the Min./Max. values for each of the four morphometric variables — `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and `body_mass_g` — telling you that each of them is missing 2 observations. (`sex` is missing 11 observations too, though it isn't a morphometric measurement.) **You need to take note of this so that you report the correct sample sizes in any table or figure captions!**
 :::
 
 Once you have gotten an overview your dataset's structure and contents, the next order of business is always to _visualize_ your data using graphs and sometimes tables. 
 
 ::: {.callout-caution title="Activity"}
-**Import and data overview:** Following the instructions provided in previous tutorials, import the `tigerdeaths.csv` and `birds.csv` datasets, and get an overview of each of those datasets.
+**Load and data overview:** Following the instructions provided in previous tutorials, load the `tigerdeaths` and `birds` datasets with `data()`, and get an overview of each of those datasets.
 :::
 
 ## Create a frequency table {#vis_cat_freq_table}
@@ -107,19 +113,19 @@ Many straightforward operations like tabulation and calculating descriptive stat
 
 Here, we'll use this functionality to create a *frequency table* for a categorical variable.  
 
-We'll demonstrate this  using the `tigerdeaths.csv` dataset that you should have imported as part of a suggested activity in the previous section, using code like this:
+We'll demonstrate this  using the `tigerdeaths` dataset that you should have loaded as part of a suggested activity in the previous section, using code like this:
 
 ::: {.callout-note}
 **TIP**
-Some datasets that we use for tutorials need to be imported into an object in your workspace.  This is the case with the `tigerdeaths` dataset, and the code for importing the data into a tibble is below. Other datasets, like the `penguins` dataset, exist within packages (palmerpenguins), and their objects are already created for you. Most of the time, and particularly for your lab assignments, you need to import a dataset and create an object, as we do below.  
+Some datasets that we use in these tutorials need to be loaded into your workspace with `data()` before you can use them.  This is the case with the `tigerdeaths` dataset, and the code for loading it is below. Other datasets, like the `penguins` dataset, exist within packages (palmerpenguins), and their objects are already created for you the moment you load that package. Most of the time, and particularly for your lab assignments, you need to explicitly load a package dataset with `data()`, as we do below.
 :::
 
 ```{r vis1_read_tiger, message = FALSE}
-# here we import the data from a CSV file and put it into a "tibble" object called "tigerdeaths"
+# here we load the "tigerdeaths" dataset from the biol202 package
 data(tigerdeaths)
 ```
 
-You would also have gotten [overview of the data](#vis_data_overview) as part of the activity, using the `skim_without_charts` function.  This would have shown that the `activity` variable is of type "character", which tells us it is a **categorical** variable, and that it includes 9 unique categories.  We also would have seen that there are 88 cases (rows) in the dataset.
+You would also have gotten [overview of the data](#vis_data_overview) as part of the activity, using the `glimpse` function.  This would have shown that the `activity` variable is of type `<fct>` ("factor" — R's type for a categorical variable with a fixed set of categories) — which tells us it is a **categorical** variable — and that there are 88 cases (rows) in the dataset. You'll see exactly how many categories `activity` has in a moment, when we build the frequency table below.
 
 Let's provide the code to generate the frequency table, using the pipes "%>%" approach we learned about in an [earlier tutorial](04-importing-data.qmd#import_csv_local).  We'll assign the output to a new object that will hold the frequency table.  We'll name the object "tiger.table".  Note that we won't yet view the table here... we'll do that next. 
 
@@ -267,7 +273,11 @@ You can also specify the "bin width" that `geom_histogram` uses when generating 
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-It's telling us that there's probably a better bin width to use. The trick is to not have to small a bin width, such that you end up with too many bars in your histogram (giving too much detail in the frequency distribution), and to not have too large a bin width such that you have too few bars in your histogram (giving too little detail). 
+It's telling us that there's probably a better bin width to use. The trick is to not have to small a bin width, such that you end up with too many bars in your histogram (giving too much detail in the frequency distribution), and to not have too large a bin width such that you have too few bars in your histogram (giving too little detail).
+
+::: {.callout-note}
+You may also see a message like `Removed 2 rows containing non-finite values`. This is `ggplot2` telling you that some observations were left out of the graph because their value was missing (`NA`) — in this case, the 2 penguins with no recorded body mass. It is not an error; it is a useful reminder to double-check your sample size when you write your figure caption.
+:::
 
 The `hist` function that comes with base R (so no need to load a package) has an algorithm that typically chooses good bin widths.  To remove some of the subjectivity from this procedure, let's leverage that function to figure out the best bin widths.
 

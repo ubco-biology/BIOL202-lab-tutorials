@@ -23,9 +23,9 @@ At the beginning of term, check the [R website](https://cran.r-project.org) for 
 RStudio is now owned by "posit", and its website (posit.co) should detect your operating system and provide the appropriate download option automatically.  The website with older versions of R is [here](https://cran.r-project.org/bin/macosx/), and older versions of RStudio is [here](https://docs.posit.co/previous-versions/rstudio/).  
 :::
 
-Follow the instructions below, and you are encouraged to view this YouTube video [here](https://www.youtube.com/watch?v=tgPuB-iNww0) _prior_ to starting the steps. It talks about installing for different operating systems and different vintages of Macs (e.g. newer M1 chips versus Intel chips).
+Follow the instructions below to download and install both R and RStudio.
 
-* Download and install both R and RStudio (Desktop version) on your computer. 
+* Download and install both R and RStudio (Desktop version) on your computer.
 
 ::: {.callout-note}
 R needs to be installed successfully >prior< to installing RStudio (because the latter depends on the former)  
@@ -36,7 +36,7 @@ R needs to be installed successfully >prior< to installing RStudio (because the 
     - For *Windows* users, download the "base" version; the file will be named `R-x.y.z-win.exe`, where `x.y.z` is whatever the current version number is (e.g. `R-4.5.1-win.exe`). Executing this file launches a familiar Windows Setup Wizard that will install R on your computer.
     - For *Mac* users, download the "pkg" file that is appropriate for your version of MacOS; the file will be named `R-x.y.z.pkg` (e.g. `R-4.5.1.pkg`). Download and run this installation package—just accept the default options and you will be ready to go.
 
-* Now to install RStudio: once you have installed "R", go to this [website](https://posit.co/download/rstudio-desktop/) and click on the  "download RStudio desktop" button under the "Install RStudio" heading.  The website should detect what operating system you're using and offer you the appropriate version.  
+* Now to install RStudio: once you have installed "R", go to this [website](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads) and click on the  "download RStudio desktop" button under the "Install RStudio" heading.  The website should detect what operating system you're using and offer you the appropriate version.
 
 ## Start using R & RStudio {#start_r}
 
@@ -101,7 +101,7 @@ There are two ways to install an R package:
 - Alternatively, in the Console pane type the following 
 
 ::: {.callout-warning}
-Later, when you start using R Markdown, never include the following "install.packages" code within your R Markdown document; only install packages by typing directly in the Console!
+Later, when you start using R Markdown, never include the following "install.packages" code within your R Markdown document; only install packages by typing directly in the Console! (See [Common errors and their solutions](99-common-issues.qmd) for the specific errors this causes if you forget.)
 :::
 
 ```{r, eval=FALSE}
@@ -118,7 +118,7 @@ systemfonts  1.0.2  1.0.3              TRUE
 Do you want to install from sources the package which needs compilation? (Yes/no/cancel)
 ```
 
-Respond with "no" (without quotes).  Do NOT respond "Yes". 
+Respond with "no" (without quotes).  Do NOT respond "Yes". (This same message and fix are also listed in [Common errors and their solutions](99-common-issues.qmd).)
 
 
 ::: {.callout-note}
@@ -140,13 +140,31 @@ library(readr)
 ```
 
 ::: {.callout-note}
+When you run `library(dplyr)`, you'll likely see a chunk of text like this appear:
+
+```
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+```
+
+This is **not an error**. It is `dplyr` telling you that it has some functions with the same name as functions already built into R (here, `filter` and `lag`), and that when you type `filter` or `lag`, R will now use the `dplyr` version rather than the built-in one. You'll see similar "masked" or "conflicts" messages whenever you load many other packages this term (`car`, `janitor`, and others). It is expected, and you can ignore it.
+:::
+
+::: {.callout-note}
 You have to reload each package you want to use every time you open a new session of RStudio.  This is a little annoying to get used to and will be your most common error as you begin.  When you see an error such as
 
 ```
 Error: could not find function
 ```
 
-remember that this likely comes from you trying to use a function in a package that has not been loaded.  Remember to run the `library()` function with the appropriate package to fix this error.
+remember that this likely comes from you trying to use a function in a package that has not been loaded.  Remember to run the `library()` function with the appropriate package to fix this error. (See also [Common errors and their solutions](99-common-issues.qmd).)
 :::
 
 ### Intro to R Markdown {#intro_markdown}
@@ -223,6 +241,8 @@ Recall you only need to install a package once!  And this should be the last tim
 
 Now go back to the steps 1 through 4 above to try knitting your markdown document to PDF.
 
+If you're still stuck, see [Common errors and their solutions](99-common-issues.qmd) for more troubleshooting options.
+
 In a future [tutorial](02-reproducible-r.qmd#repro_research) we'll discuss how to use R Markdown as part of a reproducible workflow.
  
 ### Extra resources {#r_resources}
@@ -241,77 +261,3 @@ You can get nice PDF versions of the files by going to **Help -> Cheatsheets** i
 
 The book titled "Getting used to R, RStudio, and R Markdown" by Chester Ismay, which can be freely accessed [here](https://ismayc.github.io/rbasics-book/), is also a wonderful resource for for new users of R, RStudio, and R Markdown. It includes examples showing working with R Markdown files in RStudio recorded as GIFs.
 
-### R Resources Online {#online_resources}
-
-| URL                                                      | Purpose                                           |
-|:-----------------------------------------------|:-----------------------|
-| <https://whitlockschluter3e.zoology.ubc.ca>.             | R resources to accompany Whitlock & Schluter text |
-| <https://datacarpentry.org/R-genomics/01-intro-to-R.htm> | l Data Carpentry Intro R tutorials                |
-| <https://r-dir.com/learn/tutorials.html>                 | List of useful tutorials including videos         |
-| <https://www.rstudio.com/resources/webinars/>            | Various online learning materials at RStudio      |
-| <https://rmd4sci.njtierney.com>                          | R Markdown for Scientists                         |
-| <http://r4ds.had.co.nz/index.html>                       | Hadley Wickham's online book                      |
-
-: Learning R - Tutorials and workshop materials
-
-------------------------------------------------------------------------
-
-| URL                                                  | Purpose                     |
-|:-----------------------------------------------|:-----------------------|
-| <http://blog.revolutionanalytics.com/beginner-tips/> | Beginner tips     
-|
-| <https://mran.microsoft.com/packages/>               | Tool for exploring packages |
-
-: So many packages - how to find useful ones?
-
-------------------------------------------------------------------------
-
-| URL                                       | Purpose                                |
-|:------------------------------------------------|:----------------------|
-| <https://www.zoology.ubc.ca/~schluter/R/> | UBC zoology site handy stats reference |
-| <http://statmethods.net/>                 | Good general reference                 |
-
-: Data analysis in R
-
-------------------------------------------------------------------------
-
-| URL                                                    | Purpose                               |
-|:------------------------------------------------|:----------------------|
-| <http://statmethods.net/>                              | Good general reference for graphing   |
-| <http://ggplot2.org/book/>                             | Hadley Wickhams's ggplot2 book online |
-| <http://stats.idre.ucla.edu/r/seminars/ggplot2_intro/> | Great tutorial on ggplot2             |
-| <http://www.cookbook-r.com/Graphs/>                    | Graphing with ggplot2                 |
-
-: Data visualization in R
-
-------------------------------------------------------------------------
-
-| URL                           | Purpose                         |
-|:------------------------------|:--------------------------------|
-| <https://www.r-bloggers.com/> | Popular blog site, lots of info |
-| <http://rseek.org/>           | Search engine for R help        |
-
-: BLOGs and general resources
-
-------------------------------------------------------------------------
-
-| URL                                                     | Purpose                                                                                                                       |
-|:-------------------------------------------------------|:---------------|
-| <https://cos.io/>                                       | Center for Open Science                                                                                                       |
-| <https://ropensci.org/>                                 | Open science R resources                                                                                                      |
-| <http://geoscripting-wur.github.io/RProjectManagement/> | Lessons about <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Version-control">version control</a> |
-| <https://nicercode.github.io/>                          | Helping to improve your code                                                                                                  |
-
-: Resources for reproducible research / open science
-
-------------------------------------------------------------------------
-
-| URL                                                     | Purpose                                                                                                                       |
-|:--------------------------------------------------------|:---------------|
-| <http://spatial.ly/r/>                                  | Example maps with R                                                                                                       |
-| <https://rstudio.github.io/leaflet/>                    | Online mapping with R                                                                                                     |
-| <https://www.earthdatascience.org/courses/earth-analytics/> | Excellent course 
-                                  |
-| <https://geoscripting-wur.github.io/>                          | Amazing "geoscripting" tutorial                                                                                                  |
-
-: Geospatial work in R

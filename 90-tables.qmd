@@ -25,13 +25,12 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(knitr)
-library(skimr)
 library(palmerpenguins)
 library(kableExtra)
 library(biol202)
 ```
 
-We'll use the "circadian.csv" dataset, which is also used in the ["comparing more than 2 means tutorial"](15-anova.qmd#compare_three_more_means).  These data are associated with Example 15.1 in the text. 
+We'll use the `circadian` dataset, which is also used in the ["comparing more than 2 means tutorial"](15-anova.qmd#compare_three_more_means).  These data are associated with Example 15.1 in the text.
 
 The `circadian` data describe melatonin production in 22 people randomly assigned to one of three light treatments.  
 
@@ -39,25 +38,33 @@ The `circadian` data describe melatonin production in 22 people randomly assigne
 data(circadian)
 ```
 
-### Formatting output from the `skimr` package {#skim_tables}
+### Formatting a wide table nicely {#wide_table}
 
-It is always good practice to get an overview of a dataset before proceeding with analyses.
+Sometimes a table you want to include in a report is wide — it has many columns — which can make it awkward to read, or a poor fit for a printed page. This often happens with a table of grouped descriptive statistics, of the kind we learned to build in the ["comparing more than 2 means" tutorial](13-two-means.qmd#stats_2samp): each descriptive statistic (count, mean, SD, etc.) becomes its own column, and if you have several of those alongside several groups, the table can end up quite wide. Here we'll learn a general technique for handling this: transposing the table (swapping its rows and columns) and formatting it nicely with the `kbl` function from the `kableExtra` package.
 
-For this we have been using the `skim_without_charts` function from the `skimr` package.
-
-You may have noticed that when you knit assignments to PDF, any output from the `skim_without_charts` function tends to run off the edge of the page.  Here we'll learn how to avoid this.
-
-The key is to assign the output to an object first, as such:
+Let's build a table of descriptive statistics for the `circadian` dataset's "shift" variable, grouped by "treatment":
 
 ```{r lookdata22}
-skim.out <- circadian %>%
-  skim_without_charts()
+circadian.stats <- circadian %>%
+  group_by(treatment) %>%
+  summarise(
+    Count = sum(!is.na(shift)),
+    Count_NA = sum(is.na(shift)),
+    Mean = mean(shift, na.rm = TRUE),
+    SD = sd(shift, na.rm = TRUE),
+    SEM = SD/sqrt(Count),
+    Low_95_CL = t.test(shift, conf.level = 0.95)$conf.int[1],
+    Up_95_CL = t.test(shift, conf.level = 0.95)$conf.int[2]
+  )
+circadian.stats
 ```
 
-We will also "transpose" (rotate) the table using the `t` base function:, so that it'll fit on a page:
+This table has 8 columns (`treatment` plus 7 descriptive statistics) for just 3 treatment groups. Imagine how wide it would get with more groups, or more statistics!
+
+The fix is to "transpose" (rotate) the table using the base `t` function, so that its many columns become rows instead, and its few rows become columns:
 
 ```{r transposetable}
-skim.out.transposed <- t(skim.out)
+circadian.stats.transposed <- t(circadian.stats)
 ```
 
 Now we'll use the `kbl` function with various arguments to ensure the output looks good and includes a table caption:
@@ -73,90 +80,45 @@ Notice that, unlike figure captions, which must be provided in the chunk header,
 :::
 
 ```
-kbl(skim.out.transposed, caption = "Overview of the 'circadian' dataset",
+kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
     booktabs = TRUE) %>%
   kable_styling(latex_options = "hold_position")
 ```
 
 In the preceding code we:
 
-* use the `kbl` function and provide 3 arguments: 
+* use the `kbl` function and provide 3 arguments:
   + provide the name of the table-like object we wish to format for output
   + provide a table caption
   + provide an argument "booktabs = TRUE" (this provides nice formatting)
 
 Then we include pipes ("%>%), and follow with:
 
-* the `kable_styling` function with a few arguments: 
-  + "latex_options = 'hold_position'" which forces the table to appear where the code chunk comes 
+* the `kable_styling` function with a few arguments:
+  + "latex_options = 'hold_position'" which forces the table to appear where the code chunk comes
 
 For lots of great examples of how the `kableExtra` package can be used, see this [vignette](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf) for PDF output, and [this one](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) for HTML output.
 
-::: {.callout-note}
-**IMPORTANT:  **
-If you attempt to use the `skim_without_charts` function without wrapping the about in a `kbl` function, you will likely get an error when you attempt to knit to PDF.
-:::
-
-```{r showskimtable, echo = FALSE}
-kbl(skim.out.transposed, caption = "Overview of the 'circadian' dataset",
+```{r showcircadiantable, echo = FALSE}
+kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
     booktabs = TRUE) %>%
   kable_styling(latex_options = "hold_position")
 ```
 
-Let's check to see if this approach works on a larger dataset (one with more variables).
-
-Let's try it on the "penguins" dataset:
-
-```{r skimpenguins}
-skim.penguins <- penguins %>%
-  skim_without_charts()
-```
-
-Transpose:
-```{r transpenguins}
-skim.penguins.transposed <- t(skim.penguins)
-```
-
-Now let's try the `kbl` ouptut:
+Notice one trade-off of transposing: the `treatment`, `Count`, and `Count_NA` rows are whole numbers, but the numeric rows below them (Mean, SD, etc.) now show many decimal places, and there's no way to tell `kbl` to round only some of the rows — transposing converts the whole table to plain text first, so `kbl`'s `digits` argument no longer has any numeric columns to act on. If you need precise control over decimal places, either round the values yourself inside `summarise` before transposing, or use the non-transposed approach in the next section, which keeps that control.
 
 ::: {.callout-note}
-**NOTE:  **
-This table will look different when knitted to PDF (rather than HTML).  Specifically, it will print off page...
-:::
-
-```{r nicetablepeng}
-kbl(skim.penguins.transposed, caption = "Overview of the 'penguins' dataset",
-    booktabs = TRUE) %>%
-  kable_styling(latex_options = "hold_position")
-```
-
-Argh, our output went off the page!
-
-If this happens, then we add another argument to the `kable_styling` function, the "scale_down" option:
+**TIP: **
+If you have many groups and/or many descriptive statistics, the transposed table can still end up wide. In that case, add the "scale_down" option to `kable_styling`, which shrinks the whole table (including the font) to fit the page width:
 
 ```
-kbl(skim.penguins.transposed, caption = "Overview of the 'penguins' dataset",
+kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
     booktabs = TRUE) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"))
 ```
 
-```{r echo = FALSE}
-kbl(skim.penguins.transposed, caption = "Overview of the 'penguins' dataset") %>%
-  kable_paper(full_width = F, html_font = "Arial Narrow")
-```
-
-::: {.callout-note}
-**NOTE:  **
-On this HTML page the table above still goes off the page, but the PDF version will work!
+For a table with a very large number of columns, this can make the font too small to read comfortably — in that case, consider splitting the table into two, or reporting only the most essential columns.
 :::
-
-Here's an image of the PDF output:
-
-```{r echo = FALSE}
-knitr::include_graphics("images/second_kable.png")
-```
-
-For very large datasets you may find this approach causes the font to be too small.
 
 ### A nicely formatted table of descriptive statistics {#stats_nicetable}
 
@@ -192,7 +154,7 @@ kbl(penguins.stats, caption = "Descriptive statistics for bill length among male
   kable_styling(latex_options = c("scale_down", "hold_position"), position = "center")
 ```
 
-The **key difference** from the previous example done with the `skim_without_charts` output is that here we specify the number of decimal places we want each descriptive statistic to be reported to.
+The **key difference** from the transposed table in the previous section is that here we specify the number of decimal places we want each descriptive statistic to be reported to, since the table is not transposed and so still has genuine numeric columns for `kbl` to round.
 
 Specifically, the "digits" argument accepts a vector of numbers, whose length is equal to the number of columns being reported in the table, and these numbers indicate the number of decimal places to include for that specific variable.
 

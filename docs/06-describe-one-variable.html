@@ -370,6 +370,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -433,14 +439,13 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will use the following datasets in this tutorial:</p>
 <ul>
-<li>the <code>birds.csv</code> file contains counts of different categories of bird observed at a marsh habitat</li>
+<li>the <code>birds</code> dataset contains counts of different categories of bird observed at a marsh habitat</li>
 <li>the <code>penguins</code> dataset that is available as part of the <code>palmerpenguins</code> package</li>
 </ul>
 <div class="cell" data-layout-align="center">
@@ -450,7 +455,7 @@ window.Quarto = {
 <section id="desc_cat_Var" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="desc_cat_Var"><span class="header-section-number">6.2</span> Describing a categorical variable</h2>
 <p>The <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Proportion"><em>proportion</em></a> is the most important <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistic</a> for a categorical variable. It measures the fraction of observations in a given category within a categorical variable.</p>
-<p>For example, the <code>birds.csv</code> file has a single variable called <code>type</code> that includes tallies (frequencies) of each of four categories of bird observed at a marsh habitat.</p>
+<p>For example, the <code>birds</code> dataset has a single variable called <code>type</code> that includes tallies (frequencies) of each of four categories of bird observed at a marsh habitat.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>birds</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 86 × 1</span></span>
@@ -778,7 +783,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In another tutorial we’ll learn how to present the table following all the guidelines in the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html">Biology Guidelines and Procedures document</a>, including, for example, significant digits. For now, the preceding table is good!</p>
+<p>In another <a href="./90-tables.html#stats_nicetable">tutorial</a> we’ll learn how to present the table following all the guidelines in the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html">Biology Guidelines and Procedures document</a>, including, for example, significant digits. For now, the preceding table is good!</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled" title="Activity">

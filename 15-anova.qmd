@@ -29,13 +29,12 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(knitr)
-library(skimr)
 library(broom)
 library(car)
 library(biol202)
 ```
 
-For this tutorial we'll use the "circadian.csv" dataset.  These data are associated with Example 15.1 in the text. 
+For this tutorial we'll use the `circadian` dataset.  These data are associated with Example 15.1 in the text.
 
 The `circadian` data describe melatonin production in 22 people randomly assigned to one of three light treatments.  
 
@@ -56,7 +55,7 @@ Let's have a look at the data.
 
 ```{r anova_lookdata}
 circadian %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 And also have a look at the tibble itself:
@@ -75,14 +74,13 @@ circadian %>%
   unique()
 ```
 
-**Two important things to notice here**: 
+**One important thing to notice here**:
 
-* The categorical variable "treatment" is recognized as a "character" variable ("chr") instead of a "factor" variable, 
-* The category names are not capitalized
+* The category names are not capitalized.
 
-Let's recode this using the method we previously learned in the [2-sample _t_-test tutorial](13-two-means.qmd#twosamp_ttest), using the `recode_factor` function from the `dplyr` package.
+The `treatment` variable already arrives as a "factor" variable, and already in the correct order ("control", "knee", "eyes") — the `biol202` package took care of that. But the category labels themselves aren't capitalized, so let's fix that using the `recode_factor` function from the `dplyr` package, the method we previously learned in the [2-sample _t_-test tutorial](13-two-means.qmd#twosamp_ttest).
 
-Be sure to provide the variables in the order that you want them to appear in any tables, figures, and analyses.
+Be sure to provide the categories in the order you want them to appear in any tables, figures, and analyses — here, that order is already correct, so we're just relabelling each one:
 
 ```{r covert_var}
 circadian <- circadian %>%
@@ -95,7 +93,7 @@ Have a look:
 circadian$treatment
 ```
 
-OK, so not only have we successfully changed the type of variable to factor, and capitalized the category names, but it turns out that the ordering of the factor "levels" is in the correct order, i.e. consistent with how it's displayed in the text figure in example 15.1.   
+The category names are now capitalized, and — as expected, since it was already correct — the ordering of the factor "levels" remains consistent with how it's displayed in the text figure in example 15.1.
 
 Now we're ready to proceed with ANOVA!
 

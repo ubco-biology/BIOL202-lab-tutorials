@@ -35,7 +35,6 @@ Load the usual packages, and `broom`, which has been used in some tutorials:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(broom)
 library(biol202)
 ```
@@ -47,9 +46,9 @@ library(car)
 library(boot)
 ```
 
-The "marine.csv" dataset is discussed in example 13.1 in the text book.  The "flowers.csv" dataset is described below. The "students.csv" data include data about BIOL202 students from a few years ago.  
+The `marine` dataset is discussed in example 13.1 in the text book.  The `flowers` dataset is described below. The `students` dataset includes data about BIOL202 students from a few years ago.
 
-Let's make sure to treat any categorical variables as factor variables, using the "stringsAsFactors = T" argument:
+Load all three:
 
 ```{r}
 data(marine)
@@ -59,14 +58,14 @@ data(students)
 
 Explore the `marine` and `flowers` datasets:  
 
-```{r skim_marine}
+```{r overview_marine}
 marine %>%
-  skim_without_charts()
+  glimpse()
 ```
 
-```{r skim_flowers}
+```{r overview_flowers}
 flowers %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 ## Checking the normality assumption {#checknorm_assum}

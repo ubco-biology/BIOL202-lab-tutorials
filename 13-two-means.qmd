@@ -26,7 +26,6 @@ library(tidyr)
 library(knitr)
 library(janitor)
 library(biol202)
-library(skimr)
 library(car)
 ```
 
@@ -301,7 +300,7 @@ Have a look at the `students` dataset:
 
 ```{r}
 students %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 These data include measurements taken on 154 students in BIOL202 a few years ago.  
@@ -310,23 +309,24 @@ We'll use the "height" and "dominant_eye" variables for this section.
 
 **OPTIONAL** 
 
-Note that the categories in the `dominant_eye` variable are "l" and "r", denoting "left" and "right".
+Note that in a raw CSV, categories in a variable like `dominant_eye` might arrive abbreviated — e.g. "l" and "r" for "left" and "right". In the `biol202` package version of `students`, this has already been relabelled to "Left" and "Right" for you.
 
-We can use the `unique` function to tell us all unique values of a categorical variable:
+We can use the `unique` function to check all unique values of a categorical variable:
 
 ```{r}
-students %>% 
+students %>%
   select(dominant_eye) %>%
   unique()
 ```
-Let's change these to be more informative, "Left" and "Right". 
 
-We can do this with the `recode_factor` function from the `dplyr` package, in conjunction with the familiar `mutate` function used to create a new variable (though here we're just over-writing an existing variable):
+If you ever needed to relabel abbreviated categories like this yourself, you'd use the `recode_factor` function from the `dplyr` package, in conjunction with the familiar `mutate` function used to create a new variable (though here we're just over-writing an existing variable):
 
-```{r}
+```{r, eval = FALSE}
 students <- students %>%
   mutate(dominant_eye = recode_factor(dominant_eye, r = "Right", l = "Left"))
 ```
+
+We don't actually run that here, since the categories are already correctly labelled. Running `recode_factor` on data that's already "Left"/"Right" wouldn't produce an error — but it *would* silently reverse which category is treated as the reference level (the one that comes first), which could shift the order categories appear in later tables and figures.
 
 ### Hypothesis statement {#twosamp_hyp}
 
@@ -386,7 +386,7 @@ kable(t(height.stats), digits = 4)
 
 It is best to **NOT rotate the table**, but it is fine to do so if your table goes off the page!  
 
-We'll learn a better way to get around this later.
+We'll learn a [better way](90-tables.qmd#stats_nicetable) to get around this later.
 
 ### A graph to accompany a 2-sample *t*-test {#graph_2samp} 
 

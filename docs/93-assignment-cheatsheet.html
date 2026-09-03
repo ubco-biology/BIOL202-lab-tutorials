@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Reproducible Research – R Tutorials for Biostatistics</title>
+<title>Preparing and Submitting Your Assignment — Cheatsheet – R Tutorials for Biostatistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,8 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-formatting-assignments.html" rel="next">
-<link href="./01-getting-started.html" rel="prev">
+<link href="./99-common-issues.html" rel="next">
+<link href="./92-visual-editor.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -121,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-getting-started.html">Part I — Workflow &amp; Reproducibility</a></li><li class="breadcrumb-item"><a href="./02-reproducible-r.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Research</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./90-tables.html">Reference</a></li><li class="breadcrumb-item"><a href="./93-assignment-cheatsheet.html">Preparing and Submitting Your Assignment — Cheatsheet</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-reproducible-r.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02-reproducible-r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
   </div>
 </li>
@@ -341,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
   </div>
 </li>
@@ -363,31 +328,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#comp_repro" id="toc-comp_repro" class="nav-link active" data-scroll-target="#comp_repro"><span class="header-section-number">2.1</span> Computational reproducibility</a></li>
-  <li><a href="#biol202_workflow" id="toc-biol202_workflow" class="nav-link" data-scroll-target="#biol202_workflow"><span class="header-section-number">2.2</span> An example BIOL202 workflow</a></li>
-  <li><a href="#onedrive" id="toc-onedrive" class="nav-link" data-scroll-target="#onedrive"><span class="header-section-number">2.3</span> Microsoft OneDrive</a></li>
-  <li><a href="#dir_structure" id="toc-dir_structure" class="nav-link" data-scroll-target="#dir_structure"><span class="header-section-number">2.4</span> Directory structure</a></li>
-  <li><a href="#setup_dirs" id="toc-setup_dirs" class="nav-link" data-scroll-target="#setup_dirs"><span class="header-section-number">2.5</span> Steps to set up directories</a></li>
-  <li><a href="#lecture_workflow" id="toc-lecture_workflow" class="nav-link" data-scroll-target="#lecture_workflow"><span class="header-section-number">2.6</span> Lecture workflow</a></li>
-  <li><a href="#tutorial_workflow" id="toc-tutorial_workflow" class="nav-link" data-scroll-target="#tutorial_workflow"><span class="header-section-number">2.7</span> Tutorial workflow</a></li>
-  <li><a href="#create_project" id="toc-create_project" class="nav-link" data-scroll-target="#create_project"><span class="header-section-number">2.8</span> Create an RStudio Project</a></li>
-  <li><a href="#create_subdirs" id="toc-create_subdirs" class="nav-link" data-scroll-target="#create_subdirs"><span class="header-section-number">2.9</span> Create subdirectories</a>
+  <li><a href="#before-you-open-the-assignment-file" id="toc-before-you-open-the-assignment-file" class="nav-link active" data-scroll-target="#before-you-open-the-assignment-file">1. Before you open the assignment file</a></li>
+  <li><a href="#set-up-the-header-do-this-first-change-nothing-else" id="toc-set-up-the-header-do-this-first-change-nothing-else" class="nav-link" data-scroll-target="#set-up-the-header-do-this-first-change-nothing-else">2. Set up the header — do this first, change nothing else</a></li>
+  <li><a href="#load-packages-once-near-the-top" id="toc-load-packages-once-near-the-top" class="nav-link" data-scroll-target="#load-packages-once-near-the-top">3. Load packages once, near the top</a></li>
+  <li><a href="#answer-each-question" id="toc-answer-each-question" class="nav-link" data-scroll-target="#answer-each-question">4. Answer each question</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">5. Figures</a></li>
+  <li><a href="#knit-to-pdf" id="toc-knit-to-pdf" class="nav-link" data-scroll-target="#knit-to-pdf">6. Knit to PDF</a>
   <ul class="collapse">
-  <li><a href="#here_package" id="toc-here_package" class="nav-link" data-scroll-target="#here_package"><span class="header-section-number">2.9.1</span> The <code>here</code> package</a></li>
+  <li><a href="#if-knitting-fails-check-the-error-against-these-first-all-from-the-common-issues-page" id="toc-if-knitting-fails-check-the-error-against-these-first-all-from-the-common-issues-page" class="nav-link" data-scroll-target="#if-knitting-fails-check-the-error-against-these-first-all-from-the-common-issues-page">If knitting fails, check the error against these first <em>(all from the Common Issues page)</em></a></li>
   </ul></li>
-  <li><a href="#edit_markdown" id="toc-edit_markdown" class="nav-link" data-scroll-target="#edit_markdown"><span class="header-section-number">2.10</span> Edit an R markdown file</a></li>
-  <li><a href="#md_components" id="toc-md_components" class="nav-link" data-scroll-target="#md_components"><span class="header-section-number">2.11</span> Components of an R Markdown file</a></li>
-  <li><a href="#interact_tutorial" id="toc-interact_tutorial" class="nav-link" data-scroll-target="#interact_tutorial"><span class="header-section-number">2.12</span> Interacting with Tutorial material</a></li>
-  <li><a href="#assign_workflow" id="toc-assign_workflow" class="nav-link" data-scroll-target="#assign_workflow"><span class="header-section-number">2.13</span> Lab assignments workflow</a></li>
+  <li><a href="#check-the-pdf-before-submitting" id="toc-check-the-pdf-before-submitting" class="nav-link" data-scroll-target="#check-the-pdf-before-submitting">7. Check the PDF before submitting</a></li>
+  <li><a href="#name-your-files-and-submit" id="toc-name-your-files-and-submit" class="nav-link" data-scroll-target="#name-your-files-and-submit">8. Name your files and submit</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/02-reproducible-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/93-assignment-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-getting-started.html">Part I — Workflow &amp; Reproducibility</a></li><li class="breadcrumb-item"><a href="./02-reproducible-r.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Research</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./90-tables.html">Reference</a></li><li class="breadcrumb-item"><a href="./93-assignment-cheatsheet.html">Preparing and Submitting Your Assignment — Cheatsheet</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="repro_research" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></h1>
+<h1 class="title">Preparing and Submitting Your Assignment — Cheatsheet</h1>
 </div>
 
 
@@ -404,243 +364,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>A key goal of our Biology program at UBC’s Okanagan campus is to foster appreciation for reproducible research, and to equip students (and professors) with skills that will help them undertake reproducible research themselves.</p>
-<p>In first year you may have learned from the Biology program’s <a href="https://ubco-biology.github.io/OS-Introduction/">introductory Open Science learning modules</a> that reproducible research studies are not as common as one might assume. (If you did not cover that material, do so now). One key reason for this is insufficient documentation of all the steps taken along the research workflow. Moreover, conducting reproducible research is extremely challenging - more than most scientists appreciate. See, for example, an incredible, recent case concerning ageing experiments with <em>C. elegans</em> <a href="https://www.nature.com/news/a-long-journey-to-reproducible-results-1.22478">here</a>.</p>
-<p>In the BIOL202 lectures you’ll learn more about the various causes of irreproducible research, and about the practices that can help promote reproducibility. In this lab component of the course, you’ll learn the basics of how to achieve an acceptable level of <em>computational reproducibility</em> (complete computational reproducibility is actually pretty tricky, but we’ll get close).</p>
-<p><strong>Learning Outcomes</strong></p>
-<p>Upon successful completion, students will be able to:<br>
-1. Implement a computationally reproducible workflow using R, RStudio, and R Markdown<br>
-2. Organize and manage data and project files using versioned, structured formats<br>
-3. Create clean, analysis-ready datasets in .csv or .rds formats<br>
-4. Use R Markdown to document and explain all analysis steps and results</p>
-<section id="comp_repro" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="comp_repro"><span class="header-section-number">2.1</span> Computational reproducibility</h2>
-<p>Almost all research, whether it’s conducted in the field or in a lab, includes a substantial amount of work that’s done on the computer. This includes data processing, <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Statistical-analysis">statistical analyses</a>, data visualization and presentation, and production of research outputs (e.g.&nbsp;publications). Some research is of course exclusively conducted on computers. The bottom line is that computer-based work forms a key and substantive part of all research workflows.</p>
-<p>Given that this work is done on computers (which are entirely controllable), it should be able to be reproduced <strong>exactly</strong>. This is known as <strong>computational reproducibility</strong>: an independent researcher should be able to access all data and scripts from a study, run those scripts, and get exactly the same outputs and results as reported in the original study.</p>
-<p>In this tutorial you’ll start gaining relevant experience and skills by producing a reproducible lab report.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <em>workflow</em> refers to the the steps you take when conducting your day-to-day work - say, on a term project, for example. Having a well-designed workflow improves efficiency, and when done right, reproducibility. It includes, for example, how you create, access, and manage files on your computer (or in the cloud).</p>
-</div>
-</div>
-<p>Following best practices for naming and organizing your files and directories on your computer will help ensure that you can spend more time doing the important work, and less time fiddling and trying to remember what you did and where you saved your work. It will also help your future self, when labs and assignments in upper year courses request that you use <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#R">R</a> and R Markdown for analyses and reports.</p>
-<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Activity
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Review the Biology department’s <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/">Procedures and Guidelines webpage</a> description of how to <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/file-and-data-management.html">manage files and directories</a>. This should take about <strong>20 minutes</strong>.</p>
-</div>
-</div>
-</section>
-<section id="biol202_workflow" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="biol202_workflow"><span class="header-section-number">2.2</span> An example BIOL202 workflow</h2>
-<p>Now that you have reviewed the fundamentals of <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#File-and-data-management">file and directory management</a>, you should decide how to best organize and manage the work you do for BIOL202. Here we’ll provide one example approach that most if not all of you will find useful.</p>
-</section>
-<section id="onedrive" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="onedrive"><span class="header-section-number">2.3</span> Microsoft OneDrive</h2>
-<p>Our suggested approach assumes you have set up a Microsoft account through UBC (using your CWL), and have set up the OneDrive application on your own computer, which automatically syncs (when you’re online) selected files/directories between your local computer and your OneDrive account in the cloud.</p>
-<p>Why OneDrive? As a UBC student, you receive 1TB of free storage! And you also get peace of mind knowing that your files are secure and up-to-date (provided you have an internet connection), and that OneDrive has something called <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Version-control">“version control”</a>, which saves old versions of files and allows you to see those versions if you wish, <strong>so long as you maintain the same file name</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>WAIT A SECOND!</strong> In the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/file-naming.html">“File Naming”</a> instructions that I just reviewed, I was instructed to create a new file with a new version number in the filename (e.g.&nbsp;with a “V0”, “V1”, “V2” etc…) each time I worked on it!</p>
-</div>
-</div>
-<p>Those instructions are entirely valid! However, when you have access to a <em>version control</em> system, like OneDrive, it is better to <strong>keep the file name the same</strong>, rather than changing it each time you update it. For example, your markdown file (which as a “.Rmd” extension to the name) that you use for your tutorial work should maintain the same name throughout the term, rather than saving a new file each time you do substantive work on it.</p>
-<p>Assuming your files are syncing properly between your computer and OneDrive (and this simply requires that you’re connected to the internet), you will always be able to <a href="https://support.microsoft.com/en-us/office/restore-a-previous-version-of-a-file-stored-in-onedrive-159cad6d-d76e-4981-88ef-de6e96c93893">see (and if desired, restore) old versions of your files</a>.</p>
-<p>If you haven’t set up OneDrive yet, follow the instructions provided at this <a href="https://lthub.ubc.ca/guides/microsoft-onedrive-student-guide/">UBC IT website</a>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Using OneDrive is entirely optional. If you choose not to use OneDrive, please follow the file naming instructions from the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/file-naming.html">Procedures and Guidelines document</a>. And you can still follow the directory structure instructions below, regardless of where you set up your directories (OneDrive or not).</p>
-</div>
-</div>
-</section>
-<section id="dir_structure" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="dir_structure"><span class="header-section-number">2.4</span> Directory structure</h2>
-<p>We anticipate three general categories of work being undertaken:</p>
+<p>This is a one-page quick reference for preparing and submitting a BIOL 202 assignment. For full explanations, see <a href="./03-formatting-assignments.html">Tutorial 3, Preparing and formatting assignments</a>.</p>
+<section id="before-you-open-the-assignment-file" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-open-the-assignment-file">1. Before you open the assignment file</h2>
 <ul>
-<li>Lecture work, including annotating lecture notes (e.g.&nbsp;on PDFs or PowerPoints) and writing study notes of your own (e.g.&nbsp;using Word)</li>
-<li>Tutorial work, including practicing what you learn in tutorials using RStudio and R Markdown, and commenting about tips, or tricky bits</li>
-<li>Lab assignment work, in which you answer questions using R and R Markdown and create a document for submission and grading</li>
+<li>Open your <strong><code>BIOL202_assignments</code></strong> RStudio project (double-click the <code>.Rproj</code> file) — don’t just open the <code>.Rmd</code> on its own. <em>(<a href="./03-formatting-assignments.html#open_assign_project1">Tutorial 3, §3.1</a>; <a href="./02-reproducible-r.html#create_project">Tutorial 2, §2.8</a>)</em></li>
+<li>Confirm you’re in the right project: bottom-right Files pane should show your assignment files, top-right corner of RStudio should name the project.</li>
+<li>Download the assignment <code>.Rmd</code> from <strong>Canvas → Assignments</strong> (or the <code>Lab_materials</code> module for the practice assignment) and save it into your <code>BIOL202_assignments</code> root or the assignment’s subfolder. <em>(<a href="./03-formatting-assignments.html#download_assign_rmd">Tutorial 3, §3.2</a>)</em></li>
 </ul>
-<p>Each of these categories of work should have their own directory, and all three of these directories should exist within a “root” directory called “BIOL202”.</p>
 </section>
-<section id="setup_dirs" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="setup_dirs"><span class="header-section-number">2.5</span> Steps to set up directories</h2>
+<section id="set-up-the-header-do-this-first-change-nothing-else" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-the-header-do-this-first-change-nothing-else">2. Set up the header — do this first, change nothing else</h2>
 <ul>
-<li>Having successfully installed OneDrive, you should see a “OneDrive” folder on your computer</li>
-<li>In your OneDrive folder, create a root directory “BIOL202” to host all of your BIOL202 work</li>
-<li>Create a “_README.txt file for the root BIOL202 directory, as per instructions in the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/readme-files-and-data-dictionaries.html">Biology Procedures and Guidelines webpage</a>.</li>
+<li>Open the <code>.Rmd</code>. In the header block only, replace: assignment title, <code>Firstname Lastname, Section YY</code>, and due date — keep the quotation marks. <em>(<a href="./03-formatting-assignments.html#open_rmd_file">Tutorial 3, §3.3</a>)</em></li>
+<li>Do <strong>not</strong> touch anything else in the header or the R chunk immediately below it.</li>
+<li>Immediately <strong>Save As</strong> with your proper file name, e.g.&nbsp;<code>Pither_BIOL202_lab-assignment-01.Rmd</code> (no version number needed if the file lives in OneDrive — OneDrive keeps old versions for you). <em>(<a href="./03-formatting-assignments.html#open_rmd_file">Tutorial 3, §3.3</a>; <a href="./02-reproducible-r.html#onedrive">Tutorial 2, §2.3</a>)</em></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can create and edit your “_README.txt” file in RStudio! Just click on the “+” drop down at the top left, and select “Text file”. Then type in the information you need, and name it “_README.txt” and save it in the appropriate directory.</p>
-</div>
-</div>
+</section>
+<section id="load-packages-once-near-the-top" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages-once-near-the-top">3. Load packages once, near the top</h2>
 <ul>
-<li>Within the BIOL202 root directory, create three (sub)directories:
-<ul>
-<li>“BIOL202_lecture”</li>
-<li>“BIOL202_tutorials”</li>
-<li>“BIOL202_assignments”</li>
-</ul></li>
-<li>Create a “_README.txt” file in each of the three sub-directories (again, you can use RStudio to create these!).</li>
+<li>One chunk near the top loads what you’ll need — one <code>library()</code> line per package (never <code>library(tidyverse)</code>): <code>library(dplyr)</code>, <code>library(ggplot2)</code>, <code>library(readr)</code>, <code>library(biol202)</code> — add others only if a question needs them. <em>(<a href="./03-formatting-assignments.html#what_include_answer">Tutorial 3, §3.4</a>; <a href="./01-getting-started.html#package_load">Tutorial 1, §1.2.5</a>)</em></li>
+<li>Never put <code>install.packages()</code> inside the <code>.Rmd</code> — install in the <strong>Console</strong> only. <em>(<a href="./01-getting-started.html#package_install">Tutorial 1, §1.2.4</a>)</em></li>
 </ul>
-<p>An example setup is illustrated below.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-02-example-directory-structure" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-02-example-directory-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/BIOL202_directory_structure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1512">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-02-example-directory-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Example directory structure
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The BIOL202 directory, and all its contents, will now sync regularly to your online OneDrive account, so that you can access your up-to-date files from any device upon which OneDrive is installed.</p>
-<p>It is possible to work on files stored on your local computer when you’re offline; they just won’t sync to the cloud until you’ve gotten back online.</p>
 </section>
-<section id="lecture_workflow" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="lecture_workflow"><span class="header-section-number">2.6</span> Lecture workflow</h2>
-<p>The directory for your lecture work is now ready to house any lecture-related work that you do. For instance, if you wish to type up study notes in a Word document, you could call that file “Pither_BIOL202_lecture-notes.docx”. Each time you add/edit/update it, OneDrive will keep old versions for you!</p>
-</section>
-<section id="tutorial_workflow" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="tutorial_workflow"><span class="header-section-number">2.7</span> Tutorial workflow</h2>
-<p>How you manage your tutorial workflow comes down to personal preference. The instructions provided below create an RStudio project in the “BIOL202_tutorials” directory (see below), and then create a single R Markdown document, formatted to have sections (headers) for each tutorial you work on. This approach makes it easier to find all of your work in the R Markdown file, so long as it is formatted logically.<br>
-I have created an R Markdown file that you can download and use for this purpose, and we’ll download that a bit later.</p>
-<p>First, we need to set up an RStudio project.</p>
-</section>
-<section id="create_project" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="create_project"><span class="header-section-number">2.8</span> Create an RStudio Project</h2>
-<p>It is best to organize all your R work using RStudio “projects”. For your tutorial work, for example, you will create a new project that will be housed in your “BIOL202_tutorials” directory</p>
-<p>To do this, open RStudio then select File &gt; New Project. Then select the option to use an existing directory, and locate and select your tutorial directory. Provide a name for your project file, such as “BIOL202_tutorial”, then select OK. If it asks to open a new RStudio session, you can say yes.</p>
-<p>RStudio has now created an RStudio project file that has an “Rproj” extension at the end of the name. This “Rproj” file is the file that you will open (double-click with the mouse) each time you wish to work on your tutorial material. You should see the “Rproj” file in the bottom right files panel of RStudio.</p>
-</section>
-<section id="create_subdirs" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="create_subdirs"><span class="header-section-number">2.9</span> Create subdirectories</h2>
-<p>Your tutorial work may involve creating and saving outputs like figures or files, in which case you should have sub-directories for these purposes in your root directory. See the example provided in the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/example-biol-116.html#screenshot">Procedures and Guidelines document</a>.</p>
-<p>Let’s illustrate the procedure by creating a subdirectory called “figures”, and this time we’ll use R to create the directory.</p>
-<p>The following code will create a directory called “figures” in your working directory</p>
-<pre><code>dir.create("figures")</code></pre>
-<p>You should see the new folder appear in the files panel on the bottom right of RStudio.</p>
-<p>Whenever you wish to generate figures in R, then export them as image files, for example, you can save them to this folder. We’ll learn about this later.</p>
-<p>Reading and writing files from / to directories requires that we can tell R exactly where to find those directories. That’s where the handy package called <code>here</code> comes in.</p>
-<section id="here_package" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="here_package"><span class="header-section-number">2.9.1</span> The <code>here</code> package</h3>
-<p>Now we’ll install and load an R package called <code>here</code> that will help with file and directory management and navigation.</p>
-<pre><code>install.packages("here")</code></pre>
-<p>This is a helpful <a href="https://here.r-lib.org/index.html">vignette</a> about the <code>here</code> package.</p>
-<p>Then we load the package:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>When you load the package, the <code>here</code> function takes stock of where your RStudio project file is located, and establishes that directory as the “working directory”. It should return a file path for you. In future tutorials we’ll make use of the <code>here</code> package when saving files.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Every time you run <code>library(here)</code>, you’ll see a message like this:</p>
-<pre><code>here() starts at /Users/yourname/OneDrive/BIOL202/BIOL202_tutorials</code></pre>
-<p>This is not an error — it’s <code>here</code> confirming which folder it has identified as your project’s home base (the “working directory”), which is what lets it find your files. You’ll see this message every time you load the package, in every session.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="edit_markdown" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="edit_markdown"><span class="header-section-number">2.10</span> Edit an R markdown file</h2>
-<p>In a previous <a href="./01-getting-started.html#intro_markdown">tutorial</a> you learned how to create an R Markdown file, but generally you won’t need to do this in this course, because you’ll be provided starter documents to work with.</p>
-<p>I have created an R Markdown file that you can download and use for starting your tutorial work.</p>
-<p>To do this, type the following code into your command console in RStudio (the bottom left panel):</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/templates/Example_tutorial_markdown.Rmd"</span>, <span class="st">"BIOL202_tutorial_markdown.Rmd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This <code>download.file</code> command takes a URL address for a file stored online, and then tells R where to save it, and what name to use.</p>
-<p>Here we will save the RMD file in your “working directory”, which is the “BIOL202_tutorials” directory. It should show up in the “files” pane in the bottom right RStudio panel. Click on the “BIOL202_tutorial_markdown.Rmd file to open it.</p>
-<p>This is the R Markdown file that you’ll edit/add to throughout the term. It has some starting instructions / example text already, and you’re welcome to delete / change that.</p>
+<section id="answer-each-question" class="level2">
+<h2 class="anchored" data-anchor-id="answer-each-question">4. Answer each question</h2>
 <ul>
-<li>Change the “author” information at the top of the document (in the header) to your name.</li>
-<li>Save your file by clicking the save icon in the top left, and be sure to give it an appropriate name as per previous file-naming instructions</li>
+<li>Load each dataset with <code>library(biol202); data(name)</code>, or <code>read_csv()</code> if the question says to import a CSV. <em>(<a href="./03-formatting-assignments.html#first_csv_import">Tutorial 3, §3.4.2</a>; <a href="./04-importing-data.html#import_csv_local">Tutorial 4, §4.4</a>)</em></li>
+<li>Answer in full sentences, addressing exactly what’s asked.</li>
+<li>Every answer’s code sits in its own R chunk, with a unique chunk name. <em>(<a href="./03-formatting-assignments.html#chunk_headers">Tutorial 3, §3.4.1</a>)</em></li>
+<li>Press the green ▶ to run each chunk as you go — don’t wait until the end. <em>(<a href="./03-formatting-assignments.html#what_include_answer">Tutorial 3, §3.4</a>)</em></li>
+<li>If a chunk produces a lot of clutter (e.g.&nbsp;package-loading messages), add <code>message = FALSE</code> to <em>that</em> chunk’s header only — not by default. <em>(<a href="./03-formatting-assignments.html#chunk_headers">Tutorial 3, §3.4.1</a>)</em></li>
+<li><strong>Save and knit often</strong> — don’t wait until you’re finished to knit for the first time. <em>(<a href="./03-formatting-assignments.html#what_include_answer">Tutorial 3, §3.4</a>)</em></li>
 </ul>
-<p>For the basics on formatting in R Markdown, consult the R Markdown <a href="https://utstat.utoronto.ca/reid/sta2201s/rmarkdown-reference.pdf">reference guide</a></p>
 </section>
-<section id="md_components" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="md_components"><span class="header-section-number">2.11</span> Components of an R Markdown file</h2>
-<p>At this point, you should familiarize yourself with the components of a markdown file.</p>
-<div class="callout callout-style-default callout-caution callout-titled" title="Activity">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Activity
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>R Markdown basics</strong>: Read through section 4.2 of this online <a href="https://rbasics.netlify.app/4-rmarkdown.html#the-components-of-an-r-markdown-file">tutorial</a> and watch the videos there too.</p>
-</div>
-</div>
-<hr>
+<section id="figures" class="level2">
+<h2 class="anchored" data-anchor-id="figures">5. Figures</h2>
+<ul>
+<li>Every chunk that makes a plot needs <code>fig.cap = "..."</code>, <code>fig.width =</code>, <code>fig.height =</code> in its header, with a <strong>blank line</strong> before the plotting code starts. <em>(<a href="./03-formatting-assignments.html#rmd_graphing">Tutorial 3, §3.5</a>)</em></li>
+<li>Leave a <strong>blank line</strong> between the end of a figure chunk and the text below it, or the caption won’t appear. <em>(<a href="./99-common-issues.html#figure-caption-doesnt-show-up-below-figure-in-knitted-document">Common Issues</a>)</em></li>
+<li>If you use a graph to answer a question, refer to it by name/number in your written answer. <em>(<a href="./03-formatting-assignments.html#what_include_answer">Tutorial 3, §3.4</a>)</em></li>
+<li>Figure numbers (“Figure 1:”, “Figure 2:”…) are automatic — don’t type them yourself.</li>
+</ul>
 </section>
-<section id="interact_tutorial" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="interact_tutorial"><span class="header-section-number">2.12</span> Interacting with Tutorial material</h2>
-<p>Students have typically worked through tutorials by reading the material, typing helpful notes in their markdown document, and typing the provided R code into “chunks” within their R Markdown document, then running those chunks. (<strong>NOTE</strong>: it’s better for you to practice typing the code, rather than copying and pasting!)</p>
-<p>You can insert as many chunks as you’d like. Chunk insertion is achieved by selecting the green “+” icon at top of the editor panel, and selecting “R”. Or go to the “Code” menu drop down and “Insert Chunk”.</p>
-<p>The key advice: keep your work organized by using headings. There’s an option to view your headings all in one navigation pane by clicking on the navigation pane icon at the top right of your editor panel.</p>
+<section id="knit-to-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="knit-to-pdf">6. Knit to PDF</h2>
+<ul>
+<li>Click the <strong>Knit</strong> dropdown → <strong>Knit to PDF</strong> (don’t just click “Knit” without checking it says PDF). <em>(<a href="./03-formatting-assignments.html#knit_assign">Tutorial 3, §3.7</a>; <a href="./01-getting-started.html#veryify_knit">Tutorial 1, §1.2.8</a>)</em></li>
+<li>The PDF takes the same name as your <code>.Rmd</code>, just with a <code>.pdf</code> extension.</li>
+</ul>
+<section id="if-knitting-fails-check-the-error-against-these-first-all-from-the-common-issues-page" class="level3">
+<h3 class="anchored" data-anchor-id="if-knitting-fails-check-the-error-against-these-first-all-from-the-common-issues-page">If knitting fails, check the error against these first <em>(all from the Common Issues page)</em></h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Error says…</th>
+<th>Likely fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>could not find function</code></td>
+<td>You used a package function before <code>library()</code> loaded it — load it in a chunk near the top. <a href="./99-common-issues.html#could-not-find-function">Details</a></td>
+</tr>
+<tr class="even">
+<td><code>there is no package called...</code></td>
+<td>Package isn’t installed — run <code>install.packages()</code> in the <strong>Console</strong>, not the <code>.Rmd</code>. <a href="./99-common-issues.html#there-is-no-package">Details</a></td>
+</tr>
+<tr class="odd">
+<td><code>trying to use CRAN without setting a mirror</code></td>
+<td>You have <code>install.packages()</code> inside the <code>.Rmd</code> — remove it, install in Console instead. <a href="./99-common-issues.html#trying-to-use-cran-without-setting-a-mirror">Details</a></td>
+</tr>
+<tr class="even">
+<td><code>LaTeX failed</code> / <code>pdflatex not found</code></td>
+<td>Run in Console: <code>install.packages("tinytex")</code> then <code>tinytex::install_tinytex()</code>. <a href="./99-common-issues.html#pdf-latex-is-not-found">Details</a></td>
+</tr>
+<tr class="odd">
+<td>Mentions a Unicode character</td>
+<td>You likely pasted text from the web (curly quotes, special symbols). Retype the offending text. <a href="./99-common-issues.html#unicode-knitting-error">Details</a></td>
+</tr>
+<tr class="even">
+<td><code>unused argument</code></td>
+<td>A <code>library()</code> call is <em>below</em> the chunk that uses it — move <code>library()</code> above. <a href="./99-common-issues.html#unused-argument">Details</a></td>
+</tr>
+<tr class="odd">
+<td><code>object not found</code></td>
+<td>You’re using an object before creating it — create it in an earlier chunk. <a href="./99-common-issues.html#object-not-found">Details</a></td>
+</tr>
+<tr class="even">
+<td>Parse/syntax error, points to a line</td>
+<td>Look for a stray symbol (comma, bracket, <code>&gt;</code>) on that line. <a href="./99-common-issues.html#error-in-parse">Details</a></td>
+</tr>
+<tr class="odd">
+<td>Still stuck</td>
+<td>Google the exact error text + “R”; read which line R points to first. <a href="./99-common-issues.html#google-can-help">Details</a></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="assign_workflow" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="assign_workflow"><span class="header-section-number">2.13</span> Lab assignments workflow</h2>
-<p>You can repeat the same steps from earlier for creating a new <a href="#create_project">RStudio project</a> for your lab work. But this time when you create the project, specify your lab assignment directory “BIOL202_assignments” as the location.</p>
-<p>You can optionally create subdirectories also, perhaps one for each of the lab assignments.</p>
-<p>The key difference in the assignments workflow is that for each assignment you’ll start with a new R Markdown (Rmd) file, which you’ll download from Canvas under the “assignments” link. The document will include the questions you are to answer, and you simply edit / add to the document as you answer them.</p>
-<p>Instructions for this will come in a later tutorial.</p>
-<p>Next tutorial: Practicing completing a very short lab assignment using R Markdown.</p>
+</section>
+<section id="check-the-pdf-before-submitting" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-pdf-before-submitting">7. Check the PDF before submitting</h2>
+<ul>
+<li>Open the knitted PDF and read it start to finish.</li>
+<li>Every question has code, output, and a written answer — nothing missing or cut off.</li>
+<li>Figures render properly and each has a caption starting “Figure X:”.</li>
+<li>Spelling and grammar check.</li>
+<li>If anything’s wrong: close the PDF, fix the <code>.Rmd</code>, <strong>save, then re-knit</strong> — never hand-edit the PDF. <em>(<a href="./03-formatting-assignments.html#knit_assign">Tutorial 3, §3.7</a>)</em></li>
+</ul>
+</section>
+<section id="name-your-files-and-submit" class="level2">
+<h2 class="anchored" data-anchor-id="name-your-files-and-submit">8. Name your files and submit</h2>
+<ul>
+<li>Confirm both files share the same base name, e.g.&nbsp;<code>Pither_BIOL202_lab-assignment-01.Rmd</code> and <code>.pdf</code> — follow the naming convention given with the specific assignment.</li>
+<li>Upload <strong>both</strong> the <code>.Rmd</code> and the <code>.pdf</code> to the assignment’s Canvas submission page. <em>(<a href="./03-formatting-assignments.html#submit_rmd">Tutorial 3, §3.8</a>)</em></li>
+<li>After uploading, re-open the submission on Canvas and confirm the PDF opens correctly and is the right version.</li>
+</ul>
 
 
 </section>
@@ -1053,13 +893,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-getting-started.html" class="pagination-link" aria-label="What are R and RStudio?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What are R and RStudio?</span></span>
+      <a href="./92-visual-editor.html" class="pagination-link" aria-label="Visual Markdown Editor">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visual Markdown Editor</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-formatting-assignments.html" class="pagination-link" aria-label="Preparing and formatting assignments">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Preparing and formatting assignments</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-common-issues.html" class="pagination-link" aria-label="Common errors and their solutions">
+        <span class="nav-page-text">Common errors and their solutions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1071,7 +911,7 @@ Note
     </div>   
     <div class="nav-footer-center">
 <p>R Tutorials for Biostatistics — CC BY-NC-SA 4.0</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/02-reproducible-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/93-assignment-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

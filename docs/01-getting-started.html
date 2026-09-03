@@ -341,6 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -369,7 +375,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lit_programming" id="toc-lit_programming" class="nav-link" data-scroll-target="#lit_programming"><span class="header-section-number">1.2.7</span> Literate programming with R Markdown</a></li>
   <li><a href="#veryify_knit" id="toc-veryify_knit" class="nav-link" data-scroll-target="#veryify_knit"><span class="header-section-number">1.2.8</span> Making sure R Markdown knits to PDF</a></li>
   <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">1.2.9</span> Extra resources</a></li>
-  <li><a href="#online_resources" id="toc-online_resources" class="nav-link" data-scroll-target="#online_resources"><span class="header-section-number">1.2.10</span> R Resources Online</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/01-getting-started.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -446,7 +451,7 @@ Note
 <p>RStudio is now owned by “posit”, and its website (posit.co) should detect your operating system and provide the appropriate download option automatically. The website with older versions of R is <a href="https://cran.r-project.org/bin/macosx/">here</a>, and older versions of RStudio is <a href="https://docs.posit.co/previous-versions/rstudio/">here</a>.</p>
 </div>
 </div>
-<p>Follow the instructions below, and you are encouraged to view this YouTube video <a href="https://www.youtube.com/watch?v=tgPuB-iNww0">here</a> <em>prior</em> to starting the steps. It talks about installing for different operating systems and different vintages of Macs (e.g.&nbsp;newer M1 chips versus Intel chips).</p>
+<p>Follow the instructions below to download and install both R and RStudio.</p>
 <ul>
 <li>Download and install both R and RStudio (Desktop version) on your computer.</li>
 </ul>
@@ -470,7 +475,7 @@ Note
 <li>For <em>Windows</em> users, download the “base” version; the file will be named <code>R-x.y.z-win.exe</code>, where <code>x.y.z</code> is whatever the current version number is (e.g.&nbsp;<code>R-4.5.1-win.exe</code>). Executing this file launches a familiar Windows Setup Wizard that will install R on your computer.</li>
 <li>For <em>Mac</em> users, download the “pkg” file that is appropriate for your version of MacOS; the file will be named <code>R-x.y.z.pkg</code> (e.g.&nbsp;<code>R-4.5.1.pkg</code>). Download and run this installation package—just accept the default options and you will be ready to go.</li>
 </ul></li>
-<li>Now to install RStudio: once you have installed “R”, go to this <a href="https://posit.co/download/rstudio-desktop/">website</a> and click on the “download RStudio desktop” button under the “Install RStudio” heading. The website should detect what operating system you’re using and offer you the appropriate version.</li>
+<li>Now to install RStudio: once you have installed “R”, go to this <a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads">website</a> and click on the “download RStudio desktop” button under the “Install RStudio” heading. The website should detect what operating system you’re using and offer you the appropriate version.</li>
 </ul>
 </section>
 <section id="start_r" class="level2" data-number="1.2">
@@ -568,7 +573,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Later, when you start using R Markdown, never include the following “install.packages” code within your R Markdown document; only install packages by typing directly in the Console!</p>
+<p>Later, when you start using R Markdown, never include the following “install.packages” code within your R Markdown document; only install packages by typing directly in the Console! (See <a href="./99-common-issues.html">Common errors and their solutions</a> for the specific errors this causes if you forget.)</p>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -580,7 +585,7 @@ Warning
 systemfonts  1.0.2  1.0.3              TRUE
 
 Do you want to install from sources the package which needs compilation? (Yes/no/cancel)</code></pre>
-<p>Respond with “no” (without quotes). Do NOT respond “Yes”.</p>
+<p>Respond with “no” (without quotes). Do NOT respond “Yes”. (This same message and fix are also listed in <a href="./99-common-issues.html">Common errors and their solutions</a>.)</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -614,9 +619,32 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>When you run <code>library(dplyr)</code>, you’ll likely see a chunk of text like this appear:</p>
+<pre><code>Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+<p>This is <strong>not an error</strong>. It is <code>dplyr</code> telling you that it has some functions with the same name as functions already built into R (here, <code>filter</code> and <code>lag</code>), and that when you type <code>filter</code> or <code>lag</code>, R will now use the <code>dplyr</code> version rather than the built-in one. You’ll see similar “masked” or “conflicts” messages whenever you load many other packages this term (<code>car</code>, <code>janitor</code>, and others). It is expected, and you can ignore it.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You have to reload each package you want to use every time you open a new session of RStudio. This is a little annoying to get used to and will be your most common error as you begin. When you see an error such as</p>
 <pre><code>Error: could not find function</code></pre>
-<p>remember that this likely comes from you trying to use a function in a package that has not been loaded. Remember to run the <code>library()</code> function with the appropriate package to fix this error.</p>
+<p>remember that this likely comes from you trying to use a function in a package that has not been loaded. Remember to run the <code>library()</code> function with the appropriate package to fix this error. (See also <a href="./99-common-issues.html">Common errors and their solutions</a>.)</p>
 </div>
 </div>
 </section>
@@ -671,7 +699,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -680,7 +708,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you’d like additional introductory tutorials on R Markdown, see this <a href="https://rbasics.netlify.app/4-rmarkdown.html">resource</a>.</p>
 </div>
@@ -717,6 +745,7 @@ Note
 </div>
 </div>
 <p>Now go back to the steps 1 through 4 above to try knitting your markdown document to PDF.</p>
+<p>If you’re still stuck, see <a href="./99-common-issues.html">Common errors and their solutions</a> for more troubleshooting options.</p>
 <p>In a future <a href="./02-reproducible-r.html#repro_research">tutorial</a> we’ll discuss how to use R Markdown as part of a reproducible workflow.</p>
 </section>
 <section id="r_resources" class="level3" data-number="1.2.9">
@@ -739,196 +768,6 @@ Note
 <p>You can get nice PDF versions of the files by going to <strong>Help -&gt; Cheatsheets</strong> inside RStudio:</p>
 <p><img src="images/cheatsheets.png" class="img-fluid"></p>
 <p>The book titled “Getting used to R, RStudio, and R Markdown” by Chester Ismay, which can be freely accessed <a href="https://ismayc.github.io/rbasics-book/">here</a>, is also a wonderful resource for for new users of R, RStudio, and R Markdown. It includes examples showing working with R Markdown files in RStudio recorded as GIFs.</p>
-</section>
-<section id="online_resources" class="level3" data-number="1.2.10">
-<h3 data-number="1.2.10" class="anchored" data-anchor-id="online_resources"><span class="header-section-number">1.2.10</span> R Resources Online</h3>
-<table class="caption-top table">
-<caption>Learning R - Tutorials and workshop materials</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://whitlockschluter3e.zoology.ubc.ca" class="uri">https://whitlockschluter3e.zoology.ubc.ca</a>.</td>
-<td style="text-align: left;">R resources to accompany Whitlock &amp; Schluter text</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://datacarpentry.org/R-genomics/01-intro-to-R.htm" class="uri">https://datacarpentry.org/R-genomics/01-intro-to-R.htm</a></td>
-<td style="text-align: left;">l Data Carpentry Intro R tutorials</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://r-dir.com/learn/tutorials.html" class="uri">https://r-dir.com/learn/tutorials.html</a></td>
-<td style="text-align: left;">List of useful tutorials including videos</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://www.rstudio.com/resources/webinars/" class="uri">https://www.rstudio.com/resources/webinars/</a></td>
-<td style="text-align: left;">Various online learning materials at RStudio</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://rmd4sci.njtierney.com" class="uri">https://rmd4sci.njtierney.com</a></td>
-<td style="text-align: left;">R Markdown for Scientists</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://r4ds.had.co.nz/index.html" class="uri">http://r4ds.had.co.nz/index.html</a></td>
-<td style="text-align: left;">Hadley Wickham’s online book</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>So many packages - how to find useful ones?</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://blog.revolutionanalytics.com/beginner-tips/" class="uri">http://blog.revolutionanalytics.com/beginner-tips/</a></td>
-<td style="text-align: left;">Beginner tips</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://mran.microsoft.com/packages/" class="uri">https://mran.microsoft.com/packages/</a></td>
-<td style="text-align: left;">Tool for exploring packages</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>Data analysis in R</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.zoology.ubc.ca/~schluter/R/" class="uri">https://www.zoology.ubc.ca/~schluter/R/</a></td>
-<td style="text-align: left;">UBC zoology site handy stats reference</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://statmethods.net/" class="uri">http://statmethods.net/</a></td>
-<td style="text-align: left;">Good general reference</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>Data visualization in R</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://statmethods.net/" class="uri">http://statmethods.net/</a></td>
-<td style="text-align: left;">Good general reference for graphing</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://ggplot2.org/book/" class="uri">http://ggplot2.org/book/</a></td>
-<td style="text-align: left;">Hadley Wickhams’s ggplot2 book online</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://stats.idre.ucla.edu/r/seminars/ggplot2_intro/" class="uri">http://stats.idre.ucla.edu/r/seminars/ggplot2_intro/</a></td>
-<td style="text-align: left;">Great tutorial on ggplot2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://www.cookbook-r.com/Graphs/" class="uri">http://www.cookbook-r.com/Graphs/</a></td>
-<td style="text-align: left;">Graphing with ggplot2</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>BLOGs and general resources</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.r-bloggers.com/" class="uri">https://www.r-bloggers.com/</a></td>
-<td style="text-align: left;">Popular blog site, lots of info</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://rseek.org/" class="uri">http://rseek.org/</a></td>
-<td style="text-align: left;">Search engine for R help</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>Resources for reproducible research / open science</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://cos.io/" class="uri">https://cos.io/</a></td>
-<td style="text-align: left;">Center for Open Science</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://ropensci.org/" class="uri">https://ropensci.org/</a></td>
-<td style="text-align: left;">Open science R resources</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://geoscripting-wur.github.io/RProjectManagement/" class="uri">http://geoscripting-wur.github.io/RProjectManagement/</a></td>
-<td style="text-align: left;">Lessons about <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Version-control">version control</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://nicercode.github.io/" class="uri">https://nicercode.github.io/</a></td>
-<td style="text-align: left;">Helping to improve your code</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<table class="caption-top table">
-<caption>Geospatial work in R</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://spatial.ly/r/" class="uri">http://spatial.ly/r/</a></td>
-<td style="text-align: left;">Example maps with R</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://rstudio.github.io/leaflet/" class="uri">https://rstudio.github.io/leaflet/</a></td>
-<td style="text-align: left;">Online mapping with R</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.earthdatascience.org/courses/earth-analytics/" class="uri">https://www.earthdatascience.org/courses/earth-analytics/</a></td>
-<td style="text-align: left;">Excellent course</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://geoscripting-wur.github.io/" class="uri">https://geoscripting-wur.github.io/</a></td>
-<td style="text-align: left;">Amazing “geoscripting” tutorial</td>
-</tr>
-</tbody>
-</table>
 
 
 </section>

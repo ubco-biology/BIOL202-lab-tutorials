@@ -19,7 +19,6 @@ Load the packages we need for this tutorial:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(broom)
 library(knitr)
 library(janitor)
@@ -27,7 +26,7 @@ library(palmerpenguins)
 library(biol202)
 ```
 
-We'll use the "wolf.csv" and "trick.csv" datasets (discussed in examples 16.2 and 16.5 in the text, respectively).  
+We'll use the `wolf` and `trick` datasets (discussed in examples 16.2 and 16.5 in the text, respectively).
 
 ```{r}
 data(wolf)
@@ -36,21 +35,31 @@ data(trick)
 
 The `wolf` dataset includes inbreeding coefficients for wolf pairs, along with the number of the pairs' pups surviving the first winter.  
 
-Explore the data:
+Explore the data, first with `glimpse` to check its structure:
 
 ```{r corr_seedata1}
-wolf %>% skim_without_charts()
+wolf %>% glimpse()
 ```
 
-We see that there are 24 observations for each of the two variables, and no missing values. If there WERE missing values, be sure to report the correct sample size in your results!
+This tells us `wolf` has 24 rows (observations) and 2 numeric (`<dbl>`) columns: `inbreed_coef` and `n_pups`. To check for missing values, follow up with `summary`:
 
-Now let's explore the `trick` dataset:
+```{r corr_seedata1b}
+wolf %>% summary()
+```
+
+Neither column shows an "NA's" line below its Max. value, which tells us there are no missing values in either variable. If there WERE missing values, be sure to report the correct sample size in your results!
+
+Now let's explore the `trick` dataset the same way:
 
 ```{r corr_seedata2}
-trick %>% skim_without_charts()
+trick %>% glimpse()
 ```
-  
-It includes 21 observations, no missing values, and two integer variables: "years", and "impressiveness_score". Reading example 16.5 from the text, we see that the latter variable is a form of ranking variable.  
+
+```{r corr_seedata2b}
+trick %>% summary()
+```
+
+`trick` has 21 rows and two numeric columns, "years" and "impressiveness_score" (their values happen to be whole numbers). Again, no "NA's" line appears for either column, so there are no missing values. Reading example 16.5 from the text, we see that "impressiveness_score" is a form of ranking variable.
 
 ## Pearson correlation analysis {#pearson}
 

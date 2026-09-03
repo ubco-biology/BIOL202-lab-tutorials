@@ -24,7 +24,6 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(knitr)
-library(skimr)
 library(biol202)
 ```
 
@@ -48,11 +47,11 @@ data(humangenelength)
 
 **Get an overview of the data** 
 
-We'll use `skim_without_charts` to get an overview: 
+We'll use `glimpse` to get an overview:
 
 ```{r est_overview}
 humangenelength %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 The "size" variable is the key one: it includes the gene lengths (number of nucleotides) for each of the `r nrow(humangenelength)` genes in the dataset.  
@@ -263,14 +262,13 @@ If we were to plot a histogram of these 10000 sample means, what shape do you th
 
 Let's plot a histogram of the 10000 means that we calculated.
 
-First, to figure out what axis limits we should set for our histogram, let's get an idea of what the mean gene length values look like:
+First, to figure out what axis limits we should set for our histogram, let's get an idea of what the mean gene length values look like, using the base R `summary` function on the "mean_length" variable:
 
 ```{r view_means}
-gene.means.n20 %>%
- skim_without_charts(mean_length)
+summary(gene.means.n20$mean_length)
 ```
 
-OK, so we see that the minimum and maximum values are `r min(gene.means.n20$mean_length)` (under the "p0" heading) and `r max(gene.means.n20$mean_length)` (under the "p100" heading). So this can inform our x-axis limits when constructing the histogram (note that you typically need to try out different maximum values for the y-axis limits).
+OK, so we see that the minimum and maximum values are `r min(gene.means.n20$mean_length)` (the "Min." value) and `r max(gene.means.n20$mean_length)` (the "Max." value). So this can inform our x-axis limits when constructing the histogram (note that you typically need to try out different maximum values for the y-axis limits).
 
 Let's first remind ourselves what the true mean gene length is in the entire population of genes. We'll assign the output to an object "true.mean.length" and a variable called "Pop_mean", then show using the `kable` approach.
 

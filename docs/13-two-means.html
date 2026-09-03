@@ -370,6 +370,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -451,8 +457,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And we also need the <code>broom</code> package, which may be new to you.</p>
 <div class="cell" data-layout-align="center">
@@ -614,7 +619,7 @@ H<sub>A</sub>: The mean change in antibody production after testosterone implant
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>blackbird.diffs <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> diffs)) <span class="sc">+</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">boundary =</span> <span class="sc">-</span><span class="fl">0.3</span>, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgrey"</span>,) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgrey"</span>,) <span class="sc">+</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Difference in antibody production rate (after - before) (ln[mOD/min]) 10^-3"</span>) <span class="sc">+</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -639,7 +644,7 @@ Figure&nbsp;13.1: Histogram of the differences in antibody production rate befor
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>blackbird <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> antibody)) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> blackbird), <span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> blackbird), <span class="at">colour =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-13-paired-plot-antibody-production" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -819,315 +824,23 @@ Note
 <p>Have a look at the <code>students</code> dataset:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>students <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim_without_charts</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table style="width: auto;" class="table table-condensed">
-<caption>
-Data summary
-</caption>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Name
-</td>
-<td style="text-align:left;">
-Piped data
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Number of rows
-</td>
-<td style="text-align:left;">
-154
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Number of columns
-</td>
-<td style="text-align:left;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-_______________________
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Column type frequency:
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-factor
-</td>
-<td style="text-align:left;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-________________________
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Group variables
-</td>
-<td style="text-align:left;">
-None
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: factor</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:left;">
-ordered
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
-<th style="text-align:left;">
-top_counts
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-dominant_hand
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Rig: 139, Lef: 15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-dominant_foot
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Rig: 137, Lef: 17
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-dominant_eye
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Rig: 106, Lef: 48
-</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: numeric</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:right;">
-sd
-</th>
-<th style="text-align:right;">
-p0
-</th>
-<th style="text-align:right;">
-p25
-</th>
-<th style="text-align:right;">
-p50
-</th>
-<th style="text-align:right;">
-p75
-</th>
-<th style="text-align:right;">
-p100
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-height_cm
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-171.97
-</td>
-<td style="text-align:right;">
-10.03
-</td>
-<td style="text-align:right;">
-150
-</td>
-<td style="text-align:right;">
-165.00
-</td>
-<td style="text-align:right;">
-171.48
-</td>
-<td style="text-align:right;">
-180.0
-</td>
-<td style="text-align:right;">
-210.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-head_circum_cm
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-57.17
-</td>
-<td style="text-align:right;">
-1.90
-</td>
-<td style="text-align:right;">
-53
-</td>
-<td style="text-align:right;">
-55.91
-</td>
-<td style="text-align:right;">
-57.00
-</td>
-<td style="text-align:right;">
-58.5
-</td>
-<td style="text-align:right;">
-63.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-number_of_siblings
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1.71
-</td>
-<td style="text-align:right;">
-1.05
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-<td style="text-align:right;">
-6.0
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 154</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ height_cm          &lt;dbl&gt; 157, 165, 165, 163, 173, 170, 168, 157, 159, 182, 1…</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ head_circum_cm     &lt;dbl&gt; 55.50, 56.00, 55.00, 57.00, 60.50, 56.00, 56.00, 59…</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ number_of_siblings &lt;dbl&gt; 1, 3, 0, 2, 1, 1, 2, 3, 1, 3, 2, 2, 1, 0, 2, 1, 3, …</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_hand      &lt;fct&gt; Right, Right, Right, Right, Right, Right, Right, Ri…</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_foot      &lt;fct&gt; Right, Right, Right, Right, Left, Right, Right, Rig…</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_eye       &lt;fct&gt; Right, Right, Right, Right, Left, Right, Left, Righ…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These data include measurements taken on 154 students in BIOL202 a few years ago.</p>
 <p>We’ll use the “height” and “dominant_eye” variables for this section.</p>
 <p><strong>OPTIONAL</strong></p>
-<p>Note that the categories in the <code>dominant_eye</code> variable are “l” and “r”, denoting “left” and “right”.</p>
-<p>We can use the <code>unique</code> function to tell us all unique values of a categorical variable:</p>
+<p>Note that in a raw CSV, categories in a variable like <code>dominant_eye</code> might arrive abbreviated — e.g.&nbsp;“l” and “r” for “left” and “right”. In the <code>biol202</code> package version of <code>students</code>, this has already been relabelled to “Left” and “Right” for you.</p>
+<p>We can use the <code>unique</code> function to check all unique values of a categorical variable:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>students <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>students <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dominant_eye) <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 1</span></span>
@@ -1136,12 +849,12 @@ number_of_siblings
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Right       </span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Left</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Let’s change these to be more informative, “Left” and “Right”.</p>
-<p>We can do this with the <code>recode_factor</code> function from the <code>dplyr</code> package, in conjunction with the familiar <code>mutate</code> function used to create a new variable (though here we’re just over-writing an existing variable):</p>
+<p>If you ever needed to relabel abbreviated categories like this yourself, you’d use the <code>recode_factor</code> function from the <code>dplyr</code> package, in conjunction with the familiar <code>mutate</code> function used to create a new variable (though here we’re just over-writing an existing variable):</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dominant_eye =</span> <span class="fu">recode_factor</span>(dominant_eye, <span class="at">r =</span> <span class="st">"Right"</span>, <span class="at">l =</span> <span class="st">"Left"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>We don’t actually run that here, since the categories are already correctly labelled. Running <code>recode_factor</code> on data that’s already “Left”/“Right” wouldn’t produce an error — but it <em>would</em> silently reverse which category is treated as the reference level (the one that comes first), which could shift the order categories appear in later tables and figures.</p>
 <section id="twosamp_hyp" class="level3" data-number="13.3.1">
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="twosamp_hyp"><span class="header-section-number">13.3.1</span> Hypothesis statement</h3>
 <p>H<sub>0</sub>: Mean height is the same among students with left dominant eyes and right dominant eyes (<span class="math inline">\(\mu_L = \mu_R\)</span>).<br>
@@ -1198,13 +911,13 @@ H<sub>A</sub>: Mean height is not the same among students with left dominant eye
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">dominant_eye</td>
-<td style="text-align: left;">Right</td>
 <td style="text-align: left;">Left</td>
+<td style="text-align: left;">Right</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Count</td>
-<td style="text-align: left;">106</td>
 <td style="text-align: left;">48</td>
+<td style="text-align: left;">106</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Count_NA</td>
@@ -1213,35 +926,35 @@ H<sub>A</sub>: Mean height is not the same among students with left dominant eye
 </tr>
 <tr class="even">
 <td style="text-align: left;">Mean</td>
-<td style="text-align: left;">172.8368</td>
 <td style="text-align: left;">170.0598</td>
+<td style="text-align: left;">172.8368</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SD</td>
-<td style="text-align: left;">10.397638</td>
 <td style="text-align: left;">8.964659</td>
+<td style="text-align: left;">10.397638</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">SEM</td>
-<td style="text-align: left;">1.009908</td>
 <td style="text-align: left;">1.293937</td>
+<td style="text-align: left;">1.009908</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Low_95_CL</td>
-<td style="text-align: left;">170.8343</td>
 <td style="text-align: left;">167.4567</td>
+<td style="text-align: left;">170.8343</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Up_95_CL</td>
-<td style="text-align: left;">174.8393</td>
 <td style="text-align: left;">172.6629</td>
+<td style="text-align: left;">174.8393</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>It is best to <strong>NOT rotate the table</strong>, but it is fine to do so if your table goes off the page!</p>
-<p>We’ll learn a better way to get around this later.</p>
+<p>We’ll learn a <a href="./90-tables.html#stats_nicetable">better way</a> to get around this later.</p>
 </section>
 <section id="graph_2samp" class="level3" data-number="13.3.3">
 <h3 data-number="13.3.3" class="anchored" data-anchor-id="graph_2samp"><span class="header-section-number">13.3.3</span> A graph to accompany a 2-sample <em>t</em>-test</h3>
@@ -1348,13 +1061,13 @@ Figure&nbsp;13.5: Normal quantile plots of height for students with right (n = 1
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Two Sample t-test</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  height_cm by dominant_eye</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = 1.6, df = 152, p-value = 0.1117</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Right and group Left is not equal to 0</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -1.6, df = 152, p-value = 0.1117</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Left and group Right is not equal to 0</span></span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -0.6521529  6.2061545</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -6.2061545  0.6521529</span></span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean in group Right  mean in group Left </span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            172.8368            170.0598</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  mean in group Left mean in group Right </span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            170.0598            172.8368</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We see that the test produced a <em>P</em>-value greater than <span class="math inline">\(\alpha\)</span>, so we fail to reject the null hypothesis.</p>
 <p>Note also that the output includes a <strong>confidence interval</strong> for the <em>difference</em> in group means. We need to include this in our concluding statement.</p>
@@ -1363,7 +1076,7 @@ Figure&nbsp;13.5: Normal quantile plots of height for students with right (n = 1
 <h3 data-number="13.3.6" class="anchored" data-anchor-id="concl_2samp"><span class="header-section-number">13.3.6</span> Concluding statement</h3>
 <p>Here’s an example of a concluding statement:</p>
 <blockquote class="blockquote">
-<p>On average, students with left dominant eyes are similar in height to students with right dominant eyes (Figure 19.4) (2-sample <em>t</em>-test; <em>t</em> = 1.6; df = 152; <em>P</em>-value = 0.112; 95% confidence interval for the difference in height -0.652 <span class="math inline">\(&lt; \mu_d &lt;\)</span> 6.206).</p>
+<p>On average, students with left dominant eyes are similar in height to students with right dominant eyes (Figure 19.4) (2-sample <em>t</em>-test; <em>t</em> = 1.6; df = 152; <em>P</em>-value = 0.112; 95% confidence interval for the difference in height -6.206 <span class="math inline">\(&lt; \mu_d &lt;\)</span> 0.652).</p>
 </blockquote>
 </section>
 </section>
@@ -1382,13 +1095,13 @@ Figure&nbsp;13.5: Normal quantile plots of height for students with right (n = 1
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  height_cm by dominant_eye</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = 1.6919, df = 104.37, p-value = 0.09366</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Right and group Left is not equal to 0</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -1.6919, df = 104.37, p-value = 0.09366</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Left and group Right is not equal to 0</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -0.4778181  6.0318197</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -6.0318197  0.4778181</span></span>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean in group Right  mean in group Left </span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            172.8368            170.0598</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  mean in group Left mean in group Right </span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            170.0598            172.8368</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

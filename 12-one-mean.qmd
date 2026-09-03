@@ -105,7 +105,7 @@ If you forget how to create a histogram, consult the previous tutorial on [visua
 
 Here we'll learn a few more tricks for producing a high-quality histogram.
 
-The first step is to figure out the minimum and maximum values of your numeric variable, and you should have already done this when using the `skim_without_charts` function to get an overview of the dataset (when you first imported the data).
+The first step is to figure out the minimum and maximum values of your numeric variable, and you should have already done this by reading the "Min." and "Max." lines off the `summary` function's output, when you got an overview of the dataset (when you first imported the data).
 
 For the `temperature` variable, our minimum and maximum values were `r min(bodytemp$temperature, na.rm = T)` and `r max(bodytemp$temperature, na.rm = T)`, respectively. 
 

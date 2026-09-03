@@ -1,0 +1,70 @@
+# Preparing and Submitting Your Assignment — Cheatsheet {-}
+
+This is a one-page quick reference for preparing and submitting a BIOL 202 assignment. For full explanations, see [Tutorial 3, Preparing and formatting assignments](03-formatting-assignments.qmd).
+
+## 1. Before you open the assignment file
+
+- Open your **`BIOL202_assignments`** RStudio project (double-click the `.Rproj` file) — don't just open the `.Rmd` on its own. *([Tutorial 3, §3.1](03-formatting-assignments.qmd#open_assign_project1); [Tutorial 2, §2.8](02-reproducible-r.qmd#create_project))*
+- Confirm you're in the right project: bottom-right Files pane should show your assignment files, top-right corner of RStudio should name the project.
+- Download the assignment `.Rmd` from **Canvas → Assignments** (or the `Lab_materials` module for the practice assignment) and save it into your `BIOL202_assignments` root or the assignment's subfolder. *([Tutorial 3, §3.2](03-formatting-assignments.qmd#download_assign_rmd))*
+
+## 2. Set up the header — do this first, change nothing else
+
+- Open the `.Rmd`. In the header block only, replace: assignment title, `Firstname Lastname, Section YY`, and due date — keep the quotation marks. *([Tutorial 3, §3.3](03-formatting-assignments.qmd#open_rmd_file))*
+- Do **not** touch anything else in the header or the R chunk immediately below it.
+- Immediately **Save As** with your proper file name, e.g. `Pither_BIOL202_lab-assignment-01.Rmd` (no version number needed if the file lives in OneDrive — OneDrive keeps old versions for you). *([Tutorial 3, §3.3](03-formatting-assignments.qmd#open_rmd_file); [Tutorial 2, §2.3](02-reproducible-r.qmd#onedrive))*
+
+## 3. Load packages once, near the top
+
+- One chunk near the top loads what you'll need — one `library()` line per package (never `library(tidyverse)`):
+  `library(dplyr)`, `library(ggplot2)`, `library(readr)`, `library(biol202)` — add others only if a question needs them. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer); [Tutorial 1, §1.2.5](01-getting-started.qmd#package_load))*
+- Never put `install.packages()` inside the `.Rmd` — install in the **Console** only. *([Tutorial 1, §1.2.4](01-getting-started.qmd#package_install))*
+
+## 4. Answer each question
+
+- Load each dataset with `library(biol202); data(name)`, or `read_csv()` if the question says to import a CSV. *([Tutorial 3, §3.4.2](03-formatting-assignments.qmd#first_csv_import); [Tutorial 4, §4.4](04-importing-data.qmd#import_csv_local))*
+- Answer in full sentences, addressing exactly what's asked.
+- Every answer's code sits in its own R chunk, with a unique chunk name. *([Tutorial 3, §3.4.1](03-formatting-assignments.qmd#chunk_headers))*
+- Press the green ▶ to run each chunk as you go — don't wait until the end. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer))*
+- If a chunk produces a lot of clutter (e.g. package-loading messages), add `message = FALSE` to *that* chunk's header only — not by default. *([Tutorial 3, §3.4.1](03-formatting-assignments.qmd#chunk_headers))*
+- **Save and knit often** — don't wait until you're finished to knit for the first time. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer))*
+
+## 5. Figures
+
+- Every chunk that makes a plot needs `fig.cap = "..."`, `fig.width =`, `fig.height =` in its header, with a **blank line** before the plotting code starts. *([Tutorial 3, §3.5](03-formatting-assignments.qmd#rmd_graphing))*
+- Leave a **blank line** between the end of a figure chunk and the text below it, or the caption won't appear. *([Common Issues](99-common-issues.qmd#figure-caption-doesnt-show-up-below-figure-in-knitted-document))*
+- If you use a graph to answer a question, refer to it by name/number in your written answer. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer))*
+- Figure numbers ("Figure 1:", "Figure 2:"...) are automatic — don't type them yourself.
+
+## 6. Knit to PDF
+
+- Click the **Knit** dropdown → **Knit to PDF** (don't just click "Knit" without checking it says PDF). *([Tutorial 3, §3.7](03-formatting-assignments.qmd#knit_assign); [Tutorial 1, §1.2.8](01-getting-started.qmd#veryify_knit))*
+- The PDF takes the same name as your `.Rmd`, just with a `.pdf` extension.
+
+### If knitting fails, check the error against these first *(all from the Common Issues page)*
+
+| Error says... | Likely fix |
+|---|---|
+| `could not find function` | You used a package function before `library()` loaded it — load it in a chunk near the top. [Details](99-common-issues.qmd#could-not-find-function) |
+| `there is no package called...` | Package isn't installed — run `install.packages()` in the **Console**, not the `.Rmd`. [Details](99-common-issues.qmd#there-is-no-package) |
+| `trying to use CRAN without setting a mirror` | You have `install.packages()` inside the `.Rmd` — remove it, install in Console instead. [Details](99-common-issues.qmd#trying-to-use-cran-without-setting-a-mirror) |
+| `LaTeX failed` / `pdflatex not found` | Run in Console: `install.packages("tinytex")` then `tinytex::install_tinytex()`. [Details](99-common-issues.qmd#pdf-latex-is-not-found) |
+| Mentions a Unicode character | You likely pasted text from the web (curly quotes, special symbols). Retype the offending text. [Details](99-common-issues.qmd#unicode-knitting-error) |
+| `unused argument` | A `library()` call is *below* the chunk that uses it — move `library()` above. [Details](99-common-issues.qmd#unused-argument) |
+| `object not found` | You're using an object before creating it — create it in an earlier chunk. [Details](99-common-issues.qmd#object-not-found) |
+| Parse/syntax error, points to a line | Look for a stray symbol (comma, bracket, `>`) on that line. [Details](99-common-issues.qmd#error-in-parse) |
+| Still stuck | Google the exact error text + "R"; read which line R points to first. [Details](99-common-issues.qmd#google-can-help) |
+
+## 7. Check the PDF before submitting
+
+- Open the knitted PDF and read it start to finish.
+- Every question has code, output, and a written answer — nothing missing or cut off.
+- Figures render properly and each has a caption starting "Figure X:".
+- Spelling and grammar check.
+- If anything's wrong: close the PDF, fix the `.Rmd`, **save, then re-knit** — never hand-edit the PDF. *([Tutorial 3, §3.7](03-formatting-assignments.qmd#knit_assign))*
+
+## 8. Name your files and submit
+
+- Confirm both files share the same base name, e.g. `Pither_BIOL202_lab-assignment-01.Rmd` and `.pdf` — follow the naming convention given with the specific assignment.
+- Upload **both** the `.Rmd` and the `.pdf` to the assignment's Canvas submission page. *([Tutorial 3, §3.8](03-formatting-assignments.qmd#submit_rmd))*
+- After uploading, re-open the submission on Canvas and confirm the PDF opens correctly and is the right version.

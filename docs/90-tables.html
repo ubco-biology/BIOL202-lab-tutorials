@@ -343,6 +343,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -361,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#tables_packages" id="toc-tables_packages" class="nav-link active" data-scroll-target="#tables_packages">Load packages and import data</a>
   <ul class="collapse">
-  <li><a href="#skim_tables" id="toc-skim_tables" class="nav-link" data-scroll-target="#skim_tables">Formatting output from the <code>skimr</code> package</a></li>
+  <li><a href="#wide_table" id="toc-wide_table" class="nav-link" data-scroll-target="#wide_table">Formatting a wide table nicely</a></li>
   <li><a href="#stats_nicetable" id="toc-stats_nicetable" class="nav-link" data-scroll-target="#stats_nicetable">A nicely formatted table of descriptive statistics</a></li>
   </ul></li>
   </ul>
@@ -415,29 +421,43 @@ Note
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We’ll use the “circadian.csv” dataset, which is also used in the <a href="./15-anova.html#compare_three_more_means">“comparing more than 2 means tutorial”</a>. These data are associated with Example 15.1 in the text.</p>
+<p>We’ll use the <code>circadian</code> dataset, which is also used in the <a href="./15-anova.html#compare_three_more_means">“comparing more than 2 means tutorial”</a>. These data are associated with Example 15.1 in the text.</p>
 <p>The <code>circadian</code> data describe melatonin production in 22 people randomly assigned to one of three light treatments.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="skim_tables" class="level3">
-<h3 class="anchored" data-anchor-id="skim_tables">Formatting output from the <code>skimr</code> package</h3>
-<p>It is always good practice to get an overview of a dataset before proceeding with analyses.</p>
-<p>For this we have been using the <code>skim_without_charts</code> function from the <code>skimr</code> package.</p>
-<p>You may have noticed that when you knit assignments to PDF, any output from the <code>skim_without_charts</code> function tends to run off the edge of the page. Here we’ll learn how to avoid this.</p>
-<p>The key is to assign the output to an object first, as such:</p>
+<section id="wide_table" class="level3">
+<h3 class="anchored" data-anchor-id="wide_table">Formatting a wide table nicely</h3>
+<p>Sometimes a table you want to include in a report is wide — it has many columns — which can make it awkward to read, or a poor fit for a printed page. This often happens with a table of grouped descriptive statistics, of the kind we learned to build in the <a href="./13-two-means.html#stats_2samp">“comparing more than 2 means” tutorial</a>: each descriptive statistic (count, mean, SD, etc.) becomes its own column, and if you have several of those alongside several groups, the table can end up quite wide. Here we’ll learn a general technique for handling this: transposing the table (swapping its rows and columns) and formatting it nicely with the <code>kbl</code> function from the <code>kableExtra</code> package.</p>
+<p>Let’s build a table of descriptive statistics for the <code>circadian</code> dataset’s “shift” variable, grouped by “treatment”:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>skim.out <span class="ot">&lt;-</span> circadian <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim_without_charts</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>circadian.stats <span class="ot">&lt;-</span> circadian <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(shift)),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count_NA =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(shift)),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(shift, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(shift, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEM =</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(Count),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Low_95_CL =</span> <span class="fu">t.test</span>(shift, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Up_95_CL =</span> <span class="fu">t.test</span>(shift, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>circadian.stats</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 8</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   treatment Count Count_NA   Mean    SD   SEM Low_95_CL Up_95_CL</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 control       8        0 -0.309 0.618 0.218    -0.825    0.208</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 knee          7        0 -0.336 0.791 0.299    -1.07     0.396</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 eyes          7        0 -1.55  0.706 0.267    -2.20    -0.898</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We will also “transpose” (rotate) the table using the <code>t</code> base function:, so that it’ll fit on a page:</p>
+<p>This table has 8 columns (<code>treatment</code> plus 7 descriptive statistics) for just 3 treatment groups. Imagine how wide it would get with more groups, or more statistics!</p>
+<p>The fix is to “transpose” (rotate) the table using the base <code>t</code> function, so that its many columns become rows instead, and its few rows become columns:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>skim.out.transposed <span class="ot">&lt;-</span> <span class="fu">t</span>(skim.out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>circadian.stats.transposed <span class="ot">&lt;-</span> <span class="fu">t</span>(circadian.stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we’ll use the <code>kbl</code> function with various arguments to ensure the output looks good and includes a table caption:</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -466,7 +486,7 @@ Note
 <p><strong>IMPORTANT: </strong> Notice that, unlike figure captions, which must be provided in the chunk header, the caption for a table is provided as an argument to the <code>kbl</code> function within the actual code!</p>
 </div>
 </div>
-<pre><code>kbl(skim.out.transposed, caption = "Overview of the 'circadian' dataset",
+<pre><code>kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
     booktabs = TRUE) %&gt;%
   kable_styling(latex_options = "hold_position")</code></pre>
 <p>In the preceding code we:</p>
@@ -486,116 +506,64 @@ Note
 </ul></li>
 </ul>
 <p>For lots of great examples of how the <code>kableExtra</code> package can be used, see this <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">vignette</a> for PDF output, and <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">this one</a> for HTML output.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>IMPORTANT: </strong> If you attempt to use the <code>skim_without_charts</code> function without wrapping the about in a <code>kbl</code> function, you will likely get an error when you attempt to knit to PDF.</p>
-</div>
-</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
-<caption>Overview of the 'circadian' dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">2</th>
-</tr>
-</thead>
+<caption>Descriptive statistics for circadian rhythm shift, by treatment</caption>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">skim_type</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">skim_variable</td>
 <td style="text-align: left;">treatment</td>
-<td style="text-align: left;">shift</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">knee</td>
+<td style="text-align: left;">eyes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">7</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">n_missing</td>
+<td style="text-align: left;">Count_NA</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">complete_rate</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1</td>
+<td style="text-align: left;">Mean</td>
+<td style="text-align: left;">-0.3087500</td>
+<td style="text-align: left;">-0.3357143</td>
+<td style="text-align: left;">-1.5514286</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">factor.ordered</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">SD</td>
+<td style="text-align: left;">0.6175629</td>
+<td style="text-align: left;">0.7908193</td>
+<td style="text-align: left;">0.7063151</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">factor.n_unique</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">SEM</td>
+<td style="text-align: left;">0.2183415</td>
+<td style="text-align: left;">0.2989016</td>
+<td style="text-align: left;">0.2669620</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">factor.top_counts</td>
-<td style="text-align: left;">con: 8, kne: 7, eye: 7</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Low_95_CL</td>
+<td style="text-align: left;">-0.8250455</td>
+<td style="text-align: left;">-1.0671002</td>
+<td style="text-align: left;">-2.2046610</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">numeric.mean</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">-0.7127273</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.sd</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">0.8901534</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p0</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">-2.83</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p25</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">-1.33</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p50</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">-0.66</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p75</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">-0.05</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p100</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">0.73</td>
+<td style="text-align: left;">Up_95_CL</td>
+<td style="text-align: left;">0.2075455</td>
+<td style="text-align: left;">0.3956716</td>
+<td style="text-align: left;">-0.8981961</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Let’s check to see if this approach works on a larger dataset (one with more variables).</p>
-<p>Let’s try it on the “penguins” dataset:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>skim.penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim_without_charts</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Transpose:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>skim.penguins.transposed <span class="ot">&lt;-</span> <span class="fu">t</span>(skim.penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Now let’s try the <code>kbl</code> ouptut:</p>
+<p>Notice one trade-off of transposing: the <code>treatment</code>, <code>Count</code>, and <code>Count_NA</code> rows are whole numbers, but the numeric rows below them (Mean, SD, etc.) now show many decimal places, and there’s no way to tell <code>kbl</code> to round only some of the rows — transposing converts the whole table to plain text first, so <code>kbl</code>’s <code>digits</code> argument no longer has any numeric columns to act on. If you need precise control over decimal places, either round the values yourself inside <code>summarise</code> before transposing, or use the non-transposed approach in the next section, which keeps that control.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -606,427 +574,47 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>NOTE: </strong> This table will look different when knitted to PDF (rather than HTML). Specifically, it will print off page…</p>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(skim.penguins.transposed, <span class="at">caption =</span> <span class="st">"Overview of the 'penguins' dataset"</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">"hold_position"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Overview of the 'penguins' dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">3</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">4</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">5</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">6</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">7</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">8</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">skim_type</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">skim_variable</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">island</td>
-<td style="text-align: left;">sex</td>
-<td style="text-align: left;">bill_length_mm</td>
-<td style="text-align: left;">bill_depth_mm</td>
-<td style="text-align: left;">flipper_length_mm</td>
-<td style="text-align: left;">body_mass_g</td>
-<td style="text-align: left;">year</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n_missing</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">complete_rate</td>
-<td style="text-align: left;">1.0000000</td>
-<td style="text-align: left;">1.0000000</td>
-<td style="text-align: left;">0.9680233</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">factor.ordered</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">factor.n_unique</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">factor.top_counts</td>
-<td style="text-align: left;">Ade: 152, Gen: 124, Chi: 68</td>
-<td style="text-align: left;">Bis: 168, Dre: 124, Tor: 52</td>
-<td style="text-align: left;">mal: 168, fem: 165</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.mean</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">43.92193</td>
-<td style="text-align: left;">17.15117</td>
-<td style="text-align: left;">200.91520</td>
-<td style="text-align: left;">4201.75439</td>
-<td style="text-align: left;">2008.02907</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.sd</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">5.4595837</td>
-<td style="text-align: left;">1.9747932</td>
-<td style="text-align: left;">14.0617137</td>
-<td style="text-align: left;">801.9545357</td>
-<td style="text-align: left;">0.8183559</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p0</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">32.1</td>
-<td style="text-align: left;">13.1</td>
-<td style="text-align: left;">172.0</td>
-<td style="text-align: left;">2700.0</td>
-<td style="text-align: left;">2007.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p25</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">39.225</td>
-<td style="text-align: left;">15.600</td>
-<td style="text-align: left;">190.000</td>
-<td style="text-align: left;">3550.000</td>
-<td style="text-align: left;">2007.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p50</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">44.45</td>
-<td style="text-align: left;">17.30</td>
-<td style="text-align: left;">197.00</td>
-<td style="text-align: left;">4050.00</td>
-<td style="text-align: left;">2008.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p75</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">48.5</td>
-<td style="text-align: left;">18.7</td>
-<td style="text-align: left;">213.0</td>
-<td style="text-align: left;">4750.0</td>
-<td style="text-align: left;">2009.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p100</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">59.6</td>
-<td style="text-align: left;">21.5</td>
-<td style="text-align: left;">231.0</td>
-<td style="text-align: left;">6300.0</td>
-<td style="text-align: left;">2009.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Argh, our output went off the page!</p>
-<p>If this happens, then we add another argument to the <code>kable_styling</code> function, the “scale_down” option:</p>
-<pre><code>kbl(skim.penguins.transposed, caption = "Overview of the 'penguins' dataset",
+<p><strong>TIP: </strong> If you have many groups and/or many descriptive statistics, the transposed table can still end up wide. In that case, add the “scale_down” option to <code>kable_styling</code>, which shrinks the whole table (including the font) to fit the page width:</p>
+<pre><code>kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
     booktabs = TRUE) %&gt;%
   kable_styling(latex_options = c("scale_down", "hold_position"))</code></pre>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="lightable-paper caption-top table table-sm table-striped small">
-<caption>Overview of the 'penguins' dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">3</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">4</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">5</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">6</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">7</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">8</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">skim_type</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">numeric</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">skim_variable</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">island</td>
-<td style="text-align: left;">sex</td>
-<td style="text-align: left;">bill_length_mm</td>
-<td style="text-align: left;">bill_depth_mm</td>
-<td style="text-align: left;">flipper_length_mm</td>
-<td style="text-align: left;">body_mass_g</td>
-<td style="text-align: left;">year</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n_missing</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">complete_rate</td>
-<td style="text-align: left;">1.0000000</td>
-<td style="text-align: left;">1.0000000</td>
-<td style="text-align: left;">0.9680233</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">0.9941860</td>
-<td style="text-align: left;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">factor.ordered</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">factor.n_unique</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">factor.top_counts</td>
-<td style="text-align: left;">Ade: 152, Gen: 124, Chi: 68</td>
-<td style="text-align: left;">Bis: 168, Dre: 124, Tor: 52</td>
-<td style="text-align: left;">mal: 168, fem: 165</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.mean</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">43.92193</td>
-<td style="text-align: left;">17.15117</td>
-<td style="text-align: left;">200.91520</td>
-<td style="text-align: left;">4201.75439</td>
-<td style="text-align: left;">2008.02907</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.sd</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">5.4595837</td>
-<td style="text-align: left;">1.9747932</td>
-<td style="text-align: left;">14.0617137</td>
-<td style="text-align: left;">801.9545357</td>
-<td style="text-align: left;">0.8183559</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p0</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">32.1</td>
-<td style="text-align: left;">13.1</td>
-<td style="text-align: left;">172.0</td>
-<td style="text-align: left;">2700.0</td>
-<td style="text-align: left;">2007.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p25</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">39.225</td>
-<td style="text-align: left;">15.600</td>
-<td style="text-align: left;">190.000</td>
-<td style="text-align: left;">3550.000</td>
-<td style="text-align: left;">2007.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p50</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">44.45</td>
-<td style="text-align: left;">17.30</td>
-<td style="text-align: left;">197.00</td>
-<td style="text-align: left;">4050.00</td>
-<td style="text-align: left;">2008.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric.p75</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">48.5</td>
-<td style="text-align: left;">18.7</td>
-<td style="text-align: left;">213.0</td>
-<td style="text-align: left;">4750.0</td>
-<td style="text-align: left;">2009.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric.p100</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">59.6</td>
-<td style="text-align: left;">21.5</td>
-<td style="text-align: left;">231.0</td>
-<td style="text-align: left;">6300.0</td>
-<td style="text-align: left;">2009.0</td>
-</tr>
-</tbody>
-</table>
+<p>For a table with a very large number of columns, this can make the font too small to read comfortably — in that case, consider splitting the table into two, or reporting only the most essential columns.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>NOTE: </strong> On this HTML page the table above still goes off the page, but the PDF version will work!</p>
-</div>
-</div>
-<p>Here’s an image of the PDF output:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/second_kable.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="938"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>For very large datasets you may find this approach causes the font to be too small.</p>
 </section>
 <section id="stats_nicetable" class="level3">
 <h3 class="anchored" data-anchor-id="stats_nicetable">A nicely formatted table of descriptive statistics</h3>
 <p>Here is the code (which you’ve already learned) to create a good table of <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a> for a numeric response variable grouped by categories in a categorical explanatory variable.</p>
 <p>We’ll use the “penguins” dataset again, and calculate descriptive statistics for bill lengths of male penguins, grouped by species:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins.stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count_NA =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(bill_length_mm)), </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEM =</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(Count),</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Low_95_CL =</span> <span class="fu">t.test</span>(bill_length_mm, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Up_95_CL =</span> <span class="fu">t.test</span>(bill_length_mm, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins.stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count_NA =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(bill_length_mm)), </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEM =</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(Count),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Low_95_CL =</span> <span class="fu">t.test</span>(bill_length_mm, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>],</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Up_95_CL =</span> <span class="fu">t.test</span>(bill_length_mm, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s what the raw table looks like:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>penguins.stats</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 8</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species   Count Count_NA  Mean    SD   SEM Low_95_CL Up_95_CL</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Adelie       73        0  40.4  2.28 0.267      39.9     40.9</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Chinstrap    34        0  51.1  1.56 0.268      50.5     51.6</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Gentoo       61        0  49.5  2.72 0.348      48.8     50.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins.stats</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 8</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species   Count Count_NA  Mean    SD   SEM Low_95_CL Up_95_CL</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Adelie       73        0  40.4  2.28 0.267      39.9     40.9</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Chinstrap    34        0  51.1  1.56 0.268      50.5     51.6</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Gentoo       61        0  49.5  2.72 0.348      48.8     50.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s format it for PDF output:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(penguins.stats, <span class="at">caption =</span> <span class="st">"Descriptive statistics for bill length among male penguins."</span>, </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"scale_down"</span>, <span class="st">"hold_position"</span>), <span class="at">position =</span> <span class="st">"center"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(penguins.stats, <span class="at">caption =</span> <span class="st">"Descriptive statistics for bill length among male penguins."</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"scale_down"</span>, <span class="st">"hold_position"</span>), <span class="at">position =</span> <span class="st">"center"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <caption>Descriptive statistics for bill length among male penguins.</caption>
@@ -1077,7 +665,7 @@ Note
 </table>
 </div>
 </div>
-<p>The <strong>key difference</strong> from the previous example done with the <code>skim_without_charts</code> output is that here we specify the number of decimal places we want each descriptive statistic to be reported to.</p>
+<p>The <strong>key difference</strong> from the transposed table in the previous section is that here we specify the number of decimal places we want each descriptive statistic to be reported to, since the table is not transposed and so still has genuine numeric columns for <code>kbl</code> to round.</p>
 <p>Specifically, the “digits” argument accepts a vector of numbers, whose length is equal to the number of columns being reported in the table, and these numbers indicate the number of decimal places to include for that specific variable.</p>
 <p>At this point it would be a good idea to revisit the Biology department’s <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/descriptive-summary-statistics.html">guidelines for reporting descriptive statistics</a>.</p>
 <p>For example, we can see that the first three numbers in the “digits” argument are zeroes, and these correspond to the first three columns of the table: “species”, “Count”, “Count_NA”. These are columns whose values don’t require decimal places.</p>

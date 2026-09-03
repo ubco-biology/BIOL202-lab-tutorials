@@ -83,7 +83,7 @@ students <- read_csv("https://raw.githubusercontent.com/ubco-biology/BIOL202-lab
 
 **Error in read_csv(...) : could not find function "read_csv"**
 
-This happens if you forgot to load the `readr` package!
+This happens if you forgot to load the `readr` package! (See also [Common errors and their solutions](99-common-issues.qmd).)
 :::
 
 The default behaviour of the `read_csv` function is to include a printout of the type of variable housed in each column of the dataset. For example, when importing the `students` dataset, the function gives a printout showing that there are three "character" variables (denoted `chr`) — R reads categorical variables in from a CSV as character variables — and three `dbl`, or double precision, floating point format numeric variables.
@@ -208,31 +208,35 @@ Key questions you want to be able to answer are:
 * Are there variables whose data are numerical? If so, which ones?
 * Are there observations missing anywhere?
 
-As we learned in the "Preparing and formatting assignments" [tutorial](03-formatting-assignments.qmd#example_answer), the `skimr` package has a handy function called `skim_without_charts` that provides a good overview of a data object. This is a rather long function name, and in fact the main function is called `skim`. However, by default, `skim` includes small charts in its output, and we don't want that presently, hence the use of `skim_without_charts`.
+As we learned in the "Preparing and formatting assignments" [tutorial](03-formatting-assignments.qmd#example_answer), the `glimpse` function from the `dplyr` package (already loaded) gives you a compact overview of a data object.
 
-Let's load that package now:
-
-```{r}
-library(skimr)
-```
-
-And get an overview of the `trout` dataset, again using the pipe approach: 
+Let's get an overview of the `trout` dataset, using the pipe approach:
 
 ```{r, eval = TRUE}
 trout %>%
-  skim_without_charts()
+  glimpse()
 ```
 
-A lot of information is provided in this summary output, so let's go through it:
+Here's how to read this output:
 
-* The Data Summary shows the name of the object, the number of rows, and the number of columns
-* Column type frequency shows how many columns (variables) are of type "character", which is equivalent to "categorical", and how many are "numeric"
-* Group variables shows if there are any variables that are specified as "grouping" variables, something we don't cover yet.
-* Then it provides summaries of each of the variables, starting with the character or categorical variables, followed by the numeric variables
-* Each summary includes a variety of descriptors, described next
-* The "n_missing" descriptor tells you how many observations are missing in the given variable. In the "trout" dataset we don't have any missing values
-* The "n_unique" descriptor for categorical variables indicates how many unique values (categories) are in that variable; for the "Site" variable in the "trout" dataset there are 3 unique values
-* The descriptors for the numeric variables include the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a>, <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Standard-deviation">standard deviation (sd)</a>, and the quantiles
+* "Rows:" gives the number of observations, and "Columns:" gives the number of variables. So for `trout`, there are 9 observations and 3 variables.
+* Each line below that describes one column (variable): its name, its type (in angle brackets), and then a preview of its actual values.
+* The type abbreviation tells you whether a variable is categorical or numeric. Here, `site` is `<chr>` ("character" — text, i.e. categorical), while `day` and `trout_caught` are both `<dbl>` ("double precision" — a numeric type that allows decimals). In other datasets you may instead see `<fct>` ("factor" — R's other type for a categorical variable, one with a known, fixed set of categories, discussed in the box above) or `<int>` ("integer" — whole-number numeric data).
+
+So `glimpse` already answers the first four questions listed above: there are 3 variables and 9 observations, `site` is categorical, and `day` and `trout_caught` are numeric.
+
+That leaves the last question: are there any missing observations? For this, and for numeric summaries like the mean and quantiles, use the `summary` function. It's part of "base R" (R's built-in functionality), so no extra package is needed.
+
+```{r}
+trout %>%
+  summary()
+```
+
+Here's how to read this output:
+
+* For each numeric variable (`day` and `trout_caught`), `summary` reports six descriptive statistics: the minimum, the 1st quartile, the median, the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a>, the 3rd quartile, and the maximum.
+* If a numeric variable had any missing observations, an extra line would appear below the maximum, reading something like "NA's :2", telling you how many values are missing. No such line appears for `day` or `trout_caught`, which tells us neither variable has any missing observations.
+* The `site` variable is categorical, but since it's stored as plain text (type `<chr>`, not `<fct>`), `summary` doesn't count how many observations fall in each category — it just reports its length, class, and mode. When a categorical variable is instead stored as a factor (as most categorical variables in this course's datasets are), `summary` reports a count of observations in each category instead, along with an "NA's" line if any observations are missing. You'll see an example of this shortly, with the `penguins` dataset.
 
 Now you have what you need to answer each of the questions listed above!
 

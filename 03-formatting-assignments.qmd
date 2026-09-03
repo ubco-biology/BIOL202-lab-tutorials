@@ -66,7 +66,7 @@ knitr::include_graphics("images/install_package_header2.png")
 
 The "load_packages" text is simply giving a name or "tag" to this R chunk. It is good practice to provide a _unique_ name to each R chunk.  
 
-After the comma is `message = FALSE`.  This tells R markdown to NOT display any messages associated with the R commands in this chunk when knitting the R Markdown document. For example, when loading some libraries R will provide a long list of messages in the process. When you "knit" the R Markdown document, R will run each R chunk in your document. By including the `message = FALSE` heading argument, you can avoid including this extra output in your knitted document.  
+After the comma is `message = FALSE`.  This tells R markdown to NOT display any messages associated with the R commands in this chunk when knitting the R Markdown document. For example, when loading some libraries R will provide a long list of messages in the process. When you "knit" the R Markdown document, R will run each R chunk in your document. By including the `message = FALSE` heading argument, you can avoid including this extra output in your knitted document (see also [Common errors and their solutions](99-common-issues.qmd)).
 
 ::: {.callout-warning}
 The `message = FALSE` header argument is NOT something to include in all chunks by default. It should only be included if the code within the associated code chunk outputs a lot of unnecessary information that would otherwise clutter your knitted PDF document.
@@ -169,7 +169,7 @@ knitr::include_graphics("images/assign_header.png")
 The line "fig_caption = true" tells R Markdown and the knitting process to automatically include this part of a figure caption, "Figure X", underneath each figure you produce. Where "X" will automatically be replaced with the appropriate number.  For example, it will use "Figure 1:" for your first figure, "Figure 2" for your second, and so on.
 
 ::: {.callout-note}
-The figure captions will only appear correctly once you knit to PDF; captions do not appear in the preview provided within the editor pane. 
+The figure captions will only appear correctly once you knit to PDF; captions do not appear in the preview provided within the editor pane. If a caption still doesn't show up after knitting, see [Common errors and their solutions](99-common-issues.qmd).
 :::
 
 ## Example question / answer {#example_answer}
@@ -196,19 +196,13 @@ library(biol202)
 data(students)
 ```
 
-I also learned that it's a good idea to get an overview of the dataset as a first step after importing data.  To do this, use the `skim_without_charts` function from the `skimr` package.  I need to load that package first:
+I also learned that it's a good idea to get an overview of the dataset as a first step after importing data.  To do this, use the `glimpse` function from the `dplyr` package, which is already loaded.
 
-```{r load_skimr, message = FALSE}
-library(skimr)
+```{r overview_data, eval = TRUE}
+glimpse(students)
 ```
 
-Now skim:
-
-```{r skim_data, eval = TRUE}
-skim_without_charts(students)
-```
-
-This shows we have three factor (categorical) and three numeric variables, with 154 rows (observations) and 6 columns (variables) total.
+This shows we have 154 rows (observations) and 6 columns (variables) total. Three of the columns are of type `<fct>` ("factor", R's type for a categorical variable with a fixed set of categories), and three are of type `<dbl>` ("double precision", R's type for a numeric variable with decimals) — so three factor (categorical) and three numeric variables in all.
 
 We can use the `summary` function to get some basic <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a>, including the minimum and maximum of numeric variables. The `summary` function is part of the base R package, so no additional packages need to be loaded.
 
@@ -237,7 +231,7 @@ As you learned in a previous [tutorial](01-getting-started.qmd#veryify_knit), si
 
 Once you have knitted your assignment to PDF, open up the PDF document, and verify that it looks correct, and be sure to check all your spelling, and that figures / tables are appropriately formatted etc...  
 
-If you need to fix something, close your PDF file, go back to your R Markdown document and do the edits there. Save, then knit again!
+If you need to fix something, close your PDF file, go back to your R Markdown document and do the edits there. Save, then knit again! If you hit an error while knitting, check [Common errors and their solutions](99-common-issues.qmd).
 
 ## Submit your assignment {#submit_rmd}
 

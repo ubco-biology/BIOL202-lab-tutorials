@@ -341,6 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -511,7 +517,7 @@ Figure&nbsp;3.2: Code chunk header with message suppression
 </div>
 </div>
 <p>The “load_packages” text is simply giving a name or “tag” to this R chunk. It is good practice to provide a <em>unique</em> name to each R chunk.</p>
-<p>After the comma is <code>message = FALSE</code>. This tells R markdown to NOT display any messages associated with the R commands in this chunk when knitting the R Markdown document. For example, when loading some libraries R will provide a long list of messages in the process. When you “knit” the R Markdown document, R will run each R chunk in your document. By including the <code>message = FALSE</code> heading argument, you can avoid including this extra output in your knitted document.</p>
+<p>After the comma is <code>message = FALSE</code>. This tells R markdown to NOT display any messages associated with the R commands in this chunk when knitting the R Markdown document. For example, when loading some libraries R will provide a long list of messages in the process. When you “knit” the R Markdown document, R will run each R chunk in your document. By including the <code>message = FALSE</code> heading argument, you can avoid including this extra output in your knitted document (see also <a href="./99-common-issues.html">Common errors and their solutions</a>).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -665,7 +671,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The figure captions will only appear correctly once you knit to PDF; captions do not appear in the preview provided within the editor pane.</p>
+<p>The figure captions will only appear correctly once you knit to PDF; captions do not appear in the preview provided within the editor pane. If a caption still doesn’t show up after knitting, see <a href="./99-common-issues.html">Common errors and their solutions</a>.</p>
 </div>
 </div>
 </section>
@@ -691,187 +697,34 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>I also learned that it’s a good idea to get an overview of the dataset as a first step after importing data. To do this, use the <code>skim_without_charts</code> function from the <code>skimr</code> package. I need to load that package first:</p>
+<p>I also learned that it’s a good idea to get an overview of the dataset as a first step after importing data. To do this, use the <code>glimpse</code> function from the <code>dplyr</code> package, which is already loaded.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(students)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 154</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ height_cm          &lt;dbl&gt; 157, 165, 165, 163, 173, 170, 168, 157, 159, 182, 1…</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ head_circum_cm     &lt;dbl&gt; 55.50, 56.00, 55.00, 57.00, 60.50, 56.00, 56.00, 59…</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ number_of_siblings &lt;dbl&gt; 1, 3, 0, 2, 1, 1, 2, 3, 1, 3, 2, 2, 1, 0, 2, 1, 3, …</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_hand      &lt;fct&gt; Right, Right, Right, Right, Right, Right, Right, Ri…</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_foot      &lt;fct&gt; Right, Right, Right, Right, Left, Right, Right, Rig…</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_eye       &lt;fct&gt; Right, Right, Right, Right, Left, Right, Left, Righ…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now skim:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim_without_charts</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Data summary</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Name</td>
-<td style="text-align: left;">students</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Number of rows</td>
-<td style="text-align: left;">154</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Number of columns</td>
-<td style="text-align: left;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">_______________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Column type frequency:</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">________________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Group variables</td>
-<td style="text-align: left;">None</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: factor</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 19%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: left;">ordered</th>
-<th style="text-align: right;">n_unique</th>
-<th style="text-align: left;">top_counts</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">dominant_hand</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Rig: 139, Lef: 15</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">dominant_foot</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Rig: 137, Lef: 17</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">dominant_eye</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Rig: 106, Lef: 48</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: numeric</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 11%">
-<col style="width: 16%">
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 4%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: right;">p0</th>
-<th style="text-align: right;">p25</th>
-<th style="text-align: right;">p50</th>
-<th style="text-align: right;">p75</th>
-<th style="text-align: right;">p100</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">height_cm</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">171.97</td>
-<td style="text-align: right;">10.03</td>
-<td style="text-align: right;">150</td>
-<td style="text-align: right;">165.00</td>
-<td style="text-align: right;">171.48</td>
-<td style="text-align: right;">180.0</td>
-<td style="text-align: right;">210.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">head_circum_cm</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">57.17</td>
-<td style="text-align: right;">1.90</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">55.91</td>
-<td style="text-align: right;">57.00</td>
-<td style="text-align: right;">58.5</td>
-<td style="text-align: right;">63.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">number_of_siblings</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1.71</td>
-<td style="text-align: right;">1.05</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">2.00</td>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">6.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>This shows we have three factor (categorical) and three numeric variables, with 154 rows (observations) and 6 columns (variables) total.</p>
+<p>This shows we have 154 rows (observations) and 6 columns (variables) total. Three of the columns are of type <code>&lt;fct&gt;</code> (“factor”, R’s type for a categorical variable with a fixed set of categories), and three are of type <code>&lt;dbl&gt;</code> (“double precision”, R’s type for a numeric variable with decimals) — so three factor (categorical) and three numeric variables in all.</p>
 <p>We can use the <code>summary</code> function to get some basic <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a>, including the minimum and maximum of numeric variables. The <code>summary</code> function is part of the base R package, so no additional packages need to be loaded.</p>
 <p>We also use the <code>select</code> function from the <code>dplyr</code> package to select which variable in the <code>students</code> tibble we wish to summarize.</p>
 <p>The use of the “%&gt;%” syntax is described in a later tutorial.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summary.height <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(height_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  summary</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>summary.height</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    height_cm    </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :150.0  </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:165.0  </span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :171.5  </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :172.0  </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:180.0  </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :210.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>summary.height <span class="ot">&lt;-</span> students <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(height_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  summary</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>summary.height</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    height_cm    </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :150.0  </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:165.0  </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :171.5  </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :172.0  </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:180.0  </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :210.8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As shown in the output above, the minimum height was 150.0 cm and the maximum student height was 210.8 cm.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -893,7 +746,7 @@ Note
 <p>All assignments are to be submitted to Canvas as <strong>PDF documents</strong>.</p>
 <p>As you learned in a previous <a href="./01-getting-started.html#veryify_knit">tutorial</a>, simply click on the “knit” button and select PDF. Your PDF file will adopt the same name as your markdown file, but it will have a “pdf” extension rather than an “Rmd” extension.</p>
 <p>Once you have knitted your assignment to PDF, open up the PDF document, and verify that it looks correct, and be sure to check all your spelling, and that figures / tables are appropriately formatted etc…</p>
-<p>If you need to fix something, close your PDF file, go back to your R Markdown document and do the edits there. Save, then knit again!</p>
+<p>If you need to fix something, close your PDF file, go back to your R Markdown document and do the edits there. Save, then knit again! If you hit an error while knitting, check <a href="./99-common-issues.html">Common errors and their solutions</a>.</p>
 </section>
 <section id="submit_rmd" class="level2" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="submit_rmd"><span class="header-section-number">3.8</span> Submit your assignment</h2>

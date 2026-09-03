@@ -341,6 +341,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./93-assignment-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preparing and Submitting Your Assignment — Cheatsheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -482,7 +488,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>For the course’s own datasets you can just use <code>data(students)</code>, and most tutorials do exactly that. But the data <em>you</em> collect will not arrive in an R package — it will be a CSV file you made. Importing a CSV is therefore a core skill, and this tutorial is where you learn it.</p>
-<p>Here we use a copy of the course data hosted online so you can practise the real thing.</p>
+<p>Here we use a copy of the course data hosted online so you can practice the real thing.</p>
 </div>
 </div>
 <p>If the file you wish to import is located on the web, then we need to provide the “URL” (the web address) to the <code>read_csv</code> function, in double quotation marks:</p>
@@ -501,7 +507,7 @@ Warning
 <div class="callout-body-container callout-body">
 <p><strong>PAUSE</strong>: Did you get an error like this?</p>
 <p><strong>Error in read_csv(…) : could not find function “read_csv”</strong></p>
-<p>This happens if you forgot to load the <code>readr</code> package!</p>
+<p>This happens if you forgot to load the <code>readr</code> package! (See also <a href="./99-common-issues.html">Common errors and their solutions</a>.)</p>
 </div>
 </div>
 <p>The default behaviour of the <code>read_csv</code> function is to include a printout of the type of variable housed in each column of the dataset. For example, when importing the <code>students</code> dataset, the function gives a printout showing that there are three “character” variables (denoted <code>chr</code>) — R reads categorical variables in from a CSV as character variables — and three <code>dbl</code>, or double precision, floating point format numeric variables.</p>
@@ -535,7 +541,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The CSV copies of the course datasets are all stored at the same URL location, specifically: “https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/”. (<strong>note</strong> that clicking on this URL will not load a website). To import any of them, copy that path and append the file name. For example, the full path to the <code>birds.csv</code> file would be “https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/csv_data/birds.csv”.</p>
-<p>These CSVs exist so you can practise importing. In the tutorials that follow, we use <code>data(birds)</code> instead, which is simpler and does not need an internet connection.</p>
+<p>These CSVs exist so you can practice importing. In the tutorials that follow, we use <code>data(birds)</code> instead, which is simpler and does not need an internet connection.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -650,161 +656,41 @@ Note
 <li>Are there variables whose data are numerical? If so, which ones?</li>
 <li>Are there observations missing anywhere?</li>
 </ul>
-<p>As we learned in the “Preparing and formatting assignments” <a href="./03-formatting-assignments.html#example_answer">tutorial</a>, the <code>skimr</code> package has a handy function called <code>skim_without_charts</code> that provides a good overview of a data object. This is a rather long function name, and in fact the main function is called <code>skim</code>. However, by default, <code>skim</code> includes small charts in its output, and we don’t want that presently, hence the use of <code>skim_without_charts</code>.</p>
-<p>Let’s load that package now:</p>
+<p>As we learned in the “Preparing and formatting assignments” <a href="./03-formatting-assignments.html#example_answer">tutorial</a>, the <code>glimpse</code> function from the <code>dplyr</code> package (already loaded) gives you a compact overview of a data object.</p>
+<p>Let’s get an overview of the <code>trout</code> dataset, using the pipe approach:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>trout <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 9</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 3</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ site         &lt;chr&gt; "Mabel-lake", "Mabel-lake", "Mabel-lake", "Postill-lake",…</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ day          &lt;dbl&gt; 1, 2, 3, 1, 2, 3, 1, 2, 3</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ trout_caught &lt;dbl&gt; 1, 3, 3, 3, 4, 5, 0, 5, 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>And get an overview of the <code>trout</code> dataset, again using the pipe approach:</p>
+<p>Here’s how to read this output:</p>
+<ul>
+<li>“Rows:” gives the number of observations, and “Columns:” gives the number of variables. So for <code>trout</code>, there are 9 observations and 3 variables.</li>
+<li>Each line below that describes one column (variable): its name, its type (in angle brackets), and then a preview of its actual values.</li>
+<li>The type abbreviation tells you whether a variable is categorical or numeric. Here, <code>site</code> is <code>&lt;chr&gt;</code> (“character” — text, i.e.&nbsp;categorical), while <code>day</code> and <code>trout_caught</code> are both <code>&lt;dbl&gt;</code> (“double precision” — a numeric type that allows decimals). In other datasets you may instead see <code>&lt;fct&gt;</code> (“factor” — R’s other type for a categorical variable, one with a known, fixed set of categories, discussed in the box above) or <code>&lt;int&gt;</code> (“integer” — whole-number numeric data).</li>
+</ul>
+<p>So <code>glimpse</code> already answers the first four questions listed above: there are 3 variables and 9 observations, <code>site</code> is categorical, and <code>day</code> and <code>trout_caught</code> are numeric.</p>
+<p>That leaves the last question: are there any missing observations? For this, and for numeric summaries like the mean and quantiles, use the <code>summary</code> function. It’s part of “base R” (R’s built-in functionality), so no extra package is needed.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>trout <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim_without_charts</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Data summary</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Name</td>
-<td style="text-align: left;">Piped data</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Number of rows</td>
-<td style="text-align: left;">9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Number of columns</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">_______________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Column type frequency:</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">________________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Group variables</td>
-<td style="text-align: left;">None</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: character</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 19%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">min</th>
-<th style="text-align: right;">max</th>
-<th style="text-align: right;">empty</th>
-<th style="text-align: right;">n_unique</th>
-<th style="text-align: right;">whitespace</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">site</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: numeric</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 14%">
-<col style="width: 20%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: right;">p0</th>
-<th style="text-align: right;">p25</th>
-<th style="text-align: right;">p50</th>
-<th style="text-align: right;">p75</th>
-<th style="text-align: right;">p100</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">day</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2.00</td>
-<td style="text-align: right;">0.87</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">trout_caught</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2.78</td>
-<td style="text-align: right;">1.79</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">5</td>
-</tr>
-</tbody>
-</table>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      site                day     trout_caught  </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Length:9           Min.   :1   Min.   :0.000  </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.:1   1st Qu.:1.000  </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median :2   Median :3.000  </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Mean   :2   Mean   :2.778  </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.:3   3rd Qu.:4.000  </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Max.   :3   Max.   :5.000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<p>A lot of information is provided in this summary output, so let’s go through it:</p>
+<p>Here’s how to read this output:</p>
 <ul>
-<li>The Data Summary shows the name of the object, the number of rows, and the number of columns</li>
-<li>Column type frequency shows how many columns (variables) are of type “character”, which is equivalent to “categorical”, and how many are “numeric”</li>
-<li>Group variables shows if there are any variables that are specified as “grouping” variables, something we don’t cover yet.</li>
-<li>Then it provides summaries of each of the variables, starting with the character or categorical variables, followed by the numeric variables</li>
-<li>Each summary includes a variety of descriptors, described next</li>
-<li>The “n_missing” descriptor tells you how many observations are missing in the given variable. In the “trout” dataset we don’t have any missing values</li>
-<li>The “n_unique” descriptor for categorical variables indicates how many unique values (categories) are in that variable; for the “Site” variable in the “trout” dataset there are 3 unique values</li>
-<li>The descriptors for the numeric variables include the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a>, <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Standard-deviation">standard deviation (sd)</a>, and the quantiles</li>
+<li>For each numeric variable (<code>day</code> and <code>trout_caught</code>), <code>summary</code> reports six descriptive statistics: the minimum, the 1st quartile, the median, the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Mean">mean</a>, the 3rd quartile, and the maximum.</li>
+<li>If a numeric variable had any missing observations, an extra line would appear below the maximum, reading something like “NA’s :2”, telling you how many values are missing. No such line appears for <code>day</code> or <code>trout_caught</code>, which tells us neither variable has any missing observations.</li>
+<li>The <code>site</code> variable is categorical, but since it’s stored as plain text (type <code>&lt;chr&gt;</code>, not <code>&lt;fct&gt;</code>), <code>summary</code> doesn’t count how many observations fall in each category — it just reports its length, class, and mode. When a categorical variable is instead stored as a factor (as most categorical variables in this course’s datasets are), <code>summary</code> reports a count of observations in each category instead, along with an “NA’s” line if any observations are missing. You’ll see an example of this shortly, with the <code>penguins</code> dataset.</li>
 </ul>
 <p>Now you have what you need to answer each of the questions listed above!</p>
 <p>One additional function that is useful during the overview stage is <code>head</code>. This function just gives you a view of the first 6 rows of the dataset:</p>

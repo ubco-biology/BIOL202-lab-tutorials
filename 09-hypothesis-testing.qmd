@@ -19,12 +19,11 @@ Load the packages we need for this tutorial:
 library(dplyr)
 library(ggplot2)
 library(readr)
-library(skimr)
 library(infer)
 library(biol202)
 ```
 
-Import the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Comma-separated-values-(CSV)-file">CSV file</a> called "damselfly":
+Load the `damselfly` dataset:
 
 ```{r get_damsel}
 data(damselfly)
@@ -34,7 +33,7 @@ Get an overview of the dataset:
 
 ```{r hyp_overview}
 damselfly %>%
-  skim_without_charts()
+  glimpse()
 ```
 
 And view the first handful of rows:
