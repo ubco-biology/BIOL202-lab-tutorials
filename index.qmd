@@ -12,59 +12,6 @@ This book is **a living document that is updated intermittently.** If you find e
 
 You need three things before you start: R, RStudio, and the `biol202` package. [Tutorial 1](01-getting-started.qmd#setup) walks you through installing all three, in order — start there before anything else in this book.
 
-## How the data work {.unnumbered}
-
-Every dataset used in these tutorials comes with the `biol202` package. To use one, load the package and then call `data()` with the dataset's name:
-
-```{r}
-#| eval: false
-library(biol202)
-data(circadian)
-```
-
-That is it — no downloading, no file paths, no internet connection required.
-
-Each dataset also has a help page describing every variable, its units, and where the data came from. To read it, put a question mark in front of the name:
-
-```{r}
-#| eval: false
-?circadian
-```
-
-**Read the help page before you analyze a dataset.** It tells you what the variables mean, which is not something you can guess from the numbers. To see all the datasets available:
-
-```{r}
-#| eval: false
-data(package = "biol202")
-```
-
-::: {.callout-note}
-## Why the data come in a package
-
-In previous years, students downloaded each dataset from a web address, which meant a typo or a dropped wifi connection could stop a lab before it started. Bundling the data into a package removes that failure entirely, and it means the data have already been cleaned and checked.
-
-You will still learn to import your own data from a CSV file — that is a core skill, and it is covered in [Tutorial 4](04-importing-data.qmd). The package is for the *course's* data, not a substitute for knowing how to read a file.
-:::
-
-## Loading packages in this course {.unnumbered}
-
-Throughout these tutorials, we load the individual packages we need, like this:
-
-```{r}
-#| eval: false
-library(dplyr)
-library(ggplot2)
-library(readr)
-```
-
-You may see other tutorials online use `library(tidyverse)`, which loads a large collection of packages in one line. We do not do that here. Loading packages individually means you can always tell which package a function came from — so when something goes wrong, you know where to look.
-
-This is consistent across every tutorial. Whatever a tutorial uses, it loads at the top.
-
-::: {.callout-note}
-Note that `library(biol202)` does **not** load `dplyr` or `ggplot2` for you. Installing `biol202` *installs* them; you still *load* the ones you need, yourself, at the top of each document.
-:::
-
 ## Licence {.unnumbered}
 
 These tutorials are licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

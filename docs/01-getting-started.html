@@ -379,6 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#veryify_knit" id="toc-veryify_knit" class="nav-link" data-scroll-target="#veryify_knit"><span class="header-section-number">1.2.8</span> Making sure R Markdown knits to PDF</a></li>
   <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">1.2.9</span> Extra resources</a></li>
   </ul></li>
+  <li><a href="#data_overview" id="toc-data_overview" class="nav-link" data-scroll-target="#data_overview"><span class="header-section-number">1.3</span> How the data work</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/01-getting-started.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -847,9 +848,54 @@ Note
 <p>You can get nice PDF versions of the files by going to <strong>Help -&gt; Cheatsheets</strong> inside RStudio:</p>
 <p><img src="images/cheatsheets.png" class="img-fluid"></p>
 <p>The book titled “Getting used to R, RStudio, and R Markdown” by Chester Ismay, which can be freely accessed <a href="https://ismayc.github.io/rbasics-book/">here</a>, is also a wonderful resource for for new users of R, RStudio, and R Markdown. It includes examples showing working with R Markdown files in RStudio recorded as GIFs.</p>
-
-
 </section>
+</section>
+<section id="data_overview" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="data_overview"><span class="header-section-number">1.3</span> How the data work</h2>
+<p>Now that you know what a package is, and how to install and load one, here’s how the datasets used throughout this book work.</p>
+<p>Every dataset used in these tutorials comes with the <code>biol202</code> package. To use one, load the package and then call <code>data()</code> with the dataset’s name:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>That is it — no downloading, no file paths, no internet connection required.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>library(biol202)</code> does <strong>not</strong> load <code>dplyr</code> or <code>ggplot2</code> for you. Installing <code>biol202</code> <em>installs</em> them; you still <em>load</em> the ones you need, yourself, at the top of each document, the way you learned above.</p>
+</div>
+</div>
+<p>Each dataset also has a help page describing every variable, its units, and where the data came from. To read it, put a question mark in front of the name:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>?circadian</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Read the help page before you analyze a dataset.</strong> It tells you what the variables mean, which is not something you can guess from the numbers. To see all the datasets available:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"biol202"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why the data come in a package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In previous years, students downloaded each dataset from a web address, which meant a typo or a dropped wifi connection could stop a lab before it started. Bundling the data into a package removes that failure entirely, and it means the data have already been cleaned and checked.</p>
+<p>You will still learn to import your own data from a CSV file — that is a core skill, and it is covered in <a href="./04-importing-data.html">Tutorial 4</a>. The package is for the <em>course’s</em> data, not a substitute for knowing how to read a file.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
