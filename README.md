@@ -5,10 +5,11 @@ A Quarto book covering the R computation for the course's lab portion.
 
 ## Building
 
-Requires [Quarto](https://quarto.org) and the `biol202` package:
+Requires [Quarto](https://quarto.org) and the `biol202` package, pinned to the version
+tagged for the current term so the rendered output matches what students see:
 
 ```r
-remotes::install_github("ubco-biology/biol202_ubco")
+remotes::install_github("ubco-biology/biol202_ubco@v2026.1")
 ```
 
 Then:

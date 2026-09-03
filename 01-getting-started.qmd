@@ -55,8 +55,13 @@ Then install the course package:
 
 ```{r}
 #| eval: false
-remotes::install_github("ubco-biology/biol202_ubco")
+remotes::install_github("ubco-biology/biol202_ubco@v2026.1")
 ```
+
+The `@v2026.1` at the end pins you to the exact version of the package tagged for this
+term. It will keep installing the same version even if the package is updated later for
+a future term — that's what makes sure everyone in BIOL 202 this term is running
+identical package versions.
 
 ::: {.callout-warning}
 ## What to expect during this install
@@ -86,8 +91,8 @@ If you are on a **Windows** computer, you may also see a message about installin
 You install from `biol202_ubco` but you load `biol202`:
 
 ```r
-remotes::install_github("ubco-biology/biol202_ubco")   # the repository
-library(biol202)                                        # the package
+remotes::install_github("ubco-biology/biol202_ubco@v2026.1")   # the repository
+library(biol202)                                                # the package
 ```
 
 This is not a typo. `biol202_ubco` is the name of the *repository* on GitHub; `biol202` is the name of the *package* inside it. R does not allow underscores in package names, so the two cannot match.
