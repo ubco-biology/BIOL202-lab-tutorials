@@ -232,7 +232,7 @@
     "href": "03-formatting-assignments.html",
     "title": "3  Preparing and formatting assignments",
     "section": "",
-    "text": "3.1 Open your assignment RStudio project\nThis material provides instructions on how to prepare and format R Markdown documents for assignments.\nIn a previous tutorial it was suggested you set up a working root directory called “BIOL202_assignments” to host all your assignment work. You may have also created sub-directories, one for each of the three assignments. Regardless, in your root “BIOL202_assignments” directory locate the RStudio project file (it has a “Rproj” extension in the filename), and open it by double-clicking it.",
+    "text": "3.1 Open your assignment RStudio project\nThis material provides instructions on how to prepare and format R Markdown documents for assignments.\nOnce you’ve worked through this tutorial, the Preparing and Submitting Your Assignment cheatsheet condenses these same steps onto one page — a quick reference to come back to for every assignment after this one.\nIn a previous tutorial it was suggested you set up a working root directory called “BIOL202_assignments” to host all your assignment work. You may have also created sub-directories, one for each of the three assignments. Regardless, in your root “BIOL202_assignments” directory locate the RStudio project file (it has a “Rproj” extension in the filename), and open it by double-clicking it.",
     "crumbs": [
       "Part I — Workflow & Reproducibility",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Preparing and formatting assignments</span>"

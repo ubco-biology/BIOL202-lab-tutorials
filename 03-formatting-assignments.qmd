@@ -1,6 +1,8 @@
 # Preparing and formatting assignments {#prepare_assignments}
 
-This material provides instructions on how to prepare and format R Markdown documents for assignments. 
+This material provides instructions on how to prepare and format R Markdown documents for assignments.
+
+Once you've worked through this tutorial, the [Preparing and Submitting Your Assignment cheatsheet](93-assignment-cheatsheet.qmd) condenses these same steps onto one page — a quick reference to come back to for every assignment after this one.
 
 ## Open your assignment RStudio project {#open_assign_project1}
 
