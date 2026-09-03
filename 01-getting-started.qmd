@@ -38,6 +38,82 @@ R needs to be installed successfully >prior< to installing RStudio (because the 
 
 * Now to install RStudio: once you have installed "R", go to this [website](https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads) and click on the  "download RStudio desktop" button under the "Install RStudio" heading.  The website should detect what operating system you're using and offer you the appropriate version.
 
+### Setting up: do this once {#setup}
+
+Now that R and RStudio are installed, there's one more one-time step before you start the tutorials: installing the `biol202` package.
+
+Everything else — every dataset and every package used anywhere in these tutorials — comes from this single package. Install it once, at the start of term, and you are done.
+
+First, install the `remotes` package, which knows how to install packages from GitHub. Run this in the **Console** (the bottom-left pane in RStudio):
+
+```{r}
+#| eval: false
+install.packages("remotes")
+```
+
+Then install the course package:
+
+```{r}
+#| eval: false
+remotes::install_github("ubco-biology/biol202_ubco")
+```
+
+::: {.callout-warning}
+## What to expect during this install
+
+**This can take several minutes the first time** — it also installs every other package the course uses, not just `biol202` itself. Nothing is wrong if it seems to sit there for a while; just let it finish.
+
+While it's running, you may also see a message asking:
+
+```
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All
+2: CRAN packages only
+3: None
+```
+
+Type **3** (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.
+
+If you are on a **Windows** computer, you may also see a message about installing "Rtools" in order to build packages from source. You do **not** need Rtools for this install — `biol202` does not require it. It is safe to ignore that message and let the install continue.
+:::
+
+::: {.callout-important}
+## The install name and the package name are different, on purpose
+
+You install from `biol202_ubco` but you load `biol202`:
+
+```r
+remotes::install_github("ubco-biology/biol202_ubco")   # the repository
+library(biol202)                                        # the package
+```
+
+This is not a typo. `biol202_ubco` is the name of the *repository* on GitHub; `biol202` is the name of the *package* inside it. R does not allow underscores in package names, so the two cannot match.
+:::
+
+::: {.callout-note}
+## Only install once
+
+`install.packages()` and `install_github()` install a package onto your computer permanently. You do **not** re-run them every session, and you should never put them inside an R Markdown document — if you do, your document will try to re-install packages every time you knit it.
+
+Loading a package with `library()` is something different, and it's the thing you do every session — you'll learn about that shortly, in [Package loading](#package_load) below.
+:::
+
+#### Check that it worked {.unnumbered}
+
+Run this in the Console:
+
+```{r}
+#| eval: false
+library(biol202)
+data(birds)
+birds
+```
+
+If you see a small table of bird types, you are ready.
+
 ## Start using R & RStudio {#start_r}
 
 Recall our car analogy from a [previous tutorial](#what_is_R). Much as we don't drive a car by interacting directly with the engine but rather by using elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new programs AKA applications you can open. We will always work in RStudio and not R. In other words:  
@@ -87,7 +163,7 @@ There are two key things to remember about R packages:
 Let's install the `dplyr` package, as an example of how installing works.
 
 ::: {.callout-note}
-In practice you will have installed almost everything already, in one step, by installing the course's `biol202` package — see the [setup instructions](index.qmd). Installing `biol202` also installs `dplyr`, `ggplot2`, `readr` and every other package the course uses. This section is here so you know *how* installation works, and can install something new when you need it.
+In practice you will have installed almost everything already, in one step, by installing the course's `biol202` package — see [Setting up: do this once](#setup) earlier in this tutorial. Installing `biol202` also installs `dplyr`, `ggplot2`, `readr` and every other package the course uses. This section is here so you know *how* installation works, and can install something new when you need it.
 :::
 
 There are two ways to install an R package:

@@ -363,7 +363,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#install_R_Rstudio" id="toc-install_R_Rstudio" class="nav-link active" data-scroll-target="#install_R_Rstudio"><span class="header-section-number">1.1</span> Installing R and RStudio</a></li>
+  <li><a href="#install_R_Rstudio" id="toc-install_R_Rstudio" class="nav-link active" data-scroll-target="#install_R_Rstudio"><span class="header-section-number">1.1</span> Installing R and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">1.1.1</span> Setting up: do this once</a></li>
+  </ul></li>
   <li><a href="#start_r" id="toc-start_r" class="nav-link" data-scroll-target="#start_r"><span class="header-section-number">1.2</span> Start using R &amp; RStudio</a>
   <ul class="collapse">
   <li><a href="#Rstudio_interface" id="toc-Rstudio_interface" class="nav-link" data-scroll-target="#Rstudio_interface"><span class="header-section-number">1.2.1</span> The RStudio Interface</a></li>
@@ -477,6 +480,82 @@ Note
 </ul></li>
 <li>Now to install RStudio: once you have installed “R”, go to this <a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads">website</a> and click on the “download RStudio desktop” button under the “Install RStudio” heading. The website should detect what operating system you’re using and offer you the appropriate version.</li>
 </ul>
+<section id="setup" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">1.1.1</span> Setting up: do this once</h3>
+<p>Now that R and RStudio are installed, there’s one more one-time step before you start the tutorials: installing the <code>biol202</code> package.</p>
+<p>Everything else — every dataset and every package used anywhere in these tutorials — comes from this single package. Install it once, at the start of term, and you are done.</p>
+<p>First, install the <code>remotes</code> package, which knows how to install packages from GitHub. Run this in the <strong>Console</strong> (the bottom-left pane in RStudio):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then install the course package:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ubco-biology/biol202_ubco"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What to expect during this install
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This can take several minutes the first time</strong> — it also installs every other package the course uses, not just <code>biol202</code> itself. Nothing is wrong if it seems to sit there for a while; just let it finish.</p>
+<p>While it’s running, you may also see a message asking:</p>
+<pre><code>These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All
+2: CRAN packages only
+3: None</code></pre>
+<p>Type <strong>3</strong> (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.</p>
+<p>If you are on a <strong>Windows</strong> computer, you may also see a message about installing “Rtools” in order to build packages from source. You do <strong>not</strong> need Rtools for this install — <code>biol202</code> does not require it. It is safe to ignore that message and let the install continue.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The install name and the package name are different, on purpose
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You install from <code>biol202_ubco</code> but you load <code>biol202</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ubco-biology/biol202_ubco"</span>)   <span class="co"># the repository</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)                                        <span class="co"># the package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is not a typo. <code>biol202_ubco</code> is the name of the <em>repository</em> on GitHub; <code>biol202</code> is the name of the <em>package</em> inside it. R does not allow underscores in package names, so the two cannot match.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Only install once
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>install.packages()</code> and <code>install_github()</code> install a package onto your computer permanently. You do <strong>not</strong> re-run them every session, and you should never put them inside an R Markdown document — if you do, your document will try to re-install packages every time you knit it.</p>
+<p>Loading a package with <code>library()</code> is something different, and it’s the thing you do every session — you’ll learn about that shortly, in <a href="#package_load">Package loading</a> below.</p>
+</div>
+</div>
+<section id="check-that-it-worked" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="check-that-it-worked">Check that it worked</h4>
+<p>Run this in the Console:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(birds)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>birds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you see a small table of bird types, you are ready.</p>
+</section>
+</section>
 </section>
 <section id="start_r" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="start_r"><span class="header-section-number">1.2</span> Start using R &amp; RStudio</h2>
@@ -549,7 +628,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In practice you will have installed almost everything already, in one step, by installing the course’s <code>biol202</code> package — see the <a href="./index.html">setup instructions</a>. Installing <code>biol202</code> also installs <code>dplyr</code>, <code>ggplot2</code>, <code>readr</code> and every other package the course uses. This section is here so you know <em>how</em> installation works, and can install something new when you need it.</p>
+<p>In practice you will have installed almost everything already, in one step, by installing the course’s <code>biol202</code> package — see <a href="#setup">Setting up: do this once</a> earlier in this tutorial. Installing <code>biol202</code> also installs <code>dplyr</code>, <code>ggplot2</code>, <code>readr</code> and every other package the course uses. This section is here so you know <em>how</em> installation works, and can install something new when you need it.</p>
 </div>
 </div>
 <p>There are two ways to install an R package:</p>
@@ -577,7 +656,7 @@ Warning
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you are attempting to install a package (using <code>install.packages</code>) and you get this message:</p>
 <pre><code>There is a binary version available but the source version is later:
@@ -605,9 +684,9 @@ Note
 <p>Let’s load the packages we will use most often.</p>
 <p>After you’ve installed a package, you can load it using the <code>library()</code> command. Run the following code in the Console pane — one <code>library()</code> line per package, which is the convention we follow all term:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -699,7 +778,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -708,7 +787,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you’d like additional introductory tutorials on R Markdown, see this <a href="https://rbasics.netlify.app/4-rmarkdown.html">resource</a>.</p>
 </div>

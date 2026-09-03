@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jason Pither">
-<meta name="dcterms.date" content="2026-09-02">
+<meta name="dcterms.date" content="2026-09-03">
 
 <title>R Tutorials for Biostatistics</title>
 <style>
@@ -366,10 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setting up: do this once</a>
-  <ul class="collapse">
-  <li><a href="#check-that-it-worked" id="toc-check-that-it-worked" class="nav-link" data-scroll-target="#check-that-it-worked">Check that it worked</a></li>
-  </ul></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setting up: do this once</a></li>
   <li><a href="#how-the-data-work" id="toc-how-the-data-work" class="nav-link" data-scroll-target="#how-the-data-work">How the data work</a></li>
   <li><a href="#loading-packages-in-this-course" id="toc-loading-packages-in-this-course" class="nav-link" data-scroll-target="#loading-packages-in-this-course">Loading packages in this course</a></li>
   <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
@@ -400,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 2, 2026</p>
+      <p class="date">September 3, 2026</p>
     </div>
   </div>
   
@@ -420,95 +417,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This book is <strong>a living document that is updated intermittently.</strong> If you find errors or wish to provide feedback, please <a href="https://jasonpither.weebly.com/people.html">contact me</a>.</p>
 <section id="setup" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="setup">Setting up: do this once</h2>
-<p>You need three things: R, RStudio, and the <code>biol202</code> package. <a href="./01-getting-started.html">Tutorial 1</a> walks you through installing R and RStudio if you have not already.</p>
-<p>Everything else — every dataset and every package used anywhere in these tutorials — comes from a single package called <code>biol202</code>. Install it once, at the start of term, and you are done.</p>
-<p>First, install the <code>remotes</code> package, which knows how to install packages from GitHub. Run this in the <strong>Console</strong> (the bottom-left pane in RStudio):</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Then install the course package:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ubco-biology/biol202_ubco"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This may take a few minutes the first time, because it also installs every other package the course uses. Let it finish.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Two prompts you may see during this install
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While <code>remotes::install_github()</code> is running, you may see a message asking:</p>
-<pre><code>These packages have more recent versions available.
-It is recommended to update all of them.
-Which would you like to update?
-
-1: All
-2: CRAN packages only
-3: None</code></pre>
-<p>Type <strong>3</strong> (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.</p>
-<p>If you are on a <strong>Windows</strong> computer, you may also see a message about installing “Rtools” in order to build packages from source. You do <strong>not</strong> need Rtools for this install — <code>biol202</code> does not require it. It is safe to ignore that message and let the install continue.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>The install name and the package name are different, on purpose
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You install from <code>biol202_ubco</code> but you load <code>biol202</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ubco-biology/biol202_ubco"</span>)   <span class="co"># the repository</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)                                        <span class="co"># the package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is not a typo. <code>biol202_ubco</code> is the name of the <em>repository</em> on GitHub; <code>biol202</code> is the name of the <em>package</em> inside it. R does not allow underscores in package names, so the two cannot match.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Only install once
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>install.packages()</code> and <code>install_github()</code> install a package onto your computer permanently. You do <strong>not</strong> re-run them every session, and you should never put them inside an R Markdown document — if you do, your document will try to re-install packages every time you knit it.</p>
-<p>Loading a package with <code>library()</code> is the thing you do every session. See <a href="./01-getting-started.html">Tutorial 1</a>.</p>
-</div>
-</div>
-<section id="check-that-it-worked" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="check-that-it-worked">Check that it worked</h3>
-<p>Run this in the Console:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(birds)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>birds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>If you see a small table of bird types, you are ready.</p>
-</section>
+<p>You need three things before you start: R, RStudio, and the <code>biol202</code> package. <a href="./01-getting-started.html#setup">Tutorial 1</a> walks you through installing all three, in order — start there before anything else in this book.</p>
 </section>
 <section id="how-the-data-work" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="how-the-data-work">How the data work</h2>
 <p>Every dataset used in these tutorials comes with the <code>biol202</code> package. To use one, load the package and then call <code>data()</code> with the dataset’s name:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>That is it — no downloading, no file paths, no internet connection required.</p>
 <p>Each dataset also has a help page describing every variable, its units, and where the data came from. To read it, put a question mark in front of the name:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>?circadian</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>?circadian</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Read the help page before you analyze a dataset.</strong> It tells you what the variables mean, which is not something you can guess from the numbers. To see all the datasets available:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"biol202"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"biol202"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -529,9 +454,9 @@ Which would you like to update?
 <h2 class="unnumbered anchored" data-anchor-id="loading-packages-in-this-course">Loading packages in this course</h2>
 <p>Throughout these tutorials, we load the individual packages we need, like this:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You may see other tutorials online use <code>library(tidyverse)</code>, which loads a large collection of packages in one line. We do not do that here. Loading packages individually means you can always tell which package a function came from — so when something goes wrong, you know where to look.</p>
 <p>This is consistent across every tutorial. Whatever a tutorial uses, it loads at the top.</p>
