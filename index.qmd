@@ -4,7 +4,7 @@ This is the lab companion for **BIOL 202: Introduction to Biostatistics** at the
 
 It also works as a general resource for anyone learning to manage and analyze data using R and R Markdown in the RStudio IDE.
 
-These tutorials cover the computation; the lectures and assigned course readings cover the concepts. The rule is **concept first, computation second**: an idea is introduced in the lecture or the assigned reading, and the lab tutorial then implements it in R. If a tutorial asks you to run a test, you will already have met what it is for.
+These tutorials cover the computation; the lectures and assigned course readings cover the concepts. The approach is **concept first, computation second**: an idea is introduced in the lecture or the assigned reading, and the lab tutorial then implements it in R. If a tutorial asks you to run a test, you will already have learned what it is for.
 
 This book is **a living document that is updated intermittently.** If you find errors or wish to provide feedback, please [contact me](https://jasonpither.weebly.com/people.html).
 
@@ -12,8 +12,26 @@ This book is **a living document that is updated intermittently.** If you find e
 
 You need three things before you start: R, RStudio, and the `biol202` package. [Tutorial 1](01-getting-started.qmd#setup) walks you through installing all three, in order — start there before anything else in this book.
 
+## About me {.unnumbered}
+
+I (Jason Pither) am an Associate Professor in the Department of Biology at the Okanagan campus of the University of British Columbia. I am an ecologist with interests in biogeography, community ecology, and landscape ecology. I have been using "R" (and its [predecessor, "S"](https://en.wikipedia.org/wiki/R_(programming_language)#History)) in my research for over two decades, and have been teaching Introductory Biostatistics using R since 2014.  
+
+## Acknowledgements {.unnumbered}
+
+I am grateful to be able to live, work, and play as a guest on the traditional, ancestral, and unceded territory of the Syilx (Okanagan) people. To find out more about Indigenous territories where you live, consult [https://native-land.ca](https://native-land.ca).
+
+This online book borrows some material generously made openly available by the following keen educators:  
+
++ Chester Ismay and Albert Y. Kim ([Statistical Inference via Data Science online book](https://moderndive.com/)). This resource is licensed under a [Creative Commons Attribution - NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
++ Mike Whitlock and Dolph Schluter ([resources accompanying the text "Analysis of Biological Data"](https://whitlockschluter3e.zoology.ubc.ca/index.html))
+
+It has also benefited from valuable input from the many BIOL202 students and teaching assistants who have helped me over the years.  Thank you!
+
+Clerissa Copeland, Jordan Katchen, and Mathew Vis-Dunbar helped with some of the content development and with identifying links to other UBCO Biology material. Thanks!
+
 ## Licence {.unnumbered}
 
 These tutorials are licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 Many of the datasets accompany Whitlock, M. C. & Schluter, D., *The Analysis of Biological Data*, and are redistributed under the same licence their authors published them under ([Whitlock & Schluter 2018](https://qubeshub.org/publications/351/1)). Each dataset's help page records its source. Note that most of those values were digitized from figures and tables in the original publications, so they are teaching reconstructions rather than the original measurements — fine for learning, not for research.
+

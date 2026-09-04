@@ -25,8 +25,6 @@ RStudio is now owned by "posit", and its website (posit.co) should detect your o
 
 Follow the instructions below to download and install both R and RStudio.
 
-* Download and install both R and RStudio (Desktop version) on your computer.
-
 ::: {.callout-note}
 R needs to be installed successfully >prior< to installing RStudio (because the latter depends on the former)  
 :::
@@ -58,9 +56,9 @@ Then install the course package:
 remotes::install_github("ubco-biology/biol202_ubco@v2026.1")
 ```
 
-The `@v2026.1` at the end pins you to the exact version of the package tagged for this
+The `@v2026.1` at the end ensures that you are using the correct version of the package for the given
 term. It will keep installing the same version even if the package is updated later for
-a future term — that's what makes sure everyone in BIOL 202 this term is running
+a future term. This makes sure everyone in BIOL 202 this term is running
 identical package versions.
 
 ::: {.callout-warning}
