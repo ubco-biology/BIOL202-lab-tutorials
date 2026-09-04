@@ -17,8 +17,8 @@ This is a one-page quick reference for preparing and submitting a BIOL 202 assig
 ## 3. Load packages once, near the top
 
 - One chunk near the top loads what you'll need — one `library()` line per package (never `library(tidyverse)`):
-  `library(dplyr)`, `library(ggplot2)`, `library(readr)`, `library(biol202)` — add others only if a question needs them. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer); [Tutorial 1, §1.2.5](01-getting-started.qmd#package_load))*
-- Never put `install.packages()` inside the `.Rmd` — install in the **Console** only. *([Tutorial 1, §1.2.4](01-getting-started.qmd#package_install))*
+  `library(dplyr)`, `library(ggplot2)`, `library(readr)`, `library(biol202)` — add others only if a question needs them. *([Tutorial 3, §3.4](03-formatting-assignments.qmd#what_include_answer); [Tutorial 1, §1.2.6](01-getting-started.qmd#package_load))*
+- Never put `install.packages()` inside the `.Rmd` — install in the **Console** only. *([Tutorial 1, §1.2.5](01-getting-started.qmd#package_install))*
 
 ## 4. Answer each question
 
@@ -38,7 +38,7 @@ This is a one-page quick reference for preparing and submitting a BIOL 202 assig
 
 ## 6. Knit to PDF
 
-- Click the **Knit** dropdown → **Knit to PDF** (don't just click "Knit" without checking it says PDF). *([Tutorial 3, §3.7](03-formatting-assignments.qmd#knit_assign); [Tutorial 1, §1.2.8](01-getting-started.qmd#veryify_knit))*
+- Click the **Knit** dropdown → **Knit to PDF** (don't just click "Knit" without checking it says PDF). *([Tutorial 3, §3.7](03-formatting-assignments.qmd#knit_assign); [Tutorial 1, §1.2.9](01-getting-started.qmd#veryify_knit))*
 - The PDF takes the same name as your `.Rmd`, just with a `.pdf` extension.
 
 ### If knitting fails, check the error against these first *(all from the Common Issues page)*
