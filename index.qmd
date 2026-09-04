@@ -8,10 +8,6 @@ These tutorials cover the computation; the lectures and assigned course readings
 
 This book is **a living document that is updated intermittently.** If you find errors or wish to provide feedback, please [contact me](https://jasonpither.weebly.com/people.html).
 
-## Setting up: do this once {#setup .unnumbered}
-
-You need three things before you start: R, RStudio, and the `biol202` package. [Tutorial 1](01-getting-started.qmd#setup) walks you through installing all three, in order — start there before anything else in this book.
-
 ## About me {.unnumbered}
 
 I (Jason Pither) am an Associate Professor in the Department of Biology at the Okanagan campus of the University of British Columbia. I am an ecologist with interests in biogeography, community ecology, and landscape ecology. I have been using "R" (and its [predecessor, "S"](https://en.wikipedia.org/wiki/R_(programming_language)#History)) in my research for over two decades, and have been teaching Introductory Biostatistics using R since 2014.  
