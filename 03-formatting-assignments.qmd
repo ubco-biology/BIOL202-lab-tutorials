@@ -4,11 +4,15 @@ This material provides instructions on how to prepare and format R Markdown docu
 
 Once you've worked through this tutorial, the [Preparing and Submitting Your Assignment cheatsheet](93-assignment-cheatsheet.qmd) condenses these same steps onto one page — a quick reference to come back to for every assignment after this one.
 
-## Open your assignment RStudio project {#open_assign_project1}
+## Get your assignment file ready {#get_assign_file}
+
+Before you can start answering questions, you need to get the assignment file set up on your computer. That takes three steps.
+
+### Open your assignment RStudio project {#open_assign_project1}
 
 In a previous [tutorial](02-reproducible-r.qmd#assign_workflow) it was suggested you set up a working root directory called "BIOL202_assignments" to host all your assignment work.  You may have also created sub-directories, one for each of the three assignments.  Regardless, in your root "BIOL202_assignments" directory locate the RStudio project file (it has a "Rproj" extension in the filename), and open it by double-clicking it.
 
-## Download the assignment Rmd file {#download_assign_rmd}
+### Download the assignment Rmd file {#download_assign_rmd}
 
 The assignment file will be available to you for download from Canvas under the "Assignments" section. The file is actually an R Markdown file, and therefore has an "Rmd" extension.  It is simply a text document (meaning it contains only text), but the syntax used therein is "markdown" syntax, and the file extension (Rmd) specifies it as an R Markdown file. You might recall reading about Markdown in the [Biology Procedures and Guidelines document](https://ubco-biology.github.io/Procedures-and-Guidelines/markdown-1.html).
 
@@ -16,7 +20,7 @@ Make sure you save the Rmd file into your root "BIOL202_assignments" directory, 
 
 A small assignment has been set up on Canvas, with the aim of you getting use to the assignment procedure. It is located under "Lab_materials" module. Download the file, and make sure it's saved into your root directory (where your RStudio project is). 
 
-## Open the assignment Rmd file {#open_rmd_file}
+### Open the assignment Rmd file {#open_rmd_file}
 
 In RStudio, look in the "files" pane (bottom right) and locate your downloaded assignment Rmd file. Then click it to open.
 

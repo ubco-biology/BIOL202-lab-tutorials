@@ -25,22 +25,24 @@ book:
   # never reached before the lecture has motivated the concept it computes.
   chapters:
     - index.qmd
-    - part: "Part I — Workflow & Reproducibility"
+    - part: "Part I — Getting Started"
       chapters:
         - 01-getting-started.qmd
+    - part: "Part II — Workflow & Reproducibility"
+      chapters:
         - 02-reproducible-r.qmd
         - 03-formatting-assignments.qmd
         - 04-importing-data.qmd
-    - part: "Part II — Describing & Visualizing Data"
+    - part: "Part III — Describing & Visualizing Data"
       chapters:
         - 05-visualize-one-variable.qmd
         - 06-describe-one-variable.qmd
         - 07-visualize-two-variables.qmd
-    - part: "Part III — Uncertainty & the Logic of Inference"
+    - part: "Part IV — Uncertainty & the Logic of Inference"
       chapters:
         - 08-sampling-estimation.qmd
         - 09-hypothesis-testing.qmd
-    - part: "Part IV — The Core Methods Toolbox"
+    - part: "Part V — The Core Methods Toolbox"
       chapters:
         - 10-one-categorical.qmd
         - 11-two-categorical.qmd
@@ -48,7 +50,7 @@ book:
         - 13-two-means.qmd
         - 14-assumptions-transformations.qmd
         - 15-anova.qmd
-    - part: "Part V — The Linear-Model Family"
+    - part: "Part VI — The Linear-Model Family"
       chapters:
         - 16-correlation.qmd
         - 17-regression.qmd
