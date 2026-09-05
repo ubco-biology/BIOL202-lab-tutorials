@@ -38,7 +38,7 @@ R needs to be installed successfully >prior< to installing RStudio (because the 
 
 ## Troubleshooting: what to do when something breaks {#troubleshooting}
 
-Things will go wrong. You will run a line of code and instead of a plot or a table, you'll get a wall of red text. This is completely normal — it happens to experienced R users every single day — and learning *how to work through it yourself* is one of the most valuable skills you'll build in this course. Here's a simple order of operations to follow.
+Things will go wrong. You will run a line of code and instead of a plot or a table, you'll get a wall of red text. This is completely normal: it happens to experienced R users every single day, and learning *how to work through it yourself* is one of the most valuable skills you'll build in this course. Here's a simple order of operations to follow.
 
 ### Step 1: Read the error message {.unnumbered}
 
@@ -46,13 +46,13 @@ R usually tells you exactly which line the problem is on, and often what's wrong
 
 ### Step 2: Check the course's own troubleshooting page {.unnumbered}
 
-Many of the errors you'll hit in this course — ones tied to a particular package version, or a quirk of the `biol202` package — are already documented, with fixes, in [Common errors and their solutions](99-common-issues.qmd). This is course-specific, so it's worth checking *before* searching more broadly: it's the fastest way to find a fix that's known to actually work with the exact setup we use.
+Many of the errors you'll hit in this course are already documented, with fixes, in [Common errors and their solutions](99-common-issues.qmd). This is course-specific, so it's worth checking *before* searching more broadly: it's the fastest way to find a fix that's known to actually work with the exact setup we use.
 
 ### Step 3: Google it {.unnumbered}
 
 If your error isn't listed there, copy the exact error text and paste it into Google, adding the word "R" to your search (for example: `Error in geom_point() could not find function R`).
 
-This works well because R is one of the most widely used programming languages in the world, especially in science, so almost every error you'll encounter as a beginner has already been asked and answered — usually on a site called Stack Overflow, a question-and-answer forum for coding problems. You'll often find your exact error, explained, on the first page of results.
+This works well because R is one of the most widely used programming languages in the world, especially in science, so almost every error you'll encounter as a beginner has already been asked and answered, usually on a site called Stack Overflow, a question-and-answer forum for coding problems. You'll often find your exact error, explained, on the first page of results.
 
 ::: {.callout-tip}
 ## A plain search is enough — you don't need Google's "AI mode"

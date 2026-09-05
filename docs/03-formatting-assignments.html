@@ -696,7 +696,7 @@ Note
 </section>
 <section id="example_answer" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="example_answer"><span class="header-section-number">3.4</span> Example question / answer</h2>
-<p>Below is an example of how to answer a question. You haven’t yet learned some of the functions we use here, but follow along for now - it’s just an example!</p>
+<p>Below is an example of how to answer a question. You haven’t yet learned some of the functions we use here, but follow along for now, it’s just an example!</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -716,7 +716,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>I also learned that it’s a good idea to get an overview of the dataset as a first step after importing data. To do this, use the <code>glimpse</code> function from the <code>dplyr</code> package, which is already loaded.</p>
+<p>The next step is to get an overview of the dataset. To do this, use the <code>glimpse</code> function from the <code>dplyr</code> package, which is already loaded.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(students)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 154</span></span>
@@ -728,7 +728,7 @@ Note
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_foot      &lt;fct&gt; Right, Right, Right, Right, Left, Right, Right, Rig…</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ dominant_eye       &lt;fct&gt; Right, Right, Right, Right, Left, Right, Left, Righ…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This shows we have 154 rows (observations) and 6 columns (variables) total. Three of the columns are of type <code>&lt;fct&gt;</code> (“factor”, R’s type for a categorical variable with a fixed set of categories), and three are of type <code>&lt;dbl&gt;</code> (“double precision”, R’s type for a numeric variable with decimals) — so three factor (categorical) and three numeric variables in all.</p>
+<p>This shows we have 154 rows (observations) and 6 columns (variables) total.</p>
 <p>We can use the <code>summary</code> function to get some basic <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a>, including the minimum and maximum of numeric variables. The <code>summary</code> function is part of the base R package, so no additional packages need to be loaded.</p>
 <p>We also use the <code>select</code> function from the <code>dplyr</code> package to select which variable in the <code>students</code> tibble we wish to summarize.</p>
 <p>The use of the “%&gt;%” syntax is described in a later tutorial.</p>

@@ -180,7 +180,7 @@ The figure captions will only appear correctly once you knit to PDF; captions do
 
 ## Example question / answer {#example_answer}
 
-Below is an example of how to answer a question. You haven't yet learned some of the functions we use here, but follow along for now - it's just an example!
+Below is an example of how to answer a question. You haven't yet learned some of the functions we use here, but follow along for now, it's just an example!
 
 ::: {.callout-note}
 There are almost *always* multiple coding approaches to get the right answer, some better than others. As long as your code and answer are accurate and make sense, you'll get the marks!
@@ -202,13 +202,13 @@ library(biol202)
 data(students)
 ```
 
-I also learned that it's a good idea to get an overview of the dataset as a first step after importing data.  To do this, use the `glimpse` function from the `dplyr` package, which is already loaded.
+The next step is to get an overview of the dataset.  To do this, use the `glimpse` function from the `dplyr` package, which is already loaded.
 
 ```{r overview_data, eval = TRUE}
 glimpse(students)
 ```
 
-This shows we have 154 rows (observations) and 6 columns (variables) total. Three of the columns are of type `<fct>` ("factor", R's type for a categorical variable with a fixed set of categories), and three are of type `<dbl>` ("double precision", R's type for a numeric variable with decimals) — so three factor (categorical) and three numeric variables in all.
+This shows we have 154 rows (observations) and 6 columns (variables) total. 
 
 We can use the `summary` function to get some basic <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Descriptive-statistics">descriptive statistics</a>, including the minimum and maximum of numeric variables. The `summary` function is part of the base R package, so no additional packages need to be loaded.
 
