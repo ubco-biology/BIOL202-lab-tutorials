@@ -579,12 +579,11 @@ I have created an R Markdown file that you can download and use for this purpose
 <p>Reading and writing files from / to directories requires that we can tell R exactly where to find those directories. That’s where the handy package called <code>here</code> comes in.</p>
 <section id="here_package" class="level4" data-number="2.4.2.1">
 <h4 data-number="2.4.2.1" class="anchored" data-anchor-id="here_package"><span class="header-section-number">2.4.2.1</span> The <code>here</code> package</h4>
-<p>Now we’ll install and load an R package called <code>here</code> that will help with file and directory management and navigation.</p>
-<pre><code>install.packages("here")</code></pre>
+<p>Included in the <code>biol202</code> package is the <code>here</code> package, which helps with file and directory management and navigation.</p>
 <p>This is a helpful <a href="https://here.r-lib.org/index.html">vignette</a> about the <code>here</code> package.</p>
-<p>Then we load the package:</p>
+<p>Load the package:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When you load the package, the <code>here</code> function takes stock of where your RStudio project file is located, and establishes that directory as the “working directory”. It should return a file path for you. In future tutorials we’ll make use of the <code>here</code> package when saving files.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -610,7 +609,7 @@ Note
 <p>I have created an R Markdown file that you can download and use for starting your tutorial work.</p>
 <p>To do this, type the following code into your command console in RStudio (the bottom left panel):</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/templates/Example_tutorial_markdown.Rmd"</span>, <span class="st">"BIOL202_tutorial_markdown.Rmd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://raw.githubusercontent.com/ubco-biology/BIOL202-lab-tutorials/main/templates/Example_tutorial_markdown.Rmd"</span>, <span class="st">"BIOL202_tutorial_markdown.Rmd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This <code>download.file</code> command takes a URL address for a file stored online, and then tells R where to save it, and what name to use.</p>
 <p>Here we will save the RMD file in your “working directory”, which is the “BIOL202_tutorials” directory. It should show up in the “files” pane in the bottom right RStudio panel. Click on the “BIOL202_tutorial_markdown.Rmd file to open it.</p>

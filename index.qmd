@@ -25,6 +25,8 @@ It has also benefited from valuable input from the many BIOL202 students and tea
 
 Clerissa Copeland, Jordan Katchen, and Mathew Vis-Dunbar helped with some of the content development and with identifying links to other UBCO Biology material. Thanks!
 
+I used Claude (Sonnet 5 and Opus 5) to help translate this resource from R Markdown to Quarto, and to help design some sections' content.
+
 ## Licence {.unnumbered}
 
 These tutorials are licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

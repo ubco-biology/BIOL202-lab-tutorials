@@ -57,42 +57,42 @@ This works well because R is one of the most widely used programming languages i
 ::: {.callout-tip}
 ## A plain search is enough — you don't need Google's "AI mode"
 
-Google now offers an "AI mode" that generates a written answer instead of just listing links. You don't need to use it here. A regular search, with the ordinary list of links, is enough to find your error explained on a forum — and it gets you there without the extra computing cost of generating a new AI answer (more on that below). Stick with a normal search.
+Google now offers an "AI mode" that generates a written answer instead of just listing links. You don't need to use it here. A regular search, with the ordinary list of links, is enough to find your error explained on a forum, and it gets you there without the extra computing cost of generating a new AI answer (more on that below). Stick with a normal search.
 :::
 
 ::: {.callout-important}
 ## Why start with Google instead of an AI chatbot?
 
-You may be tempted to paste your error into an AI chatbot like Claude or ChatGPT instead. For most of the errors you'll hit in this course — typos, a missing package, an unmatched bracket, a misspelled column name — a plain Google search is just as fast, and often faster, because someone has almost always already answered that exact question online. Google is also simply asking a search engine to look up something that already exists; a chatbot is generating a new response from scratch each time, which takes meaningfully more computing power (and electricity) to produce than a search-engine lookup does. For a common, simple error, that extra cost buys you nothing you couldn't get for free from a search.
+You may be tempted to paste your error into an AI chatbot like Claude or ChatGPT instead. For most of the errors you'll hit in this course (e.g. typos, a missing package, an unmatched bracket, a misspelled column name) a plain Google search is just as fast, and often faster, because someone has almost always already answered that exact question online. Google is also simply asking a search engine to look up something that already exists; a chatbot is generating a new response from scratch each time, which takes meaningfully more computing power (and electricity) to produce than a search-engine lookup does. For a common, simple error, that extra cost buys you nothing you couldn't get for free from a search.
 
 There's also a more practical reason to build the Google-first habit: **you will not have access to any AI tool during your lab test.** If you lean on a chatbot every time something breaks now, you won't have that option when it counts, and you also won't have practiced the skill of reading an error and tracking down the fix yourself. If you lean on the troubleshooting page and Google and your own reasoning now, all of that will already be second nature by test day.
 
-None of this means AI tools are off-limits — see below for how to use one well, if you choose to.
+None of this means AI tools are off-limits. See below for how to use one well, if you choose to.
 :::
 
 ### Step 4: Ask on the course discussion board {.unnumbered}
 
-If you've read the error, checked the troubleshooting page, and searched it, and you're still stuck, post your question on Piazza. Include the exact error message and a copy of the code that produced it — that's exactly what you'd have searched for in Step 3, so you already have it ready to go. Chances are good a classmate has hit the same wall and can help, or the instructor/TA will.
+If you've read the error, checked the troubleshooting page, and searched it, and you're still stuck, post your question on Piazza. Include the exact error message and a copy of the code that produced it. Chances are good a classmate has encountered the same error and can help, or the instructor/TA will.
 
 ### When AI tools are useful {#ai_tools_useful}
 
-If you do want to use an AI tool (Claude, ChatGPT, or similar), these tools can be genuinely useful for *understanding* code, not just fixing it — and every legitimate use here is free, so no one needs a paid subscription or a paid add-on to keep up in this course.
+If you do want to use an AI tool (Claude, ChatGPT, or similar), these tools can be genuinely useful for *understanding* code, not just fixing it, and every legitimate use here is free, so no one needs a paid subscription or a paid add-on to keep up in this course.
 
-You may notice RStudio has a built-in "Posit Assistant" button offering to help with exactly this kind of problem. **Don't rely on it** — it requires a paid subscription to use, and this course is designed so that nothing you need costs money. The free tools described here (the troubleshooting page, Google, and the free tiers of tools like Claude or ChatGPT) are all you need.
+You may notice RStudio has a built-in "Posit Assistant" button offering to help with exactly this kind of problem. **Don't rely on it**; it requires a paid subscription to use. The free tools described here (the troubleshooting page, Google, and the free tiers of tools like Claude or ChatGPT) are all you need.
 
-Used well, an AI chatbot can:
+Used appropriately, an AI chatbot can:
 
 * explain what a specific line of code or error message means, in plain language
 * explain the general *idea* behind a statistical test or a function, so you can go apply it yourself
 * help you understand *why* a fix works, once you already have a candidate fix from the troubleshooting page or Google
 
-Used poorly, it becomes a shortcut that skips the learning:
+Used inappropriately, it is unethical, and/or becomes a shortcut that skips the learning:
 
 * pasting in your whole assignment and asking it to "fix this" or "write the code for me"
 * copying and pasting a chatbot's code straight into your R Markdown document without reading or understanding it
 * asking it to answer a question you could look up in two minutes on Google
 
-A good test to apply: after using the tool, could you explain the fix to a classmate, in your own words, without looking back at the chat? If not, you've been given an answer rather than an understanding — and that answer won't be there for you on the lab test.
+A good test to apply: after using the tool, could you explain the fix to a classmate, in your own words, without looking back at the chat? If not, you've been given an answer rather than an understanding, and that answer won't be there for you on the lab test.
 
 For more guidance on using generative AI tools responsibly and effectively in your coursework, see UBC's [Learning with generative AI](https://academicintegrity.ubc.ca/genai/) resource.
 
@@ -229,7 +229,7 @@ remember that this likely comes from you trying to use a function in a package t
 
 Now that you know how R packages work in general, let's install the one package this whole course relies on: `biol202`.
 
-Everything else — every dataset and every other package used anywhere in these tutorials — comes from this single package. Install it once, at the start of term, and you are done.
+Everything else (every dataset and every other package used anywhere in these tutorials) comes from this single package. Install it once, at the start of term, and you are done.
 
 First, install the `remotes` package, which knows how to install packages from GitHub. Run this in the **Console** (the bottom-left pane in RStudio):
 
@@ -269,20 +269,7 @@ Which would you like to update?
 
 Type **3** (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.
 
-If you are on a **Windows** computer, you may also see a message about installing "Rtools" in order to build packages from source. You do **not** need Rtools for this install — `biol202` does not require it. It is safe to ignore that message and let the install continue.
-:::
-
-::: {.callout-important}
-## The install name and the package name are different, on purpose
-
-You install from `biol202_ubco` but you load `biol202`:
-
-```r
-remotes::install_github("ubco-biology/biol202_ubco@v2026.1")   # the repository
-library(biol202)                                                # the package
-```
-
-This is not a typo. `biol202_ubco` is the name of the *repository* on GitHub; `biol202` is the name of the *package* inside it. R does not allow underscores in package names, so the two cannot match.
+If you are on a **Windows** computer, you may also see a message about installing "Rtools" in order to build packages from source. You do **not** need Rtools for this install `biol202` does not require it. It is safe to ignore that message and let the install continue.
 :::
 
 ::: {.callout-note}
@@ -293,7 +280,7 @@ This is not a typo. `biol202_ubco` is the name of the *repository* on GitHub; `b
 Loading a package with `library()` is something different, and it's the thing you do every session — as you already saw in [Package loading](#package_load) above.
 :::
 
-#### Check that it worked {.unnumbered}
+### Check that it worked {.unnumbered}
 
 Run this in the Console:
 
@@ -318,8 +305,6 @@ library(biol202)
 data(circadian)
 ```
 
-That is it — no downloading, no file paths, no internet connection required.
-
 ::: {.callout-note}
 `library(biol202)` does **not** load `dplyr` or `ggplot2` for you. Installing `biol202` *installs* them; you still *load* the ones you need, yourself, at the top of each document, the way you learned above.
 :::
@@ -338,13 +323,6 @@ Each dataset also has a help page describing every variable, its units, and wher
 data(package = "biol202")
 ```
 
-::: {.callout-note}
-## Why the data come in a package
-
-In previous years, students downloaded each dataset from a web address, which meant a typo or a dropped wifi connection could stop a lab before it started. Bundling the data into a package removes that failure entirely, and it means the data have already been cleaned and checked.
-
-You will still learn to import your own data from a CSV file — that is a core skill, and it is covered in [Tutorial 4](04-importing-data.qmd). The package is for the *course's* data, not a substitute for knowing how to read a file.
-:::
 
 ## Intro to R Markdown {#intro_markdown}
 
@@ -375,11 +353,6 @@ For an example of a PDF document that illustrates literate programming, see [her
 View the following [youtube video](https://www.youtube.com/watch?v=asHhuHRxhvo) on creating an R Markdown document.
 :::
 
-
-::: {.callout-tip collapse="true"}
-If you'd like additional introductory tutorials on R Markdown,  see this [resource](https://rbasics.netlify.app/4-rmarkdown.html).
-:::
-
 ### Making sure R Markdown knits to PDF {#veryify_knit}
 
 Now we're going to ensure R Markdown works the way we want.  A key functionality we need is being able to "knit" our report to PDF format.
@@ -388,7 +361,7 @@ With the newest versions of RStudio, you may be able to knit to PDF without doin
 
 Let's give this a try:
 
-Step 1: While in RStudio, select the "+" dropdown icon at top left of RStudio window, and select R Markdown. RStudio may at this point install a bunch of things, and if so that's ok.  It may also ask you to install the `rmarkdown` package.. if it does, do so!
+Step 1: While in RStudio, select the "+" dropdown icon at top left of RStudio window, and select R Markdown. RStudio may at this point install a bunch of things, and if so that's ok.  It may also ask you to install the `rmarkdown` package.. if it does, do so (refer to the previous [tutorial](01-getting-started.qmd#package_install) on installing packages for help)!
 
 Step 2: A window will then appear and you can replace the "Untitled" with something like "Test", then select OK.
 
@@ -424,11 +397,7 @@ If you're still stuck, see [Common errors and their solutions](99-common-issues.
 
 In a future [tutorial](02-reproducible-r.qmd#repro_research) we'll discuss how to use R Markdown as part of a reproducible workflow.
 
-## Extra resources {#r_resources}
-
-::: {.callout-note}
-This page is still under development (Aug 2022)
-:::
+## Extra help {#r_resources}
 
 If you are googling for R code, make sure to also include package names in your search query (if you are using a specific package). For example, instead of googling "scatterplot in R", google "scatterplot in R with ggplot2".
 

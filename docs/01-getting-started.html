@@ -393,6 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#biol202_package" id="toc-biol202_package" class="nav-link" data-scroll-target="#biol202_package"><span class="header-section-number">1.4</span> The <code>biol202</code> package</a>
   <ul class="collapse">
+  <li><a href="#check-that-it-worked" id="toc-check-that-it-worked" class="nav-link" data-scroll-target="#check-that-it-worked">Check that it worked</a></li>
   <li><a href="#biol202_data_overview" id="toc-biol202_data_overview" class="nav-link" data-scroll-target="#biol202_data_overview"><span class="header-section-number">1.4.1</span> How the <code>biol202</code> data work</a></li>
   </ul></li>
   <li><a href="#intro_markdown" id="toc-intro_markdown" class="nav-link" data-scroll-target="#intro_markdown"><span class="header-section-number">1.5</span> Intro to R Markdown</a>
@@ -400,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lit_programming" id="toc-lit_programming" class="nav-link" data-scroll-target="#lit_programming"><span class="header-section-number">1.5.1</span> Literate programming with R Markdown</a></li>
   <li><a href="#veryify_knit" id="toc-veryify_knit" class="nav-link" data-scroll-target="#veryify_knit"><span class="header-section-number">1.5.2</span> Making sure R Markdown knits to PDF</a></li>
   </ul></li>
-  <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">1.6</span> Extra resources</a></li>
+  <li><a href="#r_resources" id="toc-r_resources" class="nav-link" data-scroll-target="#r_resources"><span class="header-section-number">1.6</span> Extra help</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/edit/main/01-getting-started.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ubco-biology/BIOL202-lab-tutorials/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -525,7 +526,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Google now offers an “AI mode” that generates a written answer instead of just listing links. You don’t need to use it here. A regular search, with the ordinary list of links, is enough to find your error explained on a forum — and it gets you there without the extra computing cost of generating a new AI answer (more on that below). Stick with a normal search.</p>
+<p>Google now offers an “AI mode” that generates a written answer instead of just listing links. You don’t need to use it here. A regular search, with the ordinary list of links, is enough to find your error explained on a forum, and it gets you there without the extra computing cost of generating a new AI answer (more on that below). Stick with a normal search.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -538,33 +539,33 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You may be tempted to paste your error into an AI chatbot like Claude or ChatGPT instead. For most of the errors you’ll hit in this course — typos, a missing package, an unmatched bracket, a misspelled column name — a plain Google search is just as fast, and often faster, because someone has almost always already answered that exact question online. Google is also simply asking a search engine to look up something that already exists; a chatbot is generating a new response from scratch each time, which takes meaningfully more computing power (and electricity) to produce than a search-engine lookup does. For a common, simple error, that extra cost buys you nothing you couldn’t get for free from a search.</p>
+<p>You may be tempted to paste your error into an AI chatbot like Claude or ChatGPT instead. For most of the errors you’ll hit in this course (e.g.&nbsp;typos, a missing package, an unmatched bracket, a misspelled column name) a plain Google search is just as fast, and often faster, because someone has almost always already answered that exact question online. Google is also simply asking a search engine to look up something that already exists; a chatbot is generating a new response from scratch each time, which takes meaningfully more computing power (and electricity) to produce than a search-engine lookup does. For a common, simple error, that extra cost buys you nothing you couldn’t get for free from a search.</p>
 <p>There’s also a more practical reason to build the Google-first habit: <strong>you will not have access to any AI tool during your lab test.</strong> If you lean on a chatbot every time something breaks now, you won’t have that option when it counts, and you also won’t have practiced the skill of reading an error and tracking down the fix yourself. If you lean on the troubleshooting page and Google and your own reasoning now, all of that will already be second nature by test day.</p>
-<p>None of this means AI tools are off-limits — see below for how to use one well, if you choose to.</p>
+<p>None of this means AI tools are off-limits. See below for how to use one well, if you choose to.</p>
 </div>
 </div>
 </section>
 <section id="step-4-ask-on-the-course-discussion-board" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="step-4-ask-on-the-course-discussion-board">Step 4: Ask on the course discussion board</h3>
-<p>If you’ve read the error, checked the troubleshooting page, and searched it, and you’re still stuck, post your question on Piazza. Include the exact error message and a copy of the code that produced it — that’s exactly what you’d have searched for in Step 3, so you already have it ready to go. Chances are good a classmate has hit the same wall and can help, or the instructor/TA will.</p>
+<p>If you’ve read the error, checked the troubleshooting page, and searched it, and you’re still stuck, post your question on Piazza. Include the exact error message and a copy of the code that produced it. Chances are good a classmate has encountered the same error and can help, or the instructor/TA will.</p>
 </section>
 <section id="ai_tools_useful" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="ai_tools_useful"><span class="header-section-number">1.2.1</span> When AI tools are useful</h3>
-<p>If you do want to use an AI tool (Claude, ChatGPT, or similar), these tools can be genuinely useful for <em>understanding</em> code, not just fixing it — and every legitimate use here is free, so no one needs a paid subscription or a paid add-on to keep up in this course.</p>
-<p>You may notice RStudio has a built-in “Posit Assistant” button offering to help with exactly this kind of problem. <strong>Don’t rely on it</strong> — it requires a paid subscription to use, and this course is designed so that nothing you need costs money. The free tools described here (the troubleshooting page, Google, and the free tiers of tools like Claude or ChatGPT) are all you need.</p>
-<p>Used well, an AI chatbot can:</p>
+<p>If you do want to use an AI tool (Claude, ChatGPT, or similar), these tools can be genuinely useful for <em>understanding</em> code, not just fixing it, and every legitimate use here is free, so no one needs a paid subscription or a paid add-on to keep up in this course.</p>
+<p>You may notice RStudio has a built-in “Posit Assistant” button offering to help with exactly this kind of problem. <strong>Don’t rely on it</strong>; it requires a paid subscription to use. The free tools described here (the troubleshooting page, Google, and the free tiers of tools like Claude or ChatGPT) are all you need.</p>
+<p>Used appropriately, an AI chatbot can:</p>
 <ul>
 <li>explain what a specific line of code or error message means, in plain language</li>
 <li>explain the general <em>idea</em> behind a statistical test or a function, so you can go apply it yourself</li>
 <li>help you understand <em>why</em> a fix works, once you already have a candidate fix from the troubleshooting page or Google</li>
 </ul>
-<p>Used poorly, it becomes a shortcut that skips the learning:</p>
+<p>Used inappropriately, it is unethical, and/or becomes a shortcut that skips the learning:</p>
 <ul>
 <li>pasting in your whole assignment and asking it to “fix this” or “write the code for me”</li>
 <li>copying and pasting a chatbot’s code straight into your R Markdown document without reading or understanding it</li>
 <li>asking it to answer a question you could look up in two minutes on Google</li>
 </ul>
-<p>A good test to apply: after using the tool, could you explain the fix to a classmate, in your own words, without looking back at the chat? If not, you’ve been given an answer rather than an understanding — and that answer won’t be there for you on the lab test.</p>
+<p>A good test to apply: after using the tool, could you explain the fix to a classmate, in your own words, without looking back at the chat? If not, you’ve been given an answer rather than an understanding, and that answer won’t be there for you on the lab test.</p>
 <p>For more guidance on using generative AI tools responsibly and effectively in your coursework, see UBC’s <a href="https://academicintegrity.ubc.ca/genai/">Learning with generative AI</a> resource.</p>
 </section>
 </section>
@@ -742,7 +743,7 @@ Note
 <section id="biol202_package" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="biol202_package"><span class="header-section-number">1.4</span> The <code>biol202</code> package</h2>
 <p>Now that you know how R packages work in general, let’s install the one package this whole course relies on: <code>biol202</code>.</p>
-<p>Everything else — every dataset and every other package used anywhere in these tutorials — comes from this single package. Install it once, at the start of term, and you are done.</p>
+<p>Everything else (every dataset and every other package used anywhere in these tutorials) comes from this single package. Install it once, at the start of term, and you are done.</p>
 <p>First, install the <code>remotes</code> package, which knows how to install packages from GitHub. Run this in the <strong>Console</strong> (the bottom-left pane in RStudio):</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -772,23 +773,7 @@ Which would you like to update?
 2: CRAN packages only
 3: None</code></pre>
 <p>Type <strong>3</strong> (None) and press Enter. Updating packages mid-term can take a long time and occasionally breaks something else — everyone in the course should be running the same package versions, so leave this for another day.</p>
-<p>If you are on a <strong>Windows</strong> computer, you may also see a message about installing “Rtools” in order to build packages from source. You do <strong>not</strong> need Rtools for this install — <code>biol202</code> does not require it. It is safe to ignore that message and let the install continue.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>The install name and the package name are different, on purpose
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You install from <code>biol202_ubco</code> but you load <code>biol202</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ubco-biology/biol202_ubco@v2026.1"</span>)   <span class="co"># the repository</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)                                                <span class="co"># the package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is not a typo. <code>biol202_ubco</code> is the name of the <em>repository</em> on GitHub; <code>biol202</code> is the name of the <em>package</em> inside it. R does not allow underscores in package names, so the two cannot match.</p>
+<p>If you are on a <strong>Windows</strong> computer, you may also see a message about installing “Rtools” in order to build packages from source. You do <strong>not</strong> need Rtools for this install <code>biol202</code> does not require it. It is safe to ignore that message and let the install continue.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -805,13 +790,13 @@ Which would you like to update?
 <p>Loading a package with <code>library()</code> is something different, and it’s the thing you do every session — as you already saw in <a href="#package_load">Package loading</a> above.</p>
 </div>
 </div>
-<section id="check-that-it-worked" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="check-that-it-worked">Check that it worked</h4>
+<section id="check-that-it-worked" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="check-that-it-worked">Check that it worked</h3>
 <p>Run this in the Console:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(birds)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>birds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(birds)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>birds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you see a small table of bird types, you are ready.</p>
 </section>
@@ -820,10 +805,9 @@ Which would you like to update?
 <p>Now that the <code>biol202</code> package is installed, here’s how the datasets inside it work.</p>
 <p>Every dataset used in these tutorials comes with the <code>biol202</code> package. To use one, load the package and then call <code>data()</code> with the dataset’s name:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biol202)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(circadian)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>That is it — no downloading, no file paths, no internet connection required.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -839,25 +823,11 @@ Note
 </div>
 <p>Each dataset also has a help page describing every variable, its units, and where the data came from. To read it, put a question mark in front of the name:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>?circadian</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>?circadian</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Read the help page before you analyze a dataset.</strong> It tells you what the variables mean, which is not something you can guess from the numbers. To see all the datasets available:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"biol202"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Why the data come in a package
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In previous years, students downloaded each dataset from a web address, which meant a typo or a dropped wifi connection could stop a lab before it started. Bundling the data into a package removes that failure entirely, and it means the data have already been cleaned and checked.</p>
-<p>You will still learn to import your own data from a CSV file — that is a core skill, and it is covered in <a href="./04-importing-data.html">Tutorial 4</a>. The package is for the <em>course’s</em> data, not a substitute for knowing how to read a file.</p>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"biol202"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -910,29 +880,13 @@ Note
 <p>View the following <a href="https://www.youtube.com/watch?v=asHhuHRxhvo">youtube video</a> on creating an R Markdown document.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If you’d like additional introductory tutorials on R Markdown, see this <a href="https://rbasics.netlify.app/4-rmarkdown.html">resource</a>.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="veryify_knit" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="veryify_knit"><span class="header-section-number">1.5.2</span> Making sure R Markdown knits to PDF</h3>
 <p>Now we’re going to ensure R Markdown works the way we want. A key functionality we need is being able to “knit” our report to PDF format.</p>
 <p>With the newest versions of RStudio, you may be able to knit to PDF without doing anything special first.</p>
 <p>Let’s give this a try:</p>
-<p>Step 1: While in RStudio, select the “+” dropdown icon at top left of RStudio window, and select R Markdown. RStudio may at this point install a bunch of things, and if so that’s ok. It may also ask you to install the <code>rmarkdown</code> package.. if it does, do so!</p>
+<p>Step 1: While in RStudio, select the “+” dropdown icon at top left of RStudio window, and select R Markdown. RStudio may at this point install a bunch of things, and if so that’s ok. It may also ask you to install the <code>rmarkdown</code> package.. if it does, do so (refer to the previous <a href="./01-getting-started.html#package_install">tutorial</a> on installing packages for help)!</p>
 <p>Step 2: A window will then appear and you can replace the “Untitled” with something like “Test”, then select OK.</p>
 <p>Step 3: This will open an R Markdown document in the top left panel. Don’t worry about all the text in there at this point. What we want to do is test whether it will “knit” (render) the document to PDF format.</p>
 <p>Step 4: Select the “Knit” drop-down icon at the top of the RStudio window, and select “Knit to PDF”. RStudio will ask you to first save the markdown file (save it anywhere with any name for now), then it will process the markdown file and render it to PDF.</p>
@@ -962,20 +916,7 @@ Note
 </section>
 </section>
 <section id="r_resources" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="r_resources"><span class="header-section-number">1.6</span> Extra resources</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page is still under development (Aug 2022)</p>
-</div>
-</div>
+<h2 data-number="1.6" class="anchored" data-anchor-id="r_resources"><span class="header-section-number">1.6</span> Extra help</h2>
 <p>If you are googling for R code, make sure to also include package names in your search query (if you are using a specific package). For example, instead of googling “scatterplot in R”, google “scatterplot in R with ggplot2”.</p>
 <p>Rstudio provides links to several <strong>cheatsheets</strong> that will come in handy throughout the semester.</p>
 <p>You can get nice PDF versions of the files by going to <strong>Help -&gt; Cheatsheets</strong> inside RStudio:</p>

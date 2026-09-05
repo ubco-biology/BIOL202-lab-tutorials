@@ -136,15 +136,11 @@ Reading and writing files from / to directories requires that we can tell R exac
 
 #### The `here` package{#here_package}
 
-Now we'll install and load an R package called `here` that will help with file and directory management and navigation. 
-
-```
-install.packages("here")
-```
+Included in the `biol202` package is the `here` package, which helps with file and directory management and navigation. 
 
 This is a helpful [vignette](https://here.r-lib.org/index.html) about the `here` package.
 
-Then we load the package:
+Load the package:
 
 ```{r, eval = F}
 library(here)
