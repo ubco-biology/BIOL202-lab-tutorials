@@ -241,6 +241,6 @@ If you need to fix something, close your PDF file, go back to your R Markdown do
 
 ## Submit your assignment {#submit_rmd}
 
-Once you're happy with the PDF you created, it's time to submit **both your markdown file (.Rmd file) and your PDF document** to the appropriate place in Canvas.  Submitting both files enables markers to check where things went wrong if there are any knitting errors.  
+Once you're happy with the PDF you created, it's time to submit **your PDF document** (NOT your RMD file) to the appropriate place in Canvas.   
  
 It's a good idea also to verify afterwards that your PDF document did indeed upload correctly.
