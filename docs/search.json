@@ -253,7 +253,7 @@
     "href": "03-formatting-assignments.html#submit_rmd",
     "title": "3  Preparing and formatting assignments",
     "section": "3.6 Submit your assignment",
-    "text": "3.6 Submit your assignment\nOnce you’re happy with the PDF you created, it’s time to submit both your markdown file (.Rmd file) and your PDF document to the appropriate place in Canvas. Submitting both files enables markers to check where things went wrong if there are any knitting errors.\nIt’s a good idea also to verify afterwards that your PDF document did indeed upload correctly.",
+    "text": "3.6 Submit your assignment\nOnce you’re happy with the PDF you created, it’s time to submit your PDF document (NOT your RMD file) to the appropriate place in Canvas.\nIt’s a good idea also to verify afterwards that your PDF document did indeed upload correctly.",
     "crumbs": [
       "Part II — Workflow & Reproducibility",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Preparing and formatting assignments</span>"
