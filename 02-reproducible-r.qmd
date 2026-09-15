@@ -75,7 +75,7 @@ Each of these categories of work should have their own directory, and all three 
 
 * Having successfully installed OneDrive, you should see a "OneDrive" folder on your computer
 * In your OneDrive folder, create a root directory "BIOL202" to host all of your BIOL202 work
-* Create a "_README.txt file for the root BIOL202 directory, as per instructions in the [Biology Procedures and Guidelines webpage](https://ubco-biology.github.io/Procedures-and-Guidelines/readme-files-and-data-dictionaries.html).
+* Create a "_README.txt file for the root BIOL202 directory, as per instructions in the [Biology Procedures and Guidelines webpage](https://ubco-biology.github.io/Procedures-and-Guidelines/readme-files-and-data-dictionaries.html). The [UBC Library](https://ubc-library-rc.github.io/rdm/content/03_create_readme.html) has an excellent guide on README files too. 
 
 ::: {.callout-note}
 You can create and edit your "_README.txt" file in RStudio! Just click on the "+" drop down at the top left, and select "Text file". Then type in the information you need, and name it "_README.txt" and save it in the appropriate directory.
@@ -85,9 +85,9 @@ You can create and edit your "_README.txt" file in RStudio! Just click on the "+
   - "BIOL202_lecture"
   - "BIOL202_tutorials"
   - "BIOL202_assignments"
-* Create a "_README.txt" file in each of the three sub-directories (again, you can use RStudio to create these!). 
+* Create a "_README.txt" file in each of the three sub-directories (again, you can use RStudio to create these!), OR ensure the _README.txt file in the root directory explains the contents of all subdirectories.  
 
-An example setup is illustrated below.
+An example setup is illustrated below. Note it is optional to have a README file in each directory... you can instead make the root README more extensive.
 
 ```{r fig-02-example-directory-structure, fig.cap = "Example directory structure", echo = FALSE, fig.width = 3}
 knitr::include_graphics("images/BIOL202_directory_structure.png")
