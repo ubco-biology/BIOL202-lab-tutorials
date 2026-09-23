@@ -7,66 +7,6 @@
 
 ***
 
-## Error creating mosaic plot {-}
-
-When attempting to create a mosaic plot (e.g. [Tutorial 8.2.3](https://ubco-biology.github.io/BIOL202/vis2_2cat.html#mosaic_plot)) using `ggplot2` and `ggmosaic` packages, this error arises:
-
-```
-"Error in make_title(..., self = self) :
-unused arguments (list(), "Treatment group")"
-```
-
-This arises due to a conflict introduced by the update to the `ggplot2` package from version 3.5.2 to version 4.0.0, which occured on September 11, 2025.  
-
-First check the version of `ggplot2` that you have installed by typing this in the console:
-
-```
-packageVersion("ggplot2")
-```
-
-If it says anything *older* than version 4.0, then **you are fine** and you do NOT need to follow the instructions below (just make sure NOT to update your version of `ggplot2`).
-
-If it tells you that version 4.0 is installed, then follow these instructions:
-
-Copy and paste each of the following lines of code (one chunk at a time) into your console and run them.  Note that the hashtag lines are annotations that explain each of the separate code chunks.
-
-```
-# remove current install of `ggplot2`
-remove.packages("ggplot2")
-
-
-# install the package `remotes` if not already installed:
-if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes", dependencies = TRUE)
-}
-
-
-# load the `remotes` package:
-library("remotes", character.only = TRUE)
-
-
-# install the older, correct version of `ggplot2`:
-install_version("ggplot2", version = "3.5.2", repos = "http://cran.us.r-project.org")
-# if, in response, it asks to install newer versions of other packages, select "None" (probably option 3)
-
-
-# then restart R:
-.rs.restartR()
-
-
-# then load ggplot2
-library(ggplot2)
-
-# then check version:
-packageVersion("ggplot2")
-```
-
-Hopefully at the last command it should say "‘3.5.2’"
-
-You should not encounter the mosaic plot error now.
-
-***
-
 ## Rosetta error {-}
 
 ![](images/rosetta_error.png)

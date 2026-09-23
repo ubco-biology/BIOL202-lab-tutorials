@@ -1206,17 +1206,6 @@
     ]
   },
   {
-    "objectID": "99-common-issues.html#error-creating-mosaic-plot",
-    "href": "99-common-issues.html#error-creating-mosaic-plot",
-    "title": "Common errors and their solutions",
-    "section": "Error creating mosaic plot",
-    "text": "Error creating mosaic plot\nWhen attempting to create a mosaic plot (e.g. Tutorial 8.2.3) using ggplot2 and ggmosaic packages, this error arises:\n\"Error in make_title(..., self = self) :\nunused arguments (list(), \"Treatment group\")\"\nThis arises due to a conflict introduced by the update to the ggplot2 package from version 3.5.2 to version 4.0.0, which occured on September 11, 2025.\nFirst check the version of ggplot2 that you have installed by typing this in the console:\npackageVersion(\"ggplot2\")\nIf it says anything older than version 4.0, then you are fine and you do NOT need to follow the instructions below (just make sure NOT to update your version of ggplot2).\nIf it tells you that version 4.0 is installed, then follow these instructions:\nCopy and paste each of the following lines of code (one chunk at a time) into your console and run them. Note that the hashtag lines are annotations that explain each of the separate code chunks.\n# remove current install of `ggplot2`\nremove.packages(\"ggplot2\")\n\n\n# install the package `remotes` if not already installed:\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\", dependencies = TRUE)\n}\n\n\n# load the `remotes` package:\nlibrary(\"remotes\", character.only = TRUE)\n\n\n# install the older, correct version of `ggplot2`:\ninstall_version(\"ggplot2\", version = \"3.5.2\", repos = \"http://cran.us.r-project.org\")\n# if, in response, it asks to install newer versions of other packages, select \"None\" (probably option 3)\n\n\n# then restart R:\n.rs.restartR()\n\n\n# then load ggplot2\nlibrary(ggplot2)\n\n# then check version:\npackageVersion(\"ggplot2\")\nHopefully at the last command it should say “‘3.5.2’”\nYou should not encounter the mosaic plot error now.",
-    "crumbs": [
-      "Reference",
-      "Common errors and their solutions"
-    ]
-  },
-  {
     "objectID": "99-common-issues.html#rosetta-error",
     "href": "99-common-issues.html#rosetta-error",
     "title": "Common errors and their solutions",

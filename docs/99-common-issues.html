@@ -339,7 +339,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#google-can-help" id="toc-google-can-help" class="nav-link active" data-scroll-target="#google-can-help">Google can help</a></li>
-  <li><a href="#error-creating-mosaic-plot" id="toc-error-creating-mosaic-plot" class="nav-link" data-scroll-target="#error-creating-mosaic-plot">Error creating mosaic plot</a></li>
   <li><a href="#rosetta-error" id="toc-rosetta-error" class="nav-link" data-scroll-target="#rosetta-error">Rosetta error</a></li>
   <li><a href="#rtools-required-during-install" id="toc-rtools-required-during-install" class="nav-link" data-scroll-target="#rtools-required-during-install">Rtools required during install</a></li>
   <li><a href="#could-not-find-function" id="toc-could-not-find-function" class="nav-link" data-scroll-target="#could-not-find-function">Could not find function</a></li>
@@ -386,49 +385,6 @@ ul.task-list li input[type="checkbox"] {
 <li>R will tell you specifically which line in your code (e.g.&nbsp;in your R Markdown document) the error is coming from. Make sure you read the error and take a look at the line where the error is if indicated</li>
 <li>Try googling the specific error to see if you can find a solution online; use the search phrase “R-help error statement” (where “error statement” is what R told you)</li>
 </ul>
-<hr>
-</section>
-<section id="error-creating-mosaic-plot" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="error-creating-mosaic-plot">Error creating mosaic plot</h2>
-<p>When attempting to create a mosaic plot (e.g.&nbsp;<a href="https://ubco-biology.github.io/BIOL202/vis2_2cat.html#mosaic_plot">Tutorial 8.2.3</a>) using <code>ggplot2</code> and <code>ggmosaic</code> packages, this error arises:</p>
-<pre><code>"Error in make_title(..., self = self) :
-unused arguments (list(), "Treatment group")"</code></pre>
-<p>This arises due to a conflict introduced by the update to the <code>ggplot2</code> package from version 3.5.2 to version 4.0.0, which occured on September 11, 2025.</p>
-<p>First check the version of <code>ggplot2</code> that you have installed by typing this in the console:</p>
-<pre><code>packageVersion("ggplot2")</code></pre>
-<p>If it says anything <em>older</em> than version 4.0, then <strong>you are fine</strong> and you do NOT need to follow the instructions below (just make sure NOT to update your version of <code>ggplot2</code>).</p>
-<p>If it tells you that version 4.0 is installed, then follow these instructions:</p>
-<p>Copy and paste each of the following lines of code (one chunk at a time) into your console and run them. Note that the hashtag lines are annotations that explain each of the separate code chunks.</p>
-<pre><code># remove current install of `ggplot2`
-remove.packages("ggplot2")
-
-
-# install the package `remotes` if not already installed:
-if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes", dependencies = TRUE)
-}
-
-
-# load the `remotes` package:
-library("remotes", character.only = TRUE)
-
-
-# install the older, correct version of `ggplot2`:
-install_version("ggplot2", version = "3.5.2", repos = "http://cran.us.r-project.org")
-# if, in response, it asks to install newer versions of other packages, select "None" (probably option 3)
-
-
-# then restart R:
-.rs.restartR()
-
-
-# then load ggplot2
-library(ggplot2)
-
-# then check version:
-packageVersion("ggplot2")</code></pre>
-<p>Hopefully at the last command it should say “‘3.5.2’”</p>
-<p>You should not encounter the mosaic plot error now.</p>
 <hr>
 </section>
 <section id="rosetta-error" class="level2 unnumbered">
