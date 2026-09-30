@@ -109,7 +109,7 @@ Once you have gotten an overview your dataset's structure and contents, the next
 
 Sometimes when the aim is to visualize a single categorical variable, it's useful to present a *frequency table*. If your variable has more than, say, 10 unique categories, then this approach can be messy, and instead one should solely create a **bar graph**, as described in the next section.
 
-Many straightforward operations like tabulation and calculating descriptive statistics can be done using the functionality of the `dplyr` package (see the cheatsheet [here](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)).
+Many straightforward operations like tabulation and calculating descriptive statistics can be done using the functionality of the `dplyr` package (see the cheatsheet [here](https://rstudio.github.io/cheatsheets/html/data-transformation.html)).
 
 Here, we'll use this functionality to create a *frequency table* for a categorical variable.  
 
