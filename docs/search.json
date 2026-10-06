@@ -1173,11 +1173,11 @@
     ]
   },
   {
-    "objectID": "93-assignment-cheatsheet.html#name-your-files-and-submit",
-    "href": "93-assignment-cheatsheet.html#name-your-files-and-submit",
+    "objectID": "93-assignment-cheatsheet.html#name-your-file-and-submit",
+    "href": "93-assignment-cheatsheet.html#name-your-file-and-submit",
     "title": "Preparing and Submitting Your Assignment — Cheatsheet",
-    "section": "8. Name your files and submit",
-    "text": "8. Name your files and submit\n\nConfirm both files share the same base name, e.g. Pither_BIOL202_lab-assignment-01.Rmd and .pdf — follow the naming convention given with the specific assignment.\nUpload both the .Rmd and the .pdf to the assignment’s Canvas submission page. (Tutorial 3, §3.6)\nAfter uploading, re-open the submission on Canvas and confirm the PDF opens correctly and is the right version.",
+    "section": "8. Name your file and submit",
+    "text": "8. Name your file and submit\n\nConfirm your PDF file has the correct name, i.e. Pither_BIOL202_lab-assignment-01.pdf; follow the naming convention given with the specific assignment.\nUpload only the .pdf to the assignment’s Canvas submission page. (Tutorial 3, §3.6)\nAfter uploading, re-open the submission on Canvas and confirm the PDF opens correctly and is the right version.",
     "crumbs": [
       "Reference",
       "Preparing and Submitting Your Assignment — Cheatsheet"

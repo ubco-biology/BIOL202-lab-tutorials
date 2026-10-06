@@ -63,8 +63,8 @@ This is a one-page quick reference for preparing and submitting a BIOL 202 assig
 - Spelling and grammar check.
 - If anything's wrong: close the PDF, fix the `.Rmd`, **save, then re-knit** — never hand-edit the PDF. *([Tutorial 3, §3.5](03-formatting-assignments.qmd#knit_assign))*
 
-## 8. Name your files and submit
+## 8. Name your file and submit
 
-- Confirm both files share the same base name, e.g. `Pither_BIOL202_lab-assignment-01.Rmd` and `.pdf` — follow the naming convention given with the specific assignment.
-- Upload **both** the `.Rmd` and the `.pdf` to the assignment's Canvas submission page. *([Tutorial 3, §3.6](03-formatting-assignments.qmd#submit_rmd))*
+- Confirm your PDF file has the correct name, i.e. `Pither_BIOL202_lab-assignment-01.pdf`; follow the naming convention given with the specific assignment.
+- Upload **only** the `.pdf` to the assignment's Canvas submission page. *([Tutorial 3, §3.6](https://ubco-biology.github.io/BIOL202-lab-tutorials/03-formatting-assignments.html#submit_rmd))*
 - After uploading, re-open the submission on Canvas and confirm the PDF opens correctly and is the right version.
