@@ -234,7 +234,7 @@ penguins.descriptors %>%
 ```
 
 ::: {.callout-note}
-In another [tutorial](90-tables.qmd#stats_nicetable) we'll learn how to present the table following all the guidelines in the [Biology Guidelines and Procedures document](https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html), including, for example, significant digits. For now, the preceding table is good!
+A reference [tutorial](90-tables.qmd#stats_nicetable) demonstrates how to present the table following all the guidelines in the [Biology Guidelines and Procedures document](https://ubco-biology.github.io/Procedures-and-Guidelines/figures-tables.html), including, for example, significant digits. 
 :::
 
 ::: {.callout-caution title="Activity"}
