@@ -344,10 +344,9 @@ nice.anova.table <- create.anova.table(circadian.lm.anova)
 ```
 
 And present it:
-```{r tbl-15-anova-table-circadian-rythm,}
-kable(nice.anova.table, digits = 4, 
-      caption = "ANOVA table for the circadian rythm experiment.", 
-      lable = "niceanovapdf")
+```{r tbl-15-anova-table-circadian-rythm}
+#| tbl-cap: "ANOVA table for the circadian rhythm experiment."
+kable(nice.anova.table, digits = 4)
 ```
 
 Nice!
@@ -375,7 +374,7 @@ Before we get there, we need to figure out **which group mean(s) differ??**.
 
 As described in Chapter 15 in the text, **planned comparisons** (aka planned contrasts) are ideal and most powerful, but unfortunately we often need to conduct **unplanned comparisons** to assess which groups differ in our ANOVA test. This is what we'll learn here.  
 
-We can guess from our stripchart (Figure \@ref(fig:stripanova)) that it's the "Eyes" treatment group that differs from the others, but we need a formal test.  
+We can guess from our stripchart (@fig-15-stripchart-phase-shifts-circadian) that it's the "Eyes" treatment group that differs from the others, but we need a formal test.  
 
 We could simply conduct three 2-sample *t*-tests on each of the three pair-wise comparisons, but then we would inflate our **Type-I error rate**, due to multiple-testing.  
 
@@ -433,13 +432,13 @@ The output clearly shows the pairwise comparisons and associated _P_-values, **a
 
 We can see that the mean for the "Eyes" treatment group differs significantly (at $\alpha = 0.05$) from each of the other group means.  
 
-One typically shows these results visually on the same figure used to display the data (here, Figure \@ref(fig:stripanova)).  
+One typically shows these results visually on the same figure used to display the data (here, @fig-15-stripchart-phase-shifts-circadian).  
 
 ### Visualizing post-hoc test results {#vis_tukey}
 
 Here is our original figure, to which we'll add the results of the post-hoc test:
 
-```{r fig-15-stripchart-phase-shifts-circadian-2, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-phase-shifts-circadian-2, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
 
 circadian %>%
   ggplot(aes(x = treatment, y = shift)) +
@@ -463,7 +462,7 @@ Based on our stripchart above, it looks like we need to use Y-value coordinates 
 
 Here's the code, with the `annotate` function added:
 
-```{r fig-15-stripchart-showing-phase-shift, fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-showing-phase-shift, fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
 
 ggplot(circadian, aes(x = treatment, y = shift)) +
   geom_jitter(colour = "darkgrey", size = 3, shape = 1, width = 0.1) +
@@ -484,14 +483,14 @@ Notice that we have added a line including the `ylim` function, so that we can s
 **NOTE**: The chunk option I included to get the figure heading shown above is as follows:  
 
 ```
-{r fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
+{r fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}
 ```
 
 The "family-wise" $\alpha$ statement means that the Tukey-Kramer test uses our initial $\alpha$ level, but ensures that the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Probability">probability</a> of making at least one Type-1 error throughout the course of testing all pairs of means is no greater than the originally stated $\alpha$ level.  
 
 ::: {.callout-note}
 **TIP:**
-Figure \@ref(fig:stripanovatukey) is the kind of figure that should be referenced, typically along with ANOVA table \@ref(tab:niceanovapdf), when communicating your results of an ANOVA. For instance, with the results of the Tukey-Kramer post-hoc tests superimposed on the figure, you can not only state that the null hypothesis is rejected, but you can also state which group(s) differ from which others.
+@fig-15-stripchart-showing-phase-shift is the kind of figure that should be referenced, typically along with ANOVA @tbl-15-anova-table-circadian-rythm, when communicating your results of an ANOVA. For instance, with the results of the Tukey-Kramer post-hoc tests superimposed on the figure, you can not only state that the null hypothesis is rejected, but you can also state which group(s) differ from which others.
 :::
 
 We are now able to write our truly final concluding statement, below.  
@@ -506,7 +505,7 @@ Pretend that our post-hoc test showed that the "Knee" group was not different fr
 
 With out ANOVA table and final figure in hand, we are ready for the concluding statement: 
 
-> Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; Table \@ref(tab:niceanovapdf); $R^2$ = `r round(circadian.lm.summary$r.squared, 2)`). As shown in Figure \@ref(fig:stripanovatukey), the mean shift among the "Eyes" subjects was significantly lower than both of the other treatment groups.   
+> Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; @tbl-15-anova-table-circadian-rythm; $R^2$ = `r round(circadian.lm.summary$r.squared, 2)`). As shown in @fig-15-stripchart-showing-phase-shift, the mean shift among the "Eyes" subjects was significantly lower than both of the other treatment groups.   
 
 ## When assumptions aren't met {#assumpbad_anova}
 

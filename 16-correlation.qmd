@@ -127,7 +127,7 @@ That's better!
 
 In an earlier [tutorial](07-visualize-two-variables.qmd#interpret_scatter), we learned how to properly interpret a scatterplot, and **what information should to include in your interpretation**. Be sure to consult that tutorial.   
 
-> We see in Figure \@ref(fig:pupscatter) that the association between the inbreeding coefficient and number of surviving pups is negative, linear, and moderately strong.  There are no apparent outliers to the association.  
+> We see in @fig-16-association-between-inbreeding-coefficient-2 that the association between the inbreeding coefficient and number of surviving pups is negative, linear, and moderately strong.  There are no apparent outliers to the association.  
 
 ### Assumptions of correlation analysis {#corr_assumptions}
 
@@ -155,7 +155,7 @@ If any of these patterns are evident, then one should opt for a non-parametric a
 
 (See Figure 16.3-2 in the text for examples of non-conforming scatterplots) 
 
->Based on Figure \@ref(fig:pupscatter), there doesn't seem to be any indications that the assumptions are not met, so we'll proceed with testing the null hypothesis.  
+>Based on @fig-16-association-between-inbreeding-coefficient-2, there doesn't seem to be any indications that the assumptions are not met, so we'll proceed with testing the null hypothesis.  
 
 ::: {.callout-warning}
 Be careful with "count" type variables such as "number of pups", as these may not adhere to the "bivariate normality" assumption. If the variable is restricted to a limited range of possible counts, say zero to 5 or 6, then the association should probably be analyzed using a non-parametric test (see below). The variable "number of pups" in this example is borderline OK...
@@ -227,7 +227,7 @@ Here is an example of a good concluding statement:
 
 * * *
 
-Litter size is significantly negatively correlated with the inbreeding coefficient of the parents (Figure \@ref(fig:pupscatter2); Pearson _r_ = `r round(wolf.cor.tidy$estimate, 2)`; 95% confidence limits: `r c(round(wolf.cor.tidy$conf.low, 3), round(wolf.cor.tidy$conf.high, 3))`; $df$ = `r wolf.cor.tidy$parameter`; _P_ = `r round(wolf.cor.tidy$p.value, 3)`).  
+Litter size is significantly negatively correlated with the inbreeding coefficient of the parents (@fig-16-association-between-inbreeding-coefficient-3; Pearson _r_ = `r round(wolf.cor.tidy$estimate, 2)`; 95% confidence limits: `r c(round(wolf.cor.tidy$conf.low, 3), round(wolf.cor.tidy$conf.high, 3))`; $df$ = `r wolf.cor.tidy$parameter`; _P_ = `r round(wolf.cor.tidy$p.value, 3)`).  
 
 * * *
 
@@ -275,7 +275,7 @@ trick %>%
   theme_bw()
 ```
 
-> In Figure \@ref(fig:trickplot) we see a positive and moderately strong association between the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account.  
+> In @fig-16-scatterplot-impressiveness-written-accounts we see a positive and moderately strong association between the impressiveness of written accounts of the Indian rope trick by firsthand observers and the number of years elapsed between witnessing the event and writing the account.  
 
 ### Assumptions of Spearman rank correlation {#assum_spear} 
 
@@ -288,7 +288,7 @@ Spearman rank correlation <a href="https://ubco-biology.github.io/Procedures-and
 
 As in the Pearson correlation analysis, we use the scatterplot to check the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Assumptions">assumptions</a>.  
 
-> As shown in Figure \@ref(fig:trickplot), there is a monotonic relationship between the two variables.  
+> As shown in @fig-16-scatterplot-impressiveness-written-accounts, there is a monotonic relationship between the two variables.  
 
 ### Conduct the test {#conduct_spearman}
 
@@ -338,7 +338,7 @@ Concluding statement:
 
 * * *
 
-The rank of impressiveness scores of written accounts of the Indian rope trick by firsthand observers is significantly positively correlated with the rank of number of years elapsed between witnessing the event and writing the account (Figure \@ref(fig:trickplot2); Spearman $r_S$ = `r round(trick.cor.tidy$estimate, 2)`; $n$ = 21; _P_ < 0.001).  
+The rank of impressiveness scores of written accounts of the Indian rope trick by firsthand observers is significantly positively correlated with the rank of number of years elapsed between witnessing the event and writing the account (@fig-16-scatterplot-impressiveness-written-accounts-2; Spearman $r_S$ = `r round(trick.cor.tidy$estimate, 2)`; $n$ = 21; _P_ < 0.001).  
 
 * * *
 

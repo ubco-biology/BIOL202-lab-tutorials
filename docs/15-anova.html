@@ -864,13 +864,11 @@ Note
 </div>
 <p>And present it:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(nice.anova.table, <span class="at">digits =</span> <span class="dv">4</span>, </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"ANOVA table for the circadian rythm experiment."</span>, </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">lable =</span> <span class="st">"niceanovapdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(nice.anova.table, <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-15-anova-table-circadian-rythm" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-15-anova-table-circadian-rythm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.1: ANOVA table for the circadian rythm experiment.
+Table&nbsp;15.1: ANOVA table for the circadian rhythm experiment.
 </figcaption>
 <div aria-describedby="tbl-15-anova-table-circadian-rythm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -937,7 +935,7 @@ Table&nbsp;15.1: ANOVA table for the circadian rythm experiment.
 <section id="tukey" class="level3" data-number="15.2.7">
 <h3 data-number="15.2.7" class="anchored" data-anchor-id="tukey"><span class="header-section-number">15.2.7</span> Tukey-Kramer post-hoc test</h3>
 <p>As described in Chapter 15 in the text, <strong>planned comparisons</strong> (aka planned contrasts) are ideal and most powerful, but unfortunately we often need to conduct <strong>unplanned comparisons</strong> to assess which groups differ in our ANOVA test. This is what we’ll learn here.</p>
-<p>We can guess from our stripchart (Figure @ref(fig:stripanova)) that it’s the “Eyes” treatment group that differs from the others, but we need a formal test.</p>
+<p>We can guess from our stripchart (<a href="#fig-15-stripchart-phase-shifts-circadian" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>) that it’s the “Eyes” treatment group that differs from the others, but we need a formal test.</p>
 <p>We could simply conduct three 2-sample <em>t</em>-tests on each of the three pair-wise comparisons, but then we would inflate our <strong>Type-I error rate</strong>, due to multiple-testing.</p>
 <p>The Tukey-Kramer “post-hoc” (unplanned) test adjusts our <em>P</em>-values correctly to account for multiple tests.</p>
 <p>For this test we use the <code>TukeyHSD</code> function in the base stats package (HSD stands for “Honestly Significant Difference”).</p>
@@ -986,7 +984,7 @@ Table&nbsp;15.1: ANOVA table for the circadian rythm experiment.
 </div>
 <p>The output clearly shows the pairwise comparisons and associated <em>P</em>-values, <strong>adjusted</strong> for multiple comparisons. It also shows the difference in means, and the lower and upper 95% confidence interval for the differences.</p>
 <p>We can see that the mean for the “Eyes” treatment group differs significantly (at <span class="math inline">\(\alpha = 0.05\)</span>) from each of the other group means.</p>
-<p>One typically shows these results visually on the same figure used to display the data (here, Figure @ref(fig:stripanova)).</p>
+<p>One typically shows these results visually on the same figure used to display the data (here, <a href="#fig-15-stripchart-phase-shifts-circadian" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>).</p>
 </section>
 <section id="vis_tukey" class="level3" data-number="15.2.8">
 <h3 data-number="15.2.8" class="anchored" data-anchor-id="vis_tukey"><span class="header-section-number">15.2.8</span> Visualizing post-hoc test results</h3>
@@ -1012,7 +1010,7 @@ Table&nbsp;15.1: ANOVA table for the circadian rythm experiment.
 <img src="15-anova_files/figure-html/fig-15-stripchart-phase-shifts-circadian-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-stripchart-phase-shifts-circadian-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.2: Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error
+Figure&nbsp;15.2: Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles denote group means, and bars +/- one standard error
 </figcaption>
 </figure>
 </div>
@@ -1043,7 +1041,7 @@ Figure&nbsp;15.2: Stripchart of phase shifts in the circadian rhythm of melatoni
 <img src="15-anova_files/figure-html/fig-15-stripchart-showing-phase-shift-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-stripchart-showing-phase-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.3: Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise <span class="math inline">\(\alpha\)</span> = 0.05).
+Figure&nbsp;15.3: Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise <span class="math inline">\(\alpha\)</span> = 0.05).
 </figcaption>
 </figure>
 </div>
@@ -1051,7 +1049,7 @@ Figure&nbsp;15.3: Stripchart showing the phase shift in the circadian rhythm of 
 </div>
 <p>Notice that we have added a line including the <code>ylim</code> function, so that we can specify the min and max y-axis limits, ensuring that our annotation letters fit on the graph.</p>
 <p><strong>NOTE</strong>: The chunk option I included to get the figure heading shown above is as follows:</p>
-<pre><code>{r fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 experimental participants given alternative light treatments. Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}</code></pre>
+<pre><code>{r fig.cap = "Stripchart showing the phase shift in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles represent group means, and bars represent +/- one SE. Group means sharing the same letter are not significantly different according to the Tukey-Kramer post-hoc test (family-wise $\\alpha$ = 0.05).", fig.width = 4, fig.height = 4.5}</code></pre>
 <p>The “family-wise” <span class="math inline">\(\alpha\)</span> statement means that the Tukey-Kramer test uses our initial <span class="math inline">\(\alpha\)</span> level, but ensures that the <a href="https://ubco-biology.github.io/Procedures-and-Guidelines/glossary#Probability">probability</a> of making at least one Type-1 error throughout the course of testing all pairs of means is no greater than the originally stated <span class="math inline">\(\alpha\)</span> level.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1063,7 +1061,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>TIP:</strong> Figure @ref(fig:stripanovatukey) is the kind of figure that should be referenced, typically along with ANOVA table @ref(tab:niceanovapdf), when communicating your results of an ANOVA. For instance, with the results of the Tukey-Kramer post-hoc tests superimposed on the figure, you can not only state that the null hypothesis is rejected, but you can also state which group(s) differ from which others.</p>
+<p><strong>TIP:</strong> <a href="#fig-15-stripchart-showing-phase-shift" class="quarto-xref">Figure&nbsp;<span>15.3</span></a> is the kind of figure that should be referenced, typically along with ANOVA <a href="#tbl-15-anova-table-circadian-rythm" class="quarto-xref">Table&nbsp;<span>15.1</span></a>, when communicating your results of an ANOVA. For instance, with the results of the Tukey-Kramer post-hoc tests superimposed on the figure, you can not only state that the null hypothesis is rejected, but you can also state which group(s) differ from which others.</p>
 </div>
 </div>
 <p>We are now able to write our truly final concluding statement, below.</p>
@@ -1086,7 +1084,7 @@ Note
 <h3 data-number="15.2.9" class="anchored" data-anchor-id="anova_conclusion"><span class="header-section-number">15.2.9</span> Concluding statement</h3>
 <p>With out ANOVA table and final figure in hand, we are ready for the concluding statement:</p>
 <blockquote class="blockquote">
-<p>Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; Table @ref(tab:niceanovapdf); <span class="math inline">\(R^2\)</span> = 0.43). As shown in Figure @ref(fig:stripanovatukey), the mean shift among the “Eyes” subjects was significantly lower than both of the other treatment groups.</p>
+<p>Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; <a href="#tbl-15-anova-table-circadian-rythm" class="quarto-xref">Table&nbsp;<span>15.1</span></a>; <span class="math inline">\(R^2\)</span> = 0.43). As shown in <a href="#fig-15-stripchart-showing-phase-shift" class="quarto-xref">Figure&nbsp;<span>15.3</span></a>, the mean shift among the “Eyes” subjects was significantly lower than both of the other treatment groups.</p>
 </blockquote>
 </section>
 </section>

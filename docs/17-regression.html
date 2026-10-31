@@ -672,7 +672,7 @@ Note
 <h3 data-number="17.2.6" class="anchored" data-anchor-id="LSR_scatter_interp"><span class="header-section-number">17.2.6</span> Interpreting a scatterplot</h3>
 <p>In an earlier <a href="./07-visualize-two-variables.html#interpret_scatter">tutorial</a>, we learned how to properly interpret a scatterplot, and <strong>what information should to include in your interpretation</strong>. Be sure to consult that tutorial.</p>
 <blockquote class="blockquote">
-<p>We see in Figure @ref(fig:lsrfigone) that there is a weak, positive, and somewhat linear association between biomass stability and Species richness. There appears to be increasing spread of the response variable with increasing values of the predictor (x) variable, and perhaps outliers in the treatment group with greatest species richness. We should keep this in mind.</p>
+<p>We see in <a href="#fig-17-stability-biomass-production-over-2" class="quarto-xref">Figure&nbsp;<span>17.2</span></a> that there is a weak, positive, and somewhat linear association between biomass stability and Species richness. There appears to be increasing spread of the response variable with increasing values of the predictor (x) variable, and perhaps outliers in the treatment group with greatest species richness. We should keep this in mind.</p>
 </blockquote>
 <hr>
 </section>
@@ -743,7 +743,7 @@ Note
 <li>at each value of <span class="math inline">\(X\)</span>, the <span class="math inline">\(Y\)</span> measurements represent a random sample from the population of possible <span class="math inline">\(Y\)</span> values</li>
 </ul>
 <p>With respect to the last assumption regarding random sampling, we can assume that it is met for the plant experiment example. In experiments, the key experimental design feature is that individuals (here, plant seedlings) are randomly assigned to treatments, and that the individuals themselves were randomly drawn from the population prior to randomizing to experimental treatments. If your study is observational, then it is key that the individuals upon which measurements were made were randomly drawn from the population.</p>
-<p>For the first three assumptions, we start by looking at the original scatterplot @ref(fig:lsrfigone), but this time we add what’s called a “locally weighted smoother” line, using the <code>ggplot2</code> function <code>geom_smooth</code>:</p>
+<p>For the first three assumptions, we start by looking at the original scatterplot <a href="#fig-17-stability-biomass-production-over-2" class="quarto-xref">Figure&nbsp;<span>17.2</span></a>, but this time we add what’s called a “locally weighted smoother” line, using the <code>ggplot2</code> function <code>geom_smooth</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plantbiomass <span class="sc">%&gt;%</span></span>
@@ -797,7 +797,7 @@ Figure&nbsp;17.4: Normal quantile plot of the residuals from a regression of bio
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Figure @ref(fig:lsrfigthree) shows that the residuals don’t really fall consistently near the line in the normal quantile plot; there is curviture, and increasing values tend to fall further from the line. This suggests the need to <strong>log-transform the data</strong>.</p>
+<p><a href="#fig-17-normal-quantile-plot-residuals" class="quarto-xref">Figure&nbsp;<span>17.4</span></a> shows that the residuals don’t really fall consistently near the line in the normal quantile plot; there is curviture, and increasing values tend to fall further from the line. This suggests the need to <strong>log-transform the data</strong>.</p>
 </blockquote>
 <p>Before trying a transformation, let’s also check the assumptions that (i) the variance of <span class="math inline">\(Y\)</span> is the same at all values of <span class="math inline">\(X\)</span>, and (ii) the assumption that the association is linear. To do this, we plot the residuals against the original “<span class="math inline">\(X\)</span>” variable, which here is the number of species initially used in the treatment. Note that we’ll add a horizontal line (“segement”) at zero for reference:</p>
 <div class="cell" data-layout-align="center">
@@ -830,7 +830,7 @@ Figure&nbsp;17.5: Residual plot from a regression of biomass stability on Specie
 <li>a curved pattern</li>
 </ul>
 <blockquote class="blockquote">
-<p>Figure @ref(fig:lsrfigfour) shows that the variance in biomass stability is greatest within the largest species richness treatment. This again suggests the need for a log transformation.</p>
+<p><a href="#fig-17-residual-plot-from-regression" class="quarto-xref">Figure&nbsp;<span>17.5</span></a> shows that the variance in biomass stability is greatest within the largest species richness treatment. This again suggests the need for a log transformation.</p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -920,7 +920,7 @@ Figure&nbsp;17.7: Residual plot from a regression of biomass stability (log tran
 </div>
 </div>
 <blockquote class="blockquote">
-<p>Figure @ref(fig:lsrfigfive) shows that the residuals are reasonably normally distributed, and @ref(fig:lsrfigsix) shows no strong pattern of changing variance in the residuals along <span class="math inline">\(X\)</span>, and nor is there an obvious curved pattern to the residuals (which would indicate a non-linear association). We therefore proceed with the analyses using the log-transformed response variable.</p>
+<p><a href="#fig-17-normal-quantile-plot-residuals-2" class="quarto-xref">Figure&nbsp;<span>17.6</span></a> shows that the residuals are reasonably normally distributed, and <a href="#fig-17-residual-plot-from-regression-2" class="quarto-xref">Figure&nbsp;<span>17.7</span></a> shows no strong pattern of changing variance in the residuals along <span class="math inline">\(X\)</span>, and nor is there an obvious curved pattern to the residuals (which would indicate a non-linear association). We therefore proceed with the analyses using the log-transformed response variable.</p>
 </blockquote>
 <hr>
 </section>
@@ -1067,7 +1067,7 @@ Note
 </div>
 <p>Here we can interpret the figure as follows:</p>
 <blockquote class="blockquote">
-<p>Figure @ref(fig:lsrfigseven) shows that biomass stability (log-transformed) is positively and linearly related to the initial number of plant species assigned to experimental plots, but there is considerable variation that remains unexplained by the least-square regression model.</p>
+<p><a href="#fig-17-stability-biomass-production-log" class="quarto-xref">Figure&nbsp;<span>17.8</span></a> shows that biomass stability (log-transformed) is positively and linearly related to the initial number of plant species assigned to experimental plots, but there is considerable variation that remains unexplained by the least-square regression model.</p>
 </blockquote>
 <hr>
 </section>
@@ -1088,7 +1088,7 @@ Note
 </div>
 </div>
 <blockquote class="blockquote">
-<p>As seen in Figure @ref(fig:lsrfigseven), Species richness is a significant predictor of biomass stability: <em>Biomass stability (log)</em> = 1.2 + 0.03(<em>Species richness</em>); <em>F</em> = 45.45; <em>n</em> = 161; 95% confidence limits for the slope: 0.023, 0.043; <span class="math inline">\(R^2\)</span> = 0.22; <em>P</em> &lt; 0.001). Given the relatively low <span class="math inline">\(R^2\)</span> value, predictions from our regression model will not be particularly accurate.</p>
+<p>As seen in <a href="#fig-17-stability-biomass-production-log" class="quarto-xref">Figure&nbsp;<span>17.8</span></a>, Species richness is a significant predictor of biomass stability: <em>Biomass stability (log)</em> = 1.2 + 0.03(<em>Species richness</em>); <em>F</em> = 45.45; <em>n</em> = 161; 95% confidence limits for the slope: 0.023, 0.043; <span class="math inline">\(R^2\)</span> = 0.22; <em>P</em> &lt; 0.001). Given the relatively low <span class="math inline">\(R^2\)</span> value, predictions from our regression model will not be particularly accurate.</p>
 </blockquote>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1109,7 +1109,7 @@ Note
 <section id="making-predictions" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="making-predictions"><span class="header-section-number">17.3</span> Making predictions</h2>
 <p>Even though the <span class="math inline">\(R^2\)</span> value from our regression was rather low, we’ll proceed with using the model to make predictions.</p>
-<p>It is not advisable to make predictions beyond the range of X-values upon which the regression was built. So in our case (see Figure @ref(fig:lsrfigseven)), we would not wish to make predictions using species richness values beyond 16. Such “extrapolations” are inadvisable.</p>
+<p>It is not advisable to make predictions beyond the range of X-values upon which the regression was built. So in our case (see <a href="#fig-17-stability-biomass-production-log" class="quarto-xref">Figure&nbsp;<span>17.8</span></a>), we would not wish to make predictions using species richness values beyond 16. Such “extrapolations” are inadvisable.</p>
 <p>To make a prediction using our regression model, use the <code>predict.lm</code> function from the base stats package:</p>
 <pre><code>?predict.lm</code></pre>
 <p>If you do not provide new values of <code>n_species</code> (note that the variable name must be the same as was used when building the model), then it will simply use the old values that were supplied when building the regression model.</p>
@@ -1149,7 +1149,7 @@ Figure&nbsp;17.9: Stability of biomass production (log transformed) over 10 year
 </div>
 </div>
 </div>
-<p>As expected, Figure @ref(fig:lsrfigeight) shows the predicted values exactly where the regression line would be! We generally don’t present such a figure… here we’re just doing it for illustration.</p>
+<p>As expected, <a href="#fig-17-stability-biomass-production-log-2" class="quarto-xref">Figure&nbsp;<span>17.9</span></a> shows the predicted values exactly where the regression line would be! We generally don’t present such a figure… here we’re just doing it for illustration.</p>
 <section id="back-transforming-regression-predictions" class="level3" data-number="17.3.1">
 <h3 data-number="17.3.1" class="anchored" data-anchor-id="back-transforming-regression-predictions"><span class="header-section-number">17.3.1</span> Back-transforming regression predictions</h3>
 <p>The regression model we have calculated above is as follows:</p>

@@ -186,7 +186,7 @@ This figure that you first produce for visualizing the data may or may not be ne
 
 In an earlier [tutorial](07-visualize-two-variables.qmd#interpret_scatter), we learned how to properly interpret a scatterplot, and **what information should to include in your interpretation**. Be sure to consult that tutorial.   
 
-> We see in Figure \@ref(fig:lsrfigone) that there is a weak, positive, and somewhat linear association between biomass stability and Species richness.  There appears to be increasing spread of the response variable with increasing values of the predictor (x) variable, and perhaps outliers in the treatment group with greatest species richness. We should keep this in mind.   
+> We see in @fig-17-stability-biomass-production-over-2 that there is a weak, positive, and somewhat linear association between biomass stability and Species richness.  There appears to be increasing spread of the response variable with increasing values of the predictor (x) variable, and perhaps outliers in the treatment group with greatest species richness. We should keep this in mind.   
 
 * * *
 
@@ -249,7 +249,7 @@ Let's revisit the assumptions:
 
 With respect to the last assumption regarding random sampling, we can assume that it is met for the plant experiment example.  In experiments, the key experimental design feature is that individuals (here, plant seedlings) are randomly assigned to treatments, and that the individuals themselves were randomly drawn from the population prior to randomizing to experimental treatments. If your study is observational, then it is key that the individuals upon which measurements were made were randomly drawn from the population.
 
-For the first three assumptions, we start by looking at the original scatterplot \@ref(fig:lsrfigone), but this time we add what's called a "locally weighted smoother" line, using the `ggplot2` function `geom_smooth`:
+For the first three assumptions, we start by looking at the original scatterplot @fig-17-stability-biomass-production-over-2, but this time we add what's called a "locally weighted smoother" line, using the `ggplot2` function `geom_smooth`:
 
 ```{r fig-17-stability-biomass-production-over-3, fig.cap = "Stability of biomass production over 10 years in 161 plots and the initial number of plant species assigned to plots. Also shown is a locally weighted smoothing line.", fig.width = 4.2, fig.height = 4}
 
@@ -292,7 +292,7 @@ biomass.lm.augment %>%
 ```
 
 
-> Figure \@ref(fig:lsrfigthree) shows that the residuals don't really fall consistently near the line in the normal quantile plot; there is curviture, and increasing values tend to fall further from the line. This suggests the need to **log-transform the data**.  
+> @fig-17-normal-quantile-plot-residuals shows that the residuals don't really fall consistently near the line in the normal quantile plot; there is curviture, and increasing values tend to fall further from the line. This suggests the need to **log-transform the data**.  
 
 Before trying a transformation, let's also check the assumptions that (i) the variance of $Y$ is the same at all values of $X$, and (ii) the assumption that the association is linear.  To do this, we plot the residuals against the original "$X$" variable, which here is the number of species initially used in the treatment. Note that we'll add a horizontal line ("segement") at zero for reference:  
 
@@ -313,7 +313,7 @@ Here we are watching out for:
 * outliers to the general trend  
 * a curved pattern  
 
-> Figure \@ref(fig:lsrfigfour) shows that the variance in biomass stability is greatest within the largest species richness treatment. This again suggests the need for a log transformation.
+> @fig-17-residual-plot-from-regression shows that the variance in biomass stability is greatest within the largest species richness treatment. This again suggests the need for a log transformation.
 
 ::: {.callout-note}
 **REMINDER**: If ever you see a clear outlier when checking assumptions, then a safe approach is to report the regression with and without the outlier point(s) included. If the exclusion of the outlier changes your conclusions, then you should make this clear. 
@@ -377,7 +377,7 @@ log.biomass.lm.augment %>%
   theme_bw()
 ```
 
-> Figure \@ref(fig:lsrfigfive) shows that the residuals are reasonably normally distributed, and \@ref(fig:lsrfigsix) shows no strong pattern of changing variance in the residuals along $X$, and nor is there an obvious curved pattern to the residuals (which would indicate a non-linear association). We therefore proceed with the analyses using the log-transformed response variable.  
+> @fig-17-normal-quantile-plot-residuals-2 shows that the residuals are reasonably normally distributed, and @fig-17-residual-plot-from-regression-2 shows no strong pattern of changing variance in the residuals along $X$, and nor is there an obvious curved pattern to the residuals (which would indicate a non-linear association). We therefore proceed with the analyses using the log-transformed response variable.  
 
 * * *
 
@@ -479,7 +479,7 @@ You'll likely see a message stating `` `geom_smooth()` using formula = 'y ~ x' `
 
 Here we can interpret the figure as follows:  
 
-> Figure \@ref(fig:lsrfigseven) shows that biomass stability (log-transformed) is positively and linearly related to the initial number of plant species assigned to experimental plots, but there is considerable variation that remains unexplained by the least-square regression model.  
+> @fig-17-stability-biomass-production-log shows that biomass stability (log-transformed) is positively and linearly related to the initial number of plant species assigned to experimental plots, but there is considerable variation that remains unexplained by the least-square regression model.  
 
 * * *
 
@@ -491,7 +491,7 @@ Now that we have our new figure including confidence bands (because our regressi
 We simply report the sample size rather than the degrees of freedom in the parentheses.
 :::
 
-> As seen in Figure \@ref(fig:lsrfigseven), Species richness is a significant predictor of biomass stability: _Biomass stability (log)_ = `r round(coef(log.biomass.lm)[1], 2)` + `r round(coef(log.biomass.lm)[2], 2)`(_Species richness_); _F_ = `r round(summary(log.biomass.lm)$fstatistic[1], 2)`; _n_ = `r length(na.omit(plantbiomass$biomass_stability))`; 95% confidence limits for the slope: `r c(round(confint(log.biomass.lm)[2,1], 3), round(confint(log.biomass.lm)[2,2], 3))`; $R^2$ = `r round(summary(log.biomass.lm)$r.squared, 2)`; _P_ < 0.001). Given the relatively low $R^2$ value, predictions from our regression model will not be particularly accurate.   
+> As seen in @fig-17-stability-biomass-production-log, Species richness is a significant predictor of biomass stability: _Biomass stability (log)_ = `r round(coef(log.biomass.lm)[1], 2)` + `r round(coef(log.biomass.lm)[2], 2)`(_Species richness_); _F_ = `r round(summary(log.biomass.lm)$fstatistic[1], 2)`; _n_ = `r length(na.omit(plantbiomass$biomass_stability))`; 95% confidence limits for the slope: `r c(round(confint(log.biomass.lm)[2,1], 3), round(confint(log.biomass.lm)[2,2], 3))`; $R^2$ = `r round(summary(log.biomass.lm)$r.squared, 2)`; _P_ < 0.001). Given the relatively low $R^2$ value, predictions from our regression model will not be particularly accurate.   
 
 ::: {.callout-note}
 It is OK to report the concluding statement and associated regression output using the log-transformed data. However, if you wanted to make predictions using the regression model, it is often desirable to report the back-transformed predicted values (see below).
@@ -503,7 +503,7 @@ It is OK to report the concluding statement and associated regression output usi
 
 Even though the $R^2$ value from our regression was rather low, we'll proceed with using the model to make predictions.  
 
-It is not advisable to make predictions beyond the range of X-values upon which the regression was built. So in our case (see Figure \@ref(fig:lsrfigseven)), we would not wish to make predictions using species richness values beyond 16.  Such "extrapolations" are inadvisable.  
+It is not advisable to make predictions beyond the range of X-values upon which the regression was built. So in our case (see @fig-17-stability-biomass-production-log), we would not wish to make predictions using species richness values beyond 16.  Such "extrapolations" are inadvisable.  
 
 To make a prediction using our regression model, use the `predict.lm` function from the base stats package:  
 
@@ -542,7 +542,7 @@ ggplot(aes(x = n_species, y = log.biomass)) +
   theme_bw()
 ```
 
-As expected, Figure \@ref(fig:lsrfigeight) shows the predicted values exactly where the regression line would be!  We generally don't present such a figure... here we're just doing it for illustration.    
+As expected, @fig-17-stability-biomass-production-log-2 shows the predicted values exactly where the regression line would be!  We generally don't present such a figure... here we're just doing it for illustration.    
 
 ### Back-transforming regression predictions 
  
