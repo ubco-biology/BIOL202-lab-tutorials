@@ -186,7 +186,7 @@ The `stat_summary` function from the `ggplot2` package is what provides the erro
 
 Here's the code:
 
-```{r fig-15-stripchart-phase-shifts-circadian, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment. Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
+```{r fig-15-stripchart-phase-shifts-circadian, fig.cap = "Stripchart of phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment (n = 8, 7, 7 for control, knee, and eyes, respectively). Solid circles denote group means, and bars +/- one standard error", fig.width = 4, fig.height = 4.5}
 
 circadian %>%
   ggplot(aes(x = treatment, y = shift)) +
