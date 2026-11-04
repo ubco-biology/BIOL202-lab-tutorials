@@ -163,7 +163,7 @@ Let's have a look at the result, and we'll use the `kable` function to make the 
 
 ```{r conf_table_anova_now_show}
 
-kable(circadian.stats, caption = "Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment.", digits = 4)
+kable(circadian.stats, caption = "Table: Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment.", digits = 4, booktabs = TRUE)
 ```
 
 ### Visualize the data {#anova_graph1}

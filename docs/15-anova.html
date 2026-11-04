@@ -633,10 +633,10 @@ H<sub>A</sub>: At least one treatment group’s mean is different from the other
 <p>Let’s have a look at the result, and we’ll use the <code>kable</code> function to make the table nicer, with a proper heading:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(circadian.stats, <span class="at">caption =</span> <span class="st">"Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment."</span>, <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(circadian.stats, <span class="at">caption =</span> <span class="st">"Table: Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment."</span>, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment.</caption>
+<caption>Table: Summary statistics for phase shifts in the circadian rhythm of melatonin production in 22 participants of an experiment.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
