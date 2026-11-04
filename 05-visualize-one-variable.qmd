@@ -11,7 +11,7 @@ In this tutorial you will:
 
 * Revisit how to import data and get an overview of a "tibble" object
 * Learn how to construct a frequency table
-* Learn how to include a table caption
+* Learn how to include a table heading
 * Learn how to visualize the frequency distribution of a single categorical variable using a bar graph
 * Learn how to visualize the frequency distribution of a single numerical variable using a histogram
 * Learn how to describe a histogram
@@ -96,7 +96,7 @@ penguins %>%
   summary()
 ```
 
-There are 344 cases (rows) in `penguins`, but you'll see an "NA's :2" line beneath the Min./Max. values for each of the four morphometric variables — `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and `body_mass_g` — telling you that each of them is missing 2 observations. (`sex` is missing 11 observations too, though it isn't a morphometric measurement.) **You need to take note of this so that you report the correct sample sizes in any table or figure captions!**
+There are 344 cases (rows) in `penguins`, but you'll see an "NA's :2" line beneath the Min./Max. values for each of the four morphometric variables — `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and `body_mass_g` — telling you that each of them is missing 2 observations. (`sex` is missing 11 observations too, though it isn't a morphometric measurement.) **You need to take note of this so that you report the correct sample sizes in any table or in figure captions!**
 :::
 
 Once you have gotten an overview your dataset's structure and contents, the next order of business is always to _visualize_ your data using graphs and sometimes tables. 
@@ -152,9 +152,17 @@ Try figuring out how you would change the last line of code in the chunk above s
 
 Now that we've created the frequency table, let's have a look at it.
 
-In a [supplementary tutorial](https://ubco-biology.github.io/BIOL202/creating-tables-in-r-markdown.html), you'll find instructions on how to create fancy tables for output.  Here, you'll learn the basics. 
+In a [supplementary tutorial](https://ubco-biology.github.io/BIOL202-lab-tutorials/90-tables.html), you'll find instructions on how to create fancy tables for output.  Here, you'll learn the basics. 
 
-For our straightforward approach to tables with table headings (or captions), we'll use the `kable` function that comes with the `knitr` package, using the pipe approach:
+For our straightforward approach to tables with table headings, we'll use the `kable` function that comes with the `knitr` package, using the pipe approach:
+
+::: {.callout-warning}
+## Terminology: "Caption" versus "Header" 
+
+A figure must include a figure "caption" (which appears below the figure), while a table should include a table "heading" (which appears above the table).  
+
+Confusingly, the `kable` function includes an argument "caption" to define the table heading! 
+:::
 
 ```
 tiger.table %>%
@@ -168,14 +176,14 @@ tiger.table %>%
 ```
 
 
-The key argument to the `kable` function is the table object (which here we provide before the pipe), and the table heading (caption).   
+The key argument to the `kable` function is the table object (which here we provide before the pipe), and the table heading (which, ridiculously, it calls "caption").  
 
-Notice that this produces a nicely formatted table with an appropriately worded caption. The argument "digits = 3" tells it to return numeric values to 3 digits in the table.
+Notice that this produces a nicely formatted table with an appropriately worded heading The argument "digits = 3" tells it to return numeric values to 3 digits in the table.
 
 You now know how to create a frequency table for a categorical variable!
 
 ::: {.callout-note}
-Your table caption won't include a number (e.g. Table 1) until you actually knit to PDF. Be sure to check your PDF to ensure that the table captions show up, and are numbered!
+Your table heading won't include a number (e.g. Table 1) until you actually knit to PDF. Be sure to check your PDF to ensure that the table headings show up, and are numbered!
 :::
 
 ::: {.callout-caution title="Activity"}

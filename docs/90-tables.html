@@ -476,7 +476,7 @@ Note
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>circadian.stats.transposed <span class="ot">&lt;-</span> <span class="fu">t</span>(circadian.stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now we’ll use the <code>kbl</code> function with various arguments to ensure the output looks good and includes a table caption:</p>
+<p>Now we’ll use the <code>kbl</code> function with various arguments to ensure the output looks good and includes a table heading:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -500,7 +500,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>IMPORTANT: </strong> Notice that, unlike figure captions, which must be provided in the chunk header, the caption for a table is provided as an argument to the <code>kbl</code> function within the actual code!</p>
+<p><strong>IMPORTANT: </strong> Notice that, unlike figure captions, which must be provided in the chunk header, the heading for a table is provided as an argument to the <code>kbl</code> function within the actual code (but note that the argument is called “caption”)!</p>
 </div>
 </div>
 <pre><code>kbl(circadian.stats.transposed, caption = "Descriptive statistics for circadian rhythm shift, by treatment",
@@ -511,7 +511,7 @@ Note
 <li>use the <code>kbl</code> function and provide 3 arguments:
 <ul>
 <li>provide the name of the table-like object we wish to format for output</li>
-<li>provide a table caption</li>
+<li>provide a table heading</li>
 <li>provide an argument “booktabs = TRUE” (this provides nice formatting)</li>
 </ul></li>
 </ul>

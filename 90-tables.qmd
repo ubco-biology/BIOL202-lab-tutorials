@@ -67,7 +67,7 @@ The fix is to "transpose" (rotate) the table using the base `t` function, so tha
 circadian.stats.transposed <- t(circadian.stats)
 ```
 
-Now we'll use the `kbl` function with various arguments to ensure the output looks good and includes a table caption:
+Now we'll use the `kbl` function with various arguments to ensure the output looks good and includes a table heading:
 
 ::: {.callout-note}
 **NOTE:  **
@@ -76,7 +76,7 @@ This table will look different when knitted to PDF (rather than HTML)
 
 ::: {.callout-note}
 **IMPORTANT:  **
-Notice that, unlike figure captions, which must be provided in the chunk header, the caption for a table is provided as an argument to the `kbl` function within the actual code!
+Notice that, unlike figure captions, which must be provided in the chunk header, the heading for a table is provided as an argument to the `kbl` function within the actual code (but note that the argument is called "caption")!
 :::
 
 ```
@@ -89,7 +89,7 @@ In the preceding code we:
 
 * use the `kbl` function and provide 3 arguments:
   + provide the name of the table-like object we wish to format for output
-  + provide a table caption
+  + provide a table heading
   + provide an argument "booktabs = TRUE" (this provides nice formatting)
 
 Then we include pipes ("%>%), and follow with:

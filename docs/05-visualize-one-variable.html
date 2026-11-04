@@ -416,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Revisit how to import data and get an overview of a “tibble” object</li>
 <li>Learn how to construct a frequency table</li>
-<li>Learn how to include a table caption</li>
+<li>Learn how to include a table heading</li>
 <li>Learn how to visualize the frequency distribution of a single categorical variable using a bar graph</li>
 <li>Learn how to visualize the frequency distribution of a single numerical variable using a histogram</li>
 <li>Learn how to describe a histogram</li>
@@ -546,7 +546,7 @@ Note
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :231.0     Max.   :6300                Max.   :2009  </span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  NA's   :2         NA's   :2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>There are 344 cases (rows) in <code>penguins</code>, but you’ll see an “NA’s :2” line beneath the Min./Max. values for each of the four morphometric variables — <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, and <code>body_mass_g</code> — telling you that each of them is missing 2 observations. (<code>sex</code> is missing 11 observations too, though it isn’t a morphometric measurement.) <strong>You need to take note of this so that you report the correct sample sizes in any table or figure captions!</strong></p>
+<p>There are 344 cases (rows) in <code>penguins</code>, but you’ll see an “NA’s :2” line beneath the Min./Max. values for each of the four morphometric variables — <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, and <code>body_mass_g</code> — telling you that each of them is missing 2 observations. (<code>sex</code> is missing 11 observations too, though it isn’t a morphometric measurement.) <strong>You need to take note of this so that you report the correct sample sizes in any table or in figure captions!</strong></p>
 </div>
 </div>
 <p>Once you have gotten an overview your dataset’s structure and contents, the next order of business is always to <em>visualize</em> your data using graphs and sometimes tables.</p>
@@ -622,8 +622,22 @@ Tip
 </div>
 </div>
 <p>Now that we’ve created the frequency table, let’s have a look at it.</p>
-<p>In a <a href="https://ubco-biology.github.io/BIOL202/creating-tables-in-r-markdown.html">supplementary tutorial</a>, you’ll find instructions on how to create fancy tables for output. Here, you’ll learn the basics.</p>
-<p>For our straightforward approach to tables with table headings (or captions), we’ll use the <code>kable</code> function that comes with the <code>knitr</code> package, using the pipe approach:</p>
+<p>In a <a href="https://ubco-biology.github.io/BIOL202-lab-tutorials/90-tables.html">supplementary tutorial</a>, you’ll find instructions on how to create fancy tables for output. Here, you’ll learn the basics.</p>
+<p>For our straightforward approach to tables with table headings, we’ll use the <code>kable</code> function that comes with the <code>knitr</code> package, using the pipe approach:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Terminology: “Caption” versus “Header”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A figure must include a figure “caption” (which appears below the figure), while a table should include a table “heading” (which appears above the table).</p>
+<p>Confusingly, the <code>kable</code> function includes an argument “caption” to define the table heading!</p>
+</div>
+</div>
 <pre><code>tiger.table %&gt;%
   kable(caption = "Frequency table showing the activities of 88 people at the time they were attacked and killed by tigers near Chitwan national Park, Nepal, from 1979 to 2006", digits = 3)</code></pre>
 <div class="cell" data-layout-align="center">
@@ -700,8 +714,8 @@ Table&nbsp;5.1: Frequency table showing the activities of 88 people at the time 
 </figure>
 </div>
 </div>
-<p>The key argument to the <code>kable</code> function is the table object (which here we provide before the pipe), and the table heading (caption).</p>
-<p>Notice that this produces a nicely formatted table with an appropriately worded caption. The argument “digits = 3” tells it to return numeric values to 3 digits in the table.</p>
+<p>The key argument to the <code>kable</code> function is the table object (which here we provide before the pipe), and the table heading (which, ridiculously, it calls “caption”).</p>
+<p>Notice that this produces a nicely formatted table with an appropriately worded heading The argument “digits = 3” tells it to return numeric values to 3 digits in the table.</p>
 <p>You now know how to create a frequency table for a categorical variable!</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -713,7 +727,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Your table caption won’t include a number (e.g.&nbsp;Table 1) until you actually knit to PDF. Be sure to check your PDF to ensure that the table captions show up, and are numbered!</p>
+<p>Your table heading won’t include a number (e.g.&nbsp;Table 1) until you actually knit to PDF. Be sure to check your PDF to ensure that the table headings show up, and are numbered!</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled" title="Activity">
