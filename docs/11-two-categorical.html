@@ -393,6 +393,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./95-friendly-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colour-blind friendly figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -638,6 +644,19 @@ Table&nbsp;11.1: Contingency table showing the incidence of cancer in relation t
 <p>Let’s visualize the data using a stacked relative frequency bar graph, taking note of the frequency of observations falling in each category (from the contingency table produced previously).</p>
 <p>Here we’ll add a bit of new code to format the graph more ideally. We’ll add tick-marks and numbers to the y-axis using <code>scale_y_continuous</code>, which allows us to specify what breaks (ticks) we want on the y-axis.</p>
 <p>Here we’re showing “relative frequency” on the y-axis, so this should range from 0 to 1. And we’ll add breaks at intervals of 0.2. Specifically, we use the base <code>seq</code> function to generate a sequence of numbers from 0 to 1, in intervals of 0.2:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the <a href="./95-friendly-figures.html#friendly_cancer">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cancer <span class="sc">%&gt;%</span></span>
@@ -1009,6 +1028,19 @@ Note
 <section id="stackedbarworm" class="level3" data-number="11.5.3">
 <h3 data-number="11.5.3" class="anchored" data-anchor-id="stackedbarworm"><span class="header-section-number">11.5.3</span> Visualize the association</h3>
 <p>Here’s a stacked relative frequency bar graph with an ideal figure caption included:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The dark red and gold colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the <a href="./95-friendly-figures.html#friendly_worm">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>worm <span class="sc">%&gt;%</span></span>

@@ -374,6 +374,10 @@ Now we have what we need to produce a graph that enables direct comparison of th
 This type of graph is not something you'll need to be able to do for assignments!
 :::
 
+::: {.callout-note title="Colour-blind friendly version"}
+The grey and orange colours used here can be difficult to distinguish where the two histograms overlap. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_histogram) to learn how to create this figure using an accessible colour palette.
+:::
+
 ```{r fig-08-approximate-sampling-distributions-mean, fig.cap="Approximate sampling distributions of mean gene lengths from the human genome, using sample sizes of 20 and 50 (10000 replicate samples in each distribution).", fig.width=4}
 
 gene.means.combined %>%

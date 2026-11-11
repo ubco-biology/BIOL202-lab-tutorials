@@ -206,6 +206,10 @@ bird_malaria.tidy
 
 We now have what we need for a grouped bar chart, using the `ggplot` function:
 
+::: {.callout-note title="Colour-blind friendly version"}
+The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_grouped) to learn how to create this figure using an accessible colour palette.
+:::
+
 ```{r malaria_barchart1}
 ggplot(data = bird_malaria.tidy, aes(x = treatment, y = n, fill = response)) + 
   geom_bar(stat = "identity", position = position_dodge()) + 
@@ -231,6 +235,10 @@ knitr::include_graphics("images/grouped_bar_graph.png")
 
 And the result:
 
+::: {.callout-note title="Colour-blind friendly version"}
+This figure uses the default colours. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_grouped) to learn how to create this figure using an accessible colour palette.
+:::
+
 ```{r fig-07-grouped-bar-graph-showing, fig.cap = "Grouped bar graph showing the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.", fig.width = 4, fig.height = 5}
 
 ggplot(data = bird_malaria.tidy, aes(x = treatment, y = n, fill = response)) + 
@@ -249,6 +257,10 @@ Usually the question we actually care about is a question about **proportions**:
 We use the same `ggplot` and `geom_bar` functions we have already been using, with one new argument: `position = "fill"`.
 
 For this graph we use the original (raw) `bird_malaria` tibble, which has one row per bird — not the summarized frequency table.
+
+::: {.callout-note title="Colour-blind friendly version"}
+The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_stacked) to learn how to create this figure using an accessible colour palette.
+:::
 
 ```{r stacked_malaria1}
 ggplot(data = bird_malaria, aes(x = treatment, fill = response)) +
@@ -279,6 +291,10 @@ Using the `penguins` dataset, try creating a stacked relative frequency bar grap
 ### Interpreting a stacked relative frequency bar graph {#interpret_stacked_bar}
 
 Let's provide the graph again, and this time we'll provide an appropriate figure heading in the chunk header, as we [learned previously](03-formatting-assignments.qmd#rmd_graphing):
+
+::: {.callout-note title="Colour-blind friendly version"}
+This figure uses the default colours. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_stacked) to learn how to create this figure using an accessible colour palette.
+:::
 
 ```{r fig-07-relative-frequency-incidence-malaria, fig.cap = "Relative frequency of the incidence of malaria in female great tits in relation to control (N = 35) and Egg-removal (N = 30) treatment groups.", fig.width = 4, fig.height = 3}
 

@@ -61,6 +61,7 @@ book:
         - 92-visual-editor.qmd
         - 93-assignment-cheatsheet.qmd
         - 94-rounding.qmd
+        - 95-friendly-figures.qmd
         - 99-common-issues.qmd
 
 bibliography: [biol202.bib, packages.bib]

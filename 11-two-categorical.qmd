@@ -137,6 +137,10 @@ Here we'll add a bit of new code to format the graph more ideally. We'll add tic
 
 Here we're showing "relative frequency" on the y-axis, so this should range from 0 to 1. And we'll add breaks at intervals of 0.2.  Specifically, we use the base `seq` function to generate a sequence of numbers from 0 to 1, in intervals of 0.2:
 
+::: {.callout-note title="Colour-blind friendly version"}
+The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_cancer) to learn how to create this figure using an accessible colour palette.
+:::
+
 ```{r fig-11-relative-frequency-cancer-among, fig.cap = "Relative frequency of cancer among women randomly assigned to control (n = 19942) and aspirin (n = 19934) treatment groups.", fig.width = 4, fig.height = 3}
 
 cancer %>%
@@ -423,6 +427,10 @@ kable(worm.table)
 ### Visualize the association {#stackedbarworm}
 
 Here's a stacked relative frequency bar graph with an ideal figure caption included:
+
+::: {.callout-note title="Colour-blind friendly version"}
+The dark red and gold colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the [extra tutorial on colour-blind friendly figures](95-friendly-figures.qmd#friendly_worm) to learn how to create this figure using an accessible colour palette.
+:::
 
 ```{r fig-11-bird-predation-killifish-having, fig.cap = "Bird predation on killifish having different levels of trematode parasitism. A total of 50, 45, and 46 fish were in the uninfected, lightly infected, and highly infected groups.", fig.width = 4, fig.height = 3}
 

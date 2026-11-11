@@ -364,6 +364,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./95-friendly-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colour-blind friendly figures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-common-issues.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common errors and their solutions</span></a>
   </div>
@@ -708,6 +714,19 @@ Note
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Egg removal No Malaria    15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We now have what we need for a grouped bar chart, using the <code>ggplot</code> function:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the <a href="./95-friendly-figures.html#friendly_grouped">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bird_malaria.tidy, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> n, <span class="at">fill =</span> response)) <span class="sc">+</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span> </span>
@@ -757,6 +776,19 @@ Figure&nbsp;7.1: Example code chunk for producing a good grouped bar graph
 </div>
 </div>
 <p>And the result:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This figure uses the default colours. See the <a href="./95-friendly-figures.html#friendly_grouped">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bird_malaria.tidy, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> n, <span class="at">fill =</span> response)) <span class="sc">+</span> </span>
@@ -784,6 +816,19 @@ Figure&nbsp;7.2: Grouped bar graph showing the incidence of malaria in female gr
 <p>Usually the question we actually care about is a question about <strong>proportions</strong>: <em>of the birds in this treatment group, what fraction got malaria?</em> To see that directly, we make a <strong>stacked relative frequency bar graph</strong>, where every bar is scaled to the same height (1, or 100%), so that what you read off the plot is the proportion within each group.</p>
 <p>We use the same <code>ggplot</code> and <code>geom_bar</code> functions we have already been using, with one new argument: <code>position = "fill"</code>.</p>
 <p>For this graph we use the original (raw) <code>bird_malaria</code> tibble, which has one row per bird — not the summarized frequency table.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The default colours used here can be difficult to distinguish for readers with colour-vision deficiency. See the <a href="./95-friendly-figures.html#friendly_stacked">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bird_malaria, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">fill =</span> response)) <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
@@ -836,6 +881,19 @@ Note
 <section id="interpret_stacked_bar" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="interpret_stacked_bar"><span class="header-section-number">7.2.4</span> Interpreting a stacked relative frequency bar graph</h3>
 <p>Let’s provide the graph again, and this time we’ll provide an appropriate figure heading in the chunk header, as we <a href="./03-formatting-assignments.html#rmd_graphing">learned previously</a>:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Colour-blind friendly version">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Colour-blind friendly version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This figure uses the default colours. See the <a href="./95-friendly-figures.html#friendly_stacked">extra tutorial on colour-blind friendly figures</a> to learn how to create this figure using an accessible colour palette.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bird_malaria, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">fill =</span> response)) <span class="sc">+</span></span>
