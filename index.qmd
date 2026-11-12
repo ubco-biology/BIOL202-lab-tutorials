@@ -6,7 +6,7 @@ It also works as a general resource for anyone learning to manage and analyze da
 
 These tutorials cover the computation; the lectures and assigned course readings cover the concepts. The approach is **concept first, computation second**: an idea is introduced in the lecture or the assigned reading, and the lab tutorial then implements it in R. If a tutorial asks you to run a test, you will already have learned what it is for.
 
-This book is **a living document that is updated intermittently.** If you find errors or wish to provide feedback, please [contact me](https://jasonpither.weebly.com/people.html).
+This book is **a living document that is updated intermittently.** If you find errors or wish to provide feedback, please [contact me](https://jasonpither.weebly.com/people.html). 
 
 ## About me {.unnumbered}
 
