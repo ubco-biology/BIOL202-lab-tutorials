@@ -503,9 +503,16 @@ Pretend that our post-hoc test showed that the "Knee" group was not different fr
 
 ### Concluding statement {#anova_conclusion}
 
-With out ANOVA table and final figure in hand, we are ready for the concluding statement: 
+With out ANOVA table and final figure in hand, we are ready for the concluding statement.  
+
+Here is a version that you can use if you've provided a nice ANOVA table to accompany your statement:
 
 > Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; @tbl-15-anova-table-circadian-rythm; $R^2$ = `r round(circadian.lm.summary$r.squared, 2)`). As shown in @fig-15-stripchart-showing-phase-shift, the mean shift among the "Eyes" subjects was significantly lower than both of the other treatment groups.   
+
+If you do NOT have a nice ANOVA table as part of your output, then here's the appropriate format for the concluding statement: 
+
+> Shifts in circadian rhythm differ significantly among treatment groups (ANOVA; $R^2$ = `r round(circadian.lm.summary$r.squared, 2)`; F = `r round(circadian.lm.anova$"F value"[1], 2)`; df = `r circadian.lm.anova$"Df"[1]`, `r circadian.lm.anova$"Df"[2]`; P = `r round(circadian.lm.anova$"Pr(>F)"[1], 3)`). As shown in @fig-15-stripchart-showing-phase-shift, the mean shift among the "Eyes" subjects was significantly lower than both of the other treatment groups.   
+
 
 ## When assumptions aren't met {#assumpbad_anova}
 
